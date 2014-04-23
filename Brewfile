@@ -12,5 +12,6 @@ install pkg-config
 install readline
 install ruby
 install vim
+install maven
 update
 doctor
