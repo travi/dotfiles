@@ -1,5 +1,9 @@
+#update homebrew
 update
+#upgrade already installed homebrew packages
 upgrade
+
+#install my standard packages
 install ant
 install augeas
 install libxml2
@@ -13,5 +17,5 @@ install readline
 install ruby
 install vim
 install maven
-update
+
 doctor
