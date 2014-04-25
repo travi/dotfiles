@@ -19,5 +19,10 @@ link_files () {
     success "linked $1 to $2"
 }
 
+
 info 'Brew bundle'
 brew bundle
+
+#should check for existence of ~/.dotfiles
+#if not there, ask for path to clone the git repository to
+#and add a simlink at ~/.dotfiles
