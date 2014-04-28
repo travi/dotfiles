@@ -34,12 +34,11 @@ dotfile () {
 }
 
 info 'link dotfiles'
+#should check for existence of ~/.dotfiles
+#if not there, ask for path to clone the git repository to
+#and add a simlink at ~/.dotfiles
 link_file $DOTFILES_ROOT "$HOME/.dotfiles"
 dotfile 'vim/.vimrc'
 
 info 'Brew bundle'
 brew bundle
-
-#should check for existence of ~/.dotfiles
-#if not there, ask for path to clone the git repository to
-#and add a simlink at ~/.dotfiles
