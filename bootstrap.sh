@@ -25,9 +25,11 @@ dotfile () {
     source=$1
     dest="$HOME/.${source##*.}"
 
-    if [ -f $dest ] || [ -d $dest ]
+    if [ -h $dest ];then
+	    success "link already exists"
+    elif [ -f $dest ] || [ -d $dest ]
     then
-	    fail "already exists"
+	    fail "$dest already exists"
     else
 	    link_file "$HOME/.dotfiles/$source" $dest
     fi
@@ -37,8 +39,17 @@ info 'link dotfiles'
 #should check for existence of ~/.dotfiles
 #if not there, ask for path to clone the git repository to
 #and add a simlink at ~/.dotfiles
-link_file $DOTFILES_ROOT "$HOME/.dotfiles"
+if [ -h "$HOME/.dotfiles" ]
+then
+	success ".dotfiles already linked"
+else
+	link_file $DOTFILES_ROOT "$HOME/.dotfiles"
+fi
 dotfile 'vim/.vimrc'
 
 info 'Brew bundle'
 brew bundle
+
+info 'Bundle install'
+gem install bundler
+bundle install
