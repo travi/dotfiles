@@ -1,3 +1,5 @@
+doctor
+
 #update homebrew
 update
 #upgrade already installed homebrew packages
@@ -18,4 +20,5 @@ install ruby
 install vim
 install maven
 
-doctor
+# Remove outdated versions from the cellar
+cleanup
