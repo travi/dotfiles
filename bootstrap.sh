@@ -26,7 +26,7 @@ dotfile () {
     dest="$HOME/.${source##*.}"
 
     if [ -h $dest ];then
-	    success "link already exists"
+	    success "link $dest already exists"
     elif [ -f $dest ] || [ -d $dest ]
     then
 	    fail "$dest already exists"
@@ -45,7 +45,11 @@ then
 else
 	link_file $DOTFILES_ROOT "$HOME/.dotfiles"
 fi
-dotfile 'vim/.vimrc'
+for source in `find $DOTFILES_ROOT -mindepth 2 -maxdepth 2 -name '\.*'`
+do
+	dotfile ${source}
+done
+#dotfile 'vim/.vimrc'
 
 info 'Brew bundle'
 brew bundle
