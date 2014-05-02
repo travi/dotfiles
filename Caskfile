@@ -1,2 +1,4 @@
 tap phinze/cask
 install brew-cask
+
+cask install virtualbox 2> /dev/null
