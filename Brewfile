@@ -1,11 +1,14 @@
-doctor
-
 #update homebrew
 update
+doctor
+
 #upgrade already installed homebrew packages
 upgrade
 
 #install my standard packages
+tap josegonzalez/homebrew-php
+install php54-xdebug
+
 install ant
 install augeas
 install libxml2
