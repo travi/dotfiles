@@ -22,6 +22,7 @@ install readline
 install ruby
 install vim
 install maven
+install corkscrew
 
 # Remove outdated versions from the cellar
 cleanup
