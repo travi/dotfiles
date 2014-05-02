@@ -53,6 +53,7 @@ done
 
 info 'Brew bundle'
 brew bundle
+brew bundle Caskfile
 
 info 'Bundle install'
 gem install bundler
