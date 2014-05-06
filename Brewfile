@@ -8,6 +8,7 @@ upgrade
 #install my standard packages
 tap josegonzalez/homebrew-php
 install php54-xdebug
+install composer
 
 install ant
 install augeas
