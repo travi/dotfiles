@@ -35,21 +35,28 @@ dotfile () {
     fi
 }
 
+link_dotfiles_directory() {
+	#should check for existence of ~/.dotfiles
+	#if not there, ask for path to clone the git repository to
+	#and add a simlink at ~/.dotfiles
+	if [ -h "$HOME/.dotfiles" ]
+	then
+		success ".dotfiles already linked"
+	else
+		link_file $DOTFILES_ROOT "$HOME/.dotfiles"
+	fi
+}
+
+link_dotfiles() {
+	for source in `find $DOTFILES_ROOT -mindepth 2 -maxdepth 2 -name '\.*'`
+	do
+		dotfile ${source}
+	done
+}
+
 info 'link dotfiles'
-#should check for existence of ~/.dotfiles
-#if not there, ask for path to clone the git repository to
-#and add a simlink at ~/.dotfiles
-if [ -h "$HOME/.dotfiles" ]
-then
-	success ".dotfiles already linked"
-else
-	link_file $DOTFILES_ROOT "$HOME/.dotfiles"
-fi
-for source in `find $DOTFILES_ROOT -mindepth 2 -maxdepth 2 -name '\.*'`
-do
-	dotfile ${source}
-done
-#dotfile 'vim/.vimrc'
+link_dotfiles_directory
+link_dotfiles
 
 info 'Brew bundle'
 brew bundle
