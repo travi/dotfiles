@@ -17,6 +17,13 @@ defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.8
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 ###############################################################################
+# Users                                                                       #
+###############################################################################
+
+# Hide puppet from the login screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add puppet
+
+###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
@@ -37,6 +44,5 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
