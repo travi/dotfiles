@@ -51,6 +51,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
+# Select text in a Quick Look preview window
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -65,6 +68,9 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -109,7 +115,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Dock" "Finder" "Safari" "SystemUIServer" "Terminal"; do
+for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
 	killall "${app}" > /dev/null 2>&1
 done
 
