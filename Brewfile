@@ -24,6 +24,7 @@ install ruby
 install vim
 install maven
 install corkscrew
+install tmux
 
 # Remove outdated versions from the cellar
 cleanup
