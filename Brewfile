@@ -25,6 +25,9 @@ install ruby
 install vim
 install maven31
 install corkscrew
+
+tap nviennot/tmate
+install tmate
 install tmux
 
 # Remove outdated versions from the cellar
