@@ -6,6 +6,7 @@ doctor
 upgrade
 
 #install my standard packages
+tap homebrew/versions
 tap josegonzalez/homebrew-php
 install php54-xdebug
 install composer
@@ -22,7 +23,7 @@ install pkg-config
 install readline
 install ruby
 install vim
-install maven
+install maven31
 install corkscrew
 install tmux
 
