@@ -8,6 +8,7 @@ link_dotfiles
 
 info 'Brew bundle'
 brew bundle
+info 'Brew Cask bundle'
 brew bundle Caskfile
 
 info 'Bundle install'
