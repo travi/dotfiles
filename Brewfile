@@ -29,6 +29,7 @@ install corkscrew
 tap nviennot/tmate
 install tmate
 install tmux
+install bash-completion
 
 # Remove outdated versions from the cellar
 cleanup
