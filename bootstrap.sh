@@ -13,4 +13,6 @@ brew bundle Caskfile
 
 info 'Bundle install'
 gem install bundler
+gem update --system
+gem update
 bundle install
