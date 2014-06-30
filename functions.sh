@@ -23,7 +23,8 @@ link_file () {
 
 dotfile () {
     source=$1
-    dest="$HOME/.${source##*.}"
+    filename=`basename $source`
+    dest="$HOME/$filename"
 
     if [ -h $dest ];then
 	    success "link $dest already exists"
