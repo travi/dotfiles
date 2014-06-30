@@ -32,7 +32,7 @@ dotfile () {
     then
 	    fail "$dest already exists"
     else
-	    link_file "$HOME/.dotfiles/$source" $dest
+	    link_file $source $dest
     fi
 }
 
@@ -49,7 +49,8 @@ link_dotfiles_directory() {
 }
 
 link_dotfiles() {
-	for source in `find $DOTFILES_ROOT -mindepth 2 -maxdepth 2 -name '\.*'`
+	DOTFILES_LINK="$HOME/.dotfiles/"
+	for source in `find $DOTFILES_LINK -mindepth 2 -maxdepth 2 -name '\.*'`
 	do
 		dotfile ${source}
 	done
