@@ -4,7 +4,7 @@ filetype plugin indent on
 syntax on
 
 " General Config
-colorscheme darkrobot 
+colorscheme icansee 
 set background=dark
 set guifont=Meslo\ LG\ M:h17
 set encoding=utf-8
