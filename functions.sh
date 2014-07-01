@@ -3,12 +3,15 @@
 DOTFILES_ROOT="`pwd`"
 
 info () {
-    printf "  [ \033[00;34m..\033[0m ] $1"
-    echo ''
+    printf "  [ \033[00;34m..\033[0m ] $1\n"
 }
 
 success () {
     printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+warn () {
+    printf "\r\033[2K  [\033[00;33mWARN\033[0m] $1\n"
 }
 
 fail () {
@@ -30,7 +33,7 @@ dotfile () {
 	    success "link $dest already exists"
     elif [ -f $dest ] || [ -d $dest ]
     then
-	    fail "$dest already exists"
+	    warn "$dest already exists"
     else
 	    link_file $source $dest
     fi
