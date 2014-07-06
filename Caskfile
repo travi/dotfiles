@@ -7,3 +7,4 @@ cask install vagrant 2> /dev/null
 cask install caffeine 2> /dev/null
 cask install charles 2> /dev/null
 cask install vlc 2> /dev/null
+cask install atom 2> /dev/null
