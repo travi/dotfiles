@@ -1,0 +1,93 @@
+@import "octicon-utf-codes.less";
+@import "ui-variables.less";
+
+.editor {
+  .gutter {
+    .line-number {
+      &.refactor-warning {
+        .icon-right {
+          visibility: visible;
+          &:before {
+            content: @info;
+            color: @text-color-warning;
+          }
+        }
+      }
+      &.refactor-error {
+        .icon-right {
+          visibility: visible;
+          &:before {
+            content: @alert;
+            color: @text-color-error;
+          }
+        }
+      }
+    }
+  }
+
+  .underlayer {
+
+    .refactor-reference {
+      &.is-disabled {
+        display: none;
+      }
+      .marker {
+        .region {
+          position: absolute;
+          border-radius: 2px;
+          box-sizing: border-box;
+          background-color: rgba(54, 175, 144, 0.2);
+          border: 1px solid rgba(54, 175, 144, 0.3);
+          &.first {
+            border-radius: 2px 2px 0 0;
+          }
+          &.middle {
+            border-radius: 0;
+          }
+          &.last {
+            border-radius: 0 0 2px 2px;
+          }
+        }
+      }
+    }
+
+    .refactor-error {
+      &.is-disabled {
+        display: none;
+      }
+      .marker {
+        .region {
+          position: absolute;
+          box-sizing: border-box;
+          border-bottom: 1px dotted rgba(255, 0, 0, 1);
+        }
+      }
+    }
+
+  }
+}
+
+.status-bar {
+  .refactor-status {
+    .icon {
+      margin-left: 5px;
+      &:before {
+        @font-size: 12px;
+        width: @font-size;
+        height: @font-size;
+        font-size: @font-size;
+        top: 0;
+        margin-right: 2px;
+      }
+    }
+    .lint-clean:before {
+      color: @text-color-success;
+    }
+    .lint-warning:before {
+      color: @text-color-warning;
+    }
+    .lint-error:before {
+      color: @text-color-error;
+    }
+  }
+}

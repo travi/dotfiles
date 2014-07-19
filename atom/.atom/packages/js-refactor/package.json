@@ -1,0 +1,44 @@
+{
+  "name": "js-refactor",
+  "main": "./lib/js-refactor",
+  "version": "0.2.1",
+  "description": "JavaScript refactoring support",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minodisk/js-refactor"
+  },
+  "license": "MIT",
+  "auther": {
+    "name": "Daisuke Mino",
+    "url": "http://dsk.mn"
+  },
+  "engines": {
+    "atom": ">0.50.0",
+    "refactor": "*"
+  },
+  "scripts": {
+    "test": "apm test"
+  },
+  "dependencies": {
+    "escope": "^1.0.1",
+    "esprima": "^1.2.2",
+    "estraverse": "^1.5.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-este-watch": "~0.1.15",
+    "grunt-notify": "^0.3.0"
+  },
+  "readme": "# JS Refactor Package [![Build Status](https://travis-ci.org/minodisk/js-refactor.svg?branch=master)](https://travis-ci.org/minodisk/js-refactor)\n\nJavaScript refactoring language plugin for [Atom](https://atom.io/).\n**This package requires [refactor](https://atom.io/packages/refactor) package.**\nYou can install from the preference pane.\n\n## Related Packages\n\n* [refactor](https://atom.io/packages/refactor): Main package.\n* [coffee-refactor](https://atom.io/packages/coffee-refactor): Language plugin for CoffeeScript.\n\n## See\n\n* [Changelog](CHANGELOG.md)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/minodisk/js-refactor/issues"
+  },
+  "homepage": "https://github.com/minodisk/js-refactor",
+  "_id": "js-refactor@0.2.1",
+  "dist": {
+    "shasum": "f0f94458ff8e01e86f54e353f6ded0c794eda478"
+  },
+  "_resolved": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-114618-1113-1dybk6v/package.tgz",
+  "_from": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-114618-1113-1dybk6v/package.tgz"
+}
