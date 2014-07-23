@@ -4,6 +4,7 @@ ErrorView = require './background/ErrorView'
 GutterView = require './gutter/GutterView'
 StatusView = require './status/StatusView'
 { locationDataToRange } = require './utils/LocationDataUtil'
+{ nextTick } = process
 
 module.exports =
 class Watcher extends EventEmitter2
@@ -60,7 +61,7 @@ class Watcher extends EventEmitter2
     # Start listening
     @editorView.on 'cursor:moved', @onCursorMoved
     @editor.on 'destroyed', @onDestroyed
-    @editor.on 'contents-modified', @onContentsModified
+    @editor.buffer.on 'changed', @onBufferChanged
 
     # Execute
     @parse()
@@ -69,7 +70,9 @@ class Watcher extends EventEmitter2
     # Stop listening
     @editorView.off 'cursor:moved', @onCursorMoved
     @editor.off 'destroyed', @onDestroyed
-    @editor.off 'contents-modified', @onContentsModified
+    @editor.buffer.off 'changed', @onBufferChanged
+    clearTimeout @bufferChangedTimeoutId
+    clearTimeout @cursorMovedTimeoutId
 
     # Destruct instances
     @ripper?.destruct()
@@ -79,6 +82,8 @@ class Watcher extends EventEmitter2
     @statusView?.destruct()
 
     # Remove references
+    delete @bufferChangedTimeoutId
+    delete @cursorMovedTimeoutId
     delete @module
     delete @ripper
     delete @referenceView
@@ -96,7 +101,7 @@ class Watcher extends EventEmitter2
   5. Start listening cursor move event.
   ###
 
-  parse: ->
+  parse: =>
     @editorView.off 'cursor:moved', @onCursorMoved
     @hideError()
     @referenceView.update()
@@ -137,7 +142,7 @@ class Watcher extends EventEmitter2
     if cursor?
       range = cursor.getCurrentWordBufferRange includeNonWordCharacters: false
       unless range.isEmpty()
-        ranges = @ripper.find range
+        ranges = @ripper.find range.start
     rowsList = for range in ranges
       @rangeToRows range
     @referenceView.update rowsList
@@ -155,7 +160,7 @@ class Watcher extends EventEmitter2
 
     cursor = @editor.cursors[0]
     range = cursor.getCurrentWordBufferRange includeNonWordCharacters: false
-    refRanges = @ripper.find range
+    refRanges = @ripper.find range.start
     return false if refRanges.length is 0
 
     # Save cursor info.
@@ -198,12 +203,13 @@ class Watcher extends EventEmitter2
   User events
   ###
 
-  onContentsModified: =>
-    @parse()
+  onBufferChanged: =>
+    clearTimeout @bufferChangedTimeoutId
+    @bufferChangedTimeoutId = setTimeout @parse, 0
 
   onCursorMoved: =>
-    clearTimeout @timeoutId
-    @timeoutId = setTimeout @updateReferences, 0
+    clearTimeout @cursorMovedTimeoutId
+    @cursorMovedTimeoutId = setTimeout @updateReferences, 0
 
 
   ###

@@ -1,8 +1,8 @@
 {
   "name": "js-refactor",
   "main": "./lib/js-refactor",
-  "version": "0.2.1",
-  "description": "JavaScript refactoring support",
+  "version": "0.2.2",
+  "description": "Refactoring support in JavaScript",
   "repository": {
     "type": "git",
     "url": "https://github.com/minodisk/js-refactor"
@@ -35,10 +35,10 @@
     "url": "https://github.com/minodisk/js-refactor/issues"
   },
   "homepage": "https://github.com/minodisk/js-refactor",
-  "_id": "js-refactor@0.2.1",
+  "_id": "js-refactor@0.2.2",
   "dist": {
-    "shasum": "f0f94458ff8e01e86f54e353f6ded0c794eda478"
+    "shasum": "4e183b731d8b7ebbb5296e8eaba3c973d7a98320"
   },
-  "_resolved": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-114618-1113-1dybk6v/package.tgz",
-  "_from": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-114618-1113-1dybk6v/package.tgz"
+  "_resolved": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-114622-13652-suh5de/package.tgz",
+  "_from": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-114622-13652-suh5de/package.tgz"
 }

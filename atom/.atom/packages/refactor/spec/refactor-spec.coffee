@@ -1,22 +1,18 @@
-# {WorkspaceView} = require 'atom'
+# { WorkspaceView } = require 'atom'
 # Refactor = require '../lib/refactor'
 #
-# describe "Refactor", ->
+# describe "refactor", ->
 #   activationPromise = null
 #
 #   beforeEach ->
 #     atom.workspaceView = new WorkspaceView
-#     activationPromise = atom.packages.activatePackage 'refactor'
+#     editorView = atom.workspaceView.getActiveView()
+#     editor = editorView.getEditor()
 #
 #   describe "when the refactor:toggle event is triggered", ->
 #     it "attaches and then detaches the view", ->
-#       expect(atom.workspaceView.find('.refactor-reference')).not.toExist()
 #       atom.workspaceView.trigger 'refactor:rename'
-#
 #       waitsForPromise ->
 #         activationPromise
-#
 #       runs ->
-#         expect(atom.workspaceView.find('.refactor-reference')).toExist()
-#         atom.workspaceView.trigger 'refactor:rename'
-#         expect(atom.workspaceView.find('.refactor-reference')).not.toExist()
+#         console.log require('util').inspect atom.workspaceView.getActiveEditor()

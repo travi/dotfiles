@@ -33,12 +33,11 @@ class Ripper
     catch err
       callback err
 
-  find: (range) ->
+  find: ({ row, column }) ->
     pos = 0
-    row = range.start.row
     while --row >= 0
       pos += 1 + @editor.lineLengthForBufferRow row
-    pos += range.start.column
+    pos += column
 
     identification = @context.identify pos
     return [] unless identification
