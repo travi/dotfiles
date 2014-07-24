@@ -1,5 +1,13 @@
 set nocompatible
 
+let vundle_readme=expand($HOME.'/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+	echo "Installing Vundle..."
+	echo ""
+	silent !mkdir -p $HOME/.vim/bundle
+	silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+endif
+
 filetype plugin indent on
 syntax on
 
