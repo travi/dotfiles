@@ -1,0 +1,13 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'bower install'
+      'submenu': [
+        { 'label': '--save', 'command': 'bower-install:save' }
+        { 'label': '--save-dev', 'command': 'bower-install:save-dev' }
+      ]
+    ]
+  }
+]
