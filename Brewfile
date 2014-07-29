@@ -25,6 +25,7 @@ install ruby
 install vim
 install maven31
 install corkscrew
+install dos2unix
 
 tap nviennot/tmate
 install tmate
