@@ -9,15 +9,15 @@ info () {
 }
 
 success () {
-    printf "\r\033[2K  [ ${green}OK${reset} ] $1\n"
+    printf "  [ ${green}OK${reset} ] $1\n"
 }
 
 warn () {
-    printf "\r\033[2K  [${orange}WARN${reset}] $1\n"
+    printf "  [${orange}WARN${reset}] $1\n"
 }
 
 fail () {
-    printf "\r\033[2K  [${red}FAIL${reset}] $1\n"
+    printf "  [${red}FAIL${reset}] $1\n"
     exit
 }
 
