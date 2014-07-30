@@ -1,4 +1,5 @@
-. ~/.dotfiles/colors.sh
-. ~/.dotfiles/completion.sh                                                                                                                                     
-. ~/.dotfiles/aliases.sh
-. ~/.dotfiles/exports.sh
+. ~/.dotfiles/bash/colors.sh
+. ~/.dotfiles/bash/completion.sh
+
+. ~/.dotfiles/bash/aliases.sh
+. ~/.dotfiles/bash/exports.sh
