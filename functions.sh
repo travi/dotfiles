@@ -42,9 +42,6 @@ dotfile () {
 }
 
 link_dotfiles_directory() {
-	#should check for existence of ~/.dotfiles
-	#if not there, ask for path to clone the git repository to
-	#and add a simlink at ~/.dotfiles
 	if [ -h "$HOME/.dotfiles" ]
 	then
 		success ".dotfiles already linked"
