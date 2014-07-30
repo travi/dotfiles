@@ -1,21 +1,23 @@
 #!/bin/bash
 
+. ~/.dotfiles/colors.sh
+
 DOTFILES_ROOT="`pwd`"
 
 info () {
-    printf "  [ \033[00;34m..\033[0m ] $1\n"
+     printf "  [ ${blue}..${reset} ] $1\n"
 }
 
 success () {
-    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+    printf "\r\033[2K  [ ${green}OK${reset} ] $1\n"
 }
 
 warn () {
-    printf "\r\033[2K  [\033[00;33mWARN\033[0m] $1\n"
+    printf "\r\033[2K  [${orange}WARN${reset}] $1\n"
 }
 
 fail () {
-    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    printf "\r\033[2K  [${red}FAIL${reset}] $1\n"
     exit
 }
 
@@ -53,6 +55,7 @@ link_dotfiles_directory() {
 
 link_dotfiles() {
 	DOTFILES_LINK="$HOME/.dotfiles/"
+
 	for source in `find $DOTFILES_LINK -mindepth 2 -maxdepth 2 -name '\.*'`
 	do
 		dotfile ${source}
