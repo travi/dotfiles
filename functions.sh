@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/.dotfiles/colors.sh
+. ~/.dotfiles/bash/colors.sh
 
 DOTFILES_ROOT="`pwd`"
 
