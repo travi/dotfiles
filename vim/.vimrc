@@ -29,6 +29,7 @@ set background=dark
 set guifont=Meslo\ LG\ M:h17
 set encoding=utf-8
 set ruler
+set visualbell
 
 " Highlight current line
 set cursorline
