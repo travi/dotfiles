@@ -1,10 +1,12 @@
 # Exit code of previous command.
 function prompt_exitcode() {
 #  prompt_getcolors
-  [[ $1 != 0 ]] && echo " $c2$1$c9"
+  [[ $1 != 0 ]] && echo " ${red}$1${reset}"
 }
 
 function prompt_command() {
+  local exit_code=$?
+
   PS1="\n"
   # path: [user@host:path]
   PS1="$PS1$c1[$c0\u$c1@$c0\h$c1:$c0\w$c1]$c9"
