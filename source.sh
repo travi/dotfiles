@@ -3,3 +3,5 @@
 
 . ~/.dotfiles/bash/aliases.sh
 . ~/.dotfiles/bash/exports.sh
+
+. ~/.dotfiles/bash/prompt.sh
