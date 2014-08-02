@@ -1,6 +1,6 @@
 export CLICOLOR=1
 
-. ../osx/exports.sh
+. ~/.dotfiles/osx/exports.sh
 
 # Make vim the default editor
 export EDITOR="vim";
