@@ -4,7 +4,6 @@ colon_color="\[${white}\]"
 prompt_color="\[${green}\]"
 
 function prompt_git() {
-  prompt_getcolors
   local status output flags
 
   status="$(git status 2>/dev/null)"
