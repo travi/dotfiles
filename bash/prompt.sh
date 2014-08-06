@@ -24,9 +24,9 @@ function prompt_git() {
   )"
 
   if [[ "$flags" ]]; then
-    output="$prompt_color$output$colon_color:$prompt_color$flags"
+    output="$output$colon_color:$prompt_color$flags"
   fi
-  echo "$bracket_color[$output$bracket_color]${reset}"
+  echo "$bracket_color[$prompt_color$output$bracket_color]${reset}"
 }
 
 # Exit code of previous command.
