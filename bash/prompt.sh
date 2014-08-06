@@ -10,23 +10,23 @@ function prompt_git() {
 
   [[ $? != 0 ]] && return;
 
-  output="$(echo "$status" | awk '/# Initial commit/ {print "(init)"}')"
+  output="$(echo "$status" | awk '/Initial commit/ {print "(init)"}')"
 
-  [[ "$output" ]] || output="$(echo "$status" | awk '/# On branch/ {print $4}')"
+  [[ "$output" ]] || output="$(echo "$status" | awk '/On branch/ {print $4}')"
   [[ "$output" ]] || output="$(git branch | perl -ne '/^\* (.*)/ && print $1')"
 
   flags="$(
     echo "$status" | awk 'BEGIN {r=""} \
-      /^Changes to be committed:$/        {r=r "+"}\
-      /^Changes not staged for commit:$/  {r=r "!"}\
-      /^Untracked files:$/                {r=r "?"}\
+      /^Changes to be committed:$/        {r=r "${green}+"}\
+      /^Changes not staged for commit:$/  {r=r "${red}!"}\
+      /^Untracked files:$/                {r=r "${orange}?"}\
       END {print r}'
   )"
 
   if [[ "$flags" ]]; then
-    output="$output$colon_color:$prompt_color$flags"
+    output="$prompt_color$output$colon_color:$prompt_color$flags"
   fi
-  echo "$bracket_color[$prompt_color$output$bracket_color]$c9"
+  echo "$bracket_color[$output$bracket_color]${reset}"
 }
 
 # Exit code of previous command.
@@ -43,11 +43,11 @@ function prompt_command() {
   # git: [branch:flags]
   PS1="$PS1$(prompt_git)"
   # path: [user@host:path]
-  PS1="$PS1$bracket_color[$prompt_color\u${white}@$prompt_color\h${white}:$prompt_color\w$bracket_color]${reset}"
+  PS1="$PS1$bracket_color[$prompt_color\u${white}@$prompt_color\h$colon_color:$prompt_color\w$bracket_color]${reset}"
 
   PS1="$PS1\n"
   # date: [HH:MM:SS]
-  PS1="$PS1$bracket_color[$(date +"$prompt_color%H\[${white}\]:$prompt_color%M\[${white}\]:$prompt_color%S")$bracket_color]\[${reset}\]"
+  PS1="$PS1$bracket_color[$(date +"$prompt_color%H$colon_color:$prompt_color%M$colon_color:$prompt_color%S")$bracket_color]\[${reset}\]"
   # exit code: 127
   PS1="$PS1$(prompt_exitcode "$exit_code")"
   PS1="$PS1 \$ "
