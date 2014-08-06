@@ -1,6 +1,12 @@
+bracket_color="\[${white}\]"
+colon_color="\[${white}\]"
+
+prompt_color="\[${green}\]"
+
 function prompt_git() {
   prompt_getcolors
   local status output flags
+
   status="$(git status 2>/dev/null)"
 
   [[ $? != 0 ]] && return;
@@ -19,24 +25,24 @@ function prompt_git() {
     )"
 
     if [[ "$flags" ]]; then
-      output="$output$c1:$c0$flags"
+      output="$output$colon_color:$prompt_color$flags"
     fi
-      echo "$c1[$c0$output$c1]$c9"
+      echo "$bracket_color[$prompt_color$output$bracket_color]$c9"
 }
 
 # Exit code of previous command.
 function prompt_exitcode() {
-#  prompt_getcolors
-  [[ $1 != 0 ]] && echo " \[${red}\]$1\[${reset}\]"
+  local exitcode_color="\[${red}\]"
+
+  [[ $1 != 0 ]] && echo " $exitcode_color$1\[${reset}\]"
 }
 
 function prompt_command() {
   local exit_code=$?
 
-  local prompt_color="\[${green}\]"
-  local bracket_color="\[${white}\]"
-
   PS1="\n"
+  # git: [branch:flags]
+  PS1="$PS1$(prompt_git)"
   # path: [user@host:path]
   PS1="$PS1$bracket_color[$prompt_color\u${white}@$prompt_color\h${white}:$prompt_color\w$bracket_color]${reset}"
 
