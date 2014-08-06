@@ -17,16 +17,16 @@ function prompt_git() {
 
   flags="$(
     echo "$status" | awk 'BEGIN {r=""} \
-      /^# Changes to be committed:$/        {r=r "+"}\
-      /^# Changes not staged for commit:$/  {r=r "!"}\
-      /^# Untracked files:$/                {r=r "?"}\
+      /^Changes to be committed:$/        {r=r "+"}\
+      /^Changes not staged for commit:$/  {r=r "!"}\
+      /^Untracked files:$/                {r=r "?"}\
       END {print r}'
-    )"
+  )"
 
-    if [[ "$flags" ]]; then
-      output="$output$colon_color:$prompt_color$flags"
-    fi
-      echo "$bracket_color[$prompt_color$output$bracket_color]$c9"
+  if [[ "$flags" ]]; then
+    output="$output$colon_color:$prompt_color$flags"
+  fi
+  echo "$bracket_color[$prompt_color$output$bracket_color]$c9"
 }
 
 # Exit code of previous command.
