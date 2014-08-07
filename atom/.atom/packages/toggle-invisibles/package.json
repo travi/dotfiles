@@ -1,0 +1,33 @@
+{
+  "name": "toggle-invisibles",
+  "main": "./lib/toggle-invisibles",
+  "version": "0.1.0",
+  "description": "Toggles the display of invisible characters and/or the wrap guide",
+  "activationEvents": [
+    "toggle-invisibles:toggle",
+    "toggle-invisibles:toggleBoth",
+    "toggle-invisibles:toggleInvisibles",
+    "toggle-invisibles:toggleIndentGuide"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lee-dohm/toggle-invisibles"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Toggle Invisibles\n\nToggles the display of invisible characters and/or the wrap guide.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/lee-dohm/toggle-invisibles/issues"
+  },
+  "homepage": "https://github.com/lee-dohm/toggle-invisibles",
+  "_id": "toggle-invisibles@0.1.0",
+  "dist": {
+    "shasum": "72abe542ba21cdfcba83680f6eb57d48d82eb422"
+  },
+  "_resolved": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-11477-46802-8bepjf/package.tgz",
+  "_from": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-11477-46802-8bepjf/package.tgz"
+}
