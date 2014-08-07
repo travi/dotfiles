@@ -32,7 +32,7 @@ dotfile () {
     dest="$HOME/$filename"
 
     if [ -h $dest ];then
-	    success "link $dest already exists"
+	    info "link $dest already exists"
     elif [ -f $dest ] || [ -d $dest ]
     then
 	    warn "$dest already exists"
