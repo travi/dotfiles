@@ -1,0 +1,43 @@
+{
+  "name": "grunt-runner",
+  "description": "Run your grunt tasks from Atom.",
+  "keywords": [
+    "grunt",
+    "task",
+    "runner",
+    "build",
+    "watch",
+    "atom",
+    "package",
+    "run"
+  ],
+  "version": "0.5.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickclaw/atom-grunt-runner"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Nicholas Clawson",
+    "url": "http://nickclaw.com"
+  },
+  "main": "./lib/grunt-runner.coffee",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "grunt": "~0.4.2"
+  },
+  "readme": "[grunt-runner](https://atom.io/packages/grunt-runner)\n================\n\nBuild your project using Grunt from Atom.\n\n![in action!](http://i.imgur.com/bqn9QQY.png)\n\n## How to use\n * Set a path to your local `grunt-cli` in the settings\n (may not be necessary).\n * Open a project that has a `Gruntfile.js` in the root.\n * Open the task list (`ctrl-alt-g`) and choose a task to run, or input a new one.\n * The output from the grunt task will be shown in bottom toolbar. Toggle\n the log with `ctrl-alt-t`, toggle the entire toolbar with\n `ctrl-alt-shift-t`. The toolbar will appear automatically if Grunt Runner was able to find and\n parse a `Gruntfile`, otherwise you can toggle it on yourself.\n * If your task doesn't end automatically (e.g. watches files for changes) you\n can force it stop from the toolbar or by pressing `ctrl-alt-shift-g`.\n\nSome [issues still exist](#known-issues).\n\n## Installation\n\nInstall Grunt Runner package using the command line\n\n    apm install grunt-runner\n\nOr install it from the Atom Package Manager.\n\n## Known issues\n\n * The Gruntfile must be in the root of your project directory to successfully\n get the available tasks. Additionally, all `grunt` commands will be called\n in the root directory.\n\n * Tasks added to a Gruntfile will not be automatically added until the project\n is reloaded or the page gets refreshed. They will still be callable from from\n the toolbar.\n\n * Currently hard to add tasks that prefix another task. For example, if you\n have a task in the task list called `develop`, it is impossible to add or call\n a task called `dev`\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/nickclaw/atom-grunt-runner/issues"
+  },
+  "homepage": "https://github.com/nickclaw/atom-grunt-runner",
+  "_id": "grunt-runner@0.5.1",
+  "dist": {
+    "shasum": "1e91ea83d7ef4bfc23cdaac029ab5652c12a7c54"
+  },
+  "_resolved": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-11477-46712-18a5gwl/package.tgz",
+  "_from": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-11477-46712-18a5gwl/package.tgz"
+}

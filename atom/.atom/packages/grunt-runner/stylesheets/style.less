@@ -1,0 +1,54 @@
+.grunt-runner-results {
+    padding: 0px !important;
+
+    .grunt-panel-heading {
+        padding: 8px !important;
+
+        &:before {
+            font-family: 'Octicons Regular';
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            -webkit-font-smoothing: antialiased;
+            text-decoration: none;
+            font-size: 10pt;
+            content: "\f052";
+            width: 15pt;
+        }
+
+        &[data-status=loading]:before {
+            content: "\f09e";
+        }
+
+        &[data-status=ready]:before {
+            color: green;
+            content: "\f03a";
+        }
+
+        &[data-status=error]:before {
+            color: red;
+            content: "\f02d";
+        }
+    }
+
+    .panel-body {
+        max-height: 100px;
+        overflow-y: scroll;
+
+        li {
+            padding: 3px 0px;
+            margin: 0px;
+            font-size: 9pt;
+            line-height: 12pt;
+            white-space: normal;
+            border-bottom: solid 1px rgba(0,0,0,.5);
+            font-family: monospace;
+        }
+    }
+
+    .panel-body.closed{
+        padding: 0px;
+        max-height: 0px;
+        margin-top: -1px;
+    }
+}
