@@ -1,0 +1,28 @@
+[user]
+	name = Matt Travi
+
+[github]
+    user = travi
+
+[diff]
+	renames = copy
+
+[color]
+	ui = true
+
+[core]
+	autocrlf = input
+
+[push]
+	default = simple
+
+[branch]
+	autorebase = always
+
+[alias]
+    ad = add -A
+    st = status
+    lg = log -20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr by %an)%Creset' --abbrev-commit --date=relative
+
+[include]
+    path = ~/.gitconfig.extra
