@@ -10,6 +10,12 @@
 [color]
 	ui = true
 
+[color "status"]
+    added = green
+    changed = magenta
+    deleted = red
+    untracked = yellow
+
 [core]
 	autocrlf = input
 
