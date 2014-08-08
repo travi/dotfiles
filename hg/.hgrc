@@ -1,6 +1,8 @@
 [extensions]
-convert= 
+convert=
 color=
 graphlog=
 progress=
 rebase=
+
+%include ~/.hgrc.extra
