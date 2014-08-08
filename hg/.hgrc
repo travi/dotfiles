@@ -4,5 +4,6 @@ color=
 graphlog=
 progress=
 rebase=
+mq=
 
 %include ~/.hgrc.extra
