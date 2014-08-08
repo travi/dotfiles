@@ -1,6 +1,6 @@
 { satisfies } = require 'semver'
 { EventEmitter2 } = require 'eventemitter2'
-{ config, packages: packageManager } = atom
+{ workspace, config, packages: packageManager } = atom
 
 isFunction = (func) -> (typeof func) is 'function'
 
@@ -17,10 +17,12 @@ class ModuleManager extends EventEmitter2
     # config.on 'updated.core-disabledPackages', @update
     #TODO read version from package.json
     # { @version } = JSON.parse readFileSync 'package.json'
+    atom.workspace.on 'coffee-refactor-became-active', @update
     @update()
 
   destruct: ->
     # config.off 'updated.core-disabledPackages', @update
+    atom.workspace.off 'coffee-refactor-became-active', @update
 
     delete @modules
 
@@ -40,9 +42,7 @@ class ModuleManager extends EventEmitter2
     .activatePackage name
     .then (pkg) =>
       # Verify module interface.
-
       { Ripper } = module = pkg.mainModule
-
       unless Ripper? and
              Array.isArray(Ripper.scopeNames) and
              isFunction(Ripper::parse) and

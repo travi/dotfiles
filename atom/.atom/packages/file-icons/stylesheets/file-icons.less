@@ -3,6 +3,8 @@
 @import "icons.less";
 @import "items.less";
 
+@import "ui-variables";
+
 // Defaults
 .icon-file-text, .icon-file-directory, .icon-file-media, .icon-book {
   &:before { text-align: center; }
@@ -44,6 +46,7 @@
   // CSS3 icon
   &[data-name$=".less"]:before { .css3-icon; .dark-blue; }
   &[data-name$=".css"]:before  { .css3-icon; .medium-blue; }
+  &[data-name$=".styl"]:before { .css3-icon; .medium-green; }
 
   // Dashboard icon
   &[data-name$=".slim"]:before { .dashboard-icon; .medium-orange; }
@@ -81,6 +84,8 @@
   // Gear icon
   &[data-name$=".gitignore"]:before     { .gear-icon;                 }
   &[data-name$=".gitattributes"]:before { .gear-icon;                 }
+  &[data-name=".gitmodules"]:before     { .gear-icon;                 }
+  &[data-name=".mailmap"]:before        { .gear-icon;                 }
   &[data-name$=".editorconfig"]:before  { .gear-icon; .medium-orange; }
   &[data-name$=".jshintrc"]:before      { .gear-icon; .medium-yellow; }
   &[data-name$=".jscsrc"]:before        { .gear-icon; .medium-yellow; }
@@ -88,6 +93,7 @@
   &[data-name$=".htaccess"]:before      { .gear-icon; .medium-red;    }
 
   // Npm icon
+  &[data-name=".npmrc"]:before           { .node-icon; }
   &[data-name=".npmignore"]:before       { .node-icon; }
   &[data-name="npm-debug.log"]:before    { .node-icon; .medium-red; }
 
@@ -128,7 +134,20 @@
   &[data-name$=".java"]:before { .java-icon; .medium-purple; }
 
   // Go
-  &[data-name$=".go"]:before { .go-icon; .light-green; }
+  .set-go-bg-color(@c) when (lightness(@c) >= 50%) {
+    background-color: lighten(@mc, 55%);
+  }
+  .set-go-bg-color(@c) when (lightness(@c) <  50%) {
+    background-color:  darken(@mc, 55%);
+  }
+  &[data-name$=".go"]:before {
+    .go-icon;
+    .set-go-bg-color(@tree-view-background-color);
+    color: @mb;
+  }
+  .selected > &[data-name$=".go"]:before {
+    -webkit-text-stroke-width: 0px !important;
+  }
 
   // Scala
   &[data-name$=".scala"]:before { .scala-icon; .medium-green; }
@@ -137,13 +156,17 @@
   &[data-name$=".hs"]:before { .haskell-icon; .medium-purple; }
 
   // Objective-C, C++, C
-  &[data-name$=".c"]:before       { .c-icon; .medium-blue;   }
-  &[data-name$=".h"]:before       { .medium-purple; }
-  &[data-name$=".cpp"]:before     { .cpp-icon; .medium-blue;   }
-  &[data-name$=".m"]:before       { .objc-icon; .medium-blue;   }
-  &[data-name$=".swift"]:before   { .swift-icon; .medium-green;   }
+  &[data-name$=".c"]:before       { .c-icon; .medium-blue; }
+  &[data-name$=".h"]:before       { .c-icon; .medium-purple; }
+  &[data-name$=".cpp"]:before     { .cpp-icon; .medium-blue; }
+  &[data-name$=".hpp"]:before     { .cpp-icon; .medium-purple; }
+  &[data-name$=".ipp"]:before     { .cpp-icon; .medium-orange; }
+  &[data-name$=".m"]:before       { .objc-icon; .medium-blue; }
+  &[data-name$=".mm"]:before      { .objc-icon; .medium-blue; }
+  &[data-name$=".swift"]:before   { .swift-icon; .medium-green; }
 
-  &[data-name$=".cs"]:before   { .csharp-icon; .medium-blue;   }
+  &[data-name$=".cs"]:before   { .csharp-icon; .medium-blue; }
+  &[data-name$=".vb"]:before   { .code-icon; .medium-blue;   }
 
   // Secret icon
   &[data-name$=".secret"]:before { .secret-icon; }
@@ -178,4 +201,7 @@
   &[data-name="GULPFILE.coffee"]:before,
   &[data-name="Gulpfile.coffee"]:before,
   &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
+
+  // Dockerfile icon
+  &[data-name="Dockerfile"]:before { .docker-icon; .dark-blue; }
 }

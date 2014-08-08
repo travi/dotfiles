@@ -19,6 +19,11 @@
 .elixir-icon  { .octicons; content: '\f010'; }
 .erlang-icon  { .octicons; content: '\f010'; }
 
+.c-icon       { .octicons; content: "\f010"; }
+.h-icon       { .octicons; content: "\f010"; }
+.cpp-icon     { .octicons; content: "\f010"; }
+.objc-icon    { .octicons; content: "\f010"; font-size: medium; }
+
 // FontAwesome icons, looks better on small font-size,
 // from: http://fortawesome.github.io/Font-Awesome/cheatsheet/
 
@@ -38,9 +43,9 @@
 .js-icon      { .mf; content: "\f148"; }
 .node-icon    { .mf; content: "\f14c"; font-size: medium; }
 .python-icon  { .mf; content: "\f109"; }
-.c-icon       { .mf; content: "\f10e"; }
-.cpp-icon     { .mf; content: "\f101"; }
-.objc-icon    { .mf; content: "\f105"; font-size: medium; }
+// .c-icon       { .mf; content: "\f10e"; }
+// .cpp-icon     { .mf; content: "\f101"; }
+// .objc-icon    { .mf; content: "\f105"; font-size: medium; }
 .csharp-icon  { .mf; content: "\f134"; }
 .perl-icon    { .mf; content: "\f117"; }
 .php-icon     { .mf; content: "\f14a"; font-size: medium; }
@@ -63,8 +68,23 @@
 .devicons { font-family: "devicons"; font-size: large; text-align: center; top: 3px; }
 
 .bower-icon         { .devicons; content: "\e64d"; }
-.go-icon            { /*.devicons; content: "\e624"; Too light */ }
-.coffee-icon        { .devicons; content: "\e651"; }
+
+.go-icon            {
+  .devicons;
+  content: "\e624";
+  font-weight: bolder;
+  top: 4px;
+  -webkit-background-clip: text;
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: 0.85px;
+  -webkit-transform: scale(1.15, 1.10);
+  font-size: medium;
+}
+
+// .coffee-icon        { .devicons; content: "\e651"; }
 .swift-icon         { .devicons; content: "\e655"; font-size: large; }
 // .npm-icon           { .devicons; content: "\e616"; }
 // .sass-icon          { .devicons; content: "\e603"; }
+
+.docker { font-family: "fontcustom"; font-size: large; text-align: center; top: 3px; }
+.docker-icon        { .docker; content: "\f100"; }

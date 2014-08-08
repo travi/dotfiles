@@ -1,6 +1,27 @@
-# v0.2.1 on 2014/07/19
+# v0.3.0 on 2014/07/31
+
+* Obsolete old API.
+
+# v0.2.6 on 2014/07/31
+
+* Update refactor API.
+* Fixed declaration symbol starting with `$` is highlighted twice.
+
+# v0.2.4-v0.2.5 on 2014/07/30
+
+* Support showing compile error.
+
+# v0.2.3 on 2014/07/25
+
+* Support CRLF
+
+# v0.2.2 on 2014/07/19
 
 * Support symbol starting with `$` or `_`.
+
+# v0.2.1 on 2014/07/18
+
+* Fixed typo in README.
 
 # v0.2.0 on 2014/07/16
 

@@ -18,32 +18,42 @@ class Ripper
     tokens: true
     tolerant: true
 
-  constructor: (@editor) ->
+  constructor: ->
     @context = new Context
 
   destruct: ->
-    delete @editor
     delete @context
 
   parse: (code, callback) ->
     try
       syntax = parse code, @parseOptions
       @context.setCode syntax
-      callback null
+      rLine = /.*(?:\r?\n|\n?\r)/g
+      @lines = (result[0].length while (result = rLine.exec code)?)
+      callback()
     catch err
-      callback err
+      { lineNumber, column, description } = err
+      if lineNumber? and column? and description?
+        callback [
+          range  : new Range [lineNumber - 1, column], [lineNumber - 1, column]
+          message: description
+        ]
+      else
+        # Logs uncaught parse error.
+        console.warn err
+        callback()
 
   find: ({ row, column }) ->
     pos = 0
     while --row >= 0
-      pos += 1 + @editor.lineLengthForBufferRow row
+      pos += @lines[row]
     pos += column
 
     identification = @context.identify pos
     return [] unless identification
 
     { declaration, references } = identification
-    if declaration?
+    if declaration? and not (declaration in references)
       references.unshift declaration
     ranges = []
     for reference in references

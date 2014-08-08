@@ -1,10 +1,5 @@
 { EventEmitter2 } = require 'eventemitter2'
-ReferenceView = require './background/ReferenceView'
-ErrorView = require './background/ErrorView'
-GutterView = require './gutter/GutterView'
-StatusView = require './status/StatusView'
-{ locationDataToRange } = require './utils/LocationDataUtil'
-{ nextTick } = process
+{ locationDataToRange } = require './location_data_util'
 
 module.exports =
 class Watcher extends EventEmitter2
@@ -40,23 +35,17 @@ class Watcher extends EventEmitter2
   ###
 
   verifyGrammar: =>
-    @deactivate()
     scopeName = @editor.getGrammar().scopeName
-    @module = @moduleManager.getModule scopeName
-    return unless @module?
+    module = @moduleManager.getModule scopeName
+    return if module is @module
+    @deactivate()
+    return unless module?
+    @module = module
     @activate()
 
   activate: ->
     # Setup model
-    @ripper = new @module.Ripper @editor
-
-    # Setup views
-    @referenceView = new ReferenceView
-    @editorView.underlayer.append @referenceView
-    @errorView = new ErrorView
-    @editorView.underlayer.append @errorView
-    @gutterView = new GutterView @editorView.gutter
-    @statusView = new StatusView
+    @ripper = new @module.Ripper()
 
     # Start listening
     @editorView.on 'cursor:moved', @onCursorMoved
@@ -76,20 +65,14 @@ class Watcher extends EventEmitter2
 
     # Destruct instances
     @ripper?.destruct()
-    @referenceView?.destruct()
-    @errorView?.destruct()
-    @gutterView?.destruct()
-    @statusView?.destruct()
 
     # Remove references
     delete @bufferChangedTimeoutId
     delete @cursorMovedTimeoutId
     delete @module
     delete @ripper
-    delete @referenceView
-    delete @errorView
-    delete @gutterView
-    delete @statusView
+    delete @renamingCursor
+    delete @renamingMarkers
 
 
   ###
@@ -103,99 +86,135 @@ class Watcher extends EventEmitter2
 
   parse: =>
     @editorView.off 'cursor:moved', @onCursorMoved
-    @hideError()
-    @referenceView.update()
-
+    @destroyReferences()
+    @destroyErrors()
     text = @editor.buffer.getText()
     if text isnt @cachedText
       @cachedText = text
-      @ripper.parse text, (err) =>
-        if err?
-          @showError err
-          return
-        @hideError()
-        @onParseEnd()
+      @ripper.parse text, @onParseEnd
     else
       @onParseEnd()
 
-  showError: ({ location, message }) =>
-    return unless location?
-    range = locationDataToRange location
-    err =
-      range  : range
-      message: message
-    @errorView.update [ @rangeToRows range ]
-    @gutterView.update [ err ]
-
-  hideError: =>
-    @errorView.update()
-    @gutterView.update()
-
-  onParseEnd: =>
-    @updateReferences()
+  onParseEnd: (errors) =>
+    if errors?
+      @createErrors errors
+    @createReferences()
     @editorView.off 'cursor:moved', @onCursorMoved
     @editorView.on 'cursor:moved', @onCursorMoved
 
-  updateReferences: =>
-    ranges = []
-    cursor = @editor.cursors[0]
-    if cursor?
-      range = cursor.getCurrentWordBufferRange includeNonWordCharacters: false
-      unless range.isEmpty()
-        ranges = @ripper.find range.start
-    rowsList = for range in ranges
-      @rangeToRows range
-    @referenceView.update rowsList
+  destroyErrors: ->
+    return unless @errorMarkers?
+    for marker in @errorMarkers
+      marker.destroy()
+    delete @errorMarkers
+
+  createErrors: (errors) =>
+    @errorMarkers = for { location, range, message } in errors
+      if location? #TODO deprecate verification of the location in v0.5
+        range = locationDataToRange location
+
+      marker = @editor.markBufferRange range
+      @editor.decorateMarker marker, type: 'highlight', class: 'refactor-error'
+      @editor.decorateMarker marker, type: 'gutter', class: 'refactor-error'
+      marker
+
+  destroyReferences: ->
+    return unless @referenceMarkers?
+    for marker in @referenceMarkers
+      marker.destroy()
+    delete @referenceMarkers
+
+  createReferences: ->
+    ranges = @ripper.find @editor.getSelectedBufferRange().start
+    @referenceMarkers = for range in ranges
+      marker = @editor.markBufferRange range
+      @editor.decorateMarker marker, type: 'highlight', class: 'refactor-reference'
+      marker
 
 
   ###
-  Rename process
-  1. Detect rename command.
-  2. Cancel and exit process when cursor is moved out from the symbol.
-  3. Detect done command.
+  Renaming life cycle.
+  1. When detected rename command, start renaming process.
+  2. When the cursors move out from the symbols, abort and exit renaming process.
+  3. When detected done command, exit renaming process.
   ###
 
   rename: ->
+    # When this editor is not active, returns false to abort keyboard binding.
     return false unless @isActive()
 
-    cursor = @editor.cursors[0]
-    range = cursor.getCurrentWordBufferRange includeNonWordCharacters: false
-    refRanges = @ripper.find range.start
-    return false if refRanges.length is 0
+    # Find references.
+    # When no reference exists, do nothing.
+    cursor = @editor.getCursor()
+    ranges = @ripper.find cursor.getBufferPosition()
+    return false if ranges.length is 0
 
-    # Save cursor info.
-    # Select all references.
-    # Listen to cursor moved event.
-    @renameInfo =
-      cursor: cursor
-      range : range
-    for refRange in refRanges
-      @editor.addSelectionForBufferRange refRange
-    @editorView.off 'cursor:moved', @cancel
-    @editorView.on 'cursor:moved', @cancel
+    # Pause highlighting life cycle.
+    @destroyReferences()
+    @editor.buffer.off 'changed', @onBufferChanged
+    @editorView.off 'cursor:moved', @onCursorMoved
+
+    #TODO Cursor::clearAutoScroll()
+
+    # Register the triggered cursor.
+    @renamingCursor = cursor
+    # Select references.
+    # Register the markers of the references' ranges.
+    # Highlight these markers.
+    @renamingMarkers = for range in ranges
+      @editor.addSelectionForBufferRange range
+      marker = @editor.markBufferRange range
+      @editor.decorateMarker marker, type: 'highlight', class: 'refactor-reference'
+      marker
+    # Start renaming life cycle.
+    @editorView.off 'cursor:moved', @abort
+    @editorView.on 'cursor:moved', @abort
+
+    # Returns true not to abort keyboard binding.
     true
 
-  cancel: =>
-    return if not @renameInfo? or
-                  @renameInfo.range.start.isEqual @renameInfo.cursor.getCurrentWordBufferRange(includeNonWordCharacters: false).start
+  abort: =>
+    # When this editor is not active, do nothing.
+    return unless @isActive() and @renamingCursor? and @renamingMarkers?
 
-    # Set cursor position to current position.
-    # Stop listening cursor moved event.
-    # Destroy cursor info.
-    @editor.setCursorBufferPosition @renameInfo.cursor.getBufferPosition()
-    @editorView.off 'cursor:moved', @cancel
-    delete @renameInfo
+    # Verify all cursors are in renaming markers.
+    # When the cursor is out of marker at least one, abort renaming.
+    selectedRanges = @editor.getSelectedBufferRanges()
+    isMarkersContainsCursors = true
+    for marker in @renamingMarkers
+      markerRange = marker.getBufferRange()
+      isMarkerContainsCursor = false
+      for selectedRange in selectedRanges
+        isMarkerContainsCursor or= markerRange.containsRange selectedRange
+        break if isMarkerContainsCursor
+      isMarkersContainsCursors and= isMarkerContainsCursor
+      break unless isMarkersContainsCursors
+    return if isMarkersContainsCursors
+    @done()
 
   done: ->
-    return false unless @isActive()
-    return false unless @renameInfo?
+    # When this editor is not active, returns false to abort keyboard binding.
+    return false unless @isActive() and @renamingCursor? and @renamingMarkers?
 
-    # Set cursor position to current position.
-    # Stop listening cursor moved event.
-    # Destroy cursor info.
-    @editor.setCursorBufferPosition @renameInfo.cursor.getBufferPosition()
-    @editorView.off 'cursor:moved', @cancel
-    delete @renameInfo
+    # Stop renaming life cycle.
+    @editorView.off 'cursor:moved', @abort
+
+    # Reset cursor's position to the triggerd cursor's position.
+    @editor.setCursorBufferPosition @renamingCursor.getBufferPosition()
+    delete @renamingCursor
+    # Remove all markers for renaming.
+    for marker in @renamingMarkers
+      marker.destroy()
+    delete @renamingMarkers
+
+    # Start highlighting life cycle.
+    @parse()
+    @editor.buffer.off 'changed', @onBufferChanged
+    @editor.buffer.on 'changed', @onBufferChanged
+    @editorView.off 'cursor:moved', @onCursorMoved
+    @editorView.on 'cursor:moved', @onCursorMoved
+
+    # Returns true not to abort keyboard binding.
     true
 
 
@@ -209,7 +228,11 @@ class Watcher extends EventEmitter2
 
   onCursorMoved: =>
     clearTimeout @cursorMovedTimeoutId
-    @cursorMovedTimeoutId = setTimeout @updateReferences, 0
+    @cursorMovedTimeoutId = setTimeout @onCursorMovedAfter, 0
+
+  onCursorMovedAfter: =>
+    @destroyReferences()
+    @createReferences()
 
 
   ###

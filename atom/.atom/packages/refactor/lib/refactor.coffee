@@ -1,5 +1,5 @@
-Watcher = require './Watcher'
-ModuleManager = require './ModuleManager'
+Watcher = require './watcher'
+ModuleManager = require './module_manager'
 { packages: packageManager } = atom
 
 module.exports =

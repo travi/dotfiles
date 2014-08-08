@@ -1,5 +1,5 @@
 Ripper = require './ripper'
-NotificationView = require './notification-view'
+NotificationView = require './notification_view'
 
 { packages: packageManager } = atom
 
