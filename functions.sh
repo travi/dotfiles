@@ -44,7 +44,7 @@ dotfile () {
 link_dotfiles_directory() {
 	if [ -h "$HOME/.dotfiles" ]
 	then
-		success ".dotfiles already linked"
+		info ".dotfiles already linked"
 	else
 		link_file $DOTFILES_ROOT "$HOME/.dotfiles"
 	fi
