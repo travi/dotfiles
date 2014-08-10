@@ -7,8 +7,11 @@ upgrade
 
 #install my standard packages
 tap homebrew/versions
+tap homebrew/dupes
 tap josegonzalez/homebrew-php
+install php54
 install php54-xdebug
+install php54-ssh2
 install composer
 
 install ant
