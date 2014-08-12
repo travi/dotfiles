@@ -1,7 +1,7 @@
 My dotfiles
 ========
 
-My disater recovery plan.
+My disaster recovery plan.
 
 ## Purpose
 
