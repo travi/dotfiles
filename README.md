@@ -9,7 +9,7 @@ This repository contains most of my base configuration for unix-based machines, 
 
 ## What does it do?
 
-By running the `bootstrap.sh` file it:
+By running the `bootstrap.sh` file, it:
 * symlinks all of the dotfiles from the directories to the home directory
 * installs the applications defined in the `Brewfile` and `Caskfile` if run on OSX
 
@@ -17,3 +17,6 @@ By including the `source.sh` file from the `bash` directory into the `.bash_prof
 * common environment variables are defined
 * common aliases are defined
 * the prompt gets customized
+
+By running the `osx/osx.sh` file, it:
+* configures a bunch of osx level things
