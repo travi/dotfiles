@@ -29,6 +29,30 @@ function prompt_git() {
   echo "$bracket_color[$prompt_color$output$bracket_color]${reset}"
 }
 
+function prompt_hg() {
+  local summary output bookmark flags
+
+  summary="$(hg summary 2>/dev/null)"
+
+  [[ $? != 0 ]] && return;
+
+  output="$(echo "$summary" | awk '/branch:/ {print $2}')"
+  bookmark="$(echo "$summary" | awk '/bookmarks:/ {print $2}')"
+
+  flags="$(
+    echo "$summary" | awk 'BEGIN {r="";a=""} \
+      /(modified)/     {r= "+"}\
+      /(unknown)/      {a= "?"}\
+      END {print r a}'
+  )"
+
+  #output="$output:$bookmark"
+  if [[ "$flags" ]]; then
+    output="$output$colon_color:$prompt_color$flags"
+  fi
+  echo "$bracket_color[$prompt_color$output$bracket_color]${reset}"
+}
+
 # Exit code of previous command.
 function prompt_exitcode() {
   local exitcode_color="\[${red}\]"
@@ -42,6 +66,8 @@ function prompt_command() {
   PS1="\n"
   # git: [branch:flags]
   PS1="$PS1$(prompt_git)"
+  # hg:  [branch:flags]
+  PS1="$PS1$(prompt_hg)"
   # path: [user@host:path]
   PS1="$PS1$bracket_color[$prompt_color\u${white}@$prompt_color\h$colon_color:$prompt_color\w$bracket_color]${reset}"
 
