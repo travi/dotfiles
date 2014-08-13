@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. functions.sh
+. ./functions.sh
 
 info 'link dotfiles'
 link_dotfiles_directory
