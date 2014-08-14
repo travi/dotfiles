@@ -64,7 +64,7 @@ link_dotfiles() {
 }
 
 source_scripts() {
-    local profile
+    local profile="$HOME/.bash_profile"
 
     if [ -e $profile ]; then
         info ".bash_profile already exists"
