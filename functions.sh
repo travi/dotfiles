@@ -4,6 +4,10 @@ DOTFILES_ROOT="`pwd`"
 
 . "$DOTFILES_ROOT/bash/colors.sh"
 
+heading () {
+    printf "\n         ${yellow}$1${reset}\n"
+}
+
 info () {
      printf "  [ ${blue}..${reset} ] $1\n"
 }
@@ -18,11 +22,6 @@ warn () {
 
 fail () {
     printf "  [${red}FAIL${reset}] $1\n"
-    exit
-}
-
-heading () {
-    printf "\n         ${yellow}$1${reset}\n"
     exit
 }
 
