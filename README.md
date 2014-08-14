@@ -7,6 +7,15 @@ My disaster recovery plan.
 
 This repository contains most of my base configuration for unix-based machines, but is primarily focused on OSX. These files make it simple to configure a new machine from scratch as well as keep it up-to-date over time.
 
+## Installation
+### Prerequisites
+* `git` must be installed
+* `brew` must be installed on OSX
+
+```
+bash -c "$(git clone https://github.com/travi/dotfiles.git)" && cd dotfiles/ && ./bootstrap.sh
+```
+
 ## What does it do?
 
 By running the `bootstrap.sh` file, it:
