@@ -12,6 +12,7 @@ This repository contains most of my base configuration for unix-based machines, 
 * `git` must be installed
 * `brew` must be installed on OSX
 
+### Command
 ```
 bash -c "$(git clone https://github.com/travi/dotfiles.git)" && cd dotfiles/ && ./bootstrap.sh
 ```
