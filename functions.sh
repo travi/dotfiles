@@ -64,6 +64,12 @@ link_dotfiles() {
 }
 
 source_scripts() {
-    touch "$HOME/.bash_profile"
-    echo ". $HOME/.dotfiles/bash/source.sh" >> "$HOME/.bash_profile"
+    local profile
+
+    if [ -e $profile ]; then
+        info ".bash_profile already exists"
+    else
+        touch $profile
+        echo ". $HOME/.dotfiles/bash/source.sh" >> $profile
+    fi
 }
