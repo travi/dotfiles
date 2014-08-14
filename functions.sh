@@ -1,8 +1,8 @@
 #!/bin/bash
 
-. ~/.dotfiles/bash/colors.sh
-
 DOTFILES_ROOT="`pwd`"
+
+. "$DOTFILES_ROOT/bash/colors.sh"
 
 info () {
      printf "  [ ${blue}..${reset} ] $1\n"
