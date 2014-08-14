@@ -64,5 +64,6 @@ link_dotfiles() {
 }
 
 source_scripts() {
-    echo ". ~/.dotfiles/bash/source.sh" >> "~/.bash_profile"
+    touch "$HOME/.bash_profile"
+    echo ". $HOME/.dotfiles/bash/source.sh" >> "$HOME/.bash_profile"
 }
