@@ -71,5 +71,6 @@ source_scripts() {
     else
         touch $profile
         echo ". $HOME/.dotfiles/bash/source.sh" >> $profile
+        . $profile
     fi
 }
