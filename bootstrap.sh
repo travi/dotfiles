@@ -8,6 +8,9 @@ link_dotfiles
 
 . osx/apps.sh
 
+heading 'improving bash'
+source_scripts
+
 heading 'Bundle install'
 gem install bundler
 gem update --system
