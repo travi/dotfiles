@@ -21,6 +21,11 @@ fail () {
     exit
 }
 
+heading () {
+    printf "\n         ${yellow}$1${reset}\n"
+    exit
+}
+
 link_file () {
     ln -s $1 $2
     success "linked $1 to $2"
