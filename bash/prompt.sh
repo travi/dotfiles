@@ -3,6 +3,11 @@ colon_color="\[${white}\]"
 
 prompt_color="\[${green}\]"
 
+if [[ "$SSH_TTY" ]]; then
+  # connected via ssh
+  prompt_color="\[${cyan}\]"
+fi
+
 function prompt_git() {
   local status output flags
 
