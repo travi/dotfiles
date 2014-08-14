@@ -1,17 +1,21 @@
 #!/bin/bash
 
+shopt -s expand_aliases
+. ./bash/aliases.sh
+
 . ./functions.sh
 
-heading 'link dotfiles'
+heading 'Link Dotfiles'
 link_dotfiles_directory
 link_dotfiles
 
+heading 'Improving Bash'
+source_scripts
+reload
+
 . osx/apps.sh
 
-heading 'improving bash'
-source_scripts
-
-heading 'Bundle install'
+heading 'Bundle Install'
 gem install bundler
 gem update --system
 gem update
