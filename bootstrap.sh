@@ -2,13 +2,13 @@
 
 . ./functions.sh
 
-info 'link dotfiles'
+heading 'link dotfiles'
 link_dotfiles_directory
 link_dotfiles
 
 . osx/apps.sh
 
-info 'Bundle install'
+heading 'Bundle install'
 gem install bundler
 gem update --system
 gem update

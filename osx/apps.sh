@@ -1,8 +1,8 @@
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" =~ ^darwin ]] || return 1
 
-info 'Brew bundle'
+heading 'Brew bundle'
 brew bundle
 
-info 'Brew Cask bundle'
+heading 'Brew Cask bundle'
 brew bundle Caskfile
