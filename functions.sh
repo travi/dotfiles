@@ -62,3 +62,7 @@ link_dotfiles() {
 		dotfile ${source}
 	done
 }
+
+source_scripts() {
+    echo ". ~/.dotfiles/bash/source.sh" >> "~/.bash_profile"
+}
