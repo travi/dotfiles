@@ -72,6 +72,9 @@ function prompt_command() {
   local exit_code=$?
 
   PS1="\n"
+  if [[ `type -t update_terminal_cwd` -eq 'function' ]]; then
+    PS1="$PS1$(update_terminal_cwd)"
+  fi
   # git: [branch:flags]
   PS1="$PS1$(prompt_git)"
   # hg:  [branch:flags]
