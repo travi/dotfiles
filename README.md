@@ -14,7 +14,7 @@ This repository contains most of my base configuration for unix-based machines, 
 
 ### Command
 ```
-git clone https://github.com/travi/dotfiles.git && cd dotfiles/ && ./bootstrap.sh
+git clone https://github.com/travi/dotfiles.git && cd dotfiles/ && source bootstrap.sh
 ```
 
 ## What does it do?
