@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOTFILES_ROOT="`pwd`"
+DOTFILES_LINK="$HOME/.dotfiles/"
 
 . "$DOTFILES_ROOT/bash/colors.sh"
 
@@ -26,8 +27,8 @@ fail() {
 }
 
 link_file() {
-    source=$1
-    dest=$2
+    local source=$1
+    local dest=$2
 
     # is a broken symbolic link
     if [ -h ${dest} ] && [ ! -e ${dest} ]; then
@@ -49,19 +50,19 @@ link_file() {
 }
 
 link_dotfile() {
-    source=$1
-    filename=`basename $source`
-    dest="$HOME/$filename"
+    local source=$1
+    local filename=`basename ${source}`
+    local dest="$HOME/$filename"
 
     link_file ${source} ${dest}
 }
 
 link_dotfiles_directory() {
-    link_file ${DOTFILES_ROOT} "$HOME/.dotfiles"
+    link_file ${DOTFILES_ROOT} ${DOTFILES_LINK}
 }
 
 link_dotfiles() {
-    DOTFILES_LINK="$HOME/.dotfiles/"
+    local source;
 
     for source in `find ${DOTFILES_LINK} -mindepth 2 -maxdepth 2 -name '\.*'`
     do
@@ -70,10 +71,17 @@ link_dotfiles() {
 }
 
 link_maven_extensions() {
+    local source;
+    local extension;
+
     if [ -z $M2_HOME ]; then
-        warn "M2_HOME not set"
+        warn "M2_HOME environment variable not set"
     else
-        info "M2_HOME set"
+        for source in `find ${DOTFILES_LINK}/maven/extensions -mindepth 1 -maxdepth 1`
+        do
+            extension=`basename ${source}`
+            link_file ${source} "$M2_HOME/lib/ext/${extension}"
+        done
     fi
 }
 
