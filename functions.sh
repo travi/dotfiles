@@ -64,7 +64,7 @@ link_dotfiles_directory() {
 link_dotfiles() {
     local source;
 
-    for source in `find ${DOTFILES_LINK} -mindepth 2 -maxdepth 2 -name '\.*'`
+    for source in `find ${DOTFILES_LINK} -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*'`
     do
         link_dotfile ${source}
     done
