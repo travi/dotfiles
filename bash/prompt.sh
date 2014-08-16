@@ -72,7 +72,8 @@ function prompt_command() {
   local exit_code=$?
 
   PS1="\n"
-  if [[ `type -t update_terminal_cwd` -eq 'function' ]]; then
+  # open new tabs at cwd on OSX
+  if type update_terminal_cwd > /dev/null 2>&1; then
     PS1="$PS1$(update_terminal_cwd)"
   fi
   # git: [branch:flags]
