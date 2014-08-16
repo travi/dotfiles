@@ -81,5 +81,6 @@ source_scripts() {
         touch $profile
         echo ". $HOME/.dotfiles/bash/source.sh" >> $profile
         . $profile
+        success "added .bash_profile and sourced configuration files"
     fi
 }
