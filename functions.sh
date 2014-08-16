@@ -48,7 +48,7 @@ link_file() {
     fi
 }
 
-dotfile() {
+link_dotfile() {
     source=$1
     filename=`basename $source`
     dest="$HOME/$filename"
@@ -65,8 +65,16 @@ link_dotfiles() {
 
     for source in `find ${DOTFILES_LINK} -mindepth 2 -maxdepth 2 -name '\.*'`
     do
-        dotfile ${source}
+        link_dotfile ${source}
     done
+}
+
+link_maven_extensions() {
+    if [ -z $M2_HOME ]; then
+        warn "M2_HOME not set"
+    else
+        info "M2_HOME set"
+    fi
 }
 
 source_scripts() {
