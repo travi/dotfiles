@@ -8,7 +8,7 @@ if [[ "$SSH_TTY" ]]; then
   prompt_color="\[${cyan}\]"
 elif [[ "$USER" == "root" ]]; then
   # logged in as root
-  prompt_color="\[${magenta}\]"
+  prompt_color="\[${purple}\]"
 fi
 
 function prompt_git() {
