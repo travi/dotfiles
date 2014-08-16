@@ -35,11 +35,20 @@ dotfile () {
     filename=`basename $source`
     dest="$HOME/$filename"
 
+    # is a broken symbolic link
+    if [ -h $dest ] && [ ! -e $dest ];then
+        warn "Removing broken link for $dest"
+        rm $dest
+    fi
+
+    # is a symbolic link
     if [ -h $dest ];then
 	    info "link $dest already exists"
+    # is a real file or directory
     elif [ -f $dest ] || [ -d $dest ]
     then
 	    warn "$dest already exists"
+    # safe to create symbolic link
     else
 	    link_file $source $dest
     fi
