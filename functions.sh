@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOTFILES_ROOT="`pwd`"
-DOTFILES_LINK="$HOME/.dotfiles/"
+DOTFILES_LINK="$HOME/.dotfiles"
 
 . "$DOTFILES_ROOT/bash/colors.sh"
 
@@ -27,25 +27,25 @@ fail() {
 }
 
 link_file() {
-    local source=$1
-    local dest=$2
+    local link_target=$1
+    local link_name=$2
 
     # is a broken symbolic link
-    if [ -h ${dest} ] && [ ! -e ${dest} ]; then
-        warn "Removing broken link for ${dest}"
-        rm ${dest}
+    if [ -h ${link_name} ] && [ ! -e ${link_name} ]; then
+        warn "Removing broken link for ${link_name}"
+        rm ${link_name}
     fi
 
     # is a symbolic link
-    if [ -h ${dest} ]; then
-        info "${dest} already linked"
+    if [ -h ${link_name} ]; then
+        info "${link_name} already linked"
     # is a real file or directory
-    elif [ -f ${dest} ] || [ -d ${dest} ]; then
-        warn "${dest} already exists"
+    elif [ -f ${link_name} ] || [ -d ${link_name} ]; then
+        warn "${link_name} already exists"
     # safe to create symbolic link
     else
-        ln -s ${source} ${dest}
-        success "linked ${source} to ${dest}"
+        ln -s ${link_target} ${link_name}
+        success "linked ${link_target} to ${link_name}"
     fi
 }
 
@@ -64,7 +64,7 @@ link_dotfiles_directory() {
 link_dotfiles() {
     local source;
 
-    for source in `find ${DOTFILES_LINK} -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*'`
+    for source in `find ${DOTFILES_LINK}/ -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*'`
     do
         link_dotfile ${source}
     done
