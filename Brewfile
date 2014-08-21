@@ -1,6 +1,5 @@
 #update homebrew
 update
-doctor
 
 #upgrade already installed homebrew packages
 upgrade
@@ -34,6 +33,8 @@ tap nviennot/tmate
 install tmate
 install tmux
 install bash-completion
+
+install highlight
 
 # Remove outdated versions from the cellar
 cleanup
