@@ -11,10 +11,16 @@
 	ui = true
 
 [color "status"]
+    branch = yellow bold
+    header = cyan
     added = green
-    changed = yellow
-    deleted = red
+    changed = red
     untracked = magenta
+
+[color "branch"]
+    current = green
+    local = cyan
+    remote = magenta
 
 [core]
 	autocrlf = input
