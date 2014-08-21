@@ -13,3 +13,5 @@ alias pumpitup="osascript -e 'set volume 10'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 alias reload='. ~/.bash_profile'
+
+. ~/.dotfiles/osx/aliases.sh
