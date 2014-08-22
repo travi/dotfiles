@@ -15,6 +15,9 @@ reload
 
 . osx/apps.sh
 
+heading 'Extending Maven'
+link_maven_extensions
+
 heading 'Bundle Install'
 gem install bundler
 gem update --system
