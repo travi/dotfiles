@@ -6,4 +6,6 @@
 . ~/.dotfiles/bash/aliases.sh
 . ~/.dotfiles/bash/exports.sh
 
+. ~/.dotfiles/git/functions.sh
+
 . ~/.dotfiles/bash/prompt.sh
