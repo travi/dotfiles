@@ -1,3 +1,5 @@
+#!/bin/sh
+
 bracket_color="\[${white}\]"
 colon_color="\[${white}\]"
 

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 export CLICOLOR=1
 
 . ~/.dotfiles/osx/exports.sh
