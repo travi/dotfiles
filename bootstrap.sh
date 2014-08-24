@@ -13,13 +13,5 @@ heading 'Improving Bash'
 source_scripts
 reload
 
-. osx/apps.sh
-
 heading 'Extending Maven'
 link_maven_extensions
-
-heading 'Bundle Install'
-gem install bundler
-gem update --system
-gem update
-bundle install
