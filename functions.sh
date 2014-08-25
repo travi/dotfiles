@@ -3,7 +3,7 @@
 DOTFILES_ROOT="`pwd`"
 DOTFILES_LINK="$HOME/.dotfiles"
 
-. "$DOTFILES_ROOT/bash/colors.sh"
+. "$DOTFILES_LINK/bash/colors.sh"
 
 heading() {
     printf "\n${yellow}$1${reset}\n"
