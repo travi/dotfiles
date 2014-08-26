@@ -19,7 +19,7 @@ alias github_url_branch='echo $(github_url)/tree/$(git-current-branch-sha)/$(git
 
 # git log with per-commit cmd-clickable GitHub URLs (iTerm)
 function github_clickable_log() {
-  git log $* --name-status --color | awk "$(cat <<AWK
+  git log "$@" --name-status --color | awk "$(cat <<AWK
     /^.*commit [0-9a-f]{40}/ {sha=substr(\$2,1,7)}
     /^[MA]\t/ {printf "%s\t$(github_url)/blob/%s/%s\n", \$1, sha, \$2; next}
     /.*/ {print \$0}
