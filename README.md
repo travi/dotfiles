@@ -30,3 +30,9 @@ By including the `source.sh` file from the `bash` directory into the `.bash_prof
 
 By running the `osx/osx.sh` file, it:
 * configures a bunch of osx level things
+
+## Influences
+
+Strongly influenced by:
+* https://github.com/mathiasbynens/dotfiles
+* https://github.com/cowboy/dotfiles
