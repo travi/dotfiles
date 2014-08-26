@@ -22,6 +22,3 @@ export MANPAGER="less";
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto";
 
-# Link Homebrew casks in `/Applications` rather than `~/Applications`
-#export HOMEBREW_CASK_OPTS="--appdir=/Applications";
-
