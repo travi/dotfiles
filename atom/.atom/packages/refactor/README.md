@@ -40,7 +40,7 @@ Add `refactor` as `engines` in `package.json`.
   ...
   "engines": {
     "atom": ">0.50.0",
-    "refactor": "*"
+    "refactor": ">0.4.0"
   },
   ...
 }
@@ -48,11 +48,31 @@ Add `refactor` as `engines` in `package.json`.
 
 ### Interface
 
-Implement `Ripper` class in main module.
+You should implement `Ripper` class in main module.
 
 * `Ripper.scopeNames []String` : **[Required]** Array of scope name, like 'source.coffee', 'source.js' and all that.
-* `Ripper#parse(code String, callback Function)` : **[Required]** Parse code, and you should callback when the parsing process is done. Callback specify the params as an array of `Error`. `Error` should have params `range` and `message`.
-* `Ripper#find(point Point, editor Editor) []Range` : **[Required]** Array of found symbol's `Range`.
+* `Ripper#parse(code String, callback Function)` : **[Required]** Parse code, and you should callback when the parsing process is done. Callback specify the params as an array of error `Object`. The error `Object` should have params `range` and `message`.
+* `Ripper#find(point Point) []Range` : **[Required]** Return an array of found symbols' [`Range`](https://atom.io/docs/api/latest/api/classes/Range) at the passed [`Point`](https://atom.io/docs/api/latest/api/classes/Point).
+
+```coffeescript
+{ Range, Point } = require 'atom'
+class Riper
+  @scopeNames: []
+  parse: (code, callback) ->
+    # parse code
+    callback [
+      range = new Range()
+      message: 'foo'
+    ]
+  find: (point) ->
+    # find references
+    [
+      new Range()
+      new Range()
+      ...
+      new Range()
+    ]
+```
 
 ### Examples
 

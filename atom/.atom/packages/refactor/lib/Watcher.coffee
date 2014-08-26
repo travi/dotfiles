@@ -27,10 +27,10 @@ class Watcher extends EventEmitter2
 
 
   ###
-  Grammar checker
+  Grammar valification process
   1. Detect grammar changed.
   2. Destroy instances and listeners.
-  3. Exit when grammar isn't CoffeeScript.
+  3. Exit process when the language plugin of the grammar can't be found.
   4. Create instances and listeners.
   ###
 
@@ -98,9 +98,10 @@ class Watcher extends EventEmitter2
   onParseEnd: (errors) =>
     if errors?
       @createErrors errors
-    @createReferences()
-    @editorView.off 'cursor:moved', @onCursorMoved
-    @editorView.on 'cursor:moved', @onCursorMoved
+    else
+      @createReferences()
+      @editorView.off 'cursor:moved', @onCursorMoved
+      @editorView.on 'cursor:moved', @onCursorMoved
 
   destroyErrors: ->
     return unless @errorMarkers?
@@ -140,7 +141,7 @@ class Watcher extends EventEmitter2
   ###
 
   rename: ->
-    # When this editor is not active, returns false to abort keyboard binding.
+    # When this editor isn't active, returns false to abort keyboard binding.
     return false unless @isActive()
 
     # Find references.
@@ -174,7 +175,7 @@ class Watcher extends EventEmitter2
     true
 
   abort: =>
-    # When this editor is not active, do nothing.
+    # When this editor isn't active, do nothing.
     return unless @isActive() and @renamingCursor? and @renamingMarkers?
 
     # Verify all cursors are in renaming markers.
@@ -193,7 +194,7 @@ class Watcher extends EventEmitter2
     @done()
 
   done: ->
-    # When this editor is not active, returns false to abort keyboard binding.
+    # When this editor isn't active, returns false for aborting keyboard binding.
     return false unless @isActive() and @renamingCursor? and @renamingMarkers?
 
     # Stop renaming life cycle.
@@ -240,7 +241,7 @@ class Watcher extends EventEmitter2
   ###
 
   isActive: ->
-    @module? and atom.workspaceView.getActivePaneItem() is @editor
+    @module? and atom.workspace.getActivePaneItem() is @editor
 
   # Range to pixel based start and end range for each row.
   rangeToRows: ({ start, end }) ->
