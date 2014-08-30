@@ -21,6 +21,7 @@ install mercurial
 install git
 install node
 install openssl
+install ssh-copy-id
 install pkg-config
 install readline
 install ruby
