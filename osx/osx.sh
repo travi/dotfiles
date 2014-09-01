@@ -3,6 +3,8 @@
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" =~ ^darwin ]] || return 1
 
+heading 'Configuring OS X'
+
 # Ask for the administrator password upfront
 sudo -v
 
