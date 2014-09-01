@@ -11,3 +11,8 @@ set show-all-if-ambiguous On
 
 # Don't re-complete already completed text in the middle of a word
 set skip-completed-text On
+
+# Use the string that has already been typed as the prefix for searching
+# through commands (i.e. more intelligent Up/Down-arrow behavior)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
