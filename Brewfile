@@ -37,6 +37,7 @@ install tmux
 
 install bash-completion
 install grc
+install source-highlight
 
 install highlight
 

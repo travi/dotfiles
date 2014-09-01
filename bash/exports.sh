@@ -11,6 +11,7 @@ export EDITOR="vim";
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
 
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=-R
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="${yellow}";
