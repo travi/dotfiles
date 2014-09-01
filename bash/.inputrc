@@ -16,3 +16,6 @@ set skip-completed-text On
 # through commands (i.e. more intelligent Up/Down-arrow behavior)
 "\e[B": history-search-forward
 "\e[A": history-search-backward
+
+# Show extra file information when completing, like ls -F does.
+set visible-stats on
