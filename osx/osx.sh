@@ -69,6 +69,12 @@ sudo defaults write com.apple.AppleMultitouchTrackpad Clicking 1
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+# Disable smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
