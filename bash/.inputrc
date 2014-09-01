@@ -1,4 +1,5 @@
 set bell-style off
+set editing-mode vi
 
 # When completing directories, add a trailing slash
 set mark-directories On
