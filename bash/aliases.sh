@@ -13,4 +13,6 @@ alias hosts="sudo $EDITOR /etc/hosts"
 
 alias reload='. ~/.bash_profile'
 
+alias ccat="source-highlight --out-format=esc -o STDOUT -i"
+
 . ~/.dotfiles/osx/aliases.sh
