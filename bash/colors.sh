@@ -29,3 +29,8 @@ else
 	white="\e[1;37m";
 	yellow="\e[1;33m";
 fi;
+
+# aliases for GRC from homebrew
+if $(grc &>/dev/null) && $(brew --version &>/dev/null); then
+    source `brew --prefix grc`/etc/grc.bashrc
+fi

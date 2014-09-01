@@ -34,7 +34,9 @@ install shellcheck
 tap nviennot/tmate
 install tmate
 install tmux
+
 install bash-completion
+install grc
 
 install highlight
 
