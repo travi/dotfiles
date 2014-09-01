@@ -16,6 +16,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
+# Appearance: Graphite
+/usr/bin/defaults write -g 'AppleAquaColorVariant' -int 6
+
 # Set highlight color to graphite
 defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
 
@@ -59,11 +62,26 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
+# Enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 sudo defaults write com.apple.AppleMultitouchTrackpad Clicking 1
+
+# Map `click or tap with two fingers` to the secondary click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
+
+### Move content in the direction of finger movement when scrolling or navigating (natural)
+/usr/bin/defaults write -g 'com.apple.swipescrolldirection' -bool true
+
+### Launchpad: no
+/usr/bin/defaults write com.apple.dock 'showLaunchpadGestureEnabled' -bool false
+
+### Show Desktop: yes
+/usr/bin/defaults write com.apple.dock 'showDesktopGestureEnabled' -bool false
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
@@ -74,6 +92,12 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable smart dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+### Modifier Keys… > Apple Internal Keyboard / Trackpad > Caps Lock ( ⇪) Key: No Action
+/usr/bin/defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-566-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
+
+### Modifier Keys… > Apple Keyboard [External] > Caps Lock ( ⇪) Key: No Action
+/usr/bin/defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-544-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
 
 ###############################################################################
 # Finder                                                                      #
@@ -111,6 +135,9 @@ defaults write com.apple.dock showhidden -bool true
 
 # disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
+
+### Don't Show Dashboard as a space
+/usr/bin/defaults write com.apple.dock 'dashboard-in-overlay' -bool false
 
 ###############################################################################
 # Safari & WebKit                                                             #
