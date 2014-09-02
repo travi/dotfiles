@@ -1,10 +1,5 @@
 #!/bin/bash
 
-shopt -s expand_aliases
-. ./bash/aliases.sh
-
-. ./functions.sh
-
 heading 'Link Dotfiles'
 link_dotfiles_directory
 link_dotfiles
@@ -16,4 +11,4 @@ reload
 heading 'Extending Maven'
 link_maven_extensions
 
-. osx/osx.sh
+. ../osx/environment.sh

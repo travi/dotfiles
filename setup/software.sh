@@ -2,7 +2,7 @@
 
 . ./functions.sh
 
-. osx/apps.sh
+. ../osx/apps.sh
 
 heading 'Bundle Install'
 gem install bundler

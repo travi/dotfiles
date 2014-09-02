@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_ROOT="`pwd`"
+DOTFILES_ROOT="`pwd`/../"
 DOTFILES_LINK="$HOME/.dotfiles"
 
 . "$DOTFILES_LINK/bash/colors.sh"
@@ -23,7 +23,7 @@ warn() {
 
 fail() {
     printf "  [${red}FAIL${reset}] $1\n"
-    exit
+    return 8
 }
 
 link_file() {
