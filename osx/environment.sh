@@ -83,7 +83,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClic
 /usr/bin/defaults write com.apple.dock 'showLaunchpadGestureEnabled' -bool false
 
 ### Show Desktop: yes
-/usr/bin/defaults write com.apple.dock 'showDesktopGestureEnabled' -bool false
+/usr/bin/defaults write com.apple.dock 'showDesktopGestureEnabled' -bool true
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
