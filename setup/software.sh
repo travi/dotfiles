@@ -8,4 +8,4 @@ heading 'Bundle Install'
 gem install bundler
 gem update --system
 gem update
-bundle install
+bundle install --gemfile=$HOME/.dotfiles/ruby/Gemfile

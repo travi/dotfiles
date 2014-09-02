@@ -5,7 +5,7 @@
 
 heading 'Brew bundle'
 brew doctor
-brew bundle $HOME/.dotfiles/Brewfile
+brew bundle $HOME/.dotfiles/osx/Brewfile
 
 heading 'Brew Cask bundle'
-brew bundle $HOME/.dotfiles/Caskfile
+brew bundle $HOME/.dotfiles/osx/Caskfile
