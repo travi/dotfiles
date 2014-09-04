@@ -14,7 +14,7 @@ This repository contains most of my base configuration for unix-based machines, 
 
 ### Command
 ```
-git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source menu.sh
+git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source init.sh
 ```
 
 ## What does it do?
