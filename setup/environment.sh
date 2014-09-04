@@ -1,7 +1,6 @@
 #!/bin/bash
 
 heading 'Link Dotfiles'
-link_dotfiles_directory
 link_dotfiles
 
 heading 'Improving Bash'

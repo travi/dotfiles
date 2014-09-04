@@ -3,8 +3,6 @@
 shopt -s expand_aliases
 . ../bash/aliases.sh
 
-. ./functions.sh
-
 heading "Which setup step(s) would you like to perform?"
 echo -e "\t1: Environment configuration"
 echo -e "\t2: Software Installation/Update"
