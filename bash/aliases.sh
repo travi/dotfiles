@@ -7,7 +7,7 @@ else # OS X `ls`
     colorflag="-G"
 fi
 
-alias ls="ls ${colorflag}"
+alias ls="ls ${colorflag} -F"
 
 alias hosts="sudo $EDITOR /etc/hosts"
 
