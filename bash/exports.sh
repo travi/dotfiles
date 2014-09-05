@@ -3,7 +3,7 @@
 . $HOME/.dotfiles/osx/exports.sh
 
 # Make vim the default editor
-export EDITOR="vim";
+export EDITOR="vi";
 
 # Prefer US English and use UTF-8
 export LANG="en_US.UTF-8";
