@@ -6,7 +6,6 @@ if !filereadable(vundle_readme)
 	echo ""
 	silent !mkdir -p $HOME/.vim/bundle
 	silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-	silent !vim +PluginInstall +qall
 endif
 
 " set the runtime path to include Vundle and initialize
