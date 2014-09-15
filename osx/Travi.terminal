@@ -82,7 +82,7 @@
 	<key>columnCount</key>
 	<integer>160</integer>
 	<key>name</key>
-	<string>Pro</string>
+	<string>Travi xterm-256color</string>
 	<key>rowCount</key>
 	<integer>50</integer>
 	<key>shellExitAction</key>
