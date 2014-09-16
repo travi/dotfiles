@@ -18,6 +18,8 @@ export LESS_TERMCAP_md="${yellow}";
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto";
 
+alias colortest='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
+
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
