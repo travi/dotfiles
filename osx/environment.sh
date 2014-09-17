@@ -212,7 +212,7 @@ defaults write org.m0k.transmission WarningLegal -bool false
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
+for app in "Dock" "Finder" "Safari" "SystemUIServer" "cfprefsd"; do
 	killall "${app}" > /dev/null 2>&1
 done
 
