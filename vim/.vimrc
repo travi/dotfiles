@@ -8,6 +8,7 @@ if !filereadable(vundle_readme)
 	silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
 endif
 
+filetype off " required to enable filetype checking to include types from vundle managed plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
