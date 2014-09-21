@@ -29,6 +29,7 @@ colorscheme icansee
 set background=dark
 set guifont=Meslo\ LG\ M:h17
 set encoding=utf-8
+set autoindent
 set ruler
 set visualbell
 set showcmd
