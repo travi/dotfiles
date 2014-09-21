@@ -34,6 +34,10 @@ set ruler
 set visualbell
 set showcmd
 
+" Turn off line numbering
+set nonu
+"Wrap text
+set lbr
 " Highlight current line
 set cursorline
 
