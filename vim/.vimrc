@@ -29,33 +29,42 @@ syntax on
 colorscheme icansee
 set background=dark
 set guifont=Meslo\ LG\ M:h17
-set encoding=utf-8
 set autoindent
 set ruler
 set visualbell
 set showcmd
 
-" Turn off line numbering
-set nonu
-"Wrap text
-set lbr
-" Highlight current line
-set cursorline
+set scrolloff=10                " Start scrolling this number of lines from top/bottom
 
-" Highlight searches
-set hlsearch
-" Ignore case of searches
-set ignorecase
-" Highlight dynamically as pattern is typed
-set incsearch
+set smarttab                    " Make Tab work fine with spaces
+
+set showmatch                   " show matching brackets
+set matchtime=5                 " tenths of a second to blink matching brackets
+
+set list                        " show tabs, trailings spaces, ...
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
+
+set encoding=utf-8              " Let Vim use utf-8 internally
+set fileencoding=utf-8          " Default for new files
+set termencoding=utf-8          " Terminal encoding
+set fileformats=unix,dos,mac    " support all three, in this order
+set fileformat=unix             " default file format
+
+set nonu                        " Turn off line numbering
+set lbr                         " Wrap text
+set cursorline                  " Highlight current line
+
+set hlsearch                    " Highlight searches
+set ignorecase                  " Ignore case of searches
+set incsearch                   " Highlight dynamically as pattern is typed
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+    " Enable file type detection
+    filetype on
+    " Treat .json files as .js
+    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 
     " Remember last position in file
-	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
