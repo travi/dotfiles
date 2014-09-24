@@ -59,6 +59,10 @@ set hlsearch                    " Highlight searches
 set ignorecase                  " Ignore case of searches
 set incsearch                   " Highlight dynamically as pattern is typed
 
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>    " edit the .vimrc in a split pane
+nnoremap <leader>sv :source $MYVIMRC<cr>    " source the .vimrc to make changes take effect in current session
+
 " Automatic commands
 if has("autocmd")
     " Enable file type detection
