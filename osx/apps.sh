@@ -5,6 +5,7 @@
 
 heading 'Brew bundle'
 brew doctor
+brew tap homebrew/boneyard
 brew bundle $HOME/.dotfiles/osx/Brewfile
 
 heading 'Brew Cask bundle'
