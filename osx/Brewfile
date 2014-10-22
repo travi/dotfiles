@@ -25,6 +25,7 @@ install ssh-copy-id
 install pkg-config
 install readline
 install ruby
+link --force ruby
 install vim
 install maven31
 install corkscrew
