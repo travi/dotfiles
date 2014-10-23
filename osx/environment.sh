@@ -182,13 +182,13 @@ defaults write com.apple.terminal StringEncodings -array 4
 
 TERM_PROFILE='Travi xterm-256color';
 CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
-if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+#if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
     #open "$HOME/.dotfiles/osx/Travi.terminal";
     #sleep 1; # Wait a bit to make sure the theme is loaded
     #defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
     #defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
     #killall "Terminal"
-fi
+#fi
 
 ###############################################################################
 # Transmission                                                                #
