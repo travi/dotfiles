@@ -27,7 +27,7 @@ install readline
 install ruby
 link --force ruby
 install vim
-install maven31
+install maven
 install corkscrew
 install dos2unix
 install shellcheck
