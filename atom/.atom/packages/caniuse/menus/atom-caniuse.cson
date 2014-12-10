@@ -1,0 +1,14 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'menu': [{
+  'label': 'Packages'
+  'submenu': [
+    'label': 'Can I Use'
+    'submenu': [{
+      'label': 'Show'
+      'command': 'can-i-use:show'
+    },{
+      'label': 'Update'
+      'command': 'can-i-use:update'
+    }]
+  ]
+}]
