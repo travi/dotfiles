@@ -64,6 +64,7 @@
 
   // HTML5 icon
   &[data-name$=".html"]:before { .html5-icon; .medium-orange; }
+  &[data-name$=".shtml"]:before { .html5-icon; .medium-cyan; }
   &[data-name$=".haml"]:before { .html5-icon; .light-red;     }
   &[data-name$=".jade"]:before { .html5-icon; .medium-green;  }
   &[data-name$=".jsp"]:before  { .html5-icon; .medium-purple; }
@@ -104,6 +105,8 @@
 
   // PHP icon
   &[data-name$=".php"]:before  { .php-icon; .dark-blue; }
+  &[data-name$=".blade.php"]:before  { .laravel-icon; .dark-purple; }
+
 
   // Python icon
   &[data-name$=".py"]:before { .python-icon; .dark-yellow; }
@@ -183,6 +186,10 @@
   &[data-name$=".cs"]:before   { .csharp-icon; .medium-blue; }
   &[data-name$=".vb"]:before   { .code-icon; .medium-blue;   }
 
+  // Sourcepwn
+  &[data-name$=".sp"]:before,  { .clojure-icon; .medium-yellow; }
+  &[data-name$=".inc"]:before  { .clojure-icon; .medium-green;  }
+
   // Secret icon
   &[data-name$=".secret"]:before { .secret-icon; }
 
@@ -207,6 +214,9 @@
   &[data-name$=".fish"]:before,
   &[data-name=".fishrc"]:before  { .terminal-icon; .medium-green; }
 
+  // Composer icon
+  &[data-name="composer.json"]:before { .composer-icon; .medium-yellow; }
+
   // Grunt icon
   &[data-name="GRUNTFILE.js"]:before,
   &[data-name="Gruntfile.js"]:before,
@@ -229,6 +239,9 @@
   // XAML icon
   &[data-name$=".xaml"]:before { .code-icon; .medium-blue;   }
 
+  // Lua icon
+  &[data-name$=".lua"]:before { .lua-icon; .medium-blue;   }
+
   // PowerShell icon
   &[data-name$=".ps1"]:before { .terminal-icon; .medium-blue; }
 
@@ -241,4 +254,16 @@
   &[data-name$=".png"]:before { .image-icon; .medium-orange; }
   &[data-name$=".gif"]:before { .image-icon; .medium-yellow; }
   &[data-name$=".jpg"]:before { .image-icon; .medium-green;  }
+}
+
+body.file-icons-colourless {
+  .icon-file-text, .icon-file-directory, .icon-file-media, .icon-book, .pane ul.tab-bar li.tab .title {
+    &:before { color: inherit !important; }
+  }
+}
+
+body.file-icons-force-show-icons {
+  .tree-view .entry > .header > .name:before, .tree-view .entry > .name:before {
+    display: inherit;
+  }
 }

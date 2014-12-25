@@ -8,4 +8,8 @@ Quick access to the [Can I Use](caniuse.com) support tables.
 * `can-i-use:show` Show panel
 * `can-i-use:update` Update data
 
-This package uses the data from caniuse.com (source: [fyrd/caniuse](https://github.com/fyrd/caniuse))
+# License
+
+This package uses the data from [caniuse.com](http://caniuse.com) (source:
+[fyrd/caniuse](https://github.com/fyrd/caniuse)), which is available for use
+under a [CC BY 3.0 license](http://creativecommons.org/licenses/by/3.0/).

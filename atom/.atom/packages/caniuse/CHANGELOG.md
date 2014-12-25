@@ -1,3 +1,6 @@
+## 0.5.1
+* Adjust list height
+
 ## 0.5.0
 * Show if vendor prefix is required
 * Show notes whitout numbers

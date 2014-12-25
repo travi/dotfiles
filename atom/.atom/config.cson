@@ -1,10 +1,11 @@
-'editor':
-  'showInvisibles': true
-  'invisibles': {}
-'core': {}
-'exception-reporting':
-  'userId': '78049fcb-fd79-53f5-3abf-40f1b3f1500b'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': '2c122769923ca0614e59cd53b5dad1d854603b1a'
+'global':
+  'editor':
+    'showInvisibles': true
+    'invisibles': {}
+  'exception-reporting':
+    'userId': '78049fcb-fd79-53f5-3abf-40f1b3f1500b'
+  'welcome':
+    'showOnStartup': false
+  'metrics':
+    'userId': '2c122769923ca0614e59cd53b5dad1d854603b1a'
+  'core': {}
