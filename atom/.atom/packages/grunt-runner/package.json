@@ -11,7 +11,7 @@
     "package",
     "run"
   ],
-  "version": "0.5.1",
+  "version": "0.6.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/nickclaw/atom-grunt-runner"
@@ -34,10 +34,612 @@
     "url": "https://github.com/nickclaw/atom-grunt-runner/issues"
   },
   "homepage": "https://github.com/nickclaw/atom-grunt-runner",
-  "_id": "grunt-runner@0.5.1",
+  "_id": "grunt-runner@0.6.0",
   "dist": {
-    "shasum": "1e91ea83d7ef4bfc23cdaac029ab5652c12a7c54"
+    "shasum": "2c6d0b04840970e90bc11c963f3f81ed2a857eb3"
   },
-  "_resolved": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-11477-46712-18a5gwl/package.tgz",
-  "_from": "/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-11477-46712-18a5gwl/package.tgz"
+  "_resolved": "/private/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-1141130-49869-uyqy0t/package.tgz",
+  "_from": "/private/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-1141130-49869-uyqy0t/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "grunt",
+        "version": "0.4.5",
+        "path": "node_modules/grunt/lib/grunt.js"
+      },
+      {
+        "name": "async",
+        "version": "0.1.22",
+        "path": "node_modules/grunt/node_modules/async/index.js"
+      },
+      {
+        "name": "coffee-script",
+        "version": "1.3.3",
+        "path": "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/coffee-script.js"
+      },
+      {
+        "name": "colors",
+        "version": "0.6.2",
+        "path": "node_modules/grunt/node_modules/colors/colors.js"
+      },
+      {
+        "name": "dateformat",
+        "version": "1.0.2-1.2.3",
+        "path": "node_modules/grunt/node_modules/dateformat/lib/dateformat.js"
+      },
+      {
+        "name": "eventemitter2",
+        "version": "0.4.14",
+        "path": "node_modules/grunt/node_modules/eventemitter2/lib/eventemitter2.js"
+      },
+      {
+        "name": "exit",
+        "version": "0.1.2",
+        "path": "node_modules/grunt/node_modules/exit/lib/exit.js"
+      },
+      {
+        "name": "findup-sync",
+        "version": "0.1.3",
+        "path": "node_modules/grunt/node_modules/findup-sync/lib/findup-sync.js"
+      },
+      {
+        "name": "glob",
+        "version": "3.2.11",
+        "path": "node_modules/grunt/node_modules/findup-sync/node_modules/glob/glob.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "0.3.0",
+        "path": "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/minimatch.js"
+      },
+      {
+        "name": "lru-cache",
+        "version": "2.5.0",
+        "path": "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js"
+      },
+      {
+        "name": "sigmund",
+        "version": "1.0.0",
+        "path": "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/sigmund/sigmund.js"
+      },
+      {
+        "name": "lodash",
+        "version": "2.4.1",
+        "path": "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.js"
+      },
+      {
+        "name": "getobject",
+        "version": "0.1.0",
+        "path": "node_modules/grunt/node_modules/getobject/lib/getobject.js"
+      },
+      {
+        "name": "glob",
+        "version": "3.1.21",
+        "path": "node_modules/grunt/node_modules/glob/glob.js"
+      },
+      {
+        "name": "graceful-fs",
+        "version": "1.2.3",
+        "path": "node_modules/grunt/node_modules/glob/node_modules/graceful-fs/graceful-fs.js"
+      },
+      {
+        "name": "inherits",
+        "version": "1.0.0",
+        "path": "node_modules/grunt/node_modules/glob/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "grunt-legacy-log",
+        "version": "0.1.1",
+        "path": "node_modules/grunt/node_modules/grunt-legacy-log/index.js"
+      },
+      {
+        "name": "lodash",
+        "version": "2.4.1",
+        "path": "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.js"
+      },
+      {
+        "name": "underscore.string",
+        "version": "2.3.3",
+        "path": "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/lib/underscore.string.js"
+      },
+      {
+        "name": "grunt-legacy-util",
+        "version": "0.2.0",
+        "path": "node_modules/grunt/node_modules/grunt-legacy-util/index.js"
+      },
+      {
+        "name": "hooker",
+        "version": "0.2.3",
+        "path": "node_modules/grunt/node_modules/hooker/lib/hooker.js"
+      },
+      {
+        "name": "iconv-lite",
+        "version": "0.2.11",
+        "path": "node_modules/grunt/node_modules/iconv-lite/index.js"
+      },
+      {
+        "name": "js-yaml",
+        "version": "2.0.5",
+        "path": "node_modules/grunt/node_modules/js-yaml/index.js"
+      },
+      {
+        "name": "argparse",
+        "version": "0.1.16",
+        "path": "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/index.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.7.0",
+        "path": "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "underscore.string",
+        "version": "2.4.0",
+        "path": "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/lib/underscore.string.js"
+      },
+      {
+        "name": "esprima",
+        "version": "1.0.4",
+        "path": "node_modules/grunt/node_modules/js-yaml/node_modules/esprima/esprima.js"
+      },
+      {
+        "name": "lodash",
+        "version": "0.9.2",
+        "path": "node_modules/grunt/node_modules/lodash/lodash.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "0.2.14",
+        "path": "node_modules/grunt/node_modules/minimatch/minimatch.js"
+      },
+      {
+        "name": "lru-cache",
+        "version": "2.5.0",
+        "path": "node_modules/grunt/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js"
+      },
+      {
+        "name": "sigmund",
+        "version": "1.0.0",
+        "path": "node_modules/grunt/node_modules/minimatch/node_modules/sigmund/sigmund.js"
+      },
+      {
+        "name": "nopt",
+        "version": "1.0.10",
+        "path": "node_modules/grunt/node_modules/nopt/lib/nopt.js"
+      },
+      {
+        "name": "abbrev",
+        "version": "1.0.5",
+        "path": "node_modules/grunt/node_modules/nopt/node_modules/abbrev/abbrev.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/grunt/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "underscore.string",
+        "version": "2.2.1",
+        "path": "node_modules/grunt/node_modules/underscore.string/lib/underscore.string.js"
+      },
+      {
+        "name": "which",
+        "version": "1.0.8",
+        "path": "node_modules/grunt/node_modules/which/which.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/grunt-runner-view.coffee",
+        "lib/grunt-runner.coffee",
+        "lib/parse-config-task.coffee",
+        "lib/task-list-view.coffee"
+      ],
+      ".js": [
+        "node_modules/grunt/internal-tasks/bump.js",
+        "node_modules/grunt/internal-tasks/subgrunt.js",
+        "node_modules/grunt/lib/grunt/cli.js",
+        "node_modules/grunt/lib/grunt/config.js",
+        "node_modules/grunt/lib/grunt/event.js",
+        "node_modules/grunt/lib/grunt/fail.js",
+        "node_modules/grunt/lib/grunt/file.js",
+        "node_modules/grunt/lib/grunt/help.js",
+        "node_modules/grunt/lib/grunt/option.js",
+        "node_modules/grunt/lib/grunt/task.js",
+        "node_modules/grunt/lib/grunt/template.js",
+        "node_modules/grunt/lib/grunt.js",
+        "node_modules/grunt/lib/util/task.js",
+        "node_modules/grunt/node_modules/async/index.js",
+        "node_modules/grunt/node_modules/async/lib/async.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/browser.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/cake.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/coffee-script.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/command.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/grammar.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/helpers.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/index.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/lexer.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/nodes.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/optparse.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/parser.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/repl.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/rewriter.js",
+        "node_modules/grunt/node_modules/coffee-script/lib/coffee-script/scope.js",
+        "node_modules/grunt/node_modules/colors/colors.js",
+        "node_modules/grunt/node_modules/colors/example.js",
+        "node_modules/grunt/node_modules/colors/test.js",
+        "node_modules/grunt/node_modules/colors/themes/winston-dark.js",
+        "node_modules/grunt/node_modules/colors/themes/winston-light.js",
+        "node_modules/grunt/node_modules/dateformat/lib/dateformat.js",
+        "node_modules/grunt/node_modules/eventemitter2/index.js",
+        "node_modules/grunt/node_modules/eventemitter2/lib/eventemitter2.js",
+        "node_modules/grunt/node_modules/exit/Gruntfile.js",
+        "node_modules/grunt/node_modules/exit/lib/exit.js",
+        "node_modules/grunt/node_modules/findup-sync/Gruntfile.js",
+        "node_modules/grunt/node_modules/findup-sync/lib/findup-sync.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/examples/g.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/examples/usr-local.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/glob.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/inherits/inherits.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/inherits/inherits_browser.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/inherits/test.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/minimatch.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/sigmund/bench.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/sigmund/sigmund.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.compat.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.compat.min.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.min.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.underscore.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/dist/lodash.underscore.min.js",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/lodash.js",
+        "node_modules/grunt/node_modules/getobject/Gruntfile.js",
+        "node_modules/grunt/node_modules/getobject/lib/getobject.js",
+        "node_modules/grunt/node_modules/glob/examples/g.js",
+        "node_modules/grunt/node_modules/glob/examples/usr-local.js",
+        "node_modules/grunt/node_modules/glob/glob.js",
+        "node_modules/grunt/node_modules/glob/node_modules/graceful-fs/graceful-fs.js",
+        "node_modules/grunt/node_modules/glob/node_modules/inherits/inherits.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/Gruntfile.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/examples.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/index.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.compat.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.compat.min.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.min.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.underscore.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/dist/lodash.underscore.min.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/lodash.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/dist/underscore.string.min.js",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/lib/underscore.string.js",
+        "node_modules/grunt/node_modules/grunt-legacy-util/Gruntfile.js",
+        "node_modules/grunt/node_modules/grunt-legacy-util/index.js",
+        "node_modules/grunt/node_modules/hooker/child.js",
+        "node_modules/grunt/node_modules/hooker/dist/ba-hooker.js",
+        "node_modules/grunt/node_modules/hooker/dist/ba-hooker.min.js",
+        "node_modules/grunt/node_modules/hooker/grunt.js",
+        "node_modules/grunt/node_modules/hooker/lib/hooker.js",
+        "node_modules/grunt/node_modules/hooker/parent.js",
+        "node_modules/grunt/node_modules/iconv-lite/encodings/big5.js",
+        "node_modules/grunt/node_modules/iconv-lite/encodings/gbk.js",
+        "node_modules/grunt/node_modules/iconv-lite/encodings/singlebyte.js",
+        "node_modules/grunt/node_modules/iconv-lite/encodings/table/big5.js",
+        "node_modules/grunt/node_modules/iconv-lite/encodings/table/gbk.js",
+        "node_modules/grunt/node_modules/iconv-lite/generation/generate-big5-table.js",
+        "node_modules/grunt/node_modules/iconv-lite/generation/generate-singlebyte.js",
+        "node_modules/grunt/node_modules/iconv-lite/index.js",
+        "node_modules/grunt/node_modules/js-yaml/bin/js-yaml.js",
+        "node_modules/grunt/node_modules/js-yaml/examples/custom_types.js",
+        "node_modules/grunt/node_modules/js-yaml/examples/dumper.js",
+        "node_modules/grunt/node_modules/js-yaml/examples/sample_document.js",
+        "node_modules/grunt/node_modules/js-yaml/index.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/common.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/dumper.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/exception.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/loader.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/mark.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/require.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema/default.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema/minimal.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema/safe.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/binary.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/bool.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/float.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/int.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/js/function.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/js/regexp.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/js/undefined.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/map.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/merge.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/null.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/omap.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/pairs.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/seq.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/set.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/str.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/timestamp.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type.js",
+        "node_modules/grunt/node_modules/js-yaml/lib/js-yaml.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/arguments.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/choice.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/constants.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/help.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/nargs.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/parents.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/prefix_chars.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/sub_commands.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/sum.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples/testformatters.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/index.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/append/constant.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/append.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/count.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/help.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/store/constant.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/store/false.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/store/true.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/store.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/subparsers.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/version.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action_container.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argparse.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument/error.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument/exclusive.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument/group.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument_parser.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/const.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/help/added_formatters.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/help/formatter.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/namespace.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore/underscore-min.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore/underscore.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/foo.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/gulpfile.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/lib/underscore.string.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/esprima/bin/esparse.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/esprima/bin/esvalidate.js",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/esprima/esprima.js",
+        "node_modules/grunt/node_modules/lodash/lodash.js",
+        "node_modules/grunt/node_modules/lodash/lodash.min.js",
+        "node_modules/grunt/node_modules/lodash/lodash.underscore.js",
+        "node_modules/grunt/node_modules/lodash/lodash.underscore.min.js",
+        "node_modules/grunt/node_modules/minimatch/minimatch.js",
+        "node_modules/grunt/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js",
+        "node_modules/grunt/node_modules/minimatch/node_modules/sigmund/bench.js",
+        "node_modules/grunt/node_modules/minimatch/node_modules/sigmund/sigmund.js",
+        "node_modules/grunt/node_modules/nopt/bin/nopt.js",
+        "node_modules/grunt/node_modules/nopt/examples/my-program.js",
+        "node_modules/grunt/node_modules/nopt/lib/nopt.js",
+        "node_modules/grunt/node_modules/nopt/node_modules/abbrev/abbrev.js",
+        "node_modules/grunt/node_modules/nopt/node_modules/abbrev/test.js",
+        "node_modules/grunt/node_modules/rimraf/bin.js",
+        "node_modules/grunt/node_modules/rimraf/rimraf.js",
+        "node_modules/grunt/node_modules/underscore.string/dist/underscore.string.min.js",
+        "node_modules/grunt/node_modules/underscore.string/lib/underscore.string.js",
+        "node_modules/grunt/node_modules/which/which.js"
+      ],
+      ".json": [
+        "node_modules/grunt/node_modules/async/package.json",
+        "node_modules/grunt/node_modules/coffee-script/package.json",
+        "node_modules/grunt/node_modules/colors/package.json",
+        "node_modules/grunt/node_modules/dateformat/package.json",
+        "node_modules/grunt/node_modules/eventemitter2/package.json",
+        "node_modules/grunt/node_modules/exit/package.json",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/inherits/package.json",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/package.json",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/sigmund/package.json",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/package.json",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/glob/package.json",
+        "node_modules/grunt/node_modules/findup-sync/node_modules/lodash/package.json",
+        "node_modules/grunt/node_modules/findup-sync/package.json",
+        "node_modules/grunt/node_modules/getobject/package.json",
+        "node_modules/grunt/node_modules/glob/node_modules/graceful-fs/package.json",
+        "node_modules/grunt/node_modules/glob/node_modules/inherits/package.json",
+        "node_modules/grunt/node_modules/glob/package.json",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/lodash/package.json",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/component.json",
+        "node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/package.json",
+        "node_modules/grunt/node_modules/grunt-legacy-log/package.json",
+        "node_modules/grunt/node_modules/grunt-legacy-util/package.json",
+        "node_modules/grunt/node_modules/hooker/package.json",
+        "node_modules/grunt/node_modules/iconv-lite/package.json",
+        "node_modules/grunt/node_modules/js-yaml/examples/dumper.json",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore/package.json",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/bower.json",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/component.json",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/package.json",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/package.json",
+        "node_modules/grunt/node_modules/js-yaml/node_modules/esprima/package.json",
+        "node_modules/grunt/node_modules/js-yaml/package.json",
+        "node_modules/grunt/node_modules/lodash/package.json",
+        "node_modules/grunt/node_modules/minimatch/node_modules/lru-cache/package.json",
+        "node_modules/grunt/node_modules/minimatch/node_modules/sigmund/package.json",
+        "node_modules/grunt/node_modules/minimatch/package.json",
+        "node_modules/grunt/node_modules/nopt/node_modules/abbrev/package.json",
+        "node_modules/grunt/node_modules/nopt/package.json",
+        "node_modules/grunt/node_modules/rimraf/package.json",
+        "node_modules/grunt/node_modules/underscore.string/package.json",
+        "node_modules/grunt/node_modules/which/package.json",
+        "node_modules/grunt/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "grunt": "~0.4.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/internal-tasks",
+          "node_modules/grunt/lib/grunt",
+          "node_modules/grunt/lib",
+          "node_modules/grunt/lib/util",
+          "node_modules/grunt"
+        ],
+        "dependencies": {
+          "async": "~0.1.22",
+          "coffee-script": "~1.3.3",
+          "colors": "~0.6.2",
+          "dateformat": "1.0.2-1.2.3",
+          "eventemitter2": "~0.4.13",
+          "findup-sync": "~0.1.2",
+          "glob": "~3.1.21",
+          "hooker": "~0.2.3",
+          "iconv-lite": "~0.2.11",
+          "minimatch": "~0.2.12",
+          "nopt": "~1.0.10",
+          "rimraf": "~2.2.8",
+          "lodash": "~0.9.2",
+          "underscore.string": "~2.2.1",
+          "which": "~1.0.5",
+          "js-yaml": "~2.0.5",
+          "exit": "~0.1.1",
+          "getobject": "~0.1.0",
+          "grunt-legacy-util": "~0.2.0",
+          "grunt-legacy-log": "~0.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/findup-sync",
+          "node_modules/grunt/node_modules/findup-sync/lib",
+          "node_modules/grunt/node_modules/findup-sync/test"
+        ],
+        "dependencies": {
+          "glob": "~3.2.9",
+          "lodash": "~2.4.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/findup-sync/node_modules/glob/examples",
+          "node_modules/grunt/node_modules/findup-sync/node_modules/glob",
+          "node_modules/grunt/node_modules/findup-sync/node_modules/glob/test"
+        ],
+        "dependencies": {
+          "inherits": "2",
+          "minimatch": "0.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch",
+          "node_modules/grunt/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/test"
+        ],
+        "dependencies": {
+          "lru-cache": "2",
+          "sigmund": "~1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/glob/examples",
+          "node_modules/grunt/node_modules/glob",
+          "node_modules/grunt/node_modules/glob/test"
+        ],
+        "dependencies": {
+          "minimatch": "~0.2.11",
+          "graceful-fs": "~1.2.0",
+          "inherits": "1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/grunt-legacy-log",
+          "node_modules/grunt/node_modules/grunt-legacy-log/test"
+        ],
+        "dependencies": {
+          "hooker": "~0.2.3",
+          "lodash": "~2.4.1",
+          "underscore.string": "~2.3.3",
+          "colors": "~0.6.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/grunt-legacy-util",
+          "node_modules/grunt/node_modules/grunt-legacy-util/test/fixtures",
+          "node_modules/grunt/node_modules/grunt-legacy-util/test"
+        ],
+        "dependencies": {
+          "hooker": "~0.2.3",
+          "async": "~0.1.22",
+          "lodash": "~0.9.2",
+          "exit": "~0.1.1",
+          "underscore.string": "~2.2.1",
+          "getobject": "~0.1.0",
+          "which": "~1.0.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/js-yaml/bin",
+          "node_modules/grunt/node_modules/js-yaml/examples",
+          "node_modules/grunt/node_modules/js-yaml",
+          "node_modules/grunt/node_modules/js-yaml/lib/js-yaml",
+          "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/schema",
+          "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type",
+          "node_modules/grunt/node_modules/js-yaml/lib/js-yaml/type/js",
+          "node_modules/grunt/node_modules/js-yaml/lib"
+        ],
+        "dependencies": {
+          "argparse": "~ 0.1.11",
+          "esprima": "~ 1.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/examples",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/append",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/store",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument",
+          "node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/help"
+        ],
+        "dependencies": {
+          "underscore": "~1.7.0",
+          "underscore.string": "~2.4.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/minimatch",
+          "node_modules/grunt/node_modules/minimatch/test"
+        ],
+        "dependencies": {
+          "lru-cache": "2",
+          "sigmund": "~1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/grunt/node_modules/nopt/bin",
+          "node_modules/grunt/node_modules/nopt/examples",
+          "node_modules/grunt/node_modules/nopt/lib",
+          "node_modules/grunt/node_modules/nopt"
+        ],
+        "dependencies": {
+          "abbrev": "1"
+        }
+      }
+    ]
+  }
 }

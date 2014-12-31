@@ -75,6 +75,9 @@
   &[data-name$=".hbs"]:before,
   &[data-name$=".handlebars"]:before,
   &[data-name$=".mustache"]:before { .hbs-mustache-icon; .medium-orange; }
+  // Emblem
+  &[data-name$=".emblem"]:before,
+  &[data-name$=".em"]:before { .hbs-mustache-icon; .medium-blue; }
 
   // Smarty icon
   &[data-name$=".tpl"]:before { .smarty-icon; .medium-yellow; }
@@ -178,6 +181,9 @@
   &[data-name$=".h"]:before       { .c-icon; .medium-purple; }
   &[data-name$=".cpp"]:before     { .cpp-icon; .medium-blue; }
   &[data-name$=".hpp"]:before     { .cpp-icon; .medium-purple; }
+  &[data-name$=".cxx"]:before     { .cpp-icon; .medium-blue; }
+  &[data-name$=".cc"]:before     { .cpp-icon; .medium-blue; }
+  &[data-name$=".hxx"]:before     { .cpp-icon; .medium-purple; }
   &[data-name$=".ipp"]:before     { .cpp-icon; .medium-orange; }
   &[data-name$=".m"]:before       { .objc-icon; .medium-blue; }
   &[data-name$=".mm"]:before      { .objc-icon; .medium-blue; }
@@ -232,6 +238,9 @@
   &[data-name="GULPFILE.coffee"]:before,
   &[data-name="Gulpfile.coffee"]:before,
   &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
+
+  // Travis icon
+  &[data-name^=".travis"]:before { .travis-icon; .medium-red; }
 
   // Dockerfile icon
   &[data-name="Dockerfile"]:before { .docker-icon; .dark-blue; }
