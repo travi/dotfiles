@@ -7,7 +7,7 @@ if [[ "$OSTYPE" =~ ^darwin ]] && [[ ! "$(type -P brew)" ]]; then
     heading "Installing Homebrew"
 
     #Skip the "Press enter to continue…" prompt.
-    true | ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 heading "Linking dotfiles directory"
