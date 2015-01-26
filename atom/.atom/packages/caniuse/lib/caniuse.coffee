@@ -14,17 +14,18 @@ module.exports =
   caniuseView: null
 
   activate: (state) ->
-    atom.workspaceView.command 'can-i-use:show', =>
-      @caniuseView ?= new CaniuseView()
-      @caniuseView.show()
+    atom.commands.add 'atom-workspace',
+      'can-i-use:show': =>
+        @caniuseView ?= new CaniuseView()
+        @caniuseView.show()
 
-    atom.workspaceView.command 'can-i-use:update', =>
-      request UPDATE_URL, (error, response, body) =>
-        if not error and response.statusCode is 200 and isJsonString(body)
-          localStorage['caniuse:data'] = body
-          @caniuseView.populate() if @caniuseView
-        else
-          @caniuseView.setError 'Loading data failed!'
+      'can-i-use:update', =>
+        request UPDATE_URL, (error, response, body) =>
+          if not error and response.statusCode is 200 and isJsonString(body)
+            localStorage['caniuse:data'] = body
+            @caniuseView.populate() if @caniuseView
+          else
+            @caniuseView.setError 'Loading data failed!'
 
   config:
     showIe:

@@ -1,8 +1,7 @@
-{SelectListView, TextEditorView, $} = require 'atom'
+{SelectListView, TextEditorView, $} = require 'atom-space-pen-views'
 {exec} = require('child_process')
 {markdown} = require('markdown')
 open = require 'open'
-
 
 # infos =
 #   y: 'Yes, supported by default'
@@ -47,7 +46,8 @@ class AtomCaniuseView extends SelectListView
       @data = JSON.parse localStorage['caniuse:data']
 
     if not @data or not @data.data
-      atom.workspaceView.trigger 'can-i-use:update'
+      workspaceElement = atom.views.getView(atom.workspace)
+      atom.commands.dispatch(workspaceElement, 'can-i-use:update')
       @addClass 'no-data'
       return no
 
@@ -161,8 +161,6 @@ class AtomCaniuseView extends SelectListView
       .html('')
       .append(notes)
 
-  # cancel: -> console.log 'mööp'
-
   populateList: ->
     super()
     if @list.is(':empty')
@@ -182,5 +180,9 @@ class AtomCaniuseView extends SelectListView
 
   show: ->
     @populate()
-    atom.workspaceView.append(this)
+    workspaceElement = atom.views.getView(atom.workspace)
+    $(workspaceElement).append(@element)
     @focusFilterEditor()
+
+  cancel: ->
+    $(@element).remove();
