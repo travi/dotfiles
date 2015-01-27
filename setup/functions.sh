@@ -26,6 +26,16 @@ fail() {
     return 8
 }
 
+windows() { [[ -n "$WINDIR" ]]; }
+
+create_link() {
+    local link_target=$1
+    local link_name=$2
+
+    ln -s ${link_target} ${link_name}
+    success "linked ${link_target} to ${link_name}"
+}
+
 link_file() {
     local link_target=$1
     local link_name=$2
@@ -44,8 +54,7 @@ link_file() {
         warn "${link_name} already exists"
     # safe to create symbolic link
     else
-        ln -s ${link_target} ${link_name}
-        success "linked ${link_target} to ${link_name}"
+        create_link ${link_target} ${link_name}
     fi
 }
 
