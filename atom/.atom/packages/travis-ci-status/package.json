@@ -1,34 +1,140 @@
 {
   "name": "travis-ci-status",
   "main": "./lib/travis-ci-status",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "description": "Add Travis CI status of the project to the Atom status bar. ",
   "repository": {
     "type": "git",
     "url": "https://github.com/tombell/travis-ci-status"
   },
+  "author": {
+    "name": "Tom Bell",
+    "email": "tomb@tomb.io",
+    "url": "https://github.com/tombell"
+  },
+  "contributors": [
+    {
+      "name": "José Magalhães",
+      "email": "magalhas@gmail.com",
+      "url": "https://github.com/magalhas"
+    }
+  ],
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
+    "atom-space-pen-views": "^2.0.3",
     "travis-ci": "^2.0.3"
   },
-  "readme": "# Travis CI Status Package\n\nAdd Travis CI status of the project to the Atom status bar.\n\n**Please note:** I am no longer using Atom, this means I won't be actively\nmaintaining this project. I will still accept pull requests for bug fixes and\nsuch.\n\n## Installing\n\nUse the Atom package manager, which can be found in the Settings view or run\n`apm install travis-ci-status` from the command line.\n\n## Usage\n\nThe Travis CI build status for your repository will be indicated by the\nclock-arrow icon in the status bar. The icon will appear orange when it's\nrequesting the build status, green if the build was successful and red if the\nbuild failed.\n\nThe build status is updated when the project is first opened in Atom and from\nthen on whenever the \"status\" of the project repository changes. The handling of\nthese events was borrowed from the `git-view.coffee` part of the `status-bar`\npackage.\n\n### Travis Pro\n\nYou are able to use this with Travis Pro if you enable it in the settings view.\nYou will also need to generate and set a\n[GitHub API token](https://github.com/settings/tokens/new) to be able to\nauthenticate with the Travis Pro API.\n\n### Commands\n\nThe following commands are available for users to keymap.\n\n* `travis-ci-status:toggle` - Toggle the status bar entry\n* `travis-ci-status:toggle-build-matrix` - Toggle the build matrix panel\n* `travis-ci-status:open-on-travis` - Open the project on the Travis CI site\n\n## Coming Soon\n\n* Better icon for the status bar\n\nFeel free to open an issue to discuss potential features to add or improve.\n\n## Support\n\nIf you wish to support this package and help further its development, feel free\nto tip via Gittip.\n\n[![Gittip](http://img.shields.io/gittip/tombell.png)](https://www.gittip.com/tombell/)\n",
+  "readme": "# Travis CI Status [![Build Status](https://travis-ci.org/tombell/travis-ci-status.svg?branch=master)](https://travis-ci.org/tombell/travis-ci-status)\n\nAdd Travis CI status of the project to the Atom status bar.\n\n## Installing\n\nUse the Atom package manager, which can be found in the Settings view or run\n`apm install travis-ci-status` from the command line.\n\n## Usage\n\nThe Travis CI build status for your repository will be indicated by the\nclock-arrow icon in the status bar. The icon will appear orange when it's\nrequesting the build status, green if the build was successful and red if the\nbuild failed.\n\nThe build status is updated when the project is first opened in Atom and from\nthen on whenever the \"status\" of the project repository changes. The handling of\nthese events was borrowed from the `git-view.coffee` part of the `status-bar`\npackage.\n\n### Travis Pro\n\nYou are able to use this with Travis Pro if you enable it in the settings view.\nYou will also need to generate and set a\n[GitHub API token](https://github.com/settings/tokens/new) to be able to\nauthenticate with the Travis Pro API.\n\n### Commands\n\nThe following commands are available for users to keymap.\n\n* `travis-ci-status:toggle` - Toggle the status bar entry\n* `travis-ci-status:toggle-build-matrix` - Toggle the build matrix panel\n* `travis-ci-status:open-on-travis` - Open the project on the Travis CI site\n\n## Coming Soon\n\nFeel free to open an issue to discuss potential features to add or improve.\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/tombell/travis-ci-status/issues"
   },
   "homepage": "https://github.com/tombell/travis-ci-status",
-  "_id": "travis-ci-status@0.11.1",
-  "dist": {
-    "shasum": "863af19e2667a5105512862dc8f522cd0afdbddb"
-  },
-  "_resolved": "/private/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-1141130-49872-13l2wow/package.tgz",
-  "_from": "/private/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-1141130-49872-13l2wow/package.tgz",
+  "_id": "travis-ci-status@0.11.2",
+  "_shasum": "489cc8cafdee260bf8363fd2076d14e8e80e1392",
+  "_resolved": "file:../d-115027-33044-1udm0xi/package.tgz",
+  "_from": "../d-115027-33044-1udm0xi/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
+      {
+        "name": "atom-space-pen-views",
+        "version": "2.0.3",
+        "path": "node_modules/atom-space-pen-views/lib/main.js"
+      },
+      {
+        "name": "fuzzaldrin",
+        "version": "2.1.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/fuzzaldrin/lib/fuzzaldrin.js"
+      },
+      {
+        "name": "grim",
+        "version": "1.1.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/lib/grim.js"
+      },
+      {
+        "name": "coffeestack",
+        "version": "0.7.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/index.js"
+      },
+      {
+        "name": "coffee-script",
+        "version": "1.7.1",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/coffee-script.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "source-map",
+        "version": "0.1.43",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map.js"
+      },
+      {
+        "name": "amdefine",
+        "version": "0.1.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js"
+      },
+      {
+        "name": "emissary",
+        "version": "1.3.1",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/emissary.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/mixto/lib/mixin.js"
+      },
+      {
+        "name": "property-accessors",
+        "version": "1.1.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "space-pen",
+        "version": "5.1.1",
+        "path": "node_modules/atom-space-pen-views/node_modules/space-pen/lib/space-pen.js"
+      },
+      {
+        "name": "jquery",
+        "version": "2.1.3",
+        "path": "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/jquery.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
       {
         "name": "travis-ci",
         "version": "2.0.3",
@@ -121,7 +227,7 @@
       },
       {
         "name": "http-signature",
-        "version": "0.10.0",
+        "version": "0.10.1",
         "path": "node_modules/travis-ci/node_modules/request/node_modules/http-signature/lib/index.js"
       },
       {
@@ -131,12 +237,12 @@
       },
       {
         "name": "assert-plus",
-        "version": "0.1.2",
+        "version": "0.1.5",
         "path": "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/assert-plus/assert.js"
       },
       {
         "name": "ctype",
-        "version": "0.5.2",
+        "version": "0.5.3",
         "path": "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/ctype.js"
       },
       {
@@ -182,50 +288,162 @@
         "lib/extensions.coffee",
         "lib/travis-ci-status.coffee"
       ],
-      ".json": [
-        "node_modules/travis-ci/api/v2.0.0/routes.json",
-        "node_modules/travis-ci/node_modules/github/api/v2.0.0/routes.json",
-        "node_modules/travis-ci/node_modules/github/api/v3.0.0/routes.json",
-        "node_modules/travis-ci/node_modules/github/package.json",
-        "node_modules/travis-ci/node_modules/lodash/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/aws-sign/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/cookie-jar/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/forever-agent/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/async/component.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/async/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/form-data/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/form-data/sftp-config.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/boom/node_modules/hoek/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/boom/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/cryptiles/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/hoek/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/sntp/node_modules/hoek/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/sntp/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/hawk/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/asn1/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/assert-plus/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/float.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/int.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/psinfo.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/struct.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/typedef.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/json-stringify-safe/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/mime/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/node-uuid/component.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/node-uuid/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/oauth-sign/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/qs/package.json",
-        "node_modules/travis-ci/node_modules/request/node_modules/tunnel-agent/package.json",
-        "node_modules/travis-ci/node_modules/request/package.json",
-        "node_modules/travis-ci/node_modules/underscore.string/package.json",
-        "node_modules/travis-ci/package.json",
-        "package.json"
-      ],
       ".js": [
+        "node_modules/atom-space-pen-views/lib/main.js",
+        "node_modules/atom-space-pen-views/lib/scroll-view.js",
+        "node_modules/atom-space-pen-views/lib/select-list-view.js",
+        "node_modules/atom-space-pen-views/lib/text-editor-view.js",
+        "node_modules/atom-space-pen-views/node_modules/fuzzaldrin/lib/filter.js",
+        "node_modules/atom-space-pen-views/node_modules/fuzzaldrin/lib/fuzzaldrin.js",
+        "node_modules/atom-space-pen-views/node_modules/fuzzaldrin/lib/matcher.js",
+        "node_modules/atom-space-pen-views/node_modules/fuzzaldrin/lib/scorer.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/lib/deprecation.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/lib/grim.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/index.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/browser.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/cake.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/coffee-script.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/command.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/grammar.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/helpers.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/index.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/lexer.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/nodes.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/optparse.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/parser.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/register.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/repl.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/rewriter.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/scope.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/sourcemap.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/examples/pow.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/index.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/register.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/Makefile.dryice.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/assert-shim.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/mini-require.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/suffix-browser.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/test-prefix.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/test-suffix.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/array-set.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/base64-vlq.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/base64.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/binary-search.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/mapping-list.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/source-map-consumer.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/source-map-generator.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/source-node.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/util.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/intercept.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/behavior.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/emissary.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/emitter.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/helpers.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/signal.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/subscriber.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib/subscription.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/mixto/lib/mixin.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/lib/space-pen.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/cdn/jquery-2.1.3.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/cdn/jquery-2.1.3.min.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/jquery.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/jquery.min.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/jsonp.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/load.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/parseJSON.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/parseXML.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/script.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/var/nonce.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/var/rquery.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax/xhr.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/ajax.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/attributes/attr.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/attributes/classes.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/attributes/prop.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/attributes/support.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/attributes/val.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/attributes.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/callbacks.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/core/access.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/core/init.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/core/parseHTML.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/core/ready.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/core/var/rsingleTag.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/core.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/addGetHookIf.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/curCSS.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/defaultDisplay.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/hiddenVisibleSelectors.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/support.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/swap.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/var/cssExpand.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/var/getStyles.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/var/isHidden.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/var/rmargin.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css/var/rnumnonpx.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/css.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/data/Data.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/data/accepts.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/data/var/data_priv.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/data/var/data_user.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/data.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/deferred.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/deprecated.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/dimensions.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/effects/Tween.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/effects/animatedSelector.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/effects.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/event/ajax.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/event/alias.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/event/support.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/event.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/exports/amd.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/exports/global.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/intro.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/jquery.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/manipulation/_evalUrl.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/manipulation/support.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/manipulation/var/rcheckableType.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/manipulation.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/offset.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/outro.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/queue/delay.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/queue.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/selector-native.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/selector-sizzle.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/selector.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/serialize.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/sizzle/dist/sizzle.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/sizzle/dist/sizzle.min.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/traversing/findFilter.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/traversing/var/rneedsContext.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/traversing.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/arr.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/class2type.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/concat.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/hasOwn.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/indexOf.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/pnum.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/push.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/rnotwhite.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/slice.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/strundefined.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/support.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/var/toString.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/src/wrap.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/node_modules/underscore/underscore.js",
         "node_modules/travis-ci/bin/travis-ci.js",
         "node_modules/travis-ci/lib/travis-ci.js",
         "node_modules/travis-ci/lib/travis-http.js",
@@ -320,30 +538,6 @@
         "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/ctf.js",
         "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/ctio.js",
         "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/ctype.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.fail.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.float.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.int.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.psinfo.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.struct.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.typedef.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/float/tst.rfloat.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/float/tst.wfloat.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.64.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.rint.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.wbounds.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.wint.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.64.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.roundtrip.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.ruint.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.wuint.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.basicr.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.basicw.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.char.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.endian.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.oldwrite.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.readSize.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.structw.js",
-        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.writeStruct.js",
         "node_modules/travis-ci/node_modules/request/node_modules/json-stringify-safe/stringify.js",
         "node_modules/travis-ci/node_modules/request/node_modules/json-stringify-safe/test.js",
         "node_modules/travis-ci/node_modules/request/node_modules/mime/mime.js",
@@ -356,6 +550,65 @@
         "node_modules/travis-ci/node_modules/request/node_modules/tunnel-agent/index.js",
         "node_modules/travis-ci/node_modules/underscore.string/dist/underscore.string.min.js",
         "node_modules/travis-ci/node_modules/underscore.string/lib/underscore.string.js"
+      ],
+      ".json": [
+        "node_modules/atom-space-pen-views/node_modules/fuzzaldrin/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/mixto/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/package.json",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/api.json",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/bower.json",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/package.json",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/package.json",
+        "node_modules/atom-space-pen-views/node_modules/space-pen/package.json",
+        "node_modules/atom-space-pen-views/package.json",
+        "node_modules/travis-ci/api/v2.0.0/routes.json",
+        "node_modules/travis-ci/node_modules/github/api/v2.0.0/routes.json",
+        "node_modules/travis-ci/node_modules/github/api/v3.0.0/routes.json",
+        "node_modules/travis-ci/node_modules/github/package.json",
+        "node_modules/travis-ci/node_modules/lodash/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/aws-sign/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/cookie-jar/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/forever-agent/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/async/component.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/async/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/form-data/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/form-data/sftp-config.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/boom/node_modules/hoek/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/boom/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/cryptiles/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/hoek/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/sntp/node_modules/hoek/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/node_modules/sntp/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/hawk/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/asn1/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/assert-plus/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/node_modules/ctype/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/http-signature/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/json-stringify-safe/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/mime/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/node-uuid/component.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/node-uuid/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/oauth-sign/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/qs/package.json",
+        "node_modules/travis-ci/node_modules/request/node_modules/tunnel-agent/package.json",
+        "node_modules/travis-ci/node_modules/request/package.json",
+        "node_modules/travis-ci/node_modules/underscore.string/package.json",
+        "node_modules/travis-ci/package.json",
+        "package.json"
       ]
     },
     "folders": [
@@ -366,7 +619,110 @@
           "spec"
         ],
         "dependencies": {
+          "atom-space-pen-views": "^2.0.3",
           "travis-ci": "^2.0.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/lib",
+          "node_modules/atom-space-pen-views"
+        ],
+        "dependencies": {
+          "fuzzaldrin": "^2.1.0",
+          "grim": "^1.0.0",
+          "space-pen": "^5.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim"
+        ],
+        "dependencies": {
+          "coffeestack": "^0.7.0",
+          "emissary": "^1.2.0",
+          "underscore-plus": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack"
+        ],
+        "dependencies": {
+          "coffee-script": "~1.7.0",
+          "source-map": "~0.1.31"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script"
+        ],
+        "dependencies": {
+          "mkdirp": "~0.3.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/test",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/test/source-map"
+        ],
+        "dependencies": {
+          "amdefine": ">=0.0.4"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mixto": "1.x",
+          "property-accessors": "^1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors"
+        ],
+        "dependencies": {
+          "mixto": "1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/space-pen",
+          "node_modules/atom-space-pen-views/node_modules/space-pen/lib"
+        ],
+        "dependencies": {
+          "grim": "^1.0.0",
+          "jquery": "^2.1.3",
+          "underscore-plus": "1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus/lib",
+          "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
         }
       },
       {
@@ -476,9 +832,9 @@
           "node_modules/travis-ci/node_modules/request/node_modules/http-signature"
         ],
         "dependencies": {
-          "assert-plus": "0.1.2",
+          "assert-plus": "^0.1.5",
           "asn1": "0.1.11",
-          "ctype": "0.5.2"
+          "ctype": "0.5.3"
         }
       }
     ]

@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{View} = require 'atom-space-pen-views'
 
 require './extensions'
 
@@ -19,8 +19,7 @@ class BuildMatrixView extends View
   initialize: (@nwo) ->
     @matrix.css('font-size', "#{atom.config.get('editor.fontSize')}px")
 
-    atom.workspaceView.command 'travis-ci-status:toggle-build-matrix', =>
-      @toggle()
+    atom.commands.add 'atom-workspace', 'travis-ci-status:toggle-build-matrix', => @toggle()
 
   # Internal: Serialize the state of this view.
   #
@@ -31,7 +30,7 @@ class BuildMatrixView extends View
   #
   # Returns nothing.
   attach: ->
-    atom.workspaceView.prependToBottom(this)
+    atom.workspace.addBottomPanel(item: this)
 
   # Internal: Destroy the view and tear down any state.
   #

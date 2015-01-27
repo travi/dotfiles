@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{$, View} = require 'atom-space-pen-views'
 
 TravisCi = require 'travis-ci'
 
@@ -15,10 +15,9 @@ class BuildStatusView extends View
   # nwo    - The string of the repo owner and name.
   # matrix - The build matrix view.
   initialize: (@nwo, @matrix) ->
-    atom.workspaceView.command 'travis-ci-status:toggle', =>
-      @toggle()
+    atom.commands.add 'atom-workspace', 'travis-ci-status:toggle', => @toggle()
 
-    @subscribe this, 'click', =>
+    this.on 'click', =>
       @matrix.toggle()
 
     @attach()
@@ -33,7 +32,9 @@ class BuildStatusView extends View
   #
   # Returns nothing.
   attach: ->
-    atom.workspaceView.statusBar.appendLeft(this)
+    statusBar = document.querySelector("status-bar")
+    if statusBar?
+        @statusBarTile = statusBar.addLeftTile(item: this, priority: 100)
 
   # Internal: Destroy the view and tear down any state.
   #
@@ -70,9 +71,9 @@ class BuildStatusView extends View
 
     if repo = atom.project.getRepo()
       @repo = repo
-      @subscribe repo, 'status-changed', (path, status) =>
+      $(repo).on 'status-changed', (path, status) =>
         @update() if path is @getActiveItemPath()
-      @subscribe repo, 'statuses-changed', @update
+      $(repo).on 'statuses-changed', @update
       @update()
 
   # Internal: Update the repository build status from Travis CI.
@@ -87,7 +88,7 @@ class BuildStatusView extends View
     updateRepo = =>
       atom.travis.repos(details[0], details[1]).get(@repoStatus)
 
-    if atom.travis.pro
+    if (typeof atom.travis isnt 'undefined') and (atom.travis is null) and (atom.travis.pro)
       token = atom.config.get('travis-ci-status.personalAccessToken')
       atom.travis.authenticate(github_token: token, updateRepo)
     else
@@ -111,7 +112,7 @@ class BuildStatusView extends View
   #
   # Returns nothing.
   repoStatus: (err, data) =>
-    return @fallback() if atom.travis.pro and err?
+    return @fallback() if (typeof atom.travis is 'undefined') or (atom.travis is null) or (atom.travis.pro and err?)
 
     return console.log "Error:", err if err?
     return if data['files'] is 'not found'

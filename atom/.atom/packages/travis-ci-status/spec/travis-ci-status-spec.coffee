@@ -1,41 +1,31 @@
-TravisCiStatus = require "../lib/travis-ci-status"
-{$, WorkspaceView, View} = require "atom"
-
-class StatusBarMock extends View
-  @content: ->
-    @div class: "status-bar tool-panel panel-bottom", =>
-      @div outlet: "leftPanel", class: "status-bar-left"
-
-  attach: ->
-    atom.workspaceView.appendToTop(this)
-
-  appendLeft: (item) ->
-    @leftPanel.append(item)
+TravisCiStatus = require '../lib/travis-ci-status'
 
 describe "TravisCiStatus", ->
+  workspaceElement = null
   beforeEach ->
     spyOn(TravisCiStatus, "isTravisProject").andCallFake((cb) -> cb(true))
 
-    atom.workspaceView = new WorkspaceView
-    atom.workspaceView.statusBar = new StatusBarMock()
-    atom.workspaceView.statusBar.attach()
-    atom.packages.emit("activated")
+    workspaceElement = atom.views.getView(atom.workspace)
+    jasmine.attachToDOM(workspaceElement)
 
   describe "when the travis-ci-status:toggle event is triggered", ->
+    workspaceElement = null
     beforeEach ->
+      workspaceElement = atom.views.getView(atom.workspace)
+
       spyOn(atom.project, "getRepo").andReturn({
         getOriginUrl: ->
           "git@github.com:test/test.git"
       })
 
     it "attaches and then detaches the view", ->
-      expect(atom.workspaceView.find(".travis-ci-status")).not.toExist()
+      expect(workspaceElement.querySelector(".travis-ci-status")).not.toExist()
 
-      waitsForPromise ->
-        atom.packages.activatePackage("travis-ci-status")
+      waitsForPromise -> atom.packages.activatePackage('status-bar')
+      waitsForPromise -> atom.packages.activatePackage("travis-ci-status")
 
       runs ->
-        expect(atom.workspaceView.find(".travis-ci-status")).toExist()
+        expect(workspaceElement.querySelector(".travis-ci-status")).toExist()
 
   describe "can get the nwo if the project is a github repo", ->
     it "gets nwo of https repo ending in .git", ->
