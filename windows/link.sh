@@ -1,3 +1,7 @@
+#!/bin/bash
+
+windows() { [[ -n "$WINDIR" ]]; }
+
 # Cross-platform symlink function. With one parameter, it will check
 # whether the parameter is a symlink. With two parameters, it will create
 # a symlink to a file or directory, with syntax: link $linkname $target
