@@ -1,0 +1,2 @@
+'atom-text-editor:not(.mini)':
+  'ctrl-cmd-l': 'linter:lint'

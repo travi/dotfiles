@@ -1,7 +1,6 @@
 "*":
   editor:
     showInvisibles: true
-    tabLength: 4
     invisibles: {}
   "exception-reporting":
     userId: "78049fcb-fd79-53f5-3abf-40f1b3f1500b"
@@ -10,3 +9,4 @@
   metrics:
     userId: "2c122769923ca0614e59cd53b5dad1d854603b1a"
   core: {}
+  linter: {}
