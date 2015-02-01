@@ -22,6 +22,7 @@ install git
 install node
 install openssl
 install ssh-copy-id
+install keybase
 install pkg-config
 install readline
 install ruby
