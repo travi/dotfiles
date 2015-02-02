@@ -89,6 +89,11 @@ class LinterView
         @showHighlighting = showHighlighting
         @display()
 
+    @subscriptions.add atom.config.observe 'linter.showInfoMessages',
+      (showInfoMessages) =>
+        @showInfoMessages = showInfoMessages
+        @display()
+
   # Internal: register handlers for editor buffer events
   handleEditorEvents: =>
     @editor.onDidChangeGrammar =>
@@ -117,6 +122,12 @@ class LinterView
     atom.commands.add "atom-text-editor",
       "linter:lint", => @lint()
 
+    atom.commands.add "atom-text-editor",
+      "linter:next-message", => @moveToNextMessage()
+
+    atom.commands.add "atom-text-editor",
+      "linter:previous-message", => @moveToPreviousMessage()
+
   # Public: lint the current file in the editor using the live buffer
   lint: ->
     return if @linters.length is 0
@@ -143,18 +154,17 @@ class LinterView
   # Internal: Process the messages returned by linters and render them.
   #
   # messages - An array of messages to annotate:
-  #           :level  - the annotation error level ('error', 'warning')
+  #           :level  - the annotation error level ('error', 'warning', 'info')
   #           :range - The buffer range that the annotation should be placed
   processMessage: (messages, tempFileInfo, linter) =>
     log "#{linter.linterName} returned", linter, messages
 
+    @messages = @messages.concat(messages)
     tempFileInfo.completedLinters++
     if tempFileInfo.completedLinters == @linters.length
+      @display @messages
       rimraf tempFileInfo.path, (err) ->
         throw err if err?
-
-    @messages = @messages.concat(messages)
-    @display()
 
   # Internal: Destroy all markers (and associated decorations)
   destroyMarkers: ->
@@ -162,29 +172,47 @@ class LinterView
     m.destroy() for m in @markers
     @markers = null
 
-  # Internal: Render all the linter messages
-  display: ->
+  # Internal: Create marker from message
+  createMarker: (message) ->
+    marker = @editor.markBufferRange message.range, invalidate: 'never'
+    klass = 'linter-' + message.level
+    if @showGutters
+      @editor.decorateMarker marker, type: 'gutter', class: klass
+    if @showHighlighting
+      @editor.decorateMarker marker, type: 'highlight', class: klass
+    return marker
+
+  # Internal: Pidgeonhole messages onto lines. Each line gets only one message,
+  # the message with the highest level presides. Messages of unrecognizable
+  # level (or silenced by config) will be skipped.
+  sortMessagesByLine: (messages) ->
+    lines = {}
+    levels = ['warning', 'error']
+    levels.unshift('info') if @showInfoMessages
+    for message in messages
+      lNum = message.line
+      line = lines[lNum] || { 'level': -1 }
+      msgLevel = levels.indexOf(message.level)
+      continue unless msgLevel > line.level
+      line.level = msgLevel
+      line.msg = message
+      lines[lNum] = line
+    return lines
+
+  # Internal: Render gutter icons and highlights for all linter messages.
+  display: (messages = []) ->
     @destroyMarkers()
 
     return unless @editor.isAlive()
 
-    if @showGutters or @showHighlighting
-      @markers ?= []
-      for message in @messages
-        klass = if message.level == 'error'
-          'linter-error'
-        else if message.level == 'warning'
-          'linter-warning'
-        continue unless klass?  # skip other messages
+    unless @showGutters or @showHighlighting
+      @updateViews()
+      return
 
-        marker = @editor.markBufferRange message.range, invalidate: 'never'
-        @markers.push marker
-
-        if @showGutters
-          @editor.decorateMarker marker, type: 'gutter', class: klass
-
-        if @showHighlighting
-          @editor.decorateMarker marker, type: 'highlight', class: klass
+    @markers ?= []
+    for lNum, line of @sortMessagesByLine(messages)
+      marker = @createMarker(line.msg)
+      @markers.push marker
 
     @updateViews()
 
@@ -201,6 +229,47 @@ class LinterView
     else
       @inlineView.render [], @editor
 
+  # Internal: Move cursor to the next lint message
+  moveToNextMessage: ->
+    cursorLine = @editor.getCursorBufferPosition().row + 1
+    nextLine = null
+    firstLine = null
+    for {line} in @messages ? []
+      if line > cursorLine
+        nextLine ?= line - 1
+        nextLine = Math.min(line - 1, nextLine)
+
+      firstLine ?= line - 1
+      firstLine = Math.min(line - 1, firstLine)
+
+    # Wrap around to the first diff in the file
+    nextLine = firstLine unless nextLine?
+
+    # TODO: when possible, move to the correct column
+    @moveToLine(nextLine)
+
+  # Internal: Move cursor to the previous lint message
+  moveToPreviousMessage: ->
+    cursorLine = @editor.getCursorBufferPosition().row + 1
+    previousLine = -1
+    lastLine = -1
+    for {line} in @messages ? []
+      if line < cursorLine
+        previousLine = Math.max(line - 1, previousLine)
+
+      lastLine = Math.max(line - 1, lastLine)
+
+    # Wrap around to the last diff in the file
+    previousLine = lastLine if previousLine is -1
+
+    # TODO: when possible, move to the correct column
+    @moveToLine(previousLine)
+
+  # Internal: Move cursor to the specified line number
+  moveToLine: (n = -1) ->
+    if n >= 0
+      @editor.setCursorBufferPosition([n, 0])
+      @editor.moveToFirstCharacterOfLine()
 
   # Public: remove this view and unregister all its subscriptions
   remove: ->
