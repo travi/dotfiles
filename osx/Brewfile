@@ -19,6 +19,7 @@ install libxml2
 install libyaml
 install mercurial
 install git
+install tig
 install node
 install openssl
 install ssh-copy-id
