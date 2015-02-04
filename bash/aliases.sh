@@ -8,6 +8,9 @@ else # OS X `ls`
 fi
 
 alias ls="ls ${colorflag} -F"
+alias ll="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
 
 alias hosts="sudo $EDITOR /etc/hosts"
 
