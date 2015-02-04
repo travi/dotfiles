@@ -1,0 +1,100 @@
+'fileTypes': [
+  'sln'
+]
+'name': 'Visual Studio Solution'
+'patterns': [
+  { 'include': '#keywords' }
+  { 'include': '#comments' }
+]
+'repository':
+  'comments':
+    'patterns': [
+      {
+        # TODO: this is based off the Ruby comment pattern.
+        # do sln files really have comments or is # just being used as something special?
+        'begin': '(^[ \\t]+)?(?<!\\S)(?=#)(?!#\\{)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.whitespace.comment.leading.text.sln'
+        'end': '(?!\\G)'
+        'patterns': [
+          {
+            'begin': '#'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.text.sln'
+            'end': '\\n'
+            'name': 'comment.line.number-sign.text.sln'
+            'patterns': [
+              # TODO: clean up, change to something other than entity.name.function
+              {
+                'match': 'Visual Studio [0-9a-zA-Z]+'
+                'name': 'entity.name.function.text.sln'
+              }
+            ]
+          }
+        ]
+      }
+      # TODO: clean up, change to something other than entity.name.function
+      {
+        'match': 'Microsoft Visual Studio Solution File, Format Version ([0-9]+\.?)*'
+        'name': 'entity.name.function.text.sln'
+      }
+    ]
+  'keywords':
+    'patterns': [
+      {
+        'begin': '\\b(Project)\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.project.begin.text.sln'
+        'end': '\\bEndProject\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.project.end.text.sln'
+        'name': 'entity.project.text.sln'
+        'patterns': [
+          { 'include': '#strings' }
+        ]
+      }
+      {
+        'begin': '\\bGlobal\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.global.begin.text.sln'
+        'end': '\\EndGlobal\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.global.end.text.sln'
+        'name': 'entity.global.text.sln'
+        'patterns': [
+          { 'include': '#keywords' }
+        ]
+      }
+      {
+        'begin': '\\bGlobalSection\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.globalsection.begin.text.sln'
+        'end': '\\EndGlobalSection\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.globalsection.end.text.sln'
+        'name': 'entity.globalsection.text.sln'
+      }
+    ]
+  'strings':
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.text.sln'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.text.sln'
+        'name': 'string.quoted.double.text.sln'
+      }
+    ]
+'scopeName': 'text.sln'

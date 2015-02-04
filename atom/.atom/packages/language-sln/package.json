@@ -1,0 +1,40 @@
+{
+  "name": "language-sln",
+  "version": "0.1.0",
+  "description": "Visual Studio solution language support for Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rzhw/language-sln"
+  },
+  "keywords": [
+    "sln",
+    "visual studio",
+    "vs",
+    ".net"
+  ],
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Visual Studio solution language support in Atom\n\nAdds basic syntax highlighting to Visual Studio solution files in Atom.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/rzhw/language-sln/issues"
+  },
+  "homepage": "https://github.com/rzhw/language-sln",
+  "_id": "language-sln@0.1.0",
+  "_shasum": "e11d943e57ed17ed9698d1eeb9e70cf8a989f3eb",
+  "_resolved": "file:..\\d-115029-5808-1ax58yg\\package.tgz",
+  "_from": "..\\d-115029-5808-1ax58yg\\package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
