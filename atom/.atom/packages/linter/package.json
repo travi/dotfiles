@@ -1,7 +1,7 @@
 {
   "name": "linter",
   "main": "./lib/init",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "private": true,
   "description": "Validates your code using linters.",
   "repository": {
@@ -47,10 +47,10 @@
     "url": "https://github.com/AtomLinter/Linter/issues"
   },
   "homepage": "https://github.com/AtomLinter/Linter",
-  "_id": "linter@0.11.0",
-  "_shasum": "5704550778f9e509b5a187aaa75e8d0f6b9b17d0",
-  "_resolved": "file:../d-11512-55227-yfoa0e/package.tgz",
-  "_from": "../d-11512-55227-yfoa0e/package.tgz",
+  "_id": "linter@0.11.1",
+  "_shasum": "cd006cf0329cd947bf85dd471fef1dfbbf542b18",
+  "_resolved": "file:../d-11514-63170-8yzet7/package.tgz",
+  "_from": "../d-11514-63170-8yzet7/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

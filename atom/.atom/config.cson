@@ -8,9 +8,6 @@
     showOnStartup: false
   metrics:
     userId: "2c122769923ca0614e59cd53b5dad1d854603b1a"
-  core:
-    disabledPackages: [
-      "svg-preview"
-    ]
+  core: {}
   linter: {}
   "svg-preview": {}
