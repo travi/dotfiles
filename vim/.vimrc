@@ -21,7 +21,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/closetag.vim'
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
