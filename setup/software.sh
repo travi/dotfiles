@@ -3,4 +3,4 @@
 . ../osx/software.sh
 
 heading "Vundle Install"
-vim +PluginInstall +qall
+vim +PluginInstall! +qall
