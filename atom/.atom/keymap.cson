@@ -16,3 +16,6 @@
 #   'ctrl-P': 'core:move-up'
 #   'ctrl-p': 'core:move-down'
 #
+
+'atom-text-editor:not([mini])':
+  'cmd-Y': 'editor:delete-line'
