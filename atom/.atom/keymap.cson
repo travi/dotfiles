@@ -18,4 +18,4 @@
 #
 
 'atom-text-editor:not([mini])':
-  'cmd-Y': 'editor:delete-line'
+  'cmd-y': 'editor:delete-line'
