@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 # OSX-only stuff. Abort if not OSX.
-[[ "$OSTYPE" =~ ^darwin ]] || return 1
+[[ "$OSTYPE" == darwin* ]] || return 1
 
 export PATH=/usr/local/bin:$(brew --prefix ruby)/bin:$PATH
 export M2_HOME=$(brew --prefix maven)/libexec
