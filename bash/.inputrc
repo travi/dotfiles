@@ -1,6 +1,9 @@
 set bell-style off
 set editing-mode vi
 
+#Override the low (40) limit set by git-bash
+set completion-query-items 100
+
 # When completing directories, add a trailing slash
 set mark-directories On
 
