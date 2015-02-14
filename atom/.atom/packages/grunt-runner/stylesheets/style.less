@@ -20,6 +20,7 @@
 
     .grunt-panel-heading {
         padding: 8px !important;
+        float: left;
 
         &:before {
             font-family: 'Octicons Regular';
@@ -46,10 +47,22 @@
             color: red;
             content: "\f02d";
         }
+
+        .btn-group {
+            width: 100px;
+        }
+
+        .btn-group .btn {
+            width: 100%;
+        }
+    }
+
+    &.closed .btn-group, &.closed .btn {
+        width: auto !important;
     }
 
     .panel-body {
-        max-height: e( "calc( 100% - 36px )" );
+        max-height: e( "calc( 100% )" );
         overflow-y: scroll;
 
         li {
@@ -91,9 +104,7 @@
         }
     }
 
-    .panel-body.closed{
-        padding: 0px;
-        max-height: 0px;
-        margin-top: -1px;
+    &.closed .panel-body{
+        display: none;
     }
 }

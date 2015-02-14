@@ -11,7 +11,7 @@
     "package",
     "run"
   ],
-  "version": "0.6.0",
+  "version": "0.7.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/nickclaw/atom-grunt-runner"
@@ -28,18 +28,16 @@
   "dependencies": {
     "grunt": "~0.4.2"
   },
-  "readme": "[grunt-runner](https://atom.io/packages/grunt-runner)\n================\n\nBuild your project using Grunt from Atom.\n\n![in action!](http://i.imgur.com/bqn9QQY.png)\n\n## How to use\n * Set a path to your local `grunt-cli` in the settings\n (may not be necessary).\n * Open a project that has a `Gruntfile.js` in the root.\n * Open the task list (`ctrl-alt-g`) and choose a task to run, or input a new one.\n * The output from the grunt task will be shown in bottom toolbar. Toggle\n the log with `ctrl-alt-t`, toggle the entire toolbar with\n `ctrl-alt-shift-t`. The toolbar will appear automatically if Grunt Runner was able to find and\n parse a `Gruntfile`, otherwise you can toggle it on yourself.\n * If your task doesn't end automatically (e.g. watches files for changes) you\n can force it stop from the toolbar or by pressing `ctrl-alt-shift-g`.\n\nSome [issues still exist](#known-issues).\n\n## Installation\n\nInstall Grunt Runner package using the command line\n\n    apm install grunt-runner\n\nOr install it from the Atom Package Manager.\n\n## Known issues\n\n * The Gruntfile must be in the root of your project directory to successfully\n get the available tasks. Additionally, all `grunt` commands will be called\n in the root directory.\n\n * Tasks added to a Gruntfile will not be automatically added until the project\n is reloaded or the page gets refreshed. They will still be callable from from\n the toolbar.\n\n * Currently hard to add tasks that prefix another task. For example, if you\n have a task in the task list called `develop`, it is impossible to add or call\n a task called `dev`\n",
+  "readme": "[grunt-runner](https://atom.io/packages/grunt-runner)\n================\n\nBuild your project using Grunt from Atom.\n\n![in action!](http://i.imgur.com/bqn9QQY.png)\n\n## How to use\n 1. Open a project with a Gruntfile in the project root.\n 2. Open the task list (`ctrl-alt-g`) and choose a task to run, or input a new one.\n 3. The output from the grunt task will be shown in bottom toolbar. Toggle\n the log with `ctrl-alt-t`, toggle the entire toolbar with\n `ctrl-alt-shift-t`. The toolbar will appear automatically if Grunt Runner was able to find and\n parse a `Gruntfile`, otherwise you can toggle it on yourself.\n 4. If your task doesn't end automatically (e.g. watches files for changes) you\n can force it stop from the toolbar or by pressing `ctrl-alt-shift-g`.\n\n ## Notes\n 1. By default this package will try to use the the grunt module in your `[projectDir]/node_modules`\n directory. If for some reason that doesn't work, you can choose a path to look for the grunt module\n in by going to the settings. (e.g. `/usr/bin` or `~/path-to-global/node_modules`)\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/nickclaw/atom-grunt-runner/issues"
   },
   "homepage": "https://github.com/nickclaw/atom-grunt-runner",
-  "_id": "grunt-runner@0.6.0",
-  "dist": {
-    "shasum": "2c6d0b04840970e90bc11c963f3f81ed2a857eb3"
-  },
-  "_resolved": "/private/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-1141130-49869-uyqy0t/package.tgz",
-  "_from": "/private/var/folders/9l/q9klhdys15xcxrqxpmh76ccr0000gn/T/d-1141130-49869-uyqy0t/package.tgz",
+  "_id": "grunt-runner@0.7.0",
+  "_shasum": "67bcd3fc66dcd068bcbc9f8011f1109b3cdd1b5f",
+  "_resolved": "file:../d-115114-49208-hqz9r6/package.tgz",
+  "_from": "../d-115114-49208-hqz9r6/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

@@ -16,63 +16,98 @@ module.exports = class ResultsView extends View
     process: null,
     taskList: null,
 
+    originalPaths: process.env.NODE_PATH.split(':'),
+
+
     # html layout
     @content: ->
         @div class: 'grunt-runner-resizer tool-panel panel-bottom', =>
           @div class: 'grunt-runner-resizer-handle'
-          @div class: 'grunt-runner-results tool-panel native-key-bindings', =>
+          @div outlet: 'container', class: 'grunt-runner-results tool-panel native-key-bindings', =>
               @div outlet:'status', class: 'grunt-panel-heading', =>
                   @div class: 'btn-group', =>
-                      @button outlet:'startbtn', click:'toggleTaskList', class:'btn', 'Start Grunt'
-                      @button outlet:'stopbtn', click:'stopProcess', class:'btn', 'Stop Grunt'
+                      @button outlet:'startstopbtn', click:'startStopAction', class:'btn', 'Start Grunt'
                       @button outlet:'logbtn', click:'toggleLog', class:'btn', 'Toggle Log'
                       @button outlet:'panelbtn', click:'togglePanel', class:'btn', 'Hide'
-              @div outlet:'panel', class: 'panel-body padded closed', =>
+              @div outlet:'panel', class: 'panel-body padded', =>
                   @ul outlet:'errors', class: 'list-group'
 
     # called after the view is constructed
-    # gets the projects current path and launches a task
-    # to parse the projects gruntfile if it exists
+    # initialize list and triggers processing of the gruntfile
     initialize:(state = {}) ->
-        @path = atom.project.getPath();
+        view = @
+
+        atom.project.on 'path-changed', -> view.parseGruntFile()
+
         @taskList = new ListView @startProcess.bind(@), state.taskList
         @on 'mousedown', '.grunt-runner-resizer-handle', (e) => @resizeStarted(e)
 
-        view = @
-        Task.once require.resolve('./parse-config-task'), atom.project.getPath()+'/gruntfile', ({error, tasks})->
-            # now that we're ready, add some tooltips
-            view.startbtn.setTooltip "", command: 'grunt-runner:run'
-            view.stopbtn.setTooltip "", command: 'grunt-runner:stop'
-            view.logbtn.setTooltip "", command: 'grunt-runner:toggle-log'
-            view.panelbtn.setTooltip "", command: 'grunt-runner:toggle-panel'
+        @startstopbtn.setTooltip "Start", command: 'grunt-runner:run'
+        @logbtn.setTooltip "", command: 'grunt-runner:toggle-log'
+        @panelbtn.setTooltip "", command: 'grunt-runner:toggle-panel'
 
-            # log error or add panel to workspace
-            if error
-                console.warn "grunt-runner: #{error}"
-                view.addLine "Error loading gruntfile: #{error}", "error"
-                view.toggleLog()
-            else
-                view.togglePanel()
-                view.taskList.addItems tasks
+
+    # launches a task to parse the projects gruntfile if it exists
+    parseGruntFile:(starting) ->
+        @path = atom.project.getPath()
+
+        gruntPaths = atom.config.get('grunt-runner').gruntPaths
+        gruntPaths = if Array.isArray gruntPaths then gruntPaths else []
+        paths = @originalPaths.concat(gruntPaths, [@path + '/node_modules'])
+        process.env.NODE_PATH = paths.join(':')
+        view = @
+
+        # clear panel output and tasklist items
+        @emptyPanel()
+        @taskList.clearItems()
+        @status.attr 'data-status', null
+
+        if !@path
+            @addLine "No project opened."
+        else
+            Task.once require.resolve('./parse-config-task'), @path+'/gruntfile', ({error, tasks})->
+
+                # log error or add panel to workspace
+                if error
+                    view.addLine "Error loading gruntfile: #{error}", "error"
+                    view.toggleLog()
+                else
+                    view.addLine "Grunt file parsed, found #{tasks.length} tasks"
+                    view.togglePanel()
+                    view.taskList.addItems tasks
+
+    startStopAction: ->
+        return @toggleTaskList() if @process == null
+        return @stopProcess()
+
+    setStartStopBtn:(isRunning) ->
+        if isRunning
+            @.startstopbtn.text 'Stop'
+            @.startstopbtn.setTooltip "", command: 'grunt-runner:stop'
+        else
+            @.startstopbtn.text 'Start'
+            @.startstopbtn.setTooltip "", command: 'grunt-runner:run'
 
     # called to start the process
     # task name is gotten from the input element
     startProcess:(task) ->
         @stopProcess()
         @emptyPanel()
-        @toggleLog() if @panel.hasClass 'closed'
         @status.attr 'data-status', 'loading'
 
         @addLine "Running : grunt #{task}", 'subtle'
 
+        @.setStartStopBtn true
+
         @gruntTask task, @path
 
     # stops the current process if it is running
-    stopProcess: ->
-        @addLine 'Grunt task was ended', 'warning' if @process and not @process?.killed
+    stopProcess:(noMessage) ->
+        @addLine 'Grunt task was ended', 'warning' if @process and not @process?.killed and not noMessage
         @process?.kill()
         @process = null
         @status.attr 'data-status', null
+        @.setStartStopBtn false
 
     # toggles the visibility of the entire panel
     togglePanel: ->
@@ -81,7 +116,11 @@ module.exports = class ResultsView extends View
 
     # toggles the visibility of the log
     toggleLog: ->
-        @panel.toggleClass 'closed'
+        @container.toggleClass 'closed'
+        if @container.hasClass 'closed'
+            @container.parent().height 'auto'
+        else
+            @container.parent().height '110px'
 
     # toggles the visibility of the tasklist
     toggleTaskList: ->
@@ -135,10 +174,13 @@ module.exports = class ResultsView extends View
     gruntTask:(task, path) ->
         stdout = (out) ->
             @addLine out
+        stderr = (err) ->
+            @addLine err, 'error'
         exit = (code) ->
             atom.beep() unless code == 0
             @addLine "Grunt exited: code #{code}.", if code == 0 then 'success' else 'error'
             @status.attr 'data-status', if code == 0 then 'ready' else 'error'
+            @stopProcess true
 
         try
             @process = new BufferedProcess
@@ -150,6 +192,7 @@ module.exports = class ResultsView extends View
         catch e
             # this never gets caught...
             @addLine "Could not find grunt command. Make sure to set the path in the configuration settings.", "error"
+            @stopProcess()
 
     resizeStarted: =>
         $(document.body).on('mousemove', @resizeGruntRunnerView)

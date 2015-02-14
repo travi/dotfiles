@@ -32,7 +32,7 @@
 
   // Checklist icon
   &[data-name$="TODO"]:before { .checklist-icon; .medium-yellow; }
-  
+
   //Makefile icon
   &[data-name$="Makefile"]:before { .checklist-icon; .medium-yellow; }
   &[data-name$="makefile"]:before { .checklist-icon; .medium-yellow; }
@@ -79,12 +79,12 @@
 
   // HTML5 icon
   &[data-name$=".html"]:before { .html5-icon; .medium-orange; }
-  &[data-name$=".shtml"]:before { .html5-icon; .medium-cyan; }
-  &[data-name$=".haml"]:before { .html5-icon; .light-red;     }
+  &[data-name$=".shtml"]:before { .html5-icon; .medium-cyan;  }
+  &[data-name$=".haml"]:before { .haml-icon; .medium-yellow;  }
   &[data-name$=".jade"]:before { .html5-icon; .medium-green;  }
   &[data-name$=".jsp"]:before  { .html5-icon; .medium-purple; }
   &[data-name$=".ctp"]:before  { .html5-icon; .medium-blue;   }
-  &[data-name$=".ejs"]:before  { .html5-icon; .medium-green; }
+  &[data-name$=".ejs"]:before  { .html5-icon; .medium-green;  }
 
   // Mustache icon
   &[data-name$=".hbs"]:before,
@@ -104,9 +104,14 @@
   &[data-name=".mailmap"]:before        { .gear-icon;                 }
   &[data-name$=".editorconfig"]:before  { .gear-icon; .medium-orange; }
   &[data-name$=".jshintrc"]:before      { .gear-icon; .medium-yellow; }
+  &[data-name$=".jshintignore"]:before  { .gear-icon;                 }
   &[data-name$=".jscsrc"]:before        { .gear-icon; .medium-yellow; }
   &[data-name$=".module"]:before        { .gear-icon; .medium-blue;   }
   &[data-name$=".htaccess"]:before      { .gear-icon; .medium-red;    }
+
+  // Nodemon icon
+  &[data-name="nodemon.json"]:before,
+  &[data-name=".nodemonignore"]:before  { .gear-icon; .medium-green;  }
 
   // Npm icon
   &[data-name=".npmrc"]:before           { .node-icon; }
@@ -161,6 +166,7 @@
 
   // Coffee icon
   &[data-name$=".coffee"]:before    { .coffee-icon; .medium-maroon; }
+  &[data-name$=".cjsx"]:before      { .coffee-icon; .dark-maroon; }
   &[data-name$=".litcoffee"]:before { .coffee-icon; .light-maroon;  }
 
 
@@ -215,7 +221,7 @@
   &[data-name$=".m"]:before       { .objc-icon; .medium-blue; }
   &[data-name$=".mm"]:before      { .objc-icon; .medium-blue; }
   &[data-name$=".swift"]:before   { .swift-icon; .medium-green; }
-  
+
   ///D lang icon
   &[data-name$=".d"]:before     { .cpp-icon; .medium-blue; }
   &[data-name$=".di"]:before     { .cpp-icon; .medium-blue; }
@@ -270,6 +276,9 @@
   &[data-name="Gulpfile.coffee"]:before,
   &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
 
+  // Ionic icon
+  &[data-name="ionic.project"]:before { .ionic-icon; .medium-blue; }
+
   // Travis icon
   &[data-name^=".travis"]:before { .travis-icon; .medium-red; }
 
@@ -287,7 +296,7 @@
   &[data-name$=".psd1"]:before { .terminal-icon; .medium-blue; }
   &[data-name$=".ps1m"]:before { .terminal-icon; .medium-blue; }
   &[data-name$=".ps1xml"]:before { .terminal-icon; .medium-blue; }
-  
+
   // Readme
   &[data-name="README.md"]:before,
   &[data-name="Readme.md"]:before,
