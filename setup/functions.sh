@@ -29,12 +29,12 @@ fail() {
 windows() { [[ -n "$WINDIR" ]]; }
 
 is_symbolic_link() {
-    local link_name=$1
+    local path=$1
 
     if windows; then
-        fsutil reparsepoint query "${link_name}" > /dev/null
+        fsutil reparsepoint query "${path}" > /dev/null
     else
-        [[ -h ${link_name} ]]
+        [[ -h ${path} ]]
     fi
 }
 
