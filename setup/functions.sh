@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_ROOT="`pwd`/../"
+DOTFILES_ROOT="$(pwd)/../"
 DOTFILES_LINK="$HOME/.dotfiles"
 
 . "$DOTFILES_LINK/bash/colors.sh"
@@ -28,6 +28,16 @@ fail() {
 
 windows() { [[ -n "$WINDIR" ]]; }
 
+is_symbolic_link() {
+    local link_name=$1
+
+    if windows; then
+        fsutil reparsepoint query "${link_name}" > /dev/null
+    else
+        [[ -h ${link_name} ]]
+    fi
+}
+
 create_link() {
     local link_target=$1
     local link_name=$2
@@ -41,7 +51,7 @@ create_link() {
             cmd <<< "mklink \"$2\" \"${1//\//\\}\"" > /dev/null
         fi
     else
-        ln -s ${link_target} ${link_name}
+        ln -s "${link_target}" "${link_name}"
     fi
 
     success "linked ${link_target} to ${link_name}"
@@ -52,41 +62,41 @@ link_file() {
     local link_name=$2
 
     # is a broken symbolic link
-    if [ -h ${link_name} ] && [ ! -e ${link_name} ]; then
+    if is_symbolic_link "${link_name}" && [[ ! -e ${link_name} ]]; then
         warn "Removing broken link for ${link_name}"
-        rm ${link_name}
+        rm "${link_name}"
     fi
 
     # is a symbolic link
-    if [ -h ${link_name} ]; then
+    if is_symbolic_link "${link_name}"; then
         info "${link_name} already linked"
     # is a real file or directory
-    elif [ -f ${link_name} ] || [ -d ${link_name} ]; then
+    elif [[ -f ${link_name} ]] || [[ -d ${link_name} ]]; then
         warn "${link_name} already exists"
     # safe to create symbolic link
     else
-        create_link ${link_target} ${link_name}
+        create_link "${link_target}" "${link_name}"
     fi
 }
 
 link_dotfile() {
     local source=$1
-    local filename=`basename ${source}`
+    local filename=$(basename "${source}")
     local dest="$HOME/$filename"
 
-    link_file ${source} ${dest}
+    link_file "${source}" "${dest}"
 }
 
 link_dotfiles_directory() {
-    link_file ${DOTFILES_ROOT} ${DOTFILES_LINK}
+    link_file "${DOTFILES_ROOT}" "${DOTFILES_LINK}"
 }
 
 link_dotfiles() {
     local source;
 
-    for source in `find ${DOTFILES_LINK}/ -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*'`
+    for source in $(find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*')
     do
-        link_dotfile ${source}
+        link_dotfile "${source}"
     done
 }
 
@@ -94,13 +104,13 @@ link_maven_extensions() {
     local source;
     local extension;
 
-    if [ -z $M2_HOME ]; then
+    if [[ -z $M2_HOME ]]; then
         warn "M2_HOME environment variable not set"
     else
-        for source in `find ${DOTFILES_LINK}/maven/extensions -mindepth 1 -maxdepth 1`
+        for source in $(find "${DOTFILES_LINK}/maven/extensions" -mindepth 1 -maxdepth 1)
         do
-            extension=`basename ${source}`
-            link_file ${source} "$M2_HOME/lib/ext/${extension}"
+            extension=$(basename "${source}")
+            link_file "${source}" "$M2_HOME/lib/ext/${extension}"
         done
     fi
 }
@@ -108,12 +118,12 @@ link_maven_extensions() {
 source_scripts() {
     local profile="$HOME/.bash_profile"
 
-    if [ -e ${profile} ]; then
+    if [[ -e ${profile} ]]; then
         info ".bash_profile already exists"
     else
-        touch ${profile}
-        echo ". $HOME/.dotfiles/bash/source.sh" >> ${profile}
-        . ${profile}
+        touch "${profile}"
+        echo ". $HOME/.dotfiles/bash/source.sh" >> "${profile}"
+        . "${profile}"
         success "added .bash_profile and sourced configuration files"
     fi
 }
