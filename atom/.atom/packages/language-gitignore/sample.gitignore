@@ -1,0 +1,19 @@
+#---------------------------------------#
+# Header Block                          #
+#---------------------------------------#
+
+### Header Line
+
+## Section
+
+# Comment
+
+filename
+/directory
+
+!negated
+*/**/wildcard
+
+\!escaped-negation
+\*escaped-wildcard
+\\escaped-slash
