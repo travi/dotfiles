@@ -46,9 +46,9 @@ create_link() {
         # Windows needs to be told if it's a directory or not. Infer that.
         # Also: note that we convert `/` to `\`. In this case it's necessary.
         if [[ -d ${link_target} ]]; then
-            cmd <<< "mklink /D \"$2\" \"${1//\//\\}\"" > /dev/null
+            cmd <<< "mklink /D \"$2\" \"${1//\//\\}\""
         else
-            cmd <<< "mklink \"$2\" \"${1//\//\\}\"" > /dev/null
+            cmd <<< "mklink \"$2\" \"${1//\//\\}\""
         fi
     else
         ln -s "${link_target}" "${link_name}"
