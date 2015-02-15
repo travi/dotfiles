@@ -1,0 +1,14 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'npm-docs'
+      'submenu': [
+        { 'label': 'Readme', 'command': 'npm-docs:readme' },
+        { 'label': 'Open',   'command': 'npm-docs:open'},
+        { 'label': 'GitHub', 'command': 'npm-docs:homepage'}
+      ]
+    ]
+  }
+]

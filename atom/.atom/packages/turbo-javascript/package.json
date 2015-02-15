@@ -1,0 +1,42 @@
+{
+  "name": "turbo-javascript",
+  "main": "./lib/turbo-javascript",
+  "version": "0.0.7",
+  "description": "A collection of commands and snippets for optimizing Javascript development productivity",
+  "activationEvents": [
+    "turbo-javascript:end-line",
+    "turbo-javascript:end-new-line"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/extrabacon/atom-turbo-javascript"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# turbo-javascript\nA collection of commands and snippets for optimizing Javascript development productivity.\n\n## Commands\n\n### Easy semi-colons\nUse the following keymaps for quickly ending lines with semi-colons. It will insert the semi-colon only if there isn't one already.\n\n##### End Line (CTRL + ;)\nTerminates the current line with a semi-colon.\n\n##### End New Line (CTRL + ENTER)\nTerminates the current line with a semi-colon and a new line.\n\n## Snippets\n\nSnippets are optimized to be short and easy to remember. Some snippets are \"chainable\" and render differently when preceded by a \".\". For example, \".fe\" renders a chain-friendly version of `.forEach(iterator)`, while \"fe\" renders a full code block.\n\n### Console\n\nQuickly log things to the console\n\n#### cl: console.log\n```js\nconsole.log(${0});\n```\n\n#### ce: console.error\n```js\nconsole.error(${0});\n```\n\n#### cw: console.warn\n```js\nconsole.warn(${0});\n```\n\n### Flow Control\n\nFast expansion for common flow control statements\n\n#### if: if statement\n```js\nif (${1:condition}) {\n  ${0}\n}\n```\n\n#### el: else statement\n```js\nelse {\n  ${0}\n}\n```\n\n#### ei: else if statement\n```js\nelse if (${1:condition}) {\n  ${0}\n}\n```\n\n#### fl: for loop\n```js\nfor (var ${1:i} = 0, ${2:len} = ${3:iterable}.length; ${1:i} < ${2:len}; ${1:i}++) {\n  ${0}\n});\n```\n\n#### fi: for in loop\n```js\nfor (var ${1:key} in ${2:source}) {\n  if (${2:source}.hasOwnProperty(${1:key})) {\n    ${0}\n  }\n}\n```\n\n#### wl: while loop\n```js\nwhile (${1:condition}) {\n  ${0}\n}\n```\n\n### Functions\n\nDeclare and manipulate functions with ease\n\n#### f: single-line anonymous function\n```js\nfunction (${1:arguments}) {${0}}\n```\n\n#### fn: named function\n```js\nfunction ${1:name}(${2:arguments}) {\n  ${0}\n}\n```\n\n#### iife: immediately-invoked function expression\n```js\n(function (${1:arguments}) {\n  ${0}\n})(${2});\n```\n\n#### fa: function apply\n```js\n${1:fn}.apply(${2:this}, ${3:arguments})\n```\n\n#### fc: function call\n```js\n${1:fn}.call(${2:this}, ${3:arguments})\n```\n\n#### fb: function bind\n```js\n${1:fn}.bind(${2:this}, ${3:arguments})\n```\n\n### Iterables\n\nQuickly add functional-style call chains with Javascript Array.prototype methods. All iterable snippets have a chainable version. To use the chain-optimized version, type a \".\" before the snippet. For example, `.map` will render `.map(function (${1:item}) {${0}})` instead of the full version.\n\n#### fe: for each loop (chainable)\n```js\n${1:iterable}.forEach(function (${2:item}) {\n  ${0}\n});\n```\n\n#### map: map function (chainable)\n```js\n${1:iterable}.map(function (${2:item}) {\n  ${0}\n});\n```\n\n#### reduce: reduce function (chainable)\n```js\n${1:iterable}.reduce(function (${2:previous}, ${3:current}) {\n  ${0}\n}${4:, initial});\n```\n\n#### filter: filter function (chainable)\n```js\n${1:iterable}.filter(function (${2:item}) {\n  ${0}\n});\n```\n\n### Objects and types\n\nShortcuts for dealing with types, objects, classes and inheritance.\n\n#### :`:key/value pair\n```js\n${1:key}: ${2:'value'}\n```\n\n#### proto: prototype method (chainable)\n```js\n${1:Class}.prototype.${2:methodName} = function (${3:arguments}) {\n  ${0}\n}\n```\n\n#### tof: typeof obj === 'TypeName'\n```js\ntypeof ${1:source} === '${2:undefined}'\n```\n\n#### iof: obj instanceof Constructor\n```js\n${1:source} instanceof ${2:Object}\n```\n\n#### Built-in types shortcuts:\n  * st: String\n  * nu: Number\n  * ob: Object\n  * ar: Array\n  * da: Date\n  * rx: RegExp\n\n### Returning values\n\nQuickly return values from your functions with these commonly used return statements\n\n#### r: return\n```js\nreturn ${0};\n```\n\n#### rth: return this\n```js\nreturn this;\n```\n\n#### rn: return null\n```js\nreturn null;\n```\n\n#### rt: return true\n```js\nreturn true;\n```\n\n#### rf: return false\n```js\nreturn false;\n```\n\n#### r0: return 0\n```js\nreturn 0;\n```\n\n### Promises\n\nUsing Promises/A+? Quickly connect your promise flow with the following snippets.\n\n#### then: Promise.then (chainable)\n```js\n${1:promise}.then(function (${2:value}) {\n  ${0}\n});\n```\n\n#### catch: Promise.catch (chainable)\n```js\n${1:promise}.catch(function (${2:err}) {\n  ${0}\n});\n```\n\n### BDD testing\n\nBDD-style testing shortcuts for Mocha, Jasmine and others\n\n#### desc: describe\n```js\ndescribe('${1:description}', function () {\n  ${0}\n});\n```\n#### its: synchronous \"it\"\n```js\nit('${1:description}', function () {\n  ${0}\n});\n```\n#### ita: asynchronous \"it\"\n```js\nit('${1:description}', function (done) {\n  ${0}\n});\n```\n\n### Timers\n\nTimer shortcuts\n\n#### st: setTimeout\n```js\nsetTimeout(function () {\n  ${0}\n}, ${1:delay});\n```\n\n#### si: setInterval\n```js\nsetTimeout(function () {\n  ${0}\n}, ${1:delay});\n```\n\n### Node.js specifics\n\nThe following snippets apply only within Node.js or scripts with Browserify\n\n#### cb: Node.js style callback\n```js\nfunction (err${1:, value}) {${0}}\n```\n\n#### re: require a module\n```js\nrequire('${1:module}');\n```\n\n#### ex: export member\n```js\nexports.${1:name} = ${2:value};\n```\n\n#### me: module.exports\n```js\nmodule.exports = ${1:name};\n```\n\n#### on: attach an event handler (chainable)\n```js\n${1:emitter}.on('${2:event}', function (${3:arguments}) {\n  ${0}\n});\n```\n\n#### nt: Process.nextTick\n```js\nprocess.nextTick(function () {\n  ${0}\n});\n```\n\n#### pe: Process.exit\n```js\nprocess.exit(${1:code});\n```\n\n#### Asserts\n  * ase: assert.equal\n  * asn: assert.notEqual\n  * asd: assert.deepEqual\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/extrabacon/atom-turbo-javascript/issues"
+  },
+  "homepage": "https://github.com/extrabacon/atom-turbo-javascript",
+  "_id": "turbo-javascript@0.0.7",
+  "_shasum": "c6d9700d34dba5340df133948b88c522c81f3ed3",
+  "_resolved": "file:../d-115114-49412-1i3i0v1/package.tgz",
+  "_from": "../d-115114-49412-1i3i0v1/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/turbo-javascript.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
