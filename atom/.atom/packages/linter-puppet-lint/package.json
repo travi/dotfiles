@@ -1,0 +1,41 @@
+{
+  "name": "linter-puppet-lint",
+  "linter-package": true,
+  "activationEvents": [],
+  "main": "./lib/init",
+  "version": "0.2.8",
+  "description": "Linter plugin for Puppet, using puppet-lint",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomLinter/linter-puppet-lint"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# linter-puppet-lint\n\nThis package will lint your `.pp` opened files in Atom through [puppet-lint](http://puppet-lint.com/).\n\n## Installation\n\n* Install [puppet-lint](http://puppet-lint.com/)\n* `$ apm install language-puppet` (if you don't have [language-puppet](https://github.com/atom/language-puppet) installed)\n* `$ apm install linter` (if you don't have [linter](https://github.com/AtomLinter/Linter) installed)\n* `$ apm install linter-puppet-lint`\n\n## Settings\nYou can configure linter-puppet-lint by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):\n```\n'linter-puppet-lint':\n  'puppetLintArguments': '--no-autoloader_layout-check'\n  'puppetLintExecutablePath': null # puppet-lint path. run 'which puppet-lint' to find the path\n```\n\n## Donation\n[![Share the love!](https://chewbacco-stuff.s3.amazonaws.com/donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/AtomLinter/linter-puppet-lint/issues"
+  },
+  "homepage": "https://github.com/AtomLinter/linter-puppet-lint",
+  "_id": "linter-puppet-lint@0.2.8",
+  "_shasum": "3fccc74f48ad077688a9cdab48ce9ba5becc847b",
+  "_resolved": "file:../d-115116-11629-17hp3xb/package.tgz",
+  "_from": "../d-115116-11629-17hp3xb/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/init.coffee",
+        "lib/linter-puppet-lint.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
