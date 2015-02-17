@@ -11,3 +11,6 @@
   core: {}
   linter: {}
   "svg-preview": {}
+  "github-issues": {}
+  "atom-beautify":
+    _analyticsUserId: "b46fb249-4d6e-4986-98cc-44f290a836d6"
