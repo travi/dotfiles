@@ -35,7 +35,7 @@
 	autorebase = always
 
 [alias]
-    ad = add -A
+    ad = "!f() { git add -A $1 && git status; }; f"
     st = status
     co = checkout
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
