@@ -9,3 +9,5 @@
 . ~/.dotfiles/git/functions.sh
 
 . ~/.dotfiles/bash/prompt.sh
+
+[ -f /Users/admin/.travis/travis.sh ] && . /Users/admin/.travis/travis.sh
