@@ -1,14 +1,14 @@
 tap caskroom/cask
 install brew-cask
 
-cask install virtualbox 2> /dev/null
-cask install vagrant 2> /dev/null
+cask install virtualbox
+cask install vagrant
 
-cask install caffeine 2> /dev/null
-cask install charles 2> /dev/null
-cask install vlc 2> /dev/null
-cask install atom 2> /dev/null
-cask install google-chrome 2> /dev/null
-cask install firefox 2> /dev/null
+cask install caffeine
+cask install charles
+cask install vlc
+cask install atom
+cask install google-chrome
+cask install firefox
 
 cask cleanup
