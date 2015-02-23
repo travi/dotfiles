@@ -2,9 +2,8 @@
 ScopedPropertyStore = require('scoped-property-store')
 _ = require('underscore-plus')
 Uuid = require('node-uuid')
+SymbolProvider = require('./symbol-provider')
 FuzzyProvider = require('./fuzzy-provider')
-Suggestion = require('./suggestion')
-Provider = require('./provider')
 
 module.exports =
 class ProviderManager
@@ -12,13 +11,11 @@ class ProviderManager
   fuzzyRegistration: null
   store: null
   subscriptions: null
-  legacyProviderRegistrations: null
   globalBlacklist: null
 
   constructor: ->
     @subscriptions = new CompositeDisposable
     @globalBlacklist = new CompositeDisposable
-    @legacyProviderRegistrations = new WeakMap
     @providers = new Map
     @store = new ScopedPropertyStore
     @subscriptions.add(atom.config.observe('autocomplete-plus.enableBuiltinProvider', (value) => @toggleFuzzyProvider(value)))
@@ -36,7 +33,6 @@ class ProviderManager
     @store = null
     @providers?.clear()
     @providers = null
-    @legacyProviderRegistrations = null
 
   providersForScopeChain: (scopeChain) =>
     return [] unless scopeChain?
@@ -63,7 +59,10 @@ class ProviderManager
 
     if enabled
       return if @fuzzyProvider? or @fuzzyRegistration?
-      @fuzzyProvider = new FuzzyProvider()
+      if atom.config.get('autocomplete-plus.defaultProvider') is 'Symbol'
+        @fuzzyProvider = new SymbolProvider()
+      else
+        @fuzzyProvider = new FuzzyProvider()
       @fuzzyRegistration = @registerProvider(@fuzzyProvider)
     else
       @fuzzyRegistration.dispose() if @fuzzyRegistration?
@@ -88,9 +87,6 @@ class ProviderManager
 
   isValidProvider: (provider) ->
     return provider? and provider.requestHandler? and typeof provider.requestHandler is 'function' and provider.selector? and provider.selector isnt '' and provider.selector isnt false
-
-  isLegacyProvider: (provider) ->
-    return provider? and provider instanceof Provider
 
   providerUuid: (provider) =>
     return false unless provider?
@@ -140,7 +136,7 @@ class ProviderManager
         blacklistRegistration = @store.addProperties(blacklistid, blacklistproperties)
 
     # Register Provider's Provider Blacklist (If Present)
-    # TODO: Support Providers Other Than FuzzyProvider
+    # TODO: Support Providers Other Than SymbolProvider
     if provider.providerblacklist?['autocomplete-plus-fuzzyprovider']?.length
       providerblacklistid = id + '-providerblacklist'
       providerblacklist = provider.providerblacklist['autocomplete-plus-fuzzyprovider'].split(',')
@@ -170,43 +166,3 @@ class ProviderManager
 
   # ^^^ PROVIDER API ^^^
   # |||              |||
-
-  # For Legacy use only!!
-  registerLegacyProvider: (legacyProvider, selector) =>
-    return unless legacyProvider? and legacyProvider.buildSuggestionsShim?
-    return unless selector? and selector.trim() isnt ''
-
-    legacyProviderRegistration = @legacyProviderRegistrations.get(legacyProvider.constructor)
-
-    if legacyProviderRegistration
-      legacyProviderRegistration.service.dispose()
-      legacyProviderRegistration.selectors.push(selector) if legacyProviderRegistration.selectors.indexOf(selector) < 0
-
-    else
-      legacyProviderRegistration = {selectors: [selector]}
-      @legacyProviderRegistrations.set(legacyProvider.constructor, legacyProviderRegistration)
-
-    selector = legacyProviderRegistration.selectors.join(',')
-
-    legacyProviderRegistration.shim = @shimLegacyProvider(legacyProvider, selector)
-    legacyProviderRegistration.service = @registerProvider(legacyProviderRegistration.shim)
-    return legacyProviderRegistration.service
-
-  shimLegacyProvider: (legacyProvider, selector) ->
-    shim =
-      legacyProvider: legacyProvider
-      requestHandler: legacyProvider.buildSuggestionsShim
-      selector: selector
-      dispose: ->
-        requestHandler = null
-        legacyProvider.dispose() if legacyProvider.dispose?
-        legacyProvider = null
-        selector = null
-    shim
-
-  unregisterLegacyProvider: (legacyProvider) =>
-    return unless legacyProvider?
-    legacyProviderRegistration = @legacyProviderRegistrations.get(legacyProvider.constructor)
-    if legacyProviderRegistration
-      legacyProviderRegistration.service.dispose()
-      @legacyProviderRegistrations.delete(legacyProvider.constructor)

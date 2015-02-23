@@ -1,7 +1,4 @@
 {Disposable} = require('atom')
-Provider = require('./provider')
-Suggestion = require('./suggestion')
-{deprecate} = require('grim')
 
 module.exports =
   config:
@@ -17,11 +14,12 @@ module.exports =
       type: 'integer'
       default: 100
       order: 2
-    maxSuggestions:
-      title: 'Maximum Suggestions'
-      description: 'The list of suggestions will be limited to this number.'
+    maxVisibleSuggestions:
+      title: 'Maximum Visible Suggestions'
+      description: 'The suggestion list will only show this many suggestions.'
       type: 'integer'
       default: 10
+      minimum: 1
       order: 3
     confirmCompletion:
       title: 'Keymap For Confirming A Suggestion'
@@ -65,34 +63,52 @@ module.exports =
       type: 'boolean'
       default: false
       order: 9
+    minimumWordLength:
+      description: "Only autocomplete when you've typed at least this many characters."
+      type: 'integer'
+      default: 1
+      order: 10
     enableBuiltinProvider:
       title: 'Enable Built-In Provider'
       description: 'The package comes with a built-in provider that will provide suggestions using the words in your current buffer or all open buffers. You will get better suggestions by installing additional autocomplete+ providers. To stop using the built-in provider, disable this option.'
       type: 'boolean'
       default: true
-      order: 10
+      order: 11
     builtinProviderBlacklist:
       title: 'Built-In Provider Blacklist'
       description: 'Don\'t use the built-in provider for these selector(s).'
       type: 'string'
       default: '.source.gfm'
-      order: 11
+      order: 12
     backspaceTriggersAutocomplete:
       title: 'Allow Backspace To Trigger Autocomplete'
       description: 'If enabled, typing `backspace` will show the suggestion list if suggestions are available. If disabled, suggestions will not be shown while backspacing.'
       type: 'boolean'
       default: true
-      order: 12
+      order: 13
     suggestionListFollows:
       title: 'Suggestions List Follows'
       description: 'With "Cursor" the suggestion list appears at the cursor\'s position. With "Word" it appers at the beginning of the word that\'s being completed.'
       type: 'string'
       default: 'Cursor'
       enum: ['Cursor', 'Word']
-      order: 13
+      order: 14
+    defaultProvider:
+      description: 'Using the Symbol provider is experimental. You must reload Atom to use a new provider after changing this option.'
+      type: 'string'
+      default: 'Fuzzy'
+      enum: ['Fuzzy', 'Symbol']
+      order: 15
 
   # Public: Creates AutocompleteManager instances for all active and future editors (soon, just a single AutocompleteManager)
   activate: ->
+    # Upgrade to the new config key name
+    oldMax = atom.config.get('autocomplete-plus.maxSuggestions')
+    if oldMax isnt 10
+      atom.config.transact ->
+        atom.config.set('autocomplete-plus.maxVisibleSuggestions', oldMax)
+        atom.config.unset('autocomplete-plus.maxSuggestions')
+
     @getAutocompleteManager()
     # @activateTimeout = setTimeout(@getAutocompleteManager, 0)
 
@@ -100,28 +116,6 @@ module.exports =
   deactivate: ->
     @autocompleteManager?.dispose()
     @autocompleteManager = null
-
-  registerProviderForEditorView: (provider, editorView) ->
-    @registerProviderForEditor(provider, editorView?.getModel())
-
-  # Private: Finds the autocomplete for the given TextEditor
-  # and registers the given provider
-  #
-  # provider - The new {Provider}
-  # editor - The {TextEditor} we should register the provider with
-  registerProviderForEditor: (provider, editor) ->
-    return unless @autocompleteManager?.providerManager?
-    return unless editor?.getGrammar()?.scopeName?
-    deprecate('registerProviderForEditor and registerProviderForEditorView are no longer supported. Please switch to the new API: https://github.com/atom-community/autocomplete-plus/wiki/Provider-API')
-    return @getAutocompleteManager().providerManager.registerLegacyProvider(provider, '.' + editor?.getGrammar()?.scopeName)
-
-  # Private: unregisters the given provider
-  #
-  # provider - The {Provider} to unregister
-  unregisterProvider: (provider) ->
-    return unless @getAutocompleteManager()?.providerManager?
-    deprecate('unregisterProvider is no longer supported. Please switch to the new API: https://github.com/atom-community/autocomplete-plus/wiki/Provider-API')
-    @getAutocompleteManager().providerManager.unregisterLegacyProvider(provider)
 
   getAutocompleteManager: ->
     if @activateTimeout?
@@ -131,9 +125,6 @@ module.exports =
     AutocompleteManager = require('./autocomplete-manager')
     @autocompleteManager = new AutocompleteManager()
     return @autocompleteManager
-
-  Provider: Provider # TODO: This is deprecated, and will be removed soon
-  Suggestion: Suggestion # TODO: This is deprecated, and will be removed soon
 
   #  |||              |||
   #  vvv PROVIDER API vvv

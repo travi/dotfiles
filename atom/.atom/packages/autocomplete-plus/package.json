@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-plus",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "main": "./lib/main",
   "description": "Display possible completions in the editor while typing",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/atom-community/autocomplete-plus"
   },
   "engines": {
-    "atom": ">=0.177.0*"
+    "atom": ">=0.177.0 <2.0.0"
   },
   "dependencies": {
     "async": ">=0.9.0",
@@ -18,6 +18,7 @@
     "node-uuid": ">=1.4.1",
     "scoped-property-store": ">=0.16.2",
     "temp": ">=0.7.0",
+    "selector-kit": "^0.1",
     "underscore-plus": ">=1.0.0"
   },
   "devDependencies": {
@@ -32,16 +33,16 @@
       }
     }
   },
-  "readme": "# autocomplete+ package [![Build Status](https://travis-ci.org/atom-community/autocomplete-plus.svg?branch=master)](https://travis-ci.org/atom-community/autocomplete-plus) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/atom-community/autocomplete-plus)\n\n\n[View the changelog](https://github.com/atom-community/autocomplete-plus/releases)\n\nView and insert possible completions in the editor while typing\n\n![Autocomplete+](http://s14.directupload.net/images/140304/y7r7g5df.gif)\n\n**Note:** In the example above, `Show Suggestions On Keystroke` is enabled.\n\n![The Show Suggestions On Keystroke Setting](https://cloud.githubusercontent.com/assets/744740/5886909/a7071c2a-a372-11e4-9894-f12db4e8a1ae.png)\n\n## Installation\n\n* APM: `apm install autocomplete-plus`\n* Preferences: Open Atom and go to `Preferences > Packages`, search for `autocomplete-plus`, and install it\n\n## Providers\n\n`autocomplete+` has a powerful autocomplete provider API, allowing provider authors to add language-specific behavior to this package.\n\nYou should *definitely* install additional providers (the default provider bundled with this package is somewhat crude): https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers\n\n## Usage\n\nJust type some stuff, and autocomplete+ will automatically show you some suggestions.\nPress `UP` and `DOWN` to select another suggestion, press `TAB` to confirm your selection. You can change the default keymap in `Preferences`:\n\n* Keymap For Confirming A Suggestion\n* Keymap For Navigating The Suggestion List\n\nAdditionally, the keymap can be customized in your keymap.cson:\n\n```coffeescript\n'atom-text-editor:not(mini).autocomplete-active':\n  'tab': 'unset!'\n  'enter': 'autocomplete-plus:confirm'\n  'up': 'unset!'\n  'down': 'unset!'\n  'ctrl-p': 'autocomplete-plus:select-previous'\n  'ctrl-n': 'autocomplete-plus:select-next'\n```\n\n## Features\n\n* Shows suggestions while typing\n* Includes a default provider (`FuzzyProvider`):\n  * Wordlist generation happens when you open a file, while editing the file, and on save\n  * Suggestions are calculated using `fuzzaldrin`\n* Exposes a provider API which can be used to extend the functionality of the package and provide targeted / contextually correct suggestions\n* Disable autocomplete for file(s) via blacklisting\n* Disable autocomplete for editor scope(s) via blacklisting\n\n## Provider API\n\nGreat autocomplete depends on having great autocomplete providers. If there is not already a great provider for the language / grammar that you are working in, please consider creating a provider.\n\n[Read the `Provider API` documentation](https://github.com/atom-community/autocomplete-plus/wiki/Provider-API) to learn how to create a new autocomplete provider.\n",
+  "readme": "# autocomplete+ package [![OS X Build Status](https://travis-ci.org/atom-community/autocomplete-plus.svg?branch=master)](https://travis-ci.org/atom-community/autocomplete-plus) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/4faqdkcw2d0ybgiv/branch/master?svg=true)](https://ci.appveyor.com/project/joefitzgerald/autocomplete-plus/branch/master)\n[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/atom-community/autocomplete-plus)\n\n\n[View the changelog](https://github.com/atom-community/autocomplete-plus/releases)\n\nView and insert possible completions in the editor while typing\n\n![Autocomplete+](http://s14.directupload.net/images/140304/y7r7g5df.gif)\n\n**Note:** In the example above, `Show Suggestions On Keystroke` is enabled.\n\n![The Show Suggestions On Keystroke Setting](https://cloud.githubusercontent.com/assets/744740/5886909/a7071c2a-a372-11e4-9894-f12db4e8a1ae.png)\n\n## Installation\n\n* APM: `apm install autocomplete-plus`\n* Preferences: Open Atom and go to `Preferences > Packages`, search for `autocomplete-plus`, and install it\n\n## Providers\n\n`autocomplete+` has a powerful autocomplete provider API, allowing provider authors to add language-specific behavior to this package.\n\nYou should *definitely* install additional providers (the default provider bundled with this package is somewhat crude): https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers\n\n## Usage\n\nJust type some stuff, and autocomplete+ will automatically show you some suggestions.\nPress `UP` and `DOWN` to select another suggestion, press `TAB` to confirm your selection. You can change the default keymap in `Preferences`:\n\n* Keymap For Confirming A Suggestion\n* Keymap For Navigating The Suggestion List\n\nAdditionally, the keymap can be customized in your keymap.cson:\n\n```coffeescript\n'atom-text-editor:not(mini).autocomplete-active':\n  'tab': 'unset!'\n  'enter': 'autocomplete-plus:confirm'\n  'up': 'unset!'\n  'down': 'unset!'\n  'ctrl-p': 'autocomplete-plus:select-previous'\n  'ctrl-n': 'autocomplete-plus:select-next'\n```\n\n## Features\n\n* Shows suggestions while typing\n* Includes a default provider (`FuzzyProvider`):\n  * Wordlist generation happens when you open a file, while editing the file, and on save\n  * Suggestions are calculated using `fuzzaldrin`\n* Exposes a provider API which can be used to extend the functionality of the package and provide targeted / contextually correct suggestions\n* Disable autocomplete for file(s) via blacklisting\n* Disable autocomplete for editor scope(s) via blacklisting\n\n## Provider API\n\nGreat autocomplete depends on having great autocomplete providers. If there is not already a great provider for the language / grammar that you are working in, please consider creating a provider.\n\n[Read the `Provider API` documentation](https://github.com/atom-community/autocomplete-plus/wiki/Provider-API) to learn how to create a new autocomplete provider.\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/atom-community/autocomplete-plus/issues"
   },
   "homepage": "https://github.com/atom-community/autocomplete-plus",
-  "_id": "autocomplete-plus@2.1.6",
-  "_shasum": "9463a4dfbc373675802dc5e20f5dec89cfaf6679",
-  "_resolved": "file:../d-115114-49484-1u5p7pp/package.tgz",
-  "_from": "../d-115114-49484-1u5p7pp/package.tgz",
+  "_id": "autocomplete-plus@2.2.0",
+  "_shasum": "f63cacad0f887dfdeaf66bdb167053d52c05c9f7",
+  "_resolved": "file:../d-115123-27370-1blmrff/package.tgz",
+  "_from": "../d-115123-27370-1blmrff/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -57,7 +58,7 @@
       },
       {
         "name": "grim",
-        "version": "1.1.2",
+        "version": "1.2.0",
         "path": "node_modules/grim/lib/grim.js"
       },
       {
@@ -201,6 +202,16 @@
         "path": "node_modules/scoped-property-store/node_modules/key-path-helpers/lib/key-path-helpers.js"
       },
       {
+        "name": "selector-kit",
+        "version": "0.1.0",
+        "path": "node_modules/selector-kit/lib/selector-kit.js"
+      },
+      {
+        "name": "atom-slick",
+        "version": "2.0.0",
+        "path": "node_modules/selector-kit/node_modules/atom-slick/index.js"
+      },
+      {
         "name": "temp",
         "version": "0.8.1",
         "path": "node_modules/temp/lib/temp.js"
@@ -259,6 +270,8 @@
         "node_modules/scoped-property-store/node_modules/event-kit/package.json",
         "node_modules/scoped-property-store/node_modules/key-path-helpers/package.json",
         "node_modules/scoped-property-store/package.json",
+        "node_modules/selector-kit/node_modules/atom-slick/package.json",
+        "node_modules/selector-kit/package.json",
         "node_modules/temp/node_modules/rimraf/package.json",
         "node_modules/temp/package.json",
         "node_modules/underscore-plus/node_modules/underscore/package.json",
@@ -270,10 +283,9 @@
         "lib/fuzzy-provider.coffee",
         "lib/main.coffee",
         "lib/provider-manager.coffee",
-        "lib/provider.coffee",
         "lib/suggestion-list-element.coffee",
         "lib/suggestion-list.coffee",
-        "lib/suggestion.coffee"
+        "lib/symbol-provider.coffee"
       ],
       ".js": [
         "node_modules/async/lib/async.js",
@@ -764,6 +776,11 @@
         "node_modules/scoped-property-store/node_modules/event-kit/lib/emitter.js",
         "node_modules/scoped-property-store/node_modules/event-kit/lib/event-kit.js",
         "node_modules/scoped-property-store/node_modules/key-path-helpers/lib/key-path-helpers.js",
+        "node_modules/selector-kit/lib/selector-kit.js",
+        "node_modules/selector-kit/lib/selector.js",
+        "node_modules/selector-kit/node_modules/atom-slick/finder.js",
+        "node_modules/selector-kit/node_modules/atom-slick/index.js",
+        "node_modules/selector-kit/node_modules/atom-slick/parser.js",
         "node_modules/temp/examples/grepcount.js",
         "node_modules/temp/examples/pdfcreator.js",
         "node_modules/temp/lib/temp.js",
@@ -785,8 +802,7 @@
           "spec",
           "spec/fixtures/issues",
           "spec/fixtures",
-          "spec/issues",
-          "spec/lib"
+          "spec/issues"
         ],
         "dependencies": {
           "async": ">=0.9.0",
@@ -796,6 +812,7 @@
           "node-uuid": ">=1.4.1",
           "scoped-property-store": ">=0.16.2",
           "temp": ">=0.7.0",
+          "selector-kit": "^0.1",
           "underscore-plus": ">=1.0.0"
         }
       },
@@ -806,8 +823,7 @@
         ],
         "dependencies": {
           "coffeestack": "^1",
-          "emissary": "^1.2.0",
-          "underscore-plus": "^1.0.0"
+          "emissary": "^1.2.0"
         }
       },
       {
@@ -1137,6 +1153,15 @@
         ],
         "dependencies": {
           "grim": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/selector-kit/lib",
+          "node_modules/selector-kit"
+        ],
+        "dependencies": {
+          "atom-slick": "^2"
         }
       },
       {
