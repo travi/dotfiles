@@ -1,9 +1,8 @@
 fs = require 'fs'
 path = require 'path'
-{Range, Point, BufferedProcess} = require 'atom'
-_ = require 'lodash'
-{XRegExp} = require 'xregexp'
-{CompositeDisposable} = require 'event-kit'
+{CompositeDisposable, Range, Point, BufferedProcess} = require 'atom'
+_ = null
+XRegExp = null
 
 {log, warn} = require './utils'
 
@@ -57,13 +56,19 @@ class Linter
     @subscriptions.add atom.config.observe 'linter.executionTimeout', (x) =>
       @executionTimeout = x
 
+    @_statCache = new Map()
+
   destroy: ->
     @subscriptions.dispose()
 
   # Private: Exists mostly so we can use statSync without slowing down linting.
   # TODO: Do this at constructor time?
-  _cachedStatSync: _.memoize (path) ->
-    fs.statSync path
+  _cachedStatSync: (path) ->
+    stat = @_statCache.get path
+    unless stat
+      stat = fs.statSync path
+      @_statCache.set(path, stat)
+    stat
 
   # Private: get command and args for atom.BufferedProcess for execution
   getCmdAndArgs: (filePath) ->
@@ -167,6 +172,7 @@ class Linter
   # for instance if the linter returns json or xml data
   processMessage: (message, callback) ->
     messages = []
+    XRegExp ?= require('xregexp').XRegExp
     regex = XRegExp @regex, @regexFlags
     XRegExp.forEach message, regex, (match, i) =>
       msg = @createMessage match
@@ -191,6 +197,8 @@ class Linter
       level = 'error'
     else if match.warning
       level = 'warning'
+    else if match.info
+      level = 'info'
     else
       level = @defaultLevel
 
@@ -223,6 +231,7 @@ class Linter
     return text?.length or 0
 
   getEditorScopesForPosition: (position) ->
+    _ ?= require 'lodash'
     try
       # return a copy in case it gets mutated (hint: it does)
       _.clone @editor.displayBuffer.tokenizedBuffer.scopesForPosition(position)
