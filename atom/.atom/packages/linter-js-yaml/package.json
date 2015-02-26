@@ -1,0 +1,199 @@
+{
+  "name": "linter-js-yaml",
+  "linter-package": true,
+  "activationEvents": [],
+  "main": "./lib/init",
+  "version": "1.0.0",
+  "description": "Linter plugin for YAML, using js-yaml",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomLinter/linter-js-yaml"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "js-yaml": "3.2.6"
+  },
+  "readme": "# linter-js-yaml\n\nThis package will lint your `.yaml` opened files in Atom through [js-yaml](https://github.com/connec/yaml-js).\n\n## Installation\n\n* `$ apm install language-yaml` (if you don't have [language-yaml](https://github.com/atom/language-yaml) installed)\n* `$ apm install linter` (if you don't have [linter](https://github.com/AtomLinter/Linter) installed)\n* `$ apm install linter-js-yaml`\n\n## Settings\nYou can configure linter-js-yaml by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):\n```\n'linter-js-yaml':\n  'jsYamlExecutablePath': null # js-yaml path. run 'which js-yaml' to find the path\n```\n\n## Donation\n[![Share the love!](https://chewbacco-stuff.s3.amazonaws.com/donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/AtomLinter/linter-js-yaml/issues"
+  },
+  "homepage": "https://github.com/AtomLinter/linter-js-yaml",
+  "_id": "linter-js-yaml@1.0.0",
+  "_shasum": "4d9a318419db3f74bcee3ecfbbb17827bdf2be5e",
+  "_resolved": "file:../d-115126-50668-1dq7fo4/package.tgz",
+  "_from": "../d-115126-50668-1dq7fo4/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "js-yaml",
+        "version": "3.2.6",
+        "path": "node_modules/js-yaml/index.js"
+      },
+      {
+        "name": "argparse",
+        "version": "0.1.16",
+        "path": "node_modules/js-yaml/node_modules/argparse/index.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.7.0",
+        "path": "node_modules/js-yaml/node_modules/argparse/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "underscore.string",
+        "version": "2.4.0",
+        "path": "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/lib/underscore.string.js"
+      },
+      {
+        "name": "esprima",
+        "version": "1.0.4",
+        "path": "node_modules/js-yaml/node_modules/esprima/esprima.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/init.coffee",
+        "lib/linter-js-yaml.coffee"
+      ],
+      ".js": [
+        "node_modules/js-yaml/bin/js-yaml.js",
+        "node_modules/js-yaml/dist/js-yaml.js",
+        "node_modules/js-yaml/dist/js-yaml.min.js",
+        "node_modules/js-yaml/examples/custom_types.js",
+        "node_modules/js-yaml/examples/dumper.js",
+        "node_modules/js-yaml/examples/sample_document.js",
+        "node_modules/js-yaml/index.js",
+        "node_modules/js-yaml/lib/js-yaml/common.js",
+        "node_modules/js-yaml/lib/js-yaml/dumper.js",
+        "node_modules/js-yaml/lib/js-yaml/exception.js",
+        "node_modules/js-yaml/lib/js-yaml/loader.js",
+        "node_modules/js-yaml/lib/js-yaml/mark.js",
+        "node_modules/js-yaml/lib/js-yaml/schema/core.js",
+        "node_modules/js-yaml/lib/js-yaml/schema/default_full.js",
+        "node_modules/js-yaml/lib/js-yaml/schema/default_safe.js",
+        "node_modules/js-yaml/lib/js-yaml/schema/failsafe.js",
+        "node_modules/js-yaml/lib/js-yaml/schema/json.js",
+        "node_modules/js-yaml/lib/js-yaml/schema.js",
+        "node_modules/js-yaml/lib/js-yaml/type/binary.js",
+        "node_modules/js-yaml/lib/js-yaml/type/bool.js",
+        "node_modules/js-yaml/lib/js-yaml/type/float.js",
+        "node_modules/js-yaml/lib/js-yaml/type/int.js",
+        "node_modules/js-yaml/lib/js-yaml/type/js/function.js",
+        "node_modules/js-yaml/lib/js-yaml/type/js/regexp.js",
+        "node_modules/js-yaml/lib/js-yaml/type/js/undefined.js",
+        "node_modules/js-yaml/lib/js-yaml/type/map.js",
+        "node_modules/js-yaml/lib/js-yaml/type/merge.js",
+        "node_modules/js-yaml/lib/js-yaml/type/null.js",
+        "node_modules/js-yaml/lib/js-yaml/type/omap.js",
+        "node_modules/js-yaml/lib/js-yaml/type/pairs.js",
+        "node_modules/js-yaml/lib/js-yaml/type/seq.js",
+        "node_modules/js-yaml/lib/js-yaml/type/set.js",
+        "node_modules/js-yaml/lib/js-yaml/type/str.js",
+        "node_modules/js-yaml/lib/js-yaml/type/timestamp.js",
+        "node_modules/js-yaml/lib/js-yaml/type.js",
+        "node_modules/js-yaml/lib/js-yaml.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/arguments.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/choice.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/constants.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/help.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/nargs.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/parents.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/prefix_chars.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/sub_commands.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/sum.js",
+        "node_modules/js-yaml/node_modules/argparse/examples/testformatters.js",
+        "node_modules/js-yaml/node_modules/argparse/index.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/append/constant.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/append.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/count.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/help.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/store/constant.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/store/false.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/store/true.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/store.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/subparsers.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action/version.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/action_container.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/argparse.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/argument/error.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/argument/exclusive.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/argument/group.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/argument_parser.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/const.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/help/added_formatters.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/help/formatter.js",
+        "node_modules/js-yaml/node_modules/argparse/lib/namespace.js",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore/underscore-min.js",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore/underscore.js",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/foo.js",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/gulpfile.js",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/lib/underscore.string.js",
+        "node_modules/js-yaml/node_modules/esprima/bin/esparse.js",
+        "node_modules/js-yaml/node_modules/esprima/bin/esvalidate.js",
+        "node_modules/js-yaml/node_modules/esprima/esprima.js"
+      ],
+      ".json": [
+        "node_modules/js-yaml/bower.json",
+        "node_modules/js-yaml/examples/dumper.json",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore/package.json",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/bower.json",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/component.json",
+        "node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/package.json",
+        "node_modules/js-yaml/node_modules/argparse/package.json",
+        "node_modules/js-yaml/node_modules/esprima/package.json",
+        "node_modules/js-yaml/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          ""
+        ],
+        "dependencies": {
+          "js-yaml": "3.2.6"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/js-yaml/bin",
+          "node_modules/js-yaml",
+          "node_modules/js-yaml/dist",
+          "node_modules/js-yaml/examples",
+          "node_modules/js-yaml/lib/js-yaml",
+          "node_modules/js-yaml/lib/js-yaml/schema",
+          "node_modules/js-yaml/lib/js-yaml/type",
+          "node_modules/js-yaml/lib/js-yaml/type/js",
+          "node_modules/js-yaml/lib"
+        ],
+        "dependencies": {
+          "argparse": "~ 0.1.11",
+          "esprima": "~ 1.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/js-yaml/node_modules/argparse/examples",
+          "node_modules/js-yaml/node_modules/argparse",
+          "node_modules/js-yaml/node_modules/argparse/lib/action/append",
+          "node_modules/js-yaml/node_modules/argparse/lib/action",
+          "node_modules/js-yaml/node_modules/argparse/lib/action/store",
+          "node_modules/js-yaml/node_modules/argparse/lib",
+          "node_modules/js-yaml/node_modules/argparse/lib/argument",
+          "node_modules/js-yaml/node_modules/argparse/lib/help"
+        ],
+        "dependencies": {
+          "underscore": "~1.7.0",
+          "underscore.string": "~2.4.0"
+        }
+      }
+    ]
+  }
+}
