@@ -2,7 +2,7 @@
   "name": "emmet",
   "description": "Emmet – the essential tool for web developers",
   "main": "./lib/emmet",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "dependencies": {
     "emmet": "^1.2.0",
     "atom-space-pen-views": "^2.0.3"
@@ -14,16 +14,16 @@
   "engines": {
     "atom": "*"
   },
-  "readme": "# Emmet plugin Atom editor\n\n[Emmet](http://emmet.io) support for [Atom](http://atom.io).\n\n## Installation\n\nIn Atom, open Preferences > Packages, search for `Emmet` package. Once it found, click `Install` button to install package.\n\n### Manual installation\n\nYou can install the latest Emmet version manually from console:\n\n```bash\ncd ~/.atom/packages\ngit clone https://github.com/emmetio/emmet-atom\ncd emmet-atom\nnpm install\n```\n\nThen restart Atom editor.\n\n## Features:\n\n* Expand abbreviations by <kbd>Tab</kbd> key.\n* Multiple cursor support: most [Emmet actions](http://docs.emmet.io/actions/) like Expand Abbreviation, Wrap with Abbreviation, Update Tag can run in multi-cursor mode.\n* Interactive actions (Interactive Expand Abbreviation, Wrap With Abbreviation, Update Tag) allows you to preview result real-time as you type.\n* Better tabstops in generated content: when abbreviation expanded, hit <kbd>Tab</kbd> key to quickly traverse between important code points.\n* [Emmet v1.1 core](http://emmet.io/blog/beta-v1-1/).\n\nPlease report any problems at [issue tracker](https://github.com/emmetio/emmet-atom/issues).\n\n## Tab key\n\nCurrently, Emmet expands abbreviations by Tab key only for HTML, CSS, Sass/SCSS and LESS syntaxes. Tab handler scope is limited because it overrides default snippets.\n\nIf you want to make Emmet expand abbreviations with Tab key for other syntaxes, you can do the following:\n\n1. Use *Open Your Keymap* menu item to open your custom `keymap.csom` file.\n2. Add the following section into it:\n\n```coffee\n'atom-text-editor[data-grammar=\"YOUR GRAMMAR HERE\"]:not([mini])':\n    'tab': 'emmet:expand-abbreviation-with-tab'\n```\n\nReplace `YOUR GRAMMAR HERE` with actual grammar attribute value. The easiest way to get grammar name of currently opened editor is to open DevTools and find corresponding `<atom-text-editor>` element: it will contain `data-grammar` attribute with value you need. For example, for HTML syntax it’s a `text html basic`.\n\nYou can add as many sections as you like for different syntaxes. Note that default snippets will no longer work, but you can add [your own snippets in Emmet](http://docs.emmet.io/customization/).\n\n## Default Keybindings\n\nYou can change these Preferences > Emmet.\n\nCommand | Darwin | Linux/Windows\n------- | ------ | -------------\nExpand Abbreviation | <kbd>tab</kbd> or <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>e</kbd> | <kbd>tab</kbd> or <kbd>ctrl</kbd> + <kbd>e</kbd>\nExpand Abbreviation (interactive) | <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>enter</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>enter</kbd>\nWrap with Abbreviation | <kbd>ctrl</kbd> + <kbd>w</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>w</kbd>\nBalance (outward) | <kbd>ctrl</kbd> + <kbd>d</kbd> | <kbd>ctrl</kbd> + <kbd>,</kbd>\nBalance (inward) | <kbd>alt</kbd> + <kbd>d</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>0</kbd>\nGo to Matching Pair | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>j</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>j</kbd>\nNext Edit Point | <kbd>ctrl</kbd> + <kbd>→</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>→</kbd>\nPrevious Edit Point | <kbd>ctrl</kbd> + <kbd>←</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>←</kbd>\nSelect Next Item | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>→</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>.</kbd>\nSelect Previous Item | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>←</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>,</kbd>\nToggle Comment | <kbd>⌘</kbd> + <kbd>/</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>/</kbd>\nSplit/Join Tag | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>j</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>`</kbd>\nRemove Tag | <kbd>⌘</kbd> + <kbd>'</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>;</kbd>\nEvaluate Math Expression | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>y</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>y</kbd>\nIncrement Number by 0.1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>↑</kbd> | <kbd>alt</kbd> + <kbd>↑</kbd>\nDecrement Number by 0.1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>↓</kbd> | <kbd>alt</kbd> + <kbd>↓</kbd>\nIncrement Number by 1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>↑</kbd> | <kbd>ctrl</kbd> + <kbd>↑</kbd>\nDecrement Number by 1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>↓</kbd> | <kbd>ctrl</kbd> + <kbd>↓</kbd>\nIncrement Number by 10 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>↑</kbd> | <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>↑</kbd>\nDecrement Number by 10 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>↓</kbd> | <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>↓</kbd>\nReflect CSS value | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>r</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>\nUpdate Image Size | <kbd>ctrl</kbd> + <kbd>i</kbd> | <kbd>ctrl</kbd> + <kbd>u</kbd>\nEncode/Decode image to data:URL | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>i</kbd> | <kbd>ctrl</kbd> + <kbd>'</kbd>\nUpdate Tag | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>u</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>'</kbd>\nMerge Lines | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>m</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>m</kbd>\n\nAll actions and their keyboard shortcuts are available under Packages > Emmet menu item.\n\n## Extensions support\n\nYou can easily [extend](http://docs.emmet.io/customization/) Emmet with new actions and filters or customize existing ones. In Preferences > Emmet, set Extensions path to folder with Emmet extensions. By default, it’s `~/emmet`, e.g. `emmet` folder in your system HOME folder.\n",
+  "readme": "# Emmet plugin Atom editor\n\n[Emmet](http://emmet.io) support for [Atom](http://atom.io).\n\n## Installation\n\nIn Atom, open Preferences > Packages, search for `Emmet` package. Once it found, click `Install` button to install package.\n\n### Manual installation\n\nYou can install the latest Emmet version manually from console:\n\n```bash\ncd ~/.atom/packages\ngit clone https://github.com/emmetio/emmet-atom\ncd emmet-atom\nnpm install\n```\n\nThen restart Atom editor.\n\n## Features:\n\n* Expand abbreviations by <kbd>Tab</kbd> key.\n* Multiple cursor support: most [Emmet actions](http://docs.emmet.io/actions/) like Expand Abbreviation, Wrap with Abbreviation, Update Tag can run in multi-cursor mode.\n* Interactive actions (Interactive Expand Abbreviation, Wrap With Abbreviation, Update Tag) allows you to preview result real-time as you type.\n* Better tabstops in generated content: when abbreviation expanded, hit <kbd>Tab</kbd> key to quickly traverse between important code points.\n* [Emmet v1.1 core](http://emmet.io/blog/beta-v1-1/).\n\nPlease report any problems at [issue tracker](https://github.com/emmetio/emmet-atom/issues).\n\n## Tab key\n\nCurrently, Emmet expands abbreviations by Tab key only for HTML, CSS, Sass/SCSS and LESS syntaxes. Tab handler scope is limited because it overrides default snippets.\n\nIf you want to make Emmet expand abbreviations with Tab key for other syntaxes, you can do the following:\n\n1. Use *Open Your Keymap* menu item to open your custom `keymap.cson` file.\n2. Add the following section into it:\n\n```coffee\n'atom-text-editor[data-grammar=\"YOUR GRAMMAR HERE\"]:not([mini])':\n    'tab': 'emmet:expand-abbreviation-with-tab'\n```\n\nReplace `YOUR GRAMMAR HERE` with actual grammar attribute value. The easiest way to get grammar name of currently opened editor is to open DevTools and find corresponding `<atom-text-editor>` element: it will contain `data-grammar` attribute with value you need. For example, for HTML syntax it’s a `text html basic`.\n\nYou can add as many sections as you like for different syntaxes. Note that default snippets will no longer work, but you can add [your own snippets in Emmet](http://docs.emmet.io/customization/).\n\n## Default Keybindings\n\nYou can change these Preferences > Emmet.\n\nCommand | Darwin | Linux/Windows\n------- | ------ | -------------\nExpand Abbreviation | <kbd>tab</kbd> or <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>e</kbd> | <kbd>tab</kbd> or <kbd>ctrl</kbd> + <kbd>e</kbd>\nExpand Abbreviation (interactive) | <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>enter</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>enter</kbd>\nWrap with Abbreviation | <kbd>ctrl</kbd> + <kbd>w</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>w</kbd>\nBalance (outward) | <kbd>ctrl</kbd> + <kbd>d</kbd> | <kbd>ctrl</kbd> + <kbd>,</kbd>\nBalance (inward) | <kbd>alt</kbd> + <kbd>d</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>0</kbd>\nGo to Matching Pair | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>j</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>j</kbd>\nNext Edit Point | <kbd>ctrl</kbd> + <kbd>→</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>→</kbd>\nPrevious Edit Point | <kbd>ctrl</kbd> + <kbd>←</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>←</kbd>\nSelect Next Item | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>→</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>.</kbd>\nSelect Previous Item | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>←</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>,</kbd>\nToggle Comment | <kbd>⌘</kbd> + <kbd>/</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>/</kbd>\nSplit/Join Tag | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>j</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>`</kbd>\nRemove Tag | <kbd>⌘</kbd> + <kbd>'</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>;</kbd>\nEvaluate Math Expression | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>y</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>y</kbd>\nIncrement Number by 0.1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>↑</kbd> | <kbd>alt</kbd> + <kbd>↑</kbd>\nDecrement Number by 0.1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>↓</kbd> | <kbd>alt</kbd> + <kbd>↓</kbd>\nIncrement Number by 1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>↑</kbd> | <kbd>ctrl</kbd> + <kbd>↑</kbd>\nDecrement Number by 1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>↓</kbd> | <kbd>ctrl</kbd> + <kbd>↓</kbd>\nIncrement Number by 10 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>↑</kbd> | <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>↑</kbd>\nDecrement Number by 10 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>↓</kbd> | <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>↓</kbd>\nReflect CSS value | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>r</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>\nUpdate Image Size | <kbd>ctrl</kbd> + <kbd>i</kbd> | <kbd>ctrl</kbd> + <kbd>u</kbd>\nEncode/Decode image to data:URL | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>i</kbd> | <kbd>ctrl</kbd> + <kbd>'</kbd>\nUpdate Tag | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>u</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>'</kbd>\nMerge Lines | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>m</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>m</kbd>\n\nAll actions and their keyboard shortcuts are available under Packages > Emmet menu item.\n\n## Extensions support\n\nYou can easily [extend](http://docs.emmet.io/customization/) Emmet with new actions and filters or customize existing ones. In Preferences > Emmet, set Extensions path to folder with Emmet extensions. By default, it’s `~/emmet`, e.g. `emmet` folder in your system HOME folder.\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/emmetio/emmet-atom/issues"
   },
   "homepage": "https://github.com/emmetio/emmet-atom",
-  "_id": "emmet@2.3.3",
-  "_shasum": "3b38a0a5c233a1db050372992494772b4a841461",
-  "_resolved": "file:../d-115114-49803-13ziu5z/package.tgz",
-  "_from": "../d-115114-49803-13ziu5z/package.tgz",
+  "_id": "emmet@2.3.4",
+  "_shasum": "1e69c840fd452fe5cfb3c4e377f52f8c1dd09781",
+  "_resolved": "file:../d-115127-14634-1a63tn8/package.tgz",
+  "_from": "../d-115127-14634-1a63tn8/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -39,7 +39,7 @@
       },
       {
         "name": "grim",
-        "version": "1.1.2",
+        "version": "1.2.0",
         "path": "node_modules/atom-space-pen-views/node_modules/grim/lib/grim.js"
       },
       {
@@ -76,6 +76,16 @@
         "name": "rimraf",
         "version": "2.2.8",
         "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js"
       },
       {
         "name": "source-map",
@@ -140,12 +150,12 @@
       {
         "name": "underscore-plus",
         "version": "1.6.6",
-        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/lib/underscore-plus.js"
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/lib/underscore-plus.js"
       },
       {
         "name": "underscore",
         "version": "1.6.0",
-        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/underscore.js"
+        "path": "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/node_modules/underscore/underscore.js"
       },
       {
         "name": "space-pen",
@@ -214,6 +224,9 @@
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/mkdirp/index.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/bin.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/Makefile.dryice.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/assert-shim.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/mini-require.js",
@@ -645,9 +658,9 @@
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/valid-weak-map.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/mixto/lib/mixin.js",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js",
-        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/lib/underscore-plus.js",
-        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
-        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/node_modules/underscore/underscore.js",
         "node_modules/atom-space-pen-views/node_modules/space-pen/lib/space-pen.js",
         "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/cdn/jquery-2.1.3.js",
         "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/dist/cdn/jquery-2.1.3.min.js",
@@ -832,6 +845,8 @@
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/async/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/mkdirp/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/source-map/package.json",
@@ -845,9 +860,9 @@
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/mixto/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/property-accessors/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/package.json",
-        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/node_modules/underscore/package.json",
-        "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/package.json",
         "node_modules/atom-space-pen-views/node_modules/grim/package.json",
         "node_modules/atom-space-pen-views/node_modules/space-pen/api.json",
         "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/jquery/bower.json",
@@ -893,8 +908,7 @@
         ],
         "dependencies": {
           "coffeestack": "^1",
-          "emissary": "^1.2.0",
-          "underscore-plus": "^1.0.0"
+          "emissary": "^1.2.0"
         }
       },
       {
@@ -926,6 +940,15 @@
           "mkdirp": "~0.3.5",
           "rimraf": "~2.2.2",
           "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
         }
       },
       {
@@ -1187,8 +1210,8 @@
       },
       {
         "paths": [
-          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus/lib",
-          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/underscore-plus"
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus/lib",
+          "node_modules/atom-space-pen-views/node_modules/grim/node_modules/emissary/node_modules/underscore-plus"
         ],
         "dependencies": {
           "underscore": "~1.6.0"
