@@ -34,7 +34,7 @@ syntax on
 " General Config
 colorscheme icansee
 set background=dark
-set guifont=Meslo\ LG\ M:h17
+set guifont=Source\ Code\ Pro
 set autoindent
 set ruler
 set visualbell
@@ -59,6 +59,7 @@ set fileformat=unix             " default file format
 set nonu                        " Turn off line numbering
 set lbr                         " Wrap text
 set cursorline                  " Highlight current line
+hi CursorLine term=underline cterm=underline gui=underline guibg=Black ctermbg=Black
 
 set hlsearch                    " Highlight searches
 set ignorecase                  " Ignore case of searches
