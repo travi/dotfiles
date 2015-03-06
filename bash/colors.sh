@@ -43,7 +43,7 @@ else
 	blue="\e[1;34m";
 	cyan="\e[1;36m";
 	green="\e[0;32m";
-	orange="\e[1;33m";
+	orange="\e[0:2;33m";
 	purple="\e[1;35m";
 	red="\e[1;31m";
 	violet="\e[1;35m";
