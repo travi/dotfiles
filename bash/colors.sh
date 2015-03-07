@@ -38,19 +38,23 @@ if tput setaf 1 &> /dev/null; then
     magenta=$(tput setaf 125);
 else
 	bold='';
-	reset="\e[0m";
-	black="\e[1;30m";
-	blue="\e[1;34m";
-	cyan="\e[1;36m";
-	green="\e[0;32m";
-	orange="\e[0;2;33m";
-	purple="\e[1;35m";
-	red="\e[1;31m";
-	violet="\e[1;35m";
-	white="\e[1;37m";
-	yellow="\e[1;33m";
+	reset="\033[0m";
+	black="\033[1;30m";
+	blue="\033[1;34m";
+	cyan="\033[1;36m";
+	green="\033[0;32m";
+	orange="\033[0;2;33m";
+	purple="\033[1;35m";
+	red="\033[1;31m";
+	violet="\033[1;35m";
+	white="\033[1;37m";
+	yellow="\033[1;33m";
     magenta="\033[1;31m";
 fi;
+
+export green
+export red
+export orange
 
 # BSD (including OSX)
 export LSCOLORS=ExFxCxDxBxegedabagacad
