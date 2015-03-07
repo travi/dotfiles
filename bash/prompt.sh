@@ -26,10 +26,10 @@ function prompt_git() {
   [[ "$output" ]] || output="$(git branch | perl -ne '/^\* (.*)/ && print $1')"
 
   flags="$(
-    echo "$status" | awk 'BEGIN {r=""} \
-      /^(# )?Changes to be committed:$/        {r=r "${green}+"}\
-      /^(# )?Changes not staged for commit:$/  {r=r "${red}!"}\
-      /^(# )?Untracked files:$/                {r=r "${orange}?"}\
+    echo "$status" | awk 'BEGIN {r=""}
+      /^(# )?Changes to be committed:$/        {r=r "${green}+"}
+      /^(# )?Changes not staged for commit:$/  {r=r "${red}!"}
+      /^(# )?Untracked files:$/                {r=r "${orange}?"}
       END {print r}'
   )"
 
@@ -50,13 +50,13 @@ function prompt_hg() {
   bookmark="$(echo "$summary" | awk '/bookmarks:/ {print $2}')"
 
   flags="$(
-    echo "$summary" | awk 'BEGIN {r="";a=""} \
-      /(modified)/     {r= "+"}\
-      /(unknown)/      {a= "?"}\
+    echo "$summary" | awk 'BEGIN {r="";a=""}
+      /(modified)/     {r= "+"}
+      /(unknown)/      {a= "?"}
       END {print r a}'
   )"
 
-  #output="$output:$bookmark"
+  output="$output:$bookmark"
   if [[ "$flags" ]]; then
     output="$output$colon_color:$prompt_color$flags"
   fi
