@@ -1,6 +1,8 @@
-{triggerAutocompletion, waitForAutocomplete, buildIMECompositionEvent, buildTextInputEvent} = require('./spec-helper')
-_ = require('underscore-plus')
-{KeymapManager} = require('atom')
+{triggerAutocompletion, waitForAutocomplete, buildIMECompositionEvent, buildTextInputEvent} = require './spec-helper'
+_ = require 'underscore-plus'
+{KeymapManager} = require 'atom'
+
+NodeTypeText = 3
 
 describe 'Autocomplete Manager', ->
   [workspaceElement, completionDelay, editorView, editor, mainModule, autocompleteManager, mainModule] = []
@@ -22,25 +24,41 @@ describe 'Autocomplete Manager', ->
       atom.config.set('autocomplete-plus.maxVisibleSuggestions', 10)
 
   describe "when an external provider is registered", ->
-    class SpecialProvider
-      id: 'my-some-provider'
-      selector: '*'
-      requestHandler: ({prefix}) ->
-        list = ['a', 'ab', 'abc', 'abcd', 'abcde']
-        ({word, prefix} for word in list)
+    [provider] = []
 
     beforeEach ->
       waitsForPromise ->
-        atom.workspace.open('').then (e) ->
-          editor = e
-          editorView = atom.views.getView(editor)
-
-      waitsForPromise ->
-        atom.packages.activatePackage('autocomplete-plus').then (a) ->
-          mainModule = a.mainModule
+        Promise.all [
+          atom.workspace.open('').then (e) ->
+            editor = e
+            editorView = atom.views.getView(editor)
+          atom.packages.activatePackage('autocomplete-plus').then (a) ->
+            mainModule = a.mainModule
+        ]
 
       runs ->
-        mainModule.consumeProvider(provider: new SpecialProvider)
+        provider =
+          selector: '*'
+          getSuggestions: ({prefix}) ->
+            list = ['a', 'ab', 'abc', 'abcd', 'abcde']
+            ({text, replacementPrefix: prefix} for text in list)
+        mainModule.consumeProvider(provider)
+
+    it "calls the provider's onDidInsertSuggestion method when it exists", ->
+      provider.onDidInsertSuggestion = jasmine.createSpy()
+
+      triggerAutocompletion(editor, true, 'a')
+
+      runs ->
+        suggestionListView = editorView.querySelector('.autocomplete-plus autocomplete-suggestion-list')
+        atom.commands.dispatch(suggestionListView, 'autocomplete-plus:confirm')
+
+        expect(provider.onDidInsertSuggestion).toHaveBeenCalled()
+
+        {editor, triggerPosition, suggestion} = provider.onDidInsertSuggestion.mostRecentCall.args[0]
+        expect(editor).toBe editor
+        expect(triggerPosition).toEqual [0, 1]
+        expect(suggestion.text).toBe 'a'
 
     describe "when number of suggestions > maxVisibleSuggestions", ->
       beforeEach ->
@@ -53,6 +71,165 @@ describe 'Autocomplete Manager', ->
           expect(editorView.querySelector('.autocomplete-plus')).toExist()
           expect(editorView.querySelectorAll('.autocomplete-plus li')).toHaveLength 5
           expect(editorView.querySelector('.autocomplete-plus .list-group').style['max-height']).toBe("#{2 * 25}px")
+
+    describe "when match.snippet is used", ->
+      beforeEach ->
+        spyOn(provider, 'getSuggestions').andCallFake ({prefix}) ->
+          list = ['method(${1:something})', 'method2(${1:something})', 'method3(${1:something})']
+          ({snippet, replacementPrefix: prefix} for snippet in list)
+
+      describe "when the snippets package is enabled", ->
+        beforeEach ->
+          waitsForPromise ->
+            atom.packages.activatePackage('snippets')
+
+        it "displays the snippet without the `${1:}` in its own class", ->
+          triggerAutocompletion(editor, true, 'm')
+
+          runs ->
+            wordElement = editorView.querySelector('.autocomplete-plus span.word')
+            expect(wordElement.textContent).toBe 'method(something)'
+            expect(wordElement.querySelector('.snippet-completion').textContent).toBe 'something'
+
+            wordElements = editorView.querySelectorAll('.autocomplete-plus span.word')
+            expect(wordElements).toHaveLength 3
+
+        it "accepts the snippet when autocomplete-plus:confirm is triggered", ->
+          triggerAutocompletion(editor, true, 'm')
+
+          runs ->
+            suggestionListView = editorView.querySelector('.autocomplete-plus autocomplete-suggestion-list')
+            atom.commands.dispatch(suggestionListView, 'autocomplete-plus:confirm')
+            expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+            expect(editor.getSelectedText()).toBe 'something'
+
+    describe "when the matched prefix is highlighted", ->
+      it 'highlights the prefix of the word in the suggestion list', ->
+        spyOn(provider, 'getSuggestions').andCallFake ({prefix}) ->
+          [{text: 'items', replacementPrefix: prefix}]
+
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+
+        editor.moveToBottom()
+        editor.insertText('i')
+        editor.insertText('e')
+        editor.insertText('m')
+
+        waitForAutocomplete()
+
+        runs ->
+          expect(editorView.querySelector('.autocomplete-plus')).toExist()
+
+          word = editorView.querySelector('.autocomplete-plus li span.word')
+          expect(word.childNodes).toHaveLength 5
+          expect(word.childNodes[0]).toHaveClass 'character-match'
+          expect(word.childNodes[1].nodeType).toBe NodeTypeText
+          expect(word.childNodes[2]).toHaveClass 'character-match'
+          expect(word.childNodes[3]).toHaveClass 'character-match'
+          expect(word.childNodes[4].nodeType).toBe NodeTypeText
+
+      it 'highlights repeated characters in the prefix', ->
+        spyOn(provider, 'getSuggestions').andCallFake ({prefix}) ->
+          [{text: 'apply', replacementPrefix: prefix}]
+
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+
+        editor.moveToBottom()
+        editor.insertText('a')
+        editor.insertText('p')
+        editor.insertText('p')
+
+        waitForAutocomplete()
+
+        runs ->
+          expect(editorView.querySelector('.autocomplete-plus')).toExist()
+
+          word = editorView.querySelector('.autocomplete-plus li span.word')
+          expect(word.childNodes).toHaveLength 4
+          expect(word.childNodes[0]).toHaveClass 'character-match'
+          expect(word.childNodes[1]).toHaveClass 'character-match'
+          expect(word.childNodes[2]).toHaveClass 'character-match'
+          expect(word.childNodes[3].nodeType).toBe 3 # text
+          expect(word.childNodes[3].textContent).toBe 'ly'
+
+      describe "when the prefix does not match the word", ->
+        it "does not render any character-match spans", ->
+          spyOn(provider, 'getSuggestions').andCallFake ({prefix}) ->
+            [{text: 'omgnope', replacementPrefix: prefix}]
+
+          editor.moveToBottom()
+          editor.insertText('x')
+          editor.insertText('y')
+          editor.insertText('z')
+
+          waitForAutocomplete()
+
+          runs ->
+            expect(editorView.querySelector('.autocomplete-plus')).toExist()
+
+            characterMatches = editorView.querySelectorAll('.autocomplete-plus li span.word .character-match')
+            text = editorView.querySelector('.autocomplete-plus li span.word').textContent
+            console.log characterMatches
+            expect(characterMatches).toHaveLength 0
+            expect(text).toBe 'omgnope'
+
+        describe "when the snippets package is enabled", ->
+          beforeEach ->
+            waitsForPromise -> atom.packages.activatePackage('snippets')
+
+          it "does not highlight the snippet html; ref issue 301", ->
+            spyOn(provider, 'getSuggestions').andCallFake ->
+              [{snippet: 'ab(${1:c})c'}]
+
+            editor.moveToBottom()
+            editor.insertText('c')
+            waitForAutocomplete()
+
+            runs ->
+              word = editorView.querySelector('.autocomplete-plus li span.word')
+              charMatch = editorView.querySelector('.autocomplete-plus li span.word .character-match')
+              expect(word.textContent).toBe 'ab(c)c'
+              expect(charMatch.textContent).toBe 'c'
+              expect(charMatch.parentNode).toHaveClass 'word'
+
+          it "does not highlight the snippet html when highlight beginning of the word", ->
+            spyOn(provider, 'getSuggestions').andCallFake ->
+              [{snippet: 'abcde(${1:e}, ${1:f})f'}]
+
+            editor.moveToBottom()
+            editor.insertText('c')
+            editor.insertText('e')
+            editor.insertText('f')
+            waitForAutocomplete()
+
+            runs ->
+              word = editorView.querySelector('.autocomplete-plus li span.word')
+              expect(word.textContent).toBe 'abcde(e, f)f'
+
+              charMatches = editorView.querySelectorAll('.autocomplete-plus li span.word .character-match')
+              expect(charMatches[0].textContent).toBe 'c'
+              expect(charMatches[0].parentNode).toHaveClass 'word'
+              expect(charMatches[1].textContent).toBe 'e'
+              expect(charMatches[1].parentNode).toHaveClass 'word'
+              expect(charMatches[2].textContent).toBe 'f'
+              expect(charMatches[2].parentNode).toHaveClass 'word'
+
+    describe "when a replacementPrefix is not specified", ->
+      beforeEach ->
+        spyOn(provider, 'getSuggestions').andCallFake ->
+          [text: 'something']
+
+      it "replaces with the default input prefix", ->
+        editor.insertText('abc')
+        triggerAutocompletion(editor, false, 'm')
+
+        expect(editor.getText()).toBe 'abcm'
+
+        runs ->
+          expect(editorView.querySelector('.autocomplete-plus')).toExist()
+          suggestionListView = editorView.querySelector('.autocomplete-plus autocomplete-suggestion-list')
+          atom.commands.dispatch(suggestionListView, 'autocomplete-plus:confirm')
+          expect(editor.getText()).toBe 'something'
 
   describe 'when opening a file without a path', ->
     beforeEach ->
@@ -291,49 +468,6 @@ describe 'Autocomplete Manager', ->
 
         runs ->
           expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
-
-    describe "when the matched prefix is highlighted", ->
-      it 'highlights the prefix of the word in the suggestion list', ->
-        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
-
-        editor.moveToBottom()
-        editor.insertText('i')
-        editor.insertText('e')
-        editor.insertText('m')
-
-        waitForAutocomplete()
-
-        runs ->
-          expect(editorView.querySelector('.autocomplete-plus')).toExist()
-
-          word = editorView.querySelector('.autocomplete-plus li span.word')
-          expect(word.childNodes).toHaveLength 5
-          expect(word.childNodes[0]).toHaveClass 'character-match'
-          expect(word.childNodes[1]).not.toHaveClass 'character-match'
-          expect(word.childNodes[2]).toHaveClass 'character-match'
-          expect(word.childNodes[3]).toHaveClass 'character-match'
-          expect(word.childNodes[4]).not.toHaveClass 'character-match'
-
-      it 'highlights repeated characters in the prefix', ->
-        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
-
-        editor.moveToBottom()
-        editor.insertText('a')
-        editor.insertText('p')
-        editor.insertText('p')
-
-        waitForAutocomplete()
-
-        runs ->
-          expect(editorView.querySelector('.autocomplete-plus')).toExist()
-
-          word = editorView.querySelector('.autocomplete-plus li span.word')
-          expect(word.childNodes).toHaveLength 5
-          expect(word.childNodes[0]).toHaveClass 'character-match'
-          expect(word.childNodes[1]).toHaveClass 'character-match'
-          expect(word.childNodes[2]).toHaveClass 'character-match'
-          expect(word.childNodes[3]).not.toHaveClass 'character-match'
-          expect(word.childNodes[4]).not.toHaveClass 'character-match'
 
     describe 'accepting suggestions', ->
       it 'hides the suggestions list when a suggestion is confirmed', ->
@@ -648,7 +782,7 @@ describe 'Autocomplete Manager', ->
   #     atom.config.set('autocomplete-plus.enableAutoActivation', false)
   #   beforeEach ->
   #     testProvider =
-  #       requestHandler: (options) ->
+  #       getSuggestions: (options) ->
   #         [{
   #           word: 'ohai',
   #           prefix: ''

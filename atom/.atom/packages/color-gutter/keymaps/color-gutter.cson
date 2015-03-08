@@ -1,0 +1,5 @@
+'.platform-darwin .workspace':
+  'cmd-alt-g': 'color-gutter:toggle'
+
+'.platform-win32 .workspace, .platform-linux .workspace':
+  'ctrl-alt-g': 'color-gutter:toggle'

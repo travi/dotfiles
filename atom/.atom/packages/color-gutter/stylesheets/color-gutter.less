@@ -1,0 +1,14 @@
+.editor {
+  .gutter .line-number.color-gutter:not(.folded) {
+    width: 100%;
+    border-right: 2px solid;
+    padding-right: ~"calc(0.5em - 2px)";
+
+    transition: border-width 0.3s;
+
+    &:hover {
+      border-right-width: 5px;
+      padding-right: ~"calc(0.5em - 5px)";
+    }
+  }
+}

@@ -1,4 +1,4 @@
-{Disposable} = require('atom')
+{Disposable, CompositeDisposable} = require 'atom'
 
 module.exports =
   config:
@@ -104,13 +104,12 @@ module.exports =
   activate: ->
     # Upgrade to the new config key name
     oldMax = atom.config.get('autocomplete-plus.maxSuggestions')
-    if oldMax isnt 10
+    if oldMax? and oldMax isnt 10
       atom.config.transact ->
         atom.config.set('autocomplete-plus.maxVisibleSuggestions', oldMax)
         atom.config.unset('autocomplete-plus.maxSuggestions')
 
     @getAutocompleteManager()
-    # @activateTimeout = setTimeout(@getAutocompleteManager, 0)
 
   # Public: Cleans everything up, removes all AutocompleteManager instances
   deactivate: ->
@@ -118,36 +117,37 @@ module.exports =
     @autocompleteManager = null
 
   getAutocompleteManager: ->
-    if @activateTimeout?
-      clearTimeout(@activateTimeout)
-      @activateTimeout = null
-    return @autocompleteManager if @autocompleteManager?
-    AutocompleteManager = require('./autocomplete-manager')
-    @autocompleteManager = new AutocompleteManager()
-    return @autocompleteManager
+    unless @autocompleteManager?
+      AutocompleteManager = require './autocomplete-manager'
+      @autocompleteManager = new AutocompleteManager()
+    @autocompleteManager
 
-  #  |||              |||
-  #  vvv PROVIDER API vvv
+  consumeSnippets: (snippetsManager) ->
+    @getAutocompleteManager().setSnippetsManager(snippetsManager)
 
-  # Private: Consumes the given provider, from package.json configuration.
-  # Do not use this directly or depend on `autocomplete-plus` directly.
-  #
-  # service - The service to consume
-  consumeProvider: (service) ->
+  ###
+  Section: Provider API
+  ###
+
+  # 1.0.0 API
+  # service - {provider: provider1}
+  consumeProviderLegacy: (service) ->
+    # TODO API: Deprecate, tell them to upgrade to 2.0
     return unless service?.provider?
-    service.providers = [service.provider]
-    return @consumeProviders(service)
+    @consumeProvider([service.provider], '1.0.0')
 
-  # Private: Consumes the given provider, from package.json configuration.
-  # Do not use this directly or depend on `autocomplete-plus` directly.
-  #
-  # service - The service to consume
-  consumeProviders: (service) ->
-    return unless service?.providers?.length > 0
-    registrations = for provider in service.providers
-      @getAutocompleteManager().providerManager.registerProvider(provider)
-    if registrations?.length > 0
-      return new Disposable(->
-        for registration in registrations
-          registration?.dispose?()
-      )
+  # 1.1.0 API
+  # service - {providers: [provider1, provider2, ...]}
+  consumeProvidersLegacy: (service) ->
+    # TODO API: Deprecate, tell them to upgrade to 2.0
+    @consumeProvider(service?.providers, '1.1.0')
+
+  # 2.0.0 API
+  # providers - either a provider or a list of providers
+  consumeProvider: (providers, apiVersion='2.0.0') ->
+    providers = [providers] if providers? and not Array.isArray(providers)
+    return unless providers?.length > 0
+    registrations = new CompositeDisposable
+    for provider in providers
+      registrations.add @getAutocompleteManager().providerManager.registerProvider(provider, apiVersion)
+    registrations
