@@ -43,6 +43,7 @@ set showcmd
 set scrolloff=10                " Start scrolling this number of lines from top/bottom
 
 set smarttab                    " Make Tab work fine with spaces
+set backspace=indent,eol,start  " Make backspace work as expected on all systems
 
 set showmatch                   " show matching brackets
 set matchtime=5                 " tenths of a second to blink matching brackets
