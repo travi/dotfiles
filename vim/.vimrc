@@ -64,6 +64,7 @@ hi CursorLine term=underline cterm=underline gui=underline guibg=Black ctermbg=B
 
 set hlsearch                    " Highlight searches
 set ignorecase                  " Ignore case of searches
+set smartcase                   " Unless a capital letter is used in the search
 set incsearch                   " Highlight dynamically as pattern is typed
 
 
