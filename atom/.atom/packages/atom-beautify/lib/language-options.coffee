@@ -168,6 +168,11 @@ module.exports =
         description: "Add a newline between CSS rules"
 
     # HTML
+    html_htmlbeautifier_path:
+        title: "htmlbeautifier path"
+        type: 'string'
+        default: ""
+        description: "Path to the `htmlbeautifier` CLI executable"
     html_indent_inner_html:
         type: 'boolean'
         default: false
@@ -420,7 +425,7 @@ module.exports =
         beautifyHTML ?= require("js-beautify").html
         text = beautifyHTML(text, self.getOptions("html", allOptions))
         beautifyCompleted text
-      when "HTML (Liquid)", "HTML", "XML", "Marko"
+      when "HTML (Liquid)", "HTML", "XML", "Marko", "Web Form/Control (C#)", "Web Handler (C#)"
         beautifyHTML ?= require("js-beautify").html
         text = beautifyHTML(text, self.getOptions("html", allOptions))
         beautifyCompleted text

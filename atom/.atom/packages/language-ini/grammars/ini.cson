@@ -4,7 +4,7 @@
 'name': 'Ini'
 'patterns': [
   {
-    'begin': '(^[ \\t]+)?(?=#)'
+    'begin': '^([\\s]+)?(?=#)'
     'beginCaptures':
       '1':
         'name': 'punctuation.whitespace.comment.leading.ini'
@@ -21,7 +21,7 @@
     ]
   }
   {
-    'begin': '(^[ \\t]+)?(?=;)'
+    'begin': '^([\\s]+)?(?=;)'
     'beginCaptures':
       '1':
         'name': 'punctuation.whitespace.comment.leading.ini'
@@ -43,7 +43,7 @@
         'name': 'keyword.other.definition.ini'
       '2':
         'name': 'punctuation.separator.key-value.ini'
-    'match': '^([\\[\\]a-zA-Z0-9_.-]+)\\s*(=)'
+    'match': '^([\\[\\][\\s*]a-zA-Z0-9_.-]+)\\s*(=)'
   }
   {
     'captures':

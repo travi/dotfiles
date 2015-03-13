@@ -16,10 +16,7 @@ class BuildStatusView extends View
   # matrix - The build matrix view.
   initialize: (@nwo, @matrix) ->
     atom.commands.add 'atom-workspace', 'travis-ci-status:toggle', => @toggle()
-
-    this.on 'click', =>
-      @matrix.toggle()
-
+    this.on 'click', => @matrix.toggle()
     @attach()
     @subscribeToRepo()
 
@@ -33,8 +30,9 @@ class BuildStatusView extends View
   # Returns nothing.
   attach: ->
     statusBar = document.querySelector("status-bar")
+
     if statusBar?
-        @statusBarTile = statusBar.addLeftTile(item: this, priority: 100)
+      @statusBarTile = statusBar.addLeftTile(item: this, priority: 100)
 
   # Internal: Destroy the view and tear down any state.
   #
@@ -69,12 +67,15 @@ class BuildStatusView extends View
   subscribeToRepo: =>
     @unsubscribe(@repo) if @repo?
 
-    if repo = atom.project.getRepo()
-      @repo = repo
-      $(repo).on 'status-changed', (path, status) =>
-        @update() if path is @getActiveItemPath()
-      $(repo).on 'statuses-changed', @update
-      @update()
+    repos = atom.project.getRepositories()
+    repo = repos.filter((r) -> /(.)*github\.com/i.test(r.getOriginUrl()))
+    @repo = repo[0]
+
+    $(@repo).on 'status-changed', (path, status) =>
+      @update() if path is @getActiveItemPath()
+
+    $(@repo).on 'statuses-changed', @update
+    @update()
 
   # Internal: Update the repository build status from Travis CI.
   #
@@ -88,7 +89,7 @@ class BuildStatusView extends View
     updateRepo = =>
       atom.travis.repos(details[0], details[1]).get(@repoStatus)
 
-    if (typeof atom.travis isnt 'undefined') and (atom.travis is null) and (atom.travis.pro)
+    if atom.travis?.pro?
       token = atom.config.get('travis-ci-status.personalAccessToken')
       atom.travis.authenticate(github_token: token, updateRepo)
     else
@@ -98,10 +99,7 @@ class BuildStatusView extends View
   #
   # Returns nothing.
   fallback: ->
-    atom.travis = new TravisCi({
-      version: '2.0.0',
-      pro: false
-    })
+    atom.travis = new TravisCi(version: '2.0.0', pro: false)
     @update()
 
   # Internal: Callback for the Travis CI repository request, updates the build
@@ -112,10 +110,9 @@ class BuildStatusView extends View
   #
   # Returns nothing.
   repoStatus: (err, data) =>
-    return @fallback() if (typeof atom.travis is 'undefined') or (atom.travis is null) or (atom.travis.pro and err?)
-
-    return console.log "Error:", err if err?
+    return @fallback() if err? and atom.travis?.pro?
     return if data['files'] is 'not found'
+    return console.log "Error:", err if err?
 
     data = data['repo']
     @status.removeClass('pending success fail')

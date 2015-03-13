@@ -90,6 +90,7 @@ class BuildMatrixView extends View
 
     @builds.append("""
       <li class='#{status}'>
-        #{build['number']} - #{duration.formattedDuration()} >>> <a target="_new" href="https://travis-ci.org/#{@nwo}/builds/#{build['build_id']}">Full Report...</a>
+        #{build['number']} - #{duration.formattedDuration()}
+        (<a target="_new" href="https://travis-ci.org/#{@nwo}/builds/#{build['build_id']}">details</a>)
       </li>
     """)
