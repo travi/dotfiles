@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-plus",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "main": "./lib/main",
   "description": "Display possible completions in the editor while typing",
   "repository": {
@@ -44,10 +44,10 @@
     "url": "https://github.com/atom-community/autocomplete-plus/issues"
   },
   "homepage": "https://github.com/atom-community/autocomplete-plus",
-  "_id": "autocomplete-plus@2.4.1",
-  "_shasum": "97bf35af00ddb9e4aa01cd37d77b3304a4710d34",
-  "_resolved": "file:../d-11528-55534-413a83/package.tgz",
-  "_from": "../d-11528-55534-413a83/package.tgz",
+  "_id": "autocomplete-plus@2.4.2",
+  "_shasum": "72d594d0bfe0b7bed9b10d89332c9a6640314509",
+  "_resolved": "file:../d-115214-1219-qdm6um/package.tgz",
+  "_from": "../d-115214-1219-qdm6um/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -158,7 +158,7 @@
       },
       {
         "name": "minimatch",
-        "version": "2.0.1",
+        "version": "2.0.4",
         "path": "node_modules/minimatch/minimatch.js"
       },
       {
@@ -737,7 +737,6 @@
         "node_modules/grim/node_modules/emissary/node_modules/es6-weak-map/valid-weak-map.js",
         "node_modules/grim/node_modules/emissary/node_modules/mixto/lib/mixin.js",
         "node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js",
-        "node_modules/minimatch/benchmark.js",
         "node_modules/minimatch/browser.js",
         "node_modules/minimatch/minimatch.js",
         "node_modules/minimatch/node_modules/brace-expansion/example.js",
@@ -1091,8 +1090,7 @@
       },
       {
         "paths": [
-          "node_modules/minimatch",
-          "node_modules/minimatch/test"
+          "node_modules/minimatch"
         ],
         "dependencies": {
           "brace-expansion": "^1.0.0"
