@@ -1,5 +1,5 @@
-'.platform-darwin .workspace':
+'.platform-darwin atom-workspace':
   'cmd-alt-g': 'color-gutter:toggle'
 
-'.platform-win32 .workspace, .platform-linux .workspace':
+'.platform-win32 atom-workspace, .platform-linux atom-workspace':
   'ctrl-alt-g': 'color-gutter:toggle'

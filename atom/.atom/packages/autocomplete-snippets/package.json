@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-snippets",
   "main": "./lib/autocomplete-snippets",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Adds snippets to autocomplete+ suggestions",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=0.174.0 <2.0.0"
   },
   "dependencies": {
     "async": "~0.7.0",
@@ -23,7 +23,7 @@
   "providedServices": {
     "autocomplete.provider": {
       "versions": {
-        "1.0.0": "provide"
+        "2.0.0": "provide"
       }
     }
   },
@@ -33,10 +33,10 @@
     "url": "https://github.com/atom-community/autocomplete-snippets/issues"
   },
   "homepage": "https://github.com/atom-community/autocomplete-snippets",
-  "_id": "autocomplete-snippets@1.0.1",
-  "_shasum": "04cb34fe7bd435f2753f3f7658c472d8da7c0bfe",
-  "_resolved": "file:../d-115114-49493-e6aih5/package.tgz",
-  "_from": "../d-115114-49493-e6aih5/package.tgz",
+  "_id": "autocomplete-snippets@1.2.0",
+  "_shasum": "d26b1c7b08077a70f0a5429b1c5d2a570aeb3a7c",
+  "_resolved": "file:../d-115216-7208-1a5hhz6/package.tgz",
+  "_from": "../d-115216-7208-1a5hhz6/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -122,8 +122,13 @@
       },
       {
         "name": "escope",
-        "version": "1.0.1",
+        "version": "1.0.3",
         "path": "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/escope.js"
+      },
+      {
+        "name": "estraverse",
+        "version": "2.0.0",
+        "path": "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/node_modules/estraverse/estraverse.js"
       },
       {
         "name": "esprima",
@@ -210,6 +215,7 @@
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/escodegen/node_modules/estraverse/package.json",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/escodegen/package.json",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/bower.json",
+        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/node_modules/estraverse/package.json",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/package.json",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/esprima/package.json",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/esshorten/node_modules/estraverse/package.json",
@@ -233,7 +239,8 @@
         "lib/autocomplete-snippets.coffee",
         "lib/snippets-provider.coffee",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/StringScanner/src/StringScanner.coffee",
-        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/cscodegen/src/cscodegen.coffee"
+        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/cscodegen/src/cscodegen.coffee",
+        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/gulpfile.coffee"
       ],
       ".js": [
         "node_modules/async/lib/async.js",
@@ -316,8 +323,9 @@
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/lib/post/transform-static-to-dynamic-property-access.js",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/lib/query.js",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/lib/set.js",
-        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/Gruntfile.js",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/escope.js",
+        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/node_modules/estraverse/estraverse.js",
+        "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope/node_modules/estraverse/gulpfile.js",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/esprima/bin/esparse.js",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/esprima/bin/esvalidate.js",
         "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/esprima/esprima.js",
@@ -478,7 +486,7 @@
           "node_modules/season/node_modules/cson-safe/node_modules/coffee-script-redux/node_modules/esmangle/node_modules/escope"
         ],
         "dependencies": {
-          "estraverse": ">= 0.0.2"
+          "estraverse": "^2.0.0"
         }
       },
       {

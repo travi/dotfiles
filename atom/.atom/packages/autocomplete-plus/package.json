@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-plus",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "main": "./lib/main",
   "description": "Display possible completions in the editor while typing",
   "repository": {
@@ -11,12 +11,14 @@
     "atom": ">=0.183.0 <2.0.0"
   },
   "dependencies": {
+    "atom-slick": "^2.0.0",
+    "clear-cut": "^0.4.0",
     "fuzzaldrin": "^2.1.0",
     "grim": "^1.2.0",
     "minimatch": "^2.0.1",
-    "scoped-property-store": "^0.16.2",
     "selector-kit": "^0.1",
     "semver": "^4.3.1",
+    "stable": "^0.1.5",
     "underscore-plus": "^1.6.6"
   },
   "devDependencies": {
@@ -44,13 +46,28 @@
     "url": "https://github.com/atom-community/autocomplete-plus/issues"
   },
   "homepage": "https://github.com/atom-community/autocomplete-plus",
-  "_id": "autocomplete-plus@2.4.2",
-  "_shasum": "72d594d0bfe0b7bed9b10d89332c9a6640314509",
-  "_resolved": "file:../d-115214-1219-qdm6um/package.tgz",
-  "_from": "../d-115214-1219-qdm6um/package.tgz",
+  "_id": "autocomplete-plus@2.5.0",
+  "_shasum": "d6ad53bc6f34f89317533db9ec10ed7adedddece",
+  "_resolved": "file:../d-115216-7200-1hifgns/package.tgz",
+  "_from": "../d-115216-7200-1hifgns/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
+      {
+        "name": "atom-slick",
+        "version": "2.0.0",
+        "path": "node_modules/atom-slick/index.js"
+      },
+      {
+        "name": "clear-cut",
+        "version": "0.4.0",
+        "path": "node_modules/clear-cut/lib/main.js"
+      },
+      {
+        "name": "specificity",
+        "version": "0.1.3",
+        "path": "node_modules/clear-cut/node_modules/specificity/specificity.js"
+      },
       {
         "name": "fuzzaldrin",
         "version": "2.1.0",
@@ -177,39 +194,19 @@
         "path": "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/index.js"
       },
       {
-        "name": "scoped-property-store",
-        "version": "0.16.2",
-        "path": "node_modules/scoped-property-store/lib/scoped-property-store.js"
-      },
-      {
-        "name": "atom-slick",
-        "version": "2.0.0",
-        "path": "node_modules/scoped-property-store/node_modules/atom-slick/index.js"
-      },
-      {
-        "name": "event-kit",
-        "version": "1.0.3",
-        "path": "node_modules/scoped-property-store/node_modules/event-kit/lib/event-kit.js"
-      },
-      {
-        "name": "key-path-helpers",
-        "version": "0.1.0",
-        "path": "node_modules/scoped-property-store/node_modules/key-path-helpers/lib/key-path-helpers.js"
-      },
-      {
         "name": "selector-kit",
         "version": "0.1.0",
         "path": "node_modules/selector-kit/lib/selector-kit.js"
       },
       {
-        "name": "atom-slick",
-        "version": "2.0.0",
-        "path": "node_modules/selector-kit/node_modules/atom-slick/index.js"
-      },
-      {
         "name": "semver",
         "version": "4.3.1",
         "path": "node_modules/semver/semver.js"
+      },
+      {
+        "name": "stable",
+        "version": "0.1.5",
+        "path": "node_modules/stable/stable.js"
       },
       {
         "name": "underscore-plus",
@@ -225,6 +222,9 @@
     "extensions": {
       ".json": [
         "coffeelint.json",
+        "node_modules/atom-slick/package.json",
+        "node_modules/clear-cut/node_modules/specificity/package.json",
+        "node_modules/clear-cut/package.json",
         "node_modules/fuzzaldrin/package.json",
         "node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/package.json",
         "node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/package.json",
@@ -251,14 +251,10 @@
         "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/package.json",
         "node_modules/minimatch/node_modules/brace-expansion/package.json",
         "node_modules/minimatch/package.json",
-        "node_modules/scoped-property-store/node_modules/atom-slick/package.json",
-        "node_modules/scoped-property-store/node_modules/event-kit/api.json",
-        "node_modules/scoped-property-store/node_modules/event-kit/package.json",
-        "node_modules/scoped-property-store/node_modules/key-path-helpers/package.json",
-        "node_modules/scoped-property-store/package.json",
-        "node_modules/selector-kit/node_modules/atom-slick/package.json",
         "node_modules/selector-kit/package.json",
         "node_modules/semver/package.json",
+        "node_modules/stable/bower.json",
+        "node_modules/stable/package.json",
         "node_modules/underscore-plus/node_modules/underscore/package.json",
         "node_modules/underscore-plus/package.json",
         "package.json"
@@ -268,11 +264,18 @@
         "lib/fuzzy-provider.coffee",
         "lib/main.coffee",
         "lib/provider-manager.coffee",
+        "lib/provider-metadata.coffee",
+        "lib/scope-helpers.coffee",
         "lib/suggestion-list-element.coffee",
         "lib/suggestion-list.coffee",
         "lib/symbol-provider.coffee"
       ],
       ".js": [
+        "node_modules/atom-slick/finder.js",
+        "node_modules/atom-slick/index.js",
+        "node_modules/atom-slick/parser.js",
+        "node_modules/clear-cut/lib/main.js",
+        "node_modules/clear-cut/node_modules/specificity/specificity.js",
         "node_modules/fuzzaldrin/lib/filter.js",
         "node_modules/fuzzaldrin/lib/fuzzaldrin.js",
         "node_modules/fuzzaldrin/lib/matcher.js",
@@ -745,26 +748,13 @@
         "node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/index.js",
         "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/example/map.js",
         "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/index.js",
-        "node_modules/scoped-property-store/lib/helpers.js",
-        "node_modules/scoped-property-store/lib/property-set.js",
-        "node_modules/scoped-property-store/lib/scoped-property-store.js",
-        "node_modules/scoped-property-store/lib/selector.js",
-        "node_modules/scoped-property-store/node_modules/atom-slick/finder.js",
-        "node_modules/scoped-property-store/node_modules/atom-slick/index.js",
-        "node_modules/scoped-property-store/node_modules/atom-slick/parser.js",
-        "node_modules/scoped-property-store/node_modules/event-kit/lib/composite-disposable.js",
-        "node_modules/scoped-property-store/node_modules/event-kit/lib/disposable.js",
-        "node_modules/scoped-property-store/node_modules/event-kit/lib/emitter.js",
-        "node_modules/scoped-property-store/node_modules/event-kit/lib/event-kit.js",
-        "node_modules/scoped-property-store/node_modules/key-path-helpers/lib/key-path-helpers.js",
         "node_modules/selector-kit/lib/selector-kit.js",
         "node_modules/selector-kit/lib/selector.js",
-        "node_modules/selector-kit/node_modules/atom-slick/finder.js",
-        "node_modules/selector-kit/node_modules/atom-slick/index.js",
-        "node_modules/selector-kit/node_modules/atom-slick/parser.js",
         "node_modules/semver/semver.browser.js",
         "node_modules/semver/semver.js",
         "node_modules/semver/semver.min.js",
+        "node_modules/stable/stable.js",
+        "node_modules/stable/test.js",
         "node_modules/underscore-plus/lib/underscore-plus.js",
         "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
         "node_modules/underscore-plus/node_modules/underscore/underscore.js"
@@ -781,13 +771,24 @@
           "spec/issues"
         ],
         "dependencies": {
+          "atom-slick": "^2.0.0",
+          "clear-cut": "^0.4.0",
           "fuzzaldrin": "^2.1.0",
           "grim": "^1.2.0",
           "minimatch": "^2.0.1",
-          "scoped-property-store": "^0.16.2",
           "selector-kit": "^0.1",
           "semver": "^4.3.1",
+          "stable": "^0.1.5",
           "underscore-plus": "^1.6.6"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/clear-cut/lib",
+          "node_modules/clear-cut"
+        ],
+        "dependencies": {
+          "specificity": "0.1.3"
         }
       },
       {
@@ -1104,28 +1105,6 @@
         "dependencies": {
           "balanced-match": "^0.2.0",
           "concat-map": "0.0.1"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/scoped-property-store/lib",
-          "node_modules/scoped-property-store"
-        ],
-        "dependencies": {
-          "atom-slick": "^2",
-          "event-kit": "^1.0.0",
-          "grim": "^1.0.0",
-          "key-path-helpers": "^0.1.0",
-          "underscore-plus": "^1.6.3"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/scoped-property-store/node_modules/event-kit",
-          "node_modules/scoped-property-store/node_modules/event-kit/lib"
-        ],
-        "dependencies": {
-          "grim": "^1.0.0"
         }
       },
       {

@@ -1,7 +1,7 @@
 {
   "name": "color-gutter",
   "main": "./lib/color-gutter",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Show colour swatches in the gutter",
   "repository": {
     "type": "git",
@@ -20,10 +20,10 @@
     "url": "https://github.com/bkbooth/color-gutter/issues"
   },
   "homepage": "https://github.com/bkbooth/color-gutter",
-  "_id": "color-gutter@0.3.1",
-  "_shasum": "5189cbf818382a1c9ea852ac4171849ac7403bfa",
-  "_resolved": "file:../d-11528-55342-a4tfo3/package.tgz",
-  "_from": "../d-11528-55342-a4tfo3/package.tgz",
+  "_id": "color-gutter@0.3.2",
+  "_shasum": "f8edfb3097174e6c4ea23222d8d5afdec22d8bdf",
+  "_resolved": "file:../d-115216-7216-isuu95/package.tgz",
+  "_from": "../d-115216-7216-isuu95/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

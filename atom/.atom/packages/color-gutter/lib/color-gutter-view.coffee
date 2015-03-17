@@ -68,7 +68,7 @@ class ColorGutterView
     @markers = null
 
   markLine: (line, color) ->
-    marker = @editor.markBufferRange([[line, 0], [line, Infinity]], invalidate: 'never')
+    marker = @editor.markBufferPosition([line, 0], invalidate: 'never')
     @editor.decorateMarker(marker, type: 'gutter', class: 'color-gutter')
     @editorView.find('.line-number-' + line).css({ 'border-right-color': color })
     @markers ?= []
