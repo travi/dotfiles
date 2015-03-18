@@ -22,6 +22,9 @@
     local = cyan
     remote = magenta
 
+[color "diff"]
+    meta = yellow bold
+
 [core]
 	autocrlf = input
 	longpaths = true
