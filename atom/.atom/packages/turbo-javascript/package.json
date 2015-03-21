@@ -1,7 +1,7 @@
 {
   "name": "turbo-javascript",
   "main": "./lib/turbo-javascript",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A collection of commands and snippets for optimizing Javascript development productivity",
   "activationEvents": [
     "turbo-javascript:end-line",
@@ -22,10 +22,10 @@
     "url": "https://github.com/extrabacon/atom-turbo-javascript/issues"
   },
   "homepage": "https://github.com/extrabacon/atom-turbo-javascript",
-  "_id": "turbo-javascript@0.0.7",
-  "_shasum": "c6d9700d34dba5340df133948b88c522c81f3ed3",
-  "_resolved": "file:../d-115114-49412-1i3i0v1/package.tgz",
-  "_from": "../d-115114-49412-1i3i0v1/package.tgz",
+  "_id": "turbo-javascript@0.0.8",
+  "_shasum": "8e93d8053e81641c5080dafb96f1faaff37ae965",
+  "_resolved": "file:../d-115220-1994-7b53qq/package.tgz",
+  "_from": "../d-115220-1994-7b53qq/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

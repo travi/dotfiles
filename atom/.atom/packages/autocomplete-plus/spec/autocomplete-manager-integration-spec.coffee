@@ -231,6 +231,28 @@ describe 'Autocomplete Manager', ->
           atom.commands.dispatch(suggestionListView, 'autocomplete-plus:confirm')
           expect(editor.getText()).toBe 'something'
 
+    describe "when autocomplete-plus.suggestionListFollows is 'Word'", ->
+      beforeEach ->
+        atom.config.set('autocomplete-plus.suggestionListFollows', 'Word')
+
+      afterEach ->
+        atom.config.set('autocomplete-plus.suggestionListFollows', 'Cursor')
+
+      it "opens to the correct position, and correctly closes on cancel", ->
+        editor.insertText('x ab')
+        triggerAutocompletion(editor, false, 'c')
+
+        runs ->
+          overlayElement = editorView.querySelector('.autocomplete-plus')
+
+          expect(overlayElement).toExist()
+
+          left = editorView.pixelPositionForBufferPosition([0, 2]).left
+          expect(overlayElement.style.left).toBe "#{left}px"
+
+          atom.commands.dispatch(editorView, 'autocomplete-plus:cancel')
+          expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+
   describe 'when opening a file without a path', ->
     beforeEach ->
       waitsForPromise ->
@@ -339,7 +361,7 @@ describe 'Autocomplete Manager', ->
 
         runs ->
           expect(editorView.querySelector('.autocomplete-plus')).toExist()
-          editor.insertText(' ')
+          editor.insertText('\r')
           waitForAutocomplete()
 
         runs ->
@@ -374,7 +396,7 @@ describe 'Autocomplete Manager', ->
 
         runs ->
           expect(editorView.querySelector('.autocomplete-plus')).toExist()
-          editor.insertText(' ')
+          editor.insertText('\r')
           waitForAutocomplete()
 
         runs ->
@@ -462,7 +484,7 @@ describe 'Autocomplete Manager', ->
           editor.moveToBottom()
           editor.insertText('f')
           editor.insertText('u')
-          editor.insertText(' ')
+          editor.insertText('\r')
 
           waitForAutocomplete()
 

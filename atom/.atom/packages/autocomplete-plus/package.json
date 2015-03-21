@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-plus",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "main": "./lib/main",
   "description": "Display possible completions in the editor while typing",
   "repository": {
@@ -46,10 +46,10 @@
     "url": "https://github.com/atom-community/autocomplete-plus/issues"
   },
   "homepage": "https://github.com/atom-community/autocomplete-plus",
-  "_id": "autocomplete-plus@2.5.0",
-  "_shasum": "d6ad53bc6f34f89317533db9ec10ed7adedddece",
-  "_resolved": "file:../d-115216-7200-1hifgns/package.tgz",
-  "_from": "../d-115216-7200-1hifgns/package.tgz",
+  "_id": "autocomplete-plus@2.6.0",
+  "_shasum": "977d01adc22ae6f65fef0da16eae4b20e72e68e6",
+  "_resolved": "file:../d-115220-1962-s5zikv/package.tgz",
+  "_from": "../d-115220-1962-s5zikv/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -95,7 +95,7 @@
       },
       {
         "name": "fs-plus",
-        "version": "2.5.0",
+        "version": "2.6.0",
         "path": "node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/lib/fs-plus.js"
       },
       {
