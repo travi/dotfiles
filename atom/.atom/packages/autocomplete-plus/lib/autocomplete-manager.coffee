@@ -28,6 +28,8 @@ class AutocompleteManager
   suggestionDelay: 50
   suggestionList: null
   shouldDisplaySuggestions: false
+  manualActivationStrictPrefixes: null
+  prefixRegex:/\b((\w+[\w-]*)|([.:;[{(< ]+))$/g
 
   constructor: ->
     @subscriptions = new CompositeDisposable
@@ -95,6 +97,7 @@ class AutocompleteManager
     # Watch config values
     @subscriptions.add(atom.config.observe('autosave.enabled', (value) => @autosaveEnabled = value))
     @subscriptions.add(atom.config.observe('autocomplete-plus.backspaceTriggersAutocomplete', (value) => @backspaceTriggersAutocomplete = value))
+    @subscriptions.add(atom.config.observe('autocomplete-plus.enableAutoActivation', (value) => @autoActivationEnabled = value))
 
     # Handle events from suggestion list
     @subscriptions.add(@suggestionList.onDidConfirm(@confirm))
@@ -104,11 +107,11 @@ class AutocompleteManager
     @subscriptions.add atom.commands.add 'atom-text-editor',
       'autocomplete-plus:activate': =>
         @shouldDisplaySuggestions = true
-        @findSuggestions()
+        @findSuggestions(true)
 
   # Private: Finds suggestions for the current prefix, sets the list items,
   # positions the overlay and shows it
-  findSuggestions: =>
+  findSuggestions: (activatedManually) =>
     return if @disposed
     return unless @providerManager? and @editor? and @buffer?
     return if @isCurrentFileBlackListed()
@@ -117,11 +120,11 @@ class AutocompleteManager
 
     bufferPosition = cursor.getBufferPosition()
     scopeDescriptor = cursor.getScopeDescriptor()
-    prefix = @prefixForCursor(cursor)
+    prefix = @getPrefix(@editor, bufferPosition)
 
-    @getSuggestionsFromProviders({@editor, bufferPosition, scopeDescriptor, prefix})
+    @getSuggestionsFromProviders({@editor, bufferPosition, scopeDescriptor, prefix}, activatedManually)
 
-  getSuggestionsFromProviders: (options) =>
+  getSuggestionsFromProviders: (options, activatedManually) =>
     providers = @providerManager.providersForScopeDescriptor(options.scopeDescriptor)
 
     providerPromises = []
@@ -165,6 +168,7 @@ class AutocompleteManager
         for suggestion in providerSuggestions
           suggestion.replacementPrefix ?= options.prefix
           suggestion.provider = provider
+          @addManualActivationStrictPrefix(provider, suggestion.replacementPrefix) if activatedManually
 
         providerSuggestions
 
@@ -172,7 +176,12 @@ class AutocompleteManager
     @currentSuggestionsPromise = suggestionsPromise = Promise.all(providerPromises)
       .then(@mergeSuggestionsFromProviders)
       .then (suggestions) =>
-        if @currentSuggestionsPromise is suggestionsPromise
+        return unless @currentSuggestionsPromise is suggestionsPromise
+        suggestions = @filterForManualActivationStrictPrefix(suggestions)
+        if activatedManually and @shouldDisplaySuggestions and suggestions.length is 1
+          # When there is one suggestion in manual mode, just confirm it
+          @confirm(suggestions[0])
+        else
           @displaySuggestions(suggestions, options)
 
   # providerSuggestions - array of arrays of suggestions provided by all called providers
@@ -238,12 +247,9 @@ class AutocompleteManager
     else
       @hideSuggestionList()
 
-  prefixForCursor: (cursor) =>
-    return '' unless @buffer? and cursor?
-    start = cursor.getBeginningOfCurrentWordBufferPosition()
-    end = cursor.getBufferPosition()
-    return '' unless start? and end?
-    @buffer.getTextInRange(new Range(start, end))
+  getPrefix: (editor, bufferPosition) ->
+    line = editor.getTextInRange([[bufferPosition.row, 0], bufferPosition])
+    line.match(@prefixRegex)?[0] or ''
 
   # Private: Gets called when the user successfully confirms a suggestion
   #
@@ -276,6 +282,7 @@ class AutocompleteManager
 
   hideSuggestionList: =>
     return if @disposed
+    @clearManualActivationStrictPrefixes()
     @suggestionList.hide()
     @shouldDisplaySuggestions = false
 
@@ -289,21 +296,40 @@ class AutocompleteManager
   # Private: Replaces the current prefix with the given match.
   #
   # match - The match to replace the current prefix with
-  replaceTextWithMatch: (match) =>
+  replaceTextWithMatch: (suggestion) =>
     return unless @editor?
     newSelectedBufferRanges = []
 
-    selections = @editor.getSelections()
-    return unless selections?
-    @editor.transact =>
-      if match.replacementPrefix?.length > 0
-        @editor.selectLeft(match.replacementPrefix.length)
-        @editor.delete()
+    cursors = @editor.getCursors()
+    return unless cursors?
 
-      if match.snippet? and @snippetsManager?
-        @snippetsManager.insertSnippet(match.snippet, @editor)
-      else
-        @editor.insertText(match.text ? match.snippet)
+    @editor.transact =>
+      for cursor in cursors
+        endPosition = cursor.getBufferPosition()
+        beginningPosition = [endPosition.row, endPosition.column - suggestion.replacementPrefix.length]
+
+        if @editor.getTextInBufferRange([beginningPosition, endPosition]) is suggestion.replacementPrefix
+          suffix = @getSuffix(@editor, endPosition, suggestion)
+          cursor.moveRight(suffix.length) if suffix.length
+          cursor.selection.selectLeft(suggestion.replacementPrefix.length + suffix.length)
+
+          if suggestion.snippet? and @snippetsManager?
+            @snippetsManager.insertSnippet(suggestion.snippet, @editor, cursor)
+          else
+            cursor.selection.insertText(suggestion.text ? suggestion.snippet)
+      return
+
+  getSuffix: (editor, bufferPosition, suggestion) ->
+    # This just chews through the suggestion and tries to match the suggestion
+    # substring with the lineText starting at the cursor. There is probably a
+    # more efficient way to do this.
+    suffix = (suggestion.snippet ? suggestion.text)
+    endPosition = [bufferPosition.row, bufferPosition.column + suffix.length]
+    endOfLineText = editor.getTextInBufferRange([bufferPosition, endPosition])
+    while suffix
+      return suffix if endOfLineText.startsWith(suffix)
+      suffix = suffix.slice(1)
+    ''
 
   # Private: Checks whether the current file is blacklisted.
   #
@@ -356,19 +382,18 @@ class AutocompleteManager
   bufferChanged: ({newText, oldText}) =>
     return if @disposed
     return @hideSuggestionList() if @compositionInProgress
-    autoActivationEnabled = atom.config.get('autocomplete-plus.enableAutoActivation')
-    wouldAutoActivate = false
+    shouldActivate = false
 
-    if autoActivationEnabled
+    if @autoActivationEnabled or @suggestionList.isActive()
       if newText?.length
         # Activate on space, a non-whitespace character, or a bracket-matcher pair
-        wouldAutoActivate = newText is ' ' or newText.trim().length is 1 or newText in @bracketMatcherPairs
-      else if oldText?.length
+        shouldActivate = newText is ' ' or newText.trim().length is 1 or newText in @bracketMatcherPairs
+      else if oldText?.length and (@backspaceTriggersAutocomplete or @suggestionList.isActive())
         # Suggestion list must be either active or backspaceTriggersAutocomplete must be true for activation to occur
         # Activate on removal of a space, a non-whitespace character, or a bracket-matcher pair
-        wouldAutoActivate = (@backspaceTriggersAutocomplete or @suggestionList.isActive()) and (oldText is ' ' or oldText.trim().length is 1 or oldText in @bracketMatcherPairs)
+        shouldActivate = oldText is ' ' or oldText.trim().length is 1 or oldText in @bracketMatcherPairs
 
-    if autoActivationEnabled and wouldAutoActivate
+    if shouldActivate
       @cancelHideSuggestionListRequest()
       @requestNewSuggestions()
     else
@@ -386,3 +411,24 @@ class AutocompleteManager
     @subscriptions = null
     @suggestionList = null
     @providerManager = null
+
+  clearManualActivationStrictPrefixes: ->
+    @manualActivationStrictPrefixes = null
+
+  addManualActivationStrictPrefix: (provider, prefix) ->
+    return if @manualActivationStrictPrefixes?.has(provider) or not prefix?
+    @manualActivationStrictPrefixes ?= new WeakMap
+    @manualActivationStrictPrefixes.set(provider, prefix.toLowerCase())
+
+  filterForManualActivationStrictPrefix: (suggestions) ->
+    return suggestions unless @manualActivationStrictPrefixes?
+
+    results = []
+    for suggestion in suggestions
+      lowercaseText = (suggestion.snippet ? suggestion.text).toLowerCase()
+      if lowercaseText[0] is suggestion.replacementPrefix.toLowerCase()[0]
+        strictPrefix = @manualActivationStrictPrefixes.get(suggestion.provider)
+        results.push(suggestion) if strictPrefix? and lowercaseText.startsWith(strictPrefix)
+      else
+        results.push(suggestion)
+    results
