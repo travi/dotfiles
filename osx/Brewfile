@@ -21,6 +21,8 @@ install mercurial
 install git
 install tig
 install node
+install heroku-toolbelt
+
 install openssl
 install ssh-copy-id
 install keybase
