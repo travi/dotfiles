@@ -78,6 +78,8 @@ function prompt_command() {
   if type update_terminal_cwd > /dev/null 2>&1; then
     PS1="$PS1$(update_terminal_cwd)"
   fi
+  # Set the title to cwd @ host
+  PS1="$PS1\[\e]0;\w @ \h\a\]"
   # git: [branch:flags]
   PS1="$PS1$(prompt_git)"
   # hg:  [branch:flags]
