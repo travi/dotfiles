@@ -24,6 +24,7 @@
 
 [color "diff"]
     meta = yellow bold
+    whitespace = red reverse
 
 [core]
 	autocrlf = input
