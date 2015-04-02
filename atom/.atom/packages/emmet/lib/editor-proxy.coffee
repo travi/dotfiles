@@ -206,6 +206,10 @@ module.exports =
   # Returns the editor's syntax mode.
   getSyntax: ->
     syntax = @getGrammar()
+
+    if /\b(javascript|jsx)\b/.test(syntax)
+      syntax = if @getCurrentScope().some((scope) -> /\bstring\b/.test scope) then 'html' else 'jsx'
+      
     if syntax is 'html'
       # HTML can contain embedded syntaxes
       embedded = @getCurrentScope().filter((s) -> /\.embedded\./.test s).pop()
@@ -223,7 +227,7 @@ module.exports =
   #
   # See emmet.setupProfile for more information.
   getProfileName: ->
-    'html'
+    return if @getCurrentScope().some((scope) -> /\bstring\.quoted\b/.test scope) then 'line' else 'html'
 
   # Returns the current editor's file path
   getFilePath: ->
