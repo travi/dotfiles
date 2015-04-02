@@ -1,12 +1,15 @@
 ColorGutterView = null
 
 module.exports =
-
-  configDefaults:
-    ignoreCommentedLines: false
+  config:
+    ignoreCommentedLines:
+      type: 'boolean',
+      default: false
 
   activate: ->
-    atom.workspaceView.command 'color-gutter:toggle', => @toggle()
+    atom.commands.add 'atom-workspace',
+      'color-gutter:toggle': => @toggle()
+
     @colorGutterViews = []
     @enable()
 
@@ -17,13 +20,12 @@ module.exports =
     @enabled = true
     ColorGutterView ?= require './color-gutter-view'
 
-    atom.workspaceView.eachEditorView (editorView) =>
-      if editorView.attached and editorView.getPane()?
-        @colorGutterViews.push(new ColorGutterView(editorView))
+    atom.workspace.observeTextEditors (editor) =>
+      @colorGutterViews.push(new ColorGutterView(editor))
 
   disable: ->
-    while view = @colorGutterViews.shift()
-      view.destroy()
+    while colorGutterView = @colorGutterViews.shift()
+      colorGutterView.destroy()
 
     @enabled = false
 

@@ -1,47 +1,52 @@
-{Subscriber} = require 'emissary'
+{CompositeDisposable} = require 'atom'
 RegExps = require './color-gutter-regexps'
 
 module.exports =
 class ColorGutterView
-  Subscriber.includeInto(this)
-
-  constructor: (@editorView) ->
-    {@editor, @gutter} = @editorView
+  constructor: (@editor) ->
+    @subscriptions = new CompositeDisposable()
+    @bufferSubscriptions = new CompositeDisposable()
     @decorations = {}
-    @markers = null
+    @markers = []
+
+    @editorView = atom.views.getView @editor
 
     @config =
       ignoreCommentedLines: atom.config.get 'color-gutter.ignoreCommentedLines'
 
-    @watchConfigChanges()
+    @subscriptions.add atom.config.onDidChange 'color-gutter.ignoreCommentedLines', @watchConfigChanges
 
-    @subscribe @editorView, 'editor:path-changed', @subscribeToBuffer()
+    @subscriptions.add @editor.onDidChangePath @subscribeToBuffer
+    @subscriptions.add @editor.onDidStopChanging @subscribeToBuffer
+    @subscriptions.add @editorView.onDidAttach @subscribeToBuffer
 
-    @subscribe @editorView, 'editor:will-be-removed', =>
-      @unsubscribe()
+    @subscriptions.add @editor.onDidDestroy =>
       @unsubscribeFromBuffer()
+      @subscriptions.dispose()
 
-  watchConfigChanges: =>
-    @subscribe atom.config.observe 'color-gutter.ignoreCommentedLines', (ignoreCommentedLines) =>
-      unless ignoreCommentedLines == @config.ignoreCommentedLines
-        @config.ignoreCommentedLines = ignoreCommentedLines
-        @scheduleUpdate()
+    @subscribeToBuffer()
+
+  watchConfigChanges: (ignoreCommentedLines) =>
+    unless ignoreCommentedLines.newValue == @config.ignoreCommentedLines
+      @config.ignoreCommentedLines = ignoreCommentedLines.newValue
+      @scheduleUpdate()
 
   destroy: ->
     @unsubscribeFromBuffer()
 
-  unsubscribeFromBuffer: ->
+  unsubscribeFromBuffer: =>
     if @buffer?
       @removeDecorations()
-      @buffer.off 'contents-modified', @updateColors
+      @bufferSubscriptions.dispose()
       @buffer = null
 
-  subscribeToBuffer: ->
+  subscribeToBuffer: =>
     @unsubscribeFromBuffer()
 
     if @buffer = @editor.getBuffer()
       @scheduleUpdate()
-      @buffer.on 'contents-modified', @updateColors
+      @bufferSubscriptions.add @buffer.onDidChange @updateColors
+      @bufferSubscriptions.add @buffer.onDidStopChanging @updateColors
 
   scheduleUpdate: ->
     setImmediate(@updateColors)
@@ -57,7 +62,7 @@ class ColorGutterView
     for line in [0...@editor.getLineCount()]
       unless @config.ignoreCommentedLines and @editor.isBufferRowCommented(line)
         for regexp in RegExps
-          match = regexp.exec @editor.lineForBufferRow(line)
+          match = regexp.exec @editor.lineTextForBufferRow(line)
           if match?
             @markLine line, match[1]
             break
@@ -65,11 +70,10 @@ class ColorGutterView
   removeDecorations: ->
     return unless @markers?
     marker.destroy() for marker in @markers
-    @markers = null
+    @markers = []
 
   markLine: (line, color) ->
     marker = @editor.markBufferPosition([line, 0], invalidate: 'never')
-    @editor.decorateMarker(marker, type: 'gutter', class: 'color-gutter')
-    @editorView.find('.line-number-' + line).css({ 'border-right-color': color })
-    @markers ?= []
+    @editor.decorateMarker(marker, type: 'line-number', class: 'color-gutter')
+    @editorView.rootElement?.querySelector('.line-number-' + line)?.style.borderRightColor = color;
     @markers.push marker

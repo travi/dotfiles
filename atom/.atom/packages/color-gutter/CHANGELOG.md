@@ -1,3 +1,28 @@
+## 0.4.1 (02/04/2015)
+
+Bugs:
+
+* Fixed `package.json` `engines.atom` requirement
+
+## 0.4.0 (02/04/2015)
+
+Bugs:
+
+* Use `atom-text-editor::shadow` as well as `atom-text-editor`
+* Use `box-sizing: border-box` for gutter width
+* Use `CompositeDisposable` instead of 'emissary', remove dependency
+* Update config spec
+* Use `CommandRegistry`
+* Use `atom.workspace.observeTextEditors` instead of `atom.workspaceView.eachEditorView`
+* Use native JS instead of jQuery to set color
+
+## 0.3.2 (17/03/2015)
+
+Bugs:
+
+* Use `atom-workspace` instead of `workspace` class
+* Use `atom-text-editor` instead of `editor` class
+
 ## 0.3.1 (05/08/2014)
 
 Bugs:
