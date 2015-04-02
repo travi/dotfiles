@@ -8,7 +8,11 @@
     showOnStartup: false
   metrics:
     userId: "2c122769923ca0614e59cd53b5dad1d854603b1a"
-  core: {}
+  core:
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
   linter: {}
   "svg-preview": {}
   "github-issues": {}
