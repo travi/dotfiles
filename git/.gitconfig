@@ -29,6 +29,7 @@
 [core]
 	autocrlf = input
 	longpaths = true
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [push]
     # Git 1.x default to work on legacy machines (pre-v1.8)
