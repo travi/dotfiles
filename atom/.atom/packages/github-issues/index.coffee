@@ -5,7 +5,7 @@ request = request.defaults
   headers:
     'User-Agent': 'baconscript/github-issues'
 
-GH_REGEX = /^(https:\/\/|git@)github\.com(\/|:)([-\w]+)\/([-\w]+)\.git$/
+GH_REGEX = /^(https:\/\/|git@)github\.com(\/|:)([-\w]+)\/([-\w]+)(\.git)?$/
 
 issuesUrl = (info) ->
   "https://api.github.com/repos/#{info.user}/#{info.repo}/issues?state=all"
