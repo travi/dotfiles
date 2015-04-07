@@ -62,10 +62,11 @@
   &[data-name$=".skim"]:before { .dashboard-icon; .medium-orange; }
 
   // Database icon
-  &[data-name$=".json"]:before { .database-icon; .medium-yellow; }
-  &[data-name$=".cson"]:before { .database-icon; .medium-maroon; }
+  &[data-name$=".json"]:before   { .database-icon; .medium-yellow; }
+  &[data-name$=".ndjson"]:before { .database-icon; .medium-orange; }
+  &[data-name$=".cson"]:before   { .database-icon; .medium-maroon; }
   &[data-name$=".yml"]:before,
-  &[data-name$=".yaml"]:before { .database-icon; .light-red; }
+  &[data-name$=".yaml"]:before   { .database-icon; .light-red; }
 
   // Elixir icon
   &[data-name$=".ex"]:before        { .elixir-icon;   .dark-purple; }
@@ -261,6 +262,14 @@
   &[data-name$=".ron"]:before,
   &[data-name$=".md"]:before  { .markdown-icon; .medium-blue;   }
 
+  //Template Toolkit
+  &[data-name$=".tt"]:before { .templatetoolkit-icon; .medium-blue; }
+  &[data-name$=".tt2"]:before { .templatetoolkit-icon; .medium-blue; }
+  &[data-name$=".tt3"]:before { .templatetoolkit-icon; .medium-purple; }
+
+  //SQL
+  &[data-name$=".sql"]:before { .sql-icon;}
+
   // txt
   &[data-name$=".txt"]:before { .medium-cyan;   }
 
@@ -297,6 +306,9 @@
   &[data-name="GULPFILE.coffee"]:before,
   &[data-name="Gulpfile.coffee"]:before,
   &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
+  &[data-name="GULPFILE.babel.js"]:before,
+  &[data-name="Gulpfile.babel.js"]:before,
+  &[data-name="gulpfile.babel.js"]:before  { .gulp-icon; .medium-red; }
 
   // Ionic icon
   &[data-name="ionic.project"]:before { .ionic-icon; .medium-blue; }
@@ -336,6 +348,19 @@
   &[data-name$=".ini"]:before { .config-icon; .medium-yellow; }
   &[data-name$=".properties"]:before { .config-icon; .medium-purple; }
   &[data-name$=".toml"]:before { .config-icon; .dark-maroon; }
+
+
+  // Windows specific Files
+  &[data-name$=".bat"]:before { .windows-icon; .medium-purple;}
+  &[data-name$=".cmd"]:before { .windows-icon; .medium-purple;}
+  &[data-name$=".exe"]:before { .windows-icon; }
+  &[data-name$=".com"]:before { .windows-icon; }
+  &[data-name$=".reg"]:before { .windows-icon; .medium-blue;}
+
+  // LaTeX
+  &[data-name$=".tex"]:before { .latex-icon; .medium-blue; }
+  &[data-name$=".bib"]:before { .bibtex-icon; .medium-yellow; }
+
 }
 
 body.file-icons-colourless {
