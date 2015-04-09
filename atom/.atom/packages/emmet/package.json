@@ -2,7 +2,7 @@
   "name": "emmet",
   "description": "Emmet – the essential tool for web developers",
   "main": "./lib/emmet",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "dependencies": {
     "emmet": "^1.3.0",
     "atom-space-pen-views": "^2.0.3"
@@ -20,10 +20,10 @@
     "url": "https://github.com/emmetio/emmet-atom/issues"
   },
   "homepage": "https://github.com/emmetio/emmet-atom",
-  "_id": "emmet@2.3.6",
-  "_shasum": "76bc3c727112c1b4c5da2e1e3ae673c56e17cb19",
-  "_resolved": "file:../d-11531-33181-p7tt56/package.tgz",
-  "_from": "../d-11531-33181-p7tt56/package.tgz",
+  "_id": "emmet@2.3.7",
+  "_shasum": "a75fa96ceeb11d228803e7a1b037d28c8a0bb65f",
+  "_resolved": "file:../d-11538-49117-1j2ihzm/package.tgz",
+  "_from": "../d-11538-49117-1j2ihzm/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -64,7 +64,7 @@
       },
       {
         "name": "fs-plus",
-        "version": "2.6.0",
+        "version": "2.7.0",
         "path": "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/lib/fs-plus.js"
       },
       {
