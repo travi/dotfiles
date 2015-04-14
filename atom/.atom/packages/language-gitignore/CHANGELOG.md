@@ -1,3 +1,10 @@
+## 0.2.0 - Class Updates and Deprecation Fix (2015-04-09)
+
+* Updated style classes applied to headers
+* Fixed deprecation bug (issue #1, thanks @carneeki)
+* Preparing to move to language-git package
+
+
 ## 0.1.0 - Initial Release (2014-08-30)
 
 * Added support for headers

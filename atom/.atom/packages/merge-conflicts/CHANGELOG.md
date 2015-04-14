@@ -1,4 +1,9 @@
-## 1.2.11
+## 1.3.1
+
+- Clean up all markers when conflict detection is completed or quit. [#136](https://github.com/smashwilson/merge-conflicts/pull/136)
+- Handle next-unresolved or previous-unresolved navigation when conflicts exist in that direction, but all are resolved. [#135](https://github.com/smashwilson/merge-conflicts/pull/135)
+
+## 1.3.0
 
 - Fix more deprecation warnings. [#132](https://github.com/smashwilson/merge-conflicts/pull/132)
 

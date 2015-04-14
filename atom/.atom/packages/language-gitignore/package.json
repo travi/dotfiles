@@ -1,6 +1,6 @@
 {
   "name": "language-gitignore",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Syntax highlighting for .gitignore files in Atom",
   "repository": {
     "type": "git",
@@ -17,10 +17,10 @@
     "url": "https://github.com/bsara/language-gitignore/issues"
   },
   "homepage": "https://github.com/bsara/language-gitignore",
-  "_id": "language-gitignore@0.1.1",
-  "_shasum": "ee8c9ce3363d090225165726a86f5de753f7bf3d",
-  "_resolved": "file:../d-115114-51355-1ujpg8b/package.tgz",
-  "_from": "../d-115114-51355-1ujpg8b/package.tgz",
+  "_id": "language-gitignore@0.2.0",
+  "_shasum": "70337d87bb1ee685270d868879ae6f07617d62fb",
+  "_resolved": "file:../d-115314-11911-vwwa58/package.tgz",
+  "_from": "../d-115314-11911-vwwa58/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

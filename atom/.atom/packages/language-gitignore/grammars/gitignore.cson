@@ -1,21 +1,20 @@
-'name': 'Gitignore'
-'scopeName': 'source.gitignore'
 'fileTypes': [
   'gitignore'
   'gitignore_global'
 ]
+'name': 'Gitignore'
 'patterns': [
   {
-    'name'  : 'markup.heading.heading-1.gitignore'
+    'name'  : 'meta.section.gitignore'
     'match' : '^\\s*###.*'
   }
   {
-    'name'  : 'markup.heading.heading-1.block.gitignore'
+    'name'  : 'meta.section.block.gitignore'
     'begin' : '^\\s*#(-|=|/|~|%|:|@|&|!|\\+|\\$|\\*|\\\\|\\|)[^#]+#?'
     'end'   : '^\\s*#(-|=|/|~|%|:|@|&|!|\\+|\\$|\\*|\\\\|\\|)[^#]+#?'
   }
   {
-    'name'  : 'markup.heading.heading-2.gitignore'
+    'name'  : 'meta.subsection.gitignore'
     'match' : '^\\s*##[^#].*'
   }
   {
@@ -23,7 +22,7 @@
     'match' : '#[^#].*'
   }
   {
-    'name'  : 'slash.gitignore'
+    'name'  : 'punctuation.separator.file-path.gitignore'
     'match' : '/'
   }
   {
@@ -43,3 +42,4 @@
     'match' : '(\\\\!|\\\\\\*|\\\\\\\\)'
   }
 ]
+'scopeName': 'source.gitignore'
