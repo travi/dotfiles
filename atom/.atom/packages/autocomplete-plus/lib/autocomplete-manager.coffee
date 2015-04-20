@@ -30,7 +30,8 @@ class AutocompleteManager
   suppressForClasses: []
   shouldDisplaySuggestions: false
   manualActivationStrictPrefixes: null
-  prefixRegex:/\b((\w+[\w-]*)|([.:;[{(< ]+))$/g
+  prefixRegex: /\b((\w+[\w-]*)|([.:;[{(< ]+))$/g
+  wordPrefixRegex: /^\w+[\w-]*$/
 
   constructor: ->
     @subscriptions = new CompositeDisposable
@@ -170,7 +171,7 @@ class AutocompleteManager
 
         # FIXME: Cycling through the suggestions again is not ideal :/
         for suggestion in providerSuggestions
-          suggestion.replacementPrefix ?= options.prefix
+          suggestion.replacementPrefix ?= @getDefaultReplacementPrefix(options.prefix)
           suggestion.provider = provider
           @addManualActivationStrictPrefix(provider, suggestion.replacementPrefix) if activatedManually
 
@@ -254,6 +255,12 @@ class AutocompleteManager
   getPrefix: (editor, bufferPosition) ->
     line = editor.getTextInRange([[bufferPosition.row, 0], bufferPosition])
     line.match(@prefixRegex)?[0] or ''
+
+  getDefaultReplacementPrefix: (prefix) ->
+    if @wordPrefixRegex.test(prefix)
+      prefix
+    else
+      ''
 
   # Private: Gets called when the user successfully confirms a suggestion
   #
@@ -383,16 +390,17 @@ class AutocompleteManager
   # character with a single keystroke. (= pasting)
   #
   # event - The change {Event}
-  bufferChanged: ({newText, oldText}) =>
+  bufferChanged: ({newText, newRange, oldText, oldRange}) =>
     return if @disposed
     return @hideSuggestionList() if @compositionInProgress
     shouldActivate = false
+    cursorBufferPosition = @editor.getLastCursor().getBufferPosition()
 
     if @autoActivationEnabled or @suggestionList.isActive()
-      if newText?.length
+      if newText?.length and newRange.containsPoint(cursorBufferPosition)
         # Activate on space, a non-whitespace character, or a bracket-matcher pair
         shouldActivate = newText is ' ' or newText.trim().length is 1 or newText in @bracketMatcherPairs
-      else if oldText?.length and (@backspaceTriggersAutocomplete or @suggestionList.isActive())
+      else if oldText?.length and (@backspaceTriggersAutocomplete or @suggestionList.isActive()) and oldRange.containsPoint(cursorBufferPosition)
         # Suggestion list must be either active or backspaceTriggersAutocomplete must be true for activation to occur
         # Activate on removal of a space, a non-whitespace character, or a bracket-matcher pair
         shouldActivate = oldText is ' ' or oldText.trim().length is 1 or oldText in @bracketMatcherPairs

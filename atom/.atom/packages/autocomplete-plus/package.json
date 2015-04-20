@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-plus",
-  "version": "2.9.0",
+  "version": "2.11.0",
   "main": "./lib/main",
   "description": "Display possible completions in the editor while typing",
   "repository": {
@@ -46,10 +46,10 @@
     "url": "https://github.com/atom-community/autocomplete-plus/issues"
   },
   "homepage": "https://github.com/atom-community/autocomplete-plus",
-  "_id": "autocomplete-plus@2.9.0",
-  "_shasum": "df5b70d63b3ebad0b1b2bf68126b941b7a67a644",
-  "_resolved": "file:../d-115314-11903-9tvt6y/package.tgz",
-  "_from": "../d-115314-11903-9tvt6y/package.tgz",
+  "_id": "autocomplete-plus@2.11.0",
+  "_shasum": "fb17256de810ba3ccb3501fafd9260440c71bfe2",
+  "_resolved": "file:../d-115320-37515-thx4a/package.tgz",
+  "_from": "../d-115320-37515-thx4a/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -255,6 +255,7 @@
         "lib/provider-metadata.coffee",
         "lib/ref-counted-token-list.coffee",
         "lib/scope-helpers.coffee",
+        "lib/snippet-parser.coffee",
         "lib/suggestion-list-element.coffee",
         "lib/suggestion-list.coffee",
         "lib/symbol-provider.coffee",

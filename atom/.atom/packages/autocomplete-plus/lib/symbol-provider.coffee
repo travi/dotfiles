@@ -9,6 +9,7 @@ SymbolStore = require './symbol-store'
 module.exports =
 class SymbolProvider
   wordRegex: /\b\w*[a-zA-Z_-]+\w*\b/g
+  beginningOfLineWordRegex: /^\w*[a-zA-Z_-]+\w*\b/g
   symbolStore: null
   editor: null
   buffer: null
@@ -18,84 +19,152 @@ class SymbolProvider
   inclusionPriority: 0
   suggestionPriority: 0
 
+  watchedBuffers: null
+
   config: null
   defaultConfig:
     class:
       selector: '.class.name, .inherited-class, .instance.type'
-      priority: 4
+      typePriority: 4
     function:
       selector: '.function.name'
-      priority: 3
+      typePriority: 3
     variable:
       selector: '.variable'
-      priority: 2
+      typePriority: 2
     '':
       selector: '.source'
-      priority: 1
+      typePriority: 1
 
   constructor: ->
+    @watchedBuffers = {}
     @symbolStore = new SymbolStore(@wordRegex)
     @subscriptions = new CompositeDisposable
+    @subscriptions.add(atom.config.observe('autocomplete-plus.minimumWordLength', (@minimumWordLength) => ))
+    @subscriptions.add(atom.config.observe('autocomplete-plus.includeCompletionsFromAllBuffers', (@includeCompletionsFromAllBuffers) => ))
     @subscriptions.add(atom.workspace.observeActivePaneItem(@updateCurrentEditor))
+    @subscriptions.add(atom.workspace.observeTextEditors(@watchEditor))
 
   dispose: =>
-    @editorSubscriptions?.dispose()
     @subscriptions.dispose()
+
+  watchEditor: (editor) =>
+    bufferPath = editor.getPath()
+    editorSubscriptions = new CompositeDisposable
+    editorSubscriptions.add editor.displayBuffer.onDidTokenize =>
+      @buildWordListOnNextTick(editor)
+    editorSubscriptions.add editor.onDidDestroy =>
+      index = @getWatchedEditorIndex(editor)
+      editors = @watchedBuffers[editor.getPath()]?.editors
+      editors.splice(index, 1) if index > -1
+      editorSubscriptions.dispose()
+
+    if @watchedBuffers[bufferPath]?
+      @watchedBuffers[bufferPath].editors.push(editor)
+    else
+      buffer = editor.getBuffer()
+      bufferSubscriptions = new CompositeDisposable
+      bufferSubscriptions.add buffer.onWillChange ({oldRange, newRange}) =>
+        bufferPath = buffer.getPath()
+        editor = @watchedBuffers[bufferPath].editors[0]
+        @symbolStore.removeTokensInBufferRange(editor, oldRange)
+        @symbolStore.adjustBufferRows(editor, oldRange, newRange)
+
+      bufferSubscriptions.add buffer.onDidChange ({newRange}) =>
+        bufferPath = buffer.getPath()
+        editor = @watchedBuffers[bufferPath].editors[0]
+        @symbolStore.addTokensInBufferRange(editor, newRange)
+
+      bufferSubscriptions.add buffer.onDidChangePath =>
+        oldBufferPath = bufferPath
+        bufferPath = buffer.getPath()
+        @watchedBuffers[bufferPath] = @watchedBuffers[oldBufferPath]
+        @symbolStore.updateForPathChange(oldBufferPath, bufferPath)
+        delete @watchedBuffers[oldBufferPath]
+
+      bufferSubscriptions.add buffer.onDidDestroy =>
+        bufferPath = buffer.getPath()
+        @symbolStore.clear(bufferPath)
+        bufferSubscriptions.dispose()
+        delete @watchedBuffers[bufferPath]
+
+      @watchedBuffers[bufferPath] = editors: [editor]
+      @buildWordListOnNextTick(editor)
+
+  isWatchingEditor: (editor) ->
+    @getWatchedEditorIndex(editor) > -1
+
+  isWatchingBuffer: (buffer) ->
+    @watchedBuffers[buffer.getPath()]?
+
+  getWatchedEditorIndex: (editor) ->
+    if editors = @watchedBuffers[editor.getPath()]?.editors
+      editors.indexOf(editor)
+    else
+      -1
 
   updateCurrentEditor: (currentPaneItem) =>
     return unless currentPaneItem?
     return if currentPaneItem is @editor
-
-    @editorSubscriptions?.dispose()
-    @editorSubscriptions = new CompositeDisposable
-
     @editor = null
-    @buffer = null
+    @editor = currentPaneItem if @paneItemIsValid(currentPaneItem)
 
-    return unless @paneItemIsValid(currentPaneItem)
+  buildConfigIfScopeChanged: ({editor, scopeDescriptor}) ->
+    unless @scopeDescriptorsEqual(@configScopeDescriptor, scopeDescriptor)
+      @buildConfig(scopeDescriptor)
+      @configScopeDescriptor = scopeDescriptor
 
-    @editor = currentPaneItem
-    @buffer = @editor.getBuffer()
-
-    @editorSubscriptions.add @editor.displayBuffer.onDidTokenize(@buildWordListOnNextTick)
-    @editorSubscriptions.add @buffer.onDidSave(@buildWordListOnNextTick)
-    @editorSubscriptions.add @buffer.onWillChange(@bufferWillChange)
-    @editorSubscriptions.add @buffer.onDidChange(@bufferDidChange)
-
-    @buildConfig()
-    @buildWordListOnNextTick()
-
-  buildConfig: ->
+  buildConfig: (scopeDescriptor) ->
     @config = {}
+    allConfigEntries = @settingsForScopeDescriptor(scopeDescriptor, 'editor.completions')
 
-    allConfig = @settingsForScopeDescriptor(@editor.getRootScopeDescriptor(), 'editor.completionSymbols')
-    allConfig.push @defaultConfig unless allConfig.length
+    addedConfigEntry = false
+    for {value} in allConfigEntries
+      if Array.isArray(value)
+        @addLegacyConfigEntry(value) if value.length
+      else if typeof value is 'object'
+        @addConfigEntry(value)
+        addedConfigEntry = true
 
-    for config in allConfig
-      for type, options of config
-        @config[type] = _.clone(options)
-        @config[type].selectors = Selector.create(options.selector) if options.selector?
-        @config[type].selectors ?= []
-        @config[type].priority ?= 1
-        @config[type].wordRegex ?= @wordRegex
+    @addConfigEntry(@defaultConfig) unless addedConfigEntry
+    @config.builtin.suggestions = _.uniq(@config.builtin.suggestions, @uniqueFilter) if @config.builtin?.suggestions?
 
+  addLegacyConfigEntry: (suggestions) ->
+    suggestions = ({text: suggestion, type: 'builtin'} for suggestion in suggestions)
+    @config.builtin ?= {suggestions: []}
+    @config.builtin.suggestions = @config.builtin.suggestions.concat(suggestions)
+
+  addConfigEntry: (config) ->
+    for type, options of config
+      @config[type] ?= {}
+      @config[type].selectors = Selector.create(options.selector) if options.selector?
+      @config[type].typePriority = options.typePriority ? 1
+      @config[type].wordRegex = @wordRegex
+
+      suggestions = @sanitizeSuggestionsFromConfig(options.suggestions, type)
+      @config[type].suggestions = suggestions if suggestions? and suggestions.length
     return
+
+  sanitizeSuggestionsFromConfig: (suggestions, type) ->
+    if suggestions? and Array.isArray(suggestions)
+      sanitizedSuggestions = []
+      for suggestion in suggestions
+        if typeof suggestion is 'string'
+          sanitizedSuggestions.push({text: suggestion, type})
+        else if typeof suggestions[0] is 'object' and (suggestion.text? or suggestion.snippet?)
+          suggestion = _.clone(suggestion)
+          suggestion.type ?= type
+          sanitizedSuggestions.push(suggestion)
+      sanitizedSuggestions
+    else
+      null
+
+  uniqueFilter: (completion) -> completion.text
 
   paneItemIsValid: (paneItem) ->
     return false unless paneItem?
     # Should we disqualify TextEditors with the Grammar text.plain.null-grammar?
     return paneItem instanceof TextEditor
-
-  # Notes on change updates:
-  #
-  # * Reading of the tokens must happen synchonously in the event handlers as
-  #   thats the only time the buffer will have the tokens matching the change events.
-  # * The slow part is the token scope selector matching to bucket tokens by type.
-  bufferWillChange: ({oldRange}) =>
-    @symbolStore.removeTokensInBufferRange(@editor, oldRange)
-
-  bufferDidChange: ({newRange}) =>
-    @symbolStore.addTokensInBufferRange(@editor, newRange)
 
   ###
   Section: Suggesting Completions
@@ -104,15 +173,15 @@ class SymbolProvider
   getSuggestions: (options) =>
     # No prefix? Don't autocomplete!
     return unless options.prefix.trim().length
-
-    new Promise (resolve) =>
-      suggestions = @findSuggestionsForWord(options)
-      resolve(suggestions)
+    @findSuggestionsForWord(options)
 
   findSuggestionsForWord: (options) =>
     return unless @symbolStore.getLength()
-    # Merge the scope specific words into the default word list
-    symbolList = @symbolStore.symbolsForConfig(@config).concat(@builtinCompletionsForCursorScope())
+    wordUnderCursor = @wordAtBufferPosition(options)
+    @buildConfigIfScopeChanged(options)
+
+    bufferPath = if @includeCompletionsFromAllBuffers then null else @editor.getPath()
+    symbolList = @symbolStore.symbolsForConfig(@config, bufferPath, wordUnderCursor)
 
     words =
       if atom.config.get("autocomplete-plus.strictMatching")
@@ -125,14 +194,18 @@ class SymbolProvider
 
     return words
 
-  fuzzyFilter: (symbolList, editorPath, {bufferPosition, prefix}) ->
+  wordAtBufferPosition: ({editor, prefix, bufferPosition}) ->
+    lineFromPosition = editor.getTextInRange([bufferPosition, [bufferPosition.row, Infinity]])
+    suffix = lineFromPosition.match(@beginningOfLineWordRegex)?[0] or ''
+    prefix + suffix
+
+  fuzzyFilter: (symbolList, bufferPath, {bufferPosition, prefix}) ->
     # Probably inefficient to do a linear search
     candidates = []
     for symbol in symbolList
-      continue if symbol.text is prefix
       continue unless prefix[0].toLowerCase() is symbol.text[0].toLowerCase() # must match the first char!
       score = fuzzaldrin.score(symbol.text, prefix)
-      score *= @getLocalityScore(bufferPosition, symbol.bufferRowsForEditorPath?(editorPath))
+      score *= @getLocalityScore(bufferPosition, symbol.bufferRowsForBufferPath?(bufferPath))
       candidates.push({symbol, score, locality, rowDifference}) if score > 0
 
     candidates.sort(@symbolSortReverseIterator)
@@ -162,47 +235,25 @@ class SymbolProvider
   settingsForScopeDescriptor: (scopeDescriptor, keyPath) ->
     atom.config.getAll(keyPath, scope: scopeDescriptor)
 
-  builtinCompletionsForCursorScope: =>
-    cursorScope = @editor.scopeDescriptorForBufferPosition(@editor.getCursorBufferPosition())
-    completions = @settingsForScopeDescriptor(cursorScope, "editor.completions")
-    scopedCompletions = []
-    for properties in completions
-      if suggestions = _.valueForKeyPath(properties, "editor.completions")
-        for suggestion in suggestions
-          scopedCompletions.push
-            text: suggestion
-            type: 'builtin'
-
-    _.uniq scopedCompletions, (completion) -> completion.text
-
   ###
   Section: Word List Building
   ###
 
-  buildWordListOnNextTick: =>
-    _.defer => @buildSymbolList()
+  buildWordListOnNextTick: (editor) =>
+    _.defer => @buildSymbolList(editor)
 
-  buildSymbolList: =>
-    return unless @editor?
+  buildSymbolList: (editor) =>
+    return unless editor?
+    @symbolStore.clear(editor.getPath())
+    @cacheSymbolsFromEditor(editor)
 
-    @symbolStore.clear()
-
-    minimumWordLength = atom.config.get('autocomplete-plus.minimumWordLength')
-    @cacheSymbolsFromEditor(@editor, minimumWordLength)
-
-    if atom.config.get('autocomplete-plus.includeCompletionsFromAllBuffers')
-      for editor in atom.workspace.getTextEditors()
-        # FIXME: downside is that some of these editors will not be tokenized :/
-        @cacheSymbolsFromEditor(editor, minimumWordLength)
-    return
-
-  cacheSymbolsFromEditor: (editor, minimumWordLength, tokenizedLines) ->
+  cacheSymbolsFromEditor: (editor, tokenizedLines) ->
     tokenizedLines ?= @getTokenizedLines(editor)
 
-    editorPath = editor.getPath()
+    bufferPath = editor.getPath()
     for {tokens}, bufferRow in tokenizedLines
       for token in tokens
-        @symbolStore.addToken(token, editorPath, bufferRow, minimumWordLength)
+        @symbolStore.addToken(token, bufferPath, bufferRow, @minimumWordLength)
     return
 
   getTokenizedLines: (editor) ->
@@ -210,3 +261,17 @@ class SymbolProvider
     # copy into your own package. If you do, be prepared to have it break
     # without warning.
     editor.displayBuffer.tokenizedBuffer.tokenizedLines
+
+  # FIXME: this should go in the core ScopeDescriptor class
+  scopeDescriptorsEqual: (a, b) ->
+    return true if a is b
+    return false unless a? and b?
+
+    arrayA = a.getScopesArray()
+    arrayB = b.getScopesArray()
+
+    return false if arrayA.length isnt arrayB.length
+
+    for scope, i in arrayA
+      return false if scope isnt arrayB[i]
+    true
