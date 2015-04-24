@@ -21,4 +21,5 @@
   "autocomplete-plus": {}
   "tree-view": {}
   "atom-pair": {}
-  achievements: {}
+  achievements:
+    NoticeDelay: 10000
