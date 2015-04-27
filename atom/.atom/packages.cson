@@ -2,6 +2,7 @@
   'achievements'
   'atom-beautify'
   'atom-pair'
+  'auto-update-packages'
   'autocomplete-plus'
   'autocomplete-snippets'
   'bower-install'
