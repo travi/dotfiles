@@ -23,6 +23,7 @@ install tig
 install node
 install heroku-toolbelt
 
+install mtr
 install openssl
 install ssh-copy-id
 install keybase
