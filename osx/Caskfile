@@ -10,6 +10,7 @@ cask install vlc
 cask install atom
 cask install google-chrome
 cask install firefox
+cask install mailbox
 cask install adobe-reader
 
 cask cleanup
