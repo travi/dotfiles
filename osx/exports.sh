@@ -8,5 +8,7 @@ export M2_HOME=$(brew --prefix maven)/libexec
 export M2="${M2_HOME}/bin"
 export PYTHONPATH=$(brew --prefix mercurial)/lib/python2.7/site-packages:$(brew --prefix mercurial)/lib/python2.7/site-packages/mercurial:$PYTHONPATH
 
+export NVM_DIR=~/.nvm
+
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications";

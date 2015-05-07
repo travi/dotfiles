@@ -21,6 +21,7 @@ install mercurial
 install git
 install tig
 install node
+install nvm
 install heroku-toolbelt
 
 install mtr

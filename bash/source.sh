@@ -10,4 +10,6 @@
 
 . ~/.dotfiles/bash/prompt.sh
 
-[ -f /Users/admin/.travis/travis.sh ] && . /Users/admin/.travis/travis.sh
+. ~/.dotfiles/osx/source.sh
+
+[ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
