@@ -14,10 +14,17 @@ fi
 heading 'Brew bundle'
 brew doctor
 brew tap homebrew/boneyard
-brew bundle $HOME/.dotfiles/osx/Brewfile
+brew bundle ~/.dotfiles/osx/Brewfile
 
 heading 'Brew Cask bundle'
-brew bundle $HOME/.dotfiles/osx/Caskfile
+brew bundle ~/.dotfiles/osx/Caskfile
+
+if [[ ! -d ~/.nvm ]]; then
+    heading "Finishing nvm configuration"
+
+    mkdir ~/.nvm
+    cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
+fi
 
 heading 'Ruby Gems'
 gem update
