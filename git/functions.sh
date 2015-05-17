@@ -37,19 +37,4 @@ function github_last_commit() {
 # open current branch + path in GitHub, in the browser.
 alias github_web='git web--browse $(github_url_branch)'
 
-function outstanding() {
-    while IFS= read -r -d '' dir
-    do
-        (
-        cd "$dir" || exit
-        if [ -d ".git" ]; then
-            out="$(git out 2>/dev/null)"
-
-            if [ ! -z "$out" ]; then
-                echo "${blue}$dir${reset}"
-                echo "$out"
-            fi
-        fi
-        )
-    done <   <(find . -maxdepth 1 -mindepth 1 -type d -print0)
-}
+. ~/.dotfiles/git/outstanding.sh
