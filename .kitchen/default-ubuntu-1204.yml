@@ -1,0 +1,6 @@
+---
+hostname: 127.0.0.1
+username: vagrant
+ssh_key: "/Users/admin/development/dotfiles/.kitchen/kitchen-vagrant/kitchen-dotfiles-default-ubuntu-1204/.vagrant/machines/default/virtualbox/private_key"
+port: '2222'
+last_action: create
