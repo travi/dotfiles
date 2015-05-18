@@ -12,6 +12,7 @@ install php54
 install php54-xdebug
 install php54-ssh2
 install composer
+install python
 
 install ant
 install augeas
