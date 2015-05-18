@@ -6,21 +6,31 @@ function outstanding() {
         echo -n "."
         (
         cd "$dir" || exit
-        local status;
+        local state;
         if [ -d ".git" ]; then
-            out=$status"$(git out 2>/dev/null)"
+            status="$(git status 2>/dev/null)"
+            changes="$(
+              echo "$status" | awk 'BEGIN {r=""}
+                /^(# )?Changes to be committed:$/        {r=r "staged "}
+                /^(# )?Changes not staged for commit:$/  {r=r "modified "}
+                /^(# )?Untracked files:$/                {r=r "untracked "}
+                END {print r}'
+            )"
+            state=$state"${changes}"
+
+            out=$state"$(git out 2>/dev/null)"
             if [ ! -z "$out" ]; then
-                status=$status" out"
+                state=$state"out "
             fi
 
-            in=$status"$(git in 2>/dev/null)"
+            in=$state"$(git in 2>/dev/null)"
             if [ ! -z "$in" ]; then
-                status=$status" in"
+                state=$state"in "
             fi
 
-            if [ ! -z "$status" ]; then
-                echo -ne \\r"${blue}$dir${reset}"
-                echo "$status"
+            if [ ! -z "$state" ]; then
+                echo -ne \\r"${blue}$dir${reset} "
+                echo "$state"
             fi
         fi
         )
