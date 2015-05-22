@@ -2,7 +2,7 @@
 update
 
 #upgrade already installed homebrew packages
-upgrade
+upgrade --all
 
 #install my standard packages
 tap homebrew/versions
