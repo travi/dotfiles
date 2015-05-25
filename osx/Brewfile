@@ -26,6 +26,7 @@ install nvm
 install heroku-toolbelt
 
 install mtr
+install minicom
 install openssl
 install ssh-copy-id
 install keybase
