@@ -30,6 +30,7 @@ function prompt_git() {
       /^(# )?Changes to be committed:$/        {r=r ENVIRON["green"]"+"}
       /^(# )?Changes not staged for commit:$/  {r=r ENVIRON["red"]"!"}
       /^(# )?Untracked files:$/                {r=r ENVIRON["orange"]"?"}
+      /^(# )?Both modified:$/                  {r=r ENVIRON["cyan"]"*"}
       END {print r}'
   )"
 

@@ -57,6 +57,7 @@ fi;
 export green
 export red
 export orange
+export cyan
 
 # BSD (including OSX)
 export LSCOLORS=ExFxCxDxBxegedabagacad
