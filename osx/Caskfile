@@ -10,8 +10,8 @@ cask install vlc
 cask install atom
 cask install google-chrome
 cask install firefox
-cask install mailbox
 cask install adobe-reader
+cask install monotype-skyfonts
 
 cask install pl2303
 
