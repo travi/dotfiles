@@ -25,6 +25,7 @@ install node
 install nvm
 install heroku-toolbelt
 
+install nmap
 install mtr
 install minicom
 install openssl
