@@ -5,10 +5,10 @@
     user = travi
 
 [diff]
-	renames = copy
+    renames = copy
 
 [color]
-	ui = true
+    ui = true
 
 [color "status"]
     branch = yellow bold
@@ -27,21 +27,20 @@
     whitespace = red reverse
 
 [core]
-	autocrlf = input
-	longpaths = true
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = ~/.gitignore
+    autocrlf = input
+    longpaths = true
+    whitespace=fix,tab-in-indent,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
 
 [push]
     # Git 1.x default to work on legacy machines (pre-v1.8)
     # use `simple` in .gitconfig.extra on machines with newer git installed
-	default = matching
+    default = matching
 
 [branch]
-	autorebase = always
+    autorebase = always
 
 [alias]
-    ad = "!f() { if [ ! -z \"$1\" ] || git diff --cached --quiet; then git add -A \"$1\" && git status; else echo \"Staging prevented\"; fi }; f"
     st = status
     co = checkout
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
@@ -61,9 +60,16 @@
     branches = branch -a
     remotes = remote -v
 
+    # Stage and print status
+    # Defaults to stage all, but only if nothing else is staged
+    ad = "!f() { if [ ! -z \"$1\" ] || git diff --cached --quiet; then git add -A \"$1\" && git status; else echo \"Staging prevented\"; fi }; f"
+
     # Remove branches that have already been merged with master
     # a.k.a. ‘delete merged’
     dm = "!git branch --merged master | grep -v '\\master' | xargs -n 1 git branch -d"
+
+    # Cleanup branches
+    cb = "!git co master && git dm && git remote prune origin"
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
