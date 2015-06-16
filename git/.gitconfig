@@ -34,14 +34,14 @@
 
 [push]
     # Git 1.x default to work on legacy machines (pre-v1.8)
-    # use simple in .gitconfig.extra on machines with newer git installed
+    # use `simple` in .gitconfig.extra on machines with newer git installed
 	default = matching
 
 [branch]
 	autorebase = always
 
 [alias]
-    ad = "!f() { git add -A \"$1\" && git status; }; f"
+    ad = "!f() { if [ ! -z \"$1\" ] || git diff --cached --quiet; then git add -A \"$1\" && git status; else echo \"Staging prevented\"; fi }; f"
     st = status
     co = checkout
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
