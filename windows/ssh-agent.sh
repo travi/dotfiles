@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Note: ~/.ssh/environment should not be used, as it
 #       already has a different purpose in SSH.
 
