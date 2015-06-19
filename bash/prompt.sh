@@ -27,7 +27,7 @@ function prompt_git() {
 
   flags="$(
     echo "$status" | awk 'BEGIN {r=""}
-      /^(# )?Changes not staged for commit:$/  {r=r ENVIRON["cyan"]"*"}
+      /^(# )?Unmerged paths:$/  {r=r ENVIRON["cyan"]"*"}
       /^(# )?Changes to be committed:$/        {r=r ENVIRON["green"]"+"}
       /^(# )?Changes not staged for commit:$/  {r=r ENVIRON["red"]"!"}
       /^(# )?Untracked files:$/                {r=r ENVIRON["orange"]"?"}
