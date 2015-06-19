@@ -1,3 +1,6 @@
+## 0.1.0 - Released 18 June 2015
+* Fix deprecated APIs for newer versions of Atom
+
 ## 0.0.3 - Released 14 June 2014
 * Uninstall removed packages
 * Automatically sync on startup

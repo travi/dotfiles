@@ -16,7 +16,7 @@ writePackageList = ->
 module.exports =
   activate: ->
     # Register parcel:sync command to run sync()
-    atom.workspaceView.command 'parcel:sync', ->
+    atom.commands.add 'atom-workspace', 'parcel:sync', ->
       sync()
     # Automatically run sync() when activated
     sync()

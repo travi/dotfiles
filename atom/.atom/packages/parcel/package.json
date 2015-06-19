@@ -1,7 +1,7 @@
 {
   "name": "parcel",
   "main": "./lib/parcel",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Atom package synchronization",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">0.200.0"
   },
   "dependencies": {
     "season": "~1.0"
@@ -20,10 +20,10 @@
     "url": "https://github.com/jamescmartinez/parcel/issues"
   },
   "homepage": "https://github.com/jamescmartinez/parcel",
-  "_id": "parcel@0.0.3",
-  "_shasum": "eae49de69f8dfa93b84f15765797fc5dfead10d8",
-  "_resolved": "file:../d-115324-90948-zbrmx0/package.tgz",
-  "_from": "../d-115324-90948-zbrmx0/package.tgz",
+  "_id": "parcel@0.1.0",
+  "_shasum": "8224681015180f1dfa82a236f6638cedeb13cfd8",
+  "_resolved": "file:../d-115518-53016-79gph6/package.tgz",
+  "_from": "../d-115518-53016-79gph6/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -44,7 +44,7 @@
       },
       {
         "name": "fs-plus",
-        "version": "2.7.1",
+        "version": "2.8.1",
         "path": "node_modules/season/node_modules/fs-plus/lib/fs-plus.js"
       },
       {
@@ -69,7 +69,7 @@
       },
       {
         "name": "wordwrap",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "path": "node_modules/season/node_modules/optimist/node_modules/wordwrap/index.js"
       },
       {

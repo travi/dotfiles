@@ -18,6 +18,7 @@
   'js-refactor'
   'language-cshtml'
   'language-docker'
+  'language-gherkin'
   'language-gitignore'
   'language-ini'
   'language-puppet'

@@ -1,7 +1,9 @@
 "*":
   editor:
     showInvisibles: true
-    invisibles: {}
+    invisibles:
+      {}
+    showIndentGuide: true
   "exception-reporting":
     userId: "78049fcb-fd79-53f5-3abf-40f1b3f1500b"
   welcome:
@@ -13,14 +15,21 @@
       "atom-dark-ui"
       "atom-dark-syntax"
     ]
-  linter: {}
-  "svg-preview": {}
-  "github-issues": {}
+  linter:
+    {}
+  "svg-preview":
+    {}
+  "github-issues":
+    {}
   "atom-beautify":
     _analyticsUserId: "b46fb249-4d6e-4986-98cc-44f290a836d6"
-  "autocomplete-plus": {}
-  "tree-view": {}
-  "atom-pair": {}
+  "autocomplete-plus":
+    {}
+  "tree-view":
+    {}
+  "atom-pair":
+    {}
   achievements:
     NoticeDelay: 10000
-  react: {}
+  react:
+    {}
