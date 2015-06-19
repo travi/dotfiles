@@ -35,6 +35,7 @@ install pkg-config
 install readline
 install ruby
 link --force ruby
+install rbenv
 install vim
 install maven
 install corkscrew
