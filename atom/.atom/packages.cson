@@ -1,8 +1,6 @@
 'packages': [
   'achievements'
-  'atom-beautify'
   'atom-pair'
-  'auto-update-packages'
   'autocomplete'
   'bower-install'
   'caniuse'
@@ -35,7 +33,6 @@
   'npm-install'
   'parcel'
   'refactor'
-  'svg-preview'
   'tab-history'
   'Tern'
   'toggle-invisibles'
