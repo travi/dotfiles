@@ -14,10 +14,10 @@ fi
 heading 'Brew bundle'
 brew doctor
 brew tap homebrew/boneyard
-brew bundle ~/.dotfiles/osx/Brewfile
+brew bundle-old ~/.dotfiles/osx/Brewfile
 
 heading 'Brew Cask bundle'
-brew bundle ~/.dotfiles/osx/Caskfile
+brew bundle-old ~/.dotfiles/osx/Caskfile
 
 if [[ ! -d ~/.nvm ]]; then
     heading "Finishing nvm configuration"
