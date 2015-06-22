@@ -97,10 +97,10 @@ link_dotfiles_directory() {
 link_dotfiles() {
     local source;
 
-    for source in $(find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*' -not -path '*.DS_Store')
+    while IFS= read -r -d '' source
     do
         link_dotfile "${source}"
-    done
+    done <   <(find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*' -not -path '*.DS_Store' -print0)
 }
 
 link_maven_extensions() {
