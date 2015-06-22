@@ -41,6 +41,7 @@ install maven
 install corkscrew
 install dos2unix
 install shellcheck
+install docker
 
 tap nviennot/tmate
 install tmate
