@@ -122,7 +122,7 @@ source_scripts() {
     local profile="$HOME/.bash_profile"
 
     if [[ -e ${profile} ]]; then
-        info ".bash_profile already exists"
+        warn ".bash_profile already exists"
     else
         touch "${profile}"
         echo ". $HOME/.dotfiles/bash/source.sh" >> "${profile}"
