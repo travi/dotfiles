@@ -110,11 +110,11 @@ link_maven_extensions() {
     if [[ -z $M2_HOME ]]; then
         warn "M2_HOME environment variable not set"
     else
-        for source in $(find "${DOTFILES_LINK}/maven/extensions" -mindepth 1 -maxdepth 1)
+        while IFS= read -r -d '' source
         do
             extension=$(basename "${source}")
             link_file "${source}" "$M2_HOME/lib/ext/${extension}"
-        done
+        done <   <(find "${DOTFILES_LINK}/maven/extensions" -mindepth 1 -maxdepth 1 -print0)
     fi
 }
 
