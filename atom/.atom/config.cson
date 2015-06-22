@@ -26,3 +26,5 @@
     NoticeDelay: 10000
   react: {}
   "markdown-preview": {}
+  autosave:
+    enabled: true
