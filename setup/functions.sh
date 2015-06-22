@@ -97,7 +97,7 @@ link_dotfiles_directory() {
 link_dotfiles() {
     local source;
 
-    for source in $(find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*')
+    for source in $(find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*' -not -path '*.DS_Store')
     do
         link_dotfile "${source}"
     done
