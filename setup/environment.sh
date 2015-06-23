@@ -2,9 +2,6 @@
 
 heading 'Link Dotfiles'
 link_dotfiles
-
-heading 'Improving Bash'
-source_scripts
 reload
 
 heading 'Extending Maven'

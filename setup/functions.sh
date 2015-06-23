@@ -117,16 +117,3 @@ link_maven_extensions() {
         done <   <(find "${DOTFILES_LINK}/maven/extensions" -mindepth 1 -maxdepth 1 -print0)
     fi
 }
-
-source_scripts() {
-    local profile="$HOME/.bash_profile"
-
-    if [[ -e ${profile} ]]; then
-        warn ".bash_profile already exists"
-    else
-        touch "${profile}"
-        echo ". $HOME/.dotfiles/bash/source.sh" >> "${profile}"
-        . "${profile}"
-        success "added .bash_profile and sourced configuration files"
-    fi
-}
