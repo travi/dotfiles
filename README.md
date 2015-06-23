@@ -1,6 +1,8 @@
 My dotfiles
 ========
 
+[![Build Status](http://img.shields.io/travis/travi/dotfiles.svg?style=flat)](https://travis-ci.org/travi/dotfiles)
+
 My disaster recovery plan.
 
 ## Purpose
