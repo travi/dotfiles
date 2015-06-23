@@ -84,7 +84,8 @@ link_file() {
 
 link_dotfile() {
     local source=$1
-    local filename=$(basename "${source}")
+    local filename
+    filename=$(basename "${source}")
     local dest="$HOME/$filename"
 
     link_file "${source}" "${dest}"
