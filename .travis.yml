@@ -1,0 +1,7 @@
+language: bash
+
+before_script:
+    - sh test/install.sh
+
+script:
+    - sh test/verify.sh
