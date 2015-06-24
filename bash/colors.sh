@@ -54,10 +54,19 @@ else
     magenta="\033[1;31m";
 fi;
 
-export green
-export red
-export orange
+export bold
+export reset
+export black
+export blue
 export cyan
+export green
+export orange
+export purple
+export red
+export violet
+export white
+export yellow
+export magenta
 
 # BSD (including OSX)
 export LSCOLORS=ExFxCxDxBxegedabagacad

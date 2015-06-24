@@ -20,4 +20,4 @@ alias reload='. ~/.bash_profile'
 
 alias ccat="source-highlight --out-format=esc -o STDOUT -i"
 
-. $HOME/.dotfiles/osx/aliases.sh
+. "$HOME/.dotfiles/osx/aliases.sh"
