@@ -15,3 +15,5 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 10'"
+
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'

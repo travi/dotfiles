@@ -39,6 +39,7 @@ install rbenv
 install vim
 install maven
 install corkscrew
+install thefuck
 install dos2unix
 install shellcheck
 install docker
