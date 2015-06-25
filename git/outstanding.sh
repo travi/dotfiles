@@ -29,7 +29,7 @@ function outstanding() {
             fi
 
             if [ ! -z "$state" ]; then
-                echo -ne \\r"${blue}$dir${reset} "
+                echo -ne \\r"${BLUE}$dir${RESET} "
                 echo "$state"
             fi
         fi

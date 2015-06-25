@@ -1,6 +1,7 @@
 #!/bin/sh
 
 shellcheck ruby/*.sh
+shellcheck setup/*.sh
 
 # shellcheck bash/*.sh
 shellcheck bash/.bash_profile
@@ -14,4 +15,5 @@ shellcheck bash/prompt.sh
 shellcheck bash/exports.sh
 shellcheck bash/source.sh
 
-shellcheck setup/*.sh
+# shellcheck git/*.sh
+shellcheck git/outstanding.sh
