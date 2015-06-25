@@ -13,7 +13,7 @@ link() {
     if [[ -z ${link_target} ]]; then
         # Link-checking mode.
         if windows; then
-            fsutil reparsepoint query ${link_name} > /dev/null
+            fsutil reparsepoint query "${link_name}" > /dev/null
         else
             [[ -h ${link_name} ]]
         fi
@@ -29,7 +29,7 @@ link() {
             fi
         else
             # You know what? I think ln's parameters are backwards.
-            ln -s ${link_target} ${link_name}
+            ln -s "${link_target}" "${link_name}"
         fi
     fi
 }
