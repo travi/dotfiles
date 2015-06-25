@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # SSH auto-completion based on entries in known_hosts.
 if [[ -e ~/.ssh/known_hosts ]]; then

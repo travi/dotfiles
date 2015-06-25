@@ -13,7 +13,7 @@ export CLICOLOR=1
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=-R
 # Highlight section titles in manual pages
-export LESS_TERMCAP_md="${yellow}";
+export LESS_TERMCAP_md="${YELLOW}";
 
 if grep --color "a" <<< "a" &> /dev/null; then
 # Always enable colored `grep` output
@@ -23,50 +23,50 @@ fi
 alias colortest='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
 
 if tput setaf 1 &> /dev/null; then
-	tput sgr0; # reset colors
-	bold=$(tput bold);
-	reset=$(tput sgr0);
-	# Solarized colors, taken from http://git.io/solarized-colors.
-	black=$(tput setaf 0);
-	blue=$(tput setaf 33);
-	cyan=$(tput setaf 37);
-	green=$(tput setaf 64);
-	orange=$(tput setaf 166);
-	purple=$(tput setaf 125);
-	red=$(tput setaf 124);
-	violet=$(tput setaf 61);
-	white=$(tput setaf 15);
-	yellow=$(tput setaf 11);
-    magenta=$(tput setaf 125);
+    tput sgr0; # reset colors
+    BOLD=$(tput bold);
+    RESET=$(tput sgr0);
+    # Solarized colors, taken from http://git.io/solarized-colors.
+    BLACK=$(tput setaf 0);
+    BLUE=$(tput setaf 33);
+    CYAN=$(tput setaf 37);
+    GREEN=$(tput setaf 64);
+    ORANGE=$(tput setaf 166);
+    PURPLE=$(tput setaf 125);
+    RED=$(tput setaf 124);
+    VIOLET=$(tput setaf 61);
+    WHITE=$(tput setaf 15);
+    YELLOW=$(tput setaf 11);
+    MAGENTA=$(tput setaf 125);
 else
-	bold='';
-	reset="\033[0m";
-	black="\033[1;30m";
-	blue="\033[1;34m";
-	cyan="\033[1;36m";
-	green="\033[0;32m";
-	orange="\033[0;2;33m";
-	purple="\033[1;35m";
-	red="\033[1;31m";
-	violet="\033[1;35m";
-	white="\033[1;37m";
-	yellow="\033[1;33m";
-    magenta="\033[1;31m";
+    BOLD='';
+    RESET="\033[0m";
+    BLACK="\033[1;30m";
+    BLUE="\033[1;34m";
+    CYAN="\033[1;36m";
+    GREEN="\033[0;32m";
+    ORANGE="\033[0;2;33m";
+    PURPLE="\033[1;35m";
+    RED="\033[1;31m";
+    VIOLET="\033[1;35m";
+    WHITE="\033[1;37m";
+    YELLOW="\033[1;33m";
+    MAGENTA="\033[1;31m";
 fi;
 
-export bold
-export reset
-export black
-export blue
-export cyan
-export green
-export orange
-export purple
-export red
-export violet
-export white
-export yellow
-export magenta
+export BOLD
+export RESET
+export BLACK
+export BLUE
+export CYAN
+export GREEN
+export ORANGE
+export PURPLE
+export RED
+export VIOLET
+export WHITE
+export YELLOW
+export MAGENTA
 
 # BSD (including OSX)
 export LSCOLORS=ExFxCxDxBxegedabagacad

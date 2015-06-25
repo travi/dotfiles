@@ -9,9 +9,9 @@
 for fgbg in 38 48 ; do #Foreground/Background
   for color in {0..256} ; do #Colors
     #Display the color
-    printf "\e[${fgbg};5;${color}m ${color}\t\e[0m"
+    printf "\e[%s;5;%sm %s\t\e[0m" "${fgbg}" "${color}" "${color}"
     #Display 10 colors per lines
-    if [ $((($color + 1) % 10)) == 0 ] ; then
+    if [ $(((color + 1) % 10)) == 0 ] ; then
       echo #New line
     fi
   done

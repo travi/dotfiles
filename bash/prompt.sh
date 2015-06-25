@@ -1,16 +1,16 @@
 #!/bin/bash
 
-bracket_color="\[${white}\]"
-colon_color="\[${white}\]"
+bracket_color="\[${WHITE}\]"
+colon_color="\[${WHITE}\]"
 
-prompt_color="\[${green}\]"
+prompt_color="\[${GREEN}\]"
 
 if [[ "$SSH_TTY" ]]; then
   # connected via ssh
-  prompt_color="\[${cyan}\]"
+  prompt_color="\[${CYAN}\]"
 elif [[ "$USER" == "root" ]]; then
   # logged in as root
-  prompt_color="\[${purple}\]"
+  prompt_color="\[${PURPLE}\]"
 fi
 
 function prompt_git() {
@@ -27,17 +27,17 @@ function prompt_git() {
 
   flags="$(
     echo "$status" | awk 'BEGIN {r=""}
-      /^(# )?Unmerged paths:$/  {r=r ENVIRON["cyan"]"*"}
-      /^(# )?Changes to be committed:$/        {r=r ENVIRON["green"]"+"}
-      /^(# )?Changes not staged for commit:$/  {r=r ENVIRON["red"]"!"}
-      /^(# )?Untracked files:$/                {r=r ENVIRON["orange"]"?"}
+      /^(# )?Unmerged paths:$/                 {r=r ENVIRON["CYAN"]"*"}
+      /^(# )?Changes to be committed:$/        {r=r ENVIRON["GREEN"]"+"}
+      /^(# )?Changes not staged for commit:$/  {r=r ENVIRON["RED"]"!"}
+      /^(# )?Untracked files:$/                {r=r ENVIRON["ORANGE"]"?"}
       END {print r}'
   )"
 
   if [[ "$flags" ]]; then
     output="$output$colon_color:$prompt_color$flags"
   fi
-  echo "$bracket_color[$yellow$output$bracket_color]${reset}"
+  echo "$bracket_color[$YELLOW$output$bracket_color]${RESET}"
 }
 
 function prompt_hg() {
@@ -61,14 +61,14 @@ function prompt_hg() {
   if [[ "$flags" ]]; then
     output="$output$colon_color:$prompt_color$flags"
   fi
-  echo "$bracket_color[$prompt_color$output$bracket_color]${reset}"
+  echo "$bracket_color[$prompt_color$output$bracket_color]${RESET}"
 }
 
 # Exit code of previous command.
 function prompt_exitcode() {
-  local exitcode_color="\[${red}\]"
+  local exitcode_color="\[${RED}\]"
 
-  [[ $1 != 0 ]] && echo " $exitcode_color$1\[${reset}\]"
+  [[ $1 != 0 ]] && echo " $exitcode_color$1\[${RESET}\]"
 }
 
 function prompt_command() {
@@ -86,11 +86,11 @@ function prompt_command() {
   # hg:  [branch:flags]
   PS1="$PS1$(prompt_hg)"
   # path: [user@host:path]
-  PS1="$PS1$bracket_color[$prompt_color\u${white}@$prompt_color\h$colon_color:$prompt_color\w$bracket_color]${reset}"
+  PS1="$PS1$bracket_color[$prompt_color\u${WHITE}@$prompt_color\h$colon_color:$prompt_color\w$bracket_color]${RESET}"
 
   PS1="$PS1\n"
   # date: [HH:MM:SS]
-  PS1="$PS1$bracket_color[$(date +"$prompt_color%H$colon_color:$prompt_color%M$colon_color:$prompt_color%S")$bracket_color]\[${reset}\]"
+  PS1="$PS1$bracket_color[$(date +"$prompt_color%H$colon_color:$prompt_color%M$colon_color:$prompt_color%S")$bracket_color]\[${RESET}\]"
   # exit code: 127
   PS1="$PS1$(prompt_exitcode "$exit_code")"
   PS1="$PS1 \$ "

@@ -13,7 +13,7 @@ for clbg in {40..47} {100..107} 49 ; do
     #Formatting
     for attr in 0 1 2 4 5 7 ; do
       #Print the result
-      printf "\e[${attr};${clbg};${clfg}m ^[${attr};${clbg};${clfg}m \e[0m"
+      printf "\e[%s;%s;%sm ^[%s;%s;%sm \e[0m" "${attr}" "${clbg}" "${clfg}" "${attr}" "${clbg}" "${clfg}"
     done
     echo #Newline
   done
