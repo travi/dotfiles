@@ -17,6 +17,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'editorconfig-vim'
+Plugin 'vim-scripts/PreserveNoEOL'
 Plugin 'rodjek/vim-puppet'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'godlygeek/tabular'
