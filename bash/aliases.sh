@@ -20,4 +20,6 @@ alias reload='. ~/.bash_profile'
 
 alias ccat="source-highlight --out-format=esc -o STDOUT -i"
 
+alias vim-plugins="vim +PluginInstall! +qall"
+
 . "$HOME/.dotfiles/osx/aliases.sh"
