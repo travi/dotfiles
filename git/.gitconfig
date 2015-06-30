@@ -69,7 +69,7 @@
     dm = "!git branch --merged master | grep -v '\\master' | xargs -n 1 git branch -d"
 
     # Cleanup branches
-    cb = "!git co master && git pull && git dm && git remote prune origin"
+    cb = "!git co master && git pull && git dm && git remote prune origin && git submodule update"
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
