@@ -3,10 +3,14 @@
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" == darwin* ]] || return 1
 
-export PATH=/usr/local/bin:/usr/local/sbin:$(brew --prefix ruby)/bin:~/.local/bin:$PATH
-export M2_HOME=$(brew --prefix maven)/libexec
+export PATH
+export PYTHONPATH
+export M2_HOME
 export M2="${M2_HOME}/bin"
-export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$(brew --prefix mercurial)/lib/python2.7/site-packages:$(brew --prefix mercurial)/lib/python2.7/site-packages/mercurial:$PYTHONPATH
+
+PATH=/usr/local/bin:/usr/local/sbin:$(brew --prefix ruby)/bin:~/.local/bin:$PATH
+PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$(brew --prefix mercurial)/lib/python2.7/site-packages:$(brew --prefix mercurial)/lib/python2.7/site-packages/mercurial:$PYTHONPATH
+M2_HOME=$(brew --prefix maven)/libexec
 
 export NVM_DIR=~/.nvm
 
