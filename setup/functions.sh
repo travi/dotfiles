@@ -6,23 +6,23 @@ DOTFILES_LINK="$HOME/.dotfiles"
 . "$DOTFILES_LINK/bash/colors.sh"
 
 heading() {
-    printf "\n%s%s%s\n" "$YELLOW" "$1" "$RESET"
+    printf "\n${YELLOW}%s${RESET}\n" "$1"
 }
 
 info() {
-    printf "  [ %s..%s ] %s\n" "$BLUE" "$RESET" "$1"
+    printf "  [ ${BLUE}..${RESET} ] %s\n" "$1"
 }
 
 success() {
-    printf "  [ %sOK%s ] %s\n" "$GREEN" "$RESET" "$1"
+    printf "  [ ${GREEN}OK${RESET} ] %s\n" "$1"
 }
 
 warn() {
-    printf "  [%sWARN%s] %s\n" "$ORANGE" "$RESET" "$1"
+    printf "  [${ORANGE}WARN${RESET}] %s\n" "$1"
 }
 
 fail() {
-    printf "  [%sFAIL%s] %s\n" "$RED" "$RESET" "$1"
+    printf "  [${RED}FAIL${RESET}] %s\n" "$1"
     return 8
 }
 
