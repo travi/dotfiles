@@ -180,8 +180,8 @@ defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-TERM_PROFILE='Travi xterm-256color';
-CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
+#TERM_PROFILE='Travi xterm-256color';
+#CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
 #if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
     #open "$HOME/.dotfiles/osx/Travi.terminal";
     #sleep 1; # Wait a bit to make sure the theme is loaded
