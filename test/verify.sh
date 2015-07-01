@@ -15,7 +15,7 @@ shellcheck bash/colors.sh
 shellcheck bash/colors_and_formatting.sh
 # disable shellcheck bash/completion.sh
 shellcheck bash/prompt.sh
-# disable shellcheck bash/aliases.sh
+shellcheck bash/aliases.sh
 shellcheck bash/exports.sh
 shellcheck bash/source.sh
 
