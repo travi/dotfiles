@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Current branch or SHA if detached.
-alias git-current-branch-sha='git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
+function git-current-branch-sha() {
+    'git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
+}
 
 # GitHub URL for current repo.
 function github_url() {
