@@ -8,6 +8,7 @@ cask install caffeine
 cask install charles
 cask install vlc
 cask install atom
+cask install p4merge
 cask install google-chrome
 cask install firefox
 cask install adobe-reader
