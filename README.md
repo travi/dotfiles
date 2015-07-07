@@ -56,6 +56,13 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
     * `~/.dotfiles.extra/osx/Brewfile`
     * `~/.dotfiles.extra/osx/Caskfile`
 
+## Supported Environments
+The following environments are the ones that this configuration has been tested
+in by me, in order from most often to least often used.
+* Terminal.app on OSX (Yosemite is my primary)
+* GitBash on Windows
+* SSH sessions into Ubuntu
+
 ## Influences
 
 Strongly influenced by:
