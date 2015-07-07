@@ -1,5 +1,5 @@
 My dotfiles
-========
+===========
 
 [![Build Status](http://img.shields.io/travis/travi/dotfiles.svg?style=flat)](https://travis-ci.org/travi/dotfiles)
 
@@ -7,12 +7,13 @@ My disaster recovery plan.
 
 ## Purpose
 
-This repository contains most of my base configuration for unix-based machines, but is primarily focused on OSX. These
-files make it simple to configure a new machine from scratch as well as keep it up-to-date over time.
+This repository contains most of my base configuration for bash shells, but is primarily focused on OSX. These files make it simple to configure a new machine
+from scratch as well as keep it up-to-date over time.
 
 ## Installation
 ### Prerequisites
 * `git` must be installed
+* `bash` should be configured as the preferred shell
 
 ### Command
 ```
@@ -21,19 +22,39 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
 
 ## What does it do?
 
-By running the `setup/init.sh` file, it:
-* installs [Homebrew](http://brew.sh/) if on OSX
-* creates a symlink in the home directory for the repository for easy access
-* symlinks all of the dotfiles from the directories to the home directory
-* installs the applications defined in the `Brewfile` and `Caskfile` if run on OSX
+### System Bootstrapping
 
-By including the `source.sh` file from the `bash` directory into the `.bash_profile`:
-* common environment variables are defined
-* common aliases are defined
-* the prompt gets customized
+`setup/init.sh` presents two options:
+* Environment configuration
+* Software Installation/Update
 
-By running the `osx/environment.sh` file, it:
-* configures a large number of osx environment settings
+#### Environment Configuration
+* Creates a symlink for `~/.dotfiles` in the home directory
+* Symlinks dotfiles from each folder under `~/.dotfiles` into the home directory
+* Symlinks dotfiles from each folder under `~/.dotfiles.extra` into the home directory
+* Symlinks maven plugins into global plugins directory
+* Symlinked `.bash_profile` sources several files in order to:
+    * Define environment variables
+    * Define aliases
+    * Enable my custom prompt
+    * Source additional files from `~/.dotfiles/osx/` and `~/.dotfiles/windows/`
+    * Source `~/.dotfiles.extra/bash/source.sh`
+
+
+##### OSX
+ * Configures OSX defaults
+
+#### Software Installation/Update
+* Updates global NPM packages
+* Installs/Updates VIM plugins
+
+##### OSX
+* Installs [Homebrew](http://brew.sh/)
+* Installs the applications defined in:
+    * `~/.dotfiles/osx/Brewfile`
+    * `~/.dotfiles/osx/Caskfile`
+    * `~/.dotfiles.extra/osx/Brewfile`
+    * `~/.dotfiles.extra/osx/Caskfile`
 
 ## Influences
 
