@@ -4,6 +4,7 @@
 . ~/.dotfiles/bash/completion.sh
 
 . ~/.dotfiles/bash/aliases.sh
+. ~/.dotfiles/bash/functions.sh
 . ~/.dotfiles/bash/exports.sh
 
 . ~/.dotfiles/git/functions.sh
