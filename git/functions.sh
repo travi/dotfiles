@@ -9,7 +9,8 @@ function git-current-branch-sha() {
 function github_url() {
     local user_repo
     local remotename="${@:-origin}"
-    local remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
+    local remote
+    remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
 
     [[ "$remote" ]] || return
 
