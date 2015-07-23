@@ -1,4 +1,5 @@
 tap caskroom/cask
+tap caskroom/versions
 install brew-cask
 
 cask install virtualbox
@@ -9,6 +10,7 @@ cask install charles
 cask install vlc
 cask install atom
 cask install p4merge
+cask install java7
 cask install google-chrome
 cask install firefox
 cask install adobe-reader
