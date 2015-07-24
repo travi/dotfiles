@@ -23,4 +23,7 @@ alias ccat="source-highlight --out-format=esc -o STDOUT -i"
 
 alias vim-plugins="vim +PluginInstall! +qall"
 
+#make grunt always print stack traces on fatal errors
+alias grunt="grunt --stack"OA
+
 . "$HOME/.dotfiles/osx/aliases.sh"
