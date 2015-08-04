@@ -106,6 +106,12 @@ link_dotfiles() {
     rm tmp
 }
 
+link_gitconfig_for_os() {
+    # OSX-only stuff. Abort if not OSX.
+    [[ "$OSTYPE" == darwin* ]] || return 1
+    link_file ~/.dotfiles/osx/gitconfig.osx ~/.gitconfig.os
+}
+
 link_maven_extensions() {
     local source;
     local extension;

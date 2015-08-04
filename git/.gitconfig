@@ -6,6 +6,10 @@
 
 [diff]
     renames = copy
+    tool = p4mergetool
+
+[merge]
+    tool = p4mergetool
 
 [color]
     ui = true
@@ -77,3 +81,4 @@
 
 [include]
     path = ~/.gitconfig.extra
+    path = ~/.gitconfig.os

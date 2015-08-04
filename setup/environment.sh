@@ -2,6 +2,7 @@
 
 heading 'Link Dotfiles'
 link_dotfiles
+link_gitconfig_for_os
 reload
 
 heading 'Extending Maven'
