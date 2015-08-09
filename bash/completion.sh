@@ -10,4 +10,9 @@ if [[ "$(which docker)" ]]; then
     . ~/.dotfiles/docker/bash_completion.sh
 fi
 
+#completion of grunt commands
+if [[ "$(which grunt)" ]]; then
+    eval "$(grunt --completion=bash)"
+fi
+
 . ~/.dotfiles/osx/completion.sh
