@@ -15,4 +15,9 @@ if [[ "$(which grunt)" ]]; then
     eval "$(grunt --completion=bash)"
 fi
 
+#completion of rake commands
+if [[ "$(which rake)" ]]; then
+    . ~/.dotfiles/ruby/rake-completion.sh
+fi
+
 . ~/.dotfiles/osx/completion.sh
