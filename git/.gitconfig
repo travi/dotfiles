@@ -46,13 +46,16 @@
 
 [alias]
     st = status
+    rb = rebase
+    df = diff
+    dc = diff --cached
     co = checkout
     cb = checkout -b
+    pop = stash pop
+
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
     in = !git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}
-    rb = rebase
     undo = reset --hard
-    pop = stash pop
     ignored = ls-files -o -i --exclude-standard
 
     # Log formats
