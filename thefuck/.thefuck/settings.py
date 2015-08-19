@@ -10,6 +10,6 @@
 
 # rules = []
 # priority = {}
-# require_confirmation = False
+require_confirmation = False
 # wait_command = 3
 # no_colors = False
