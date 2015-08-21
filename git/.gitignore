@@ -1,4 +1,5 @@
 .idea/
+.rake_tasks~
 null/
 .DS_Store
 npm-debug.log
