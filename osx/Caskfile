@@ -15,6 +15,7 @@ cask install google-chrome
 cask install firefox
 cask install adobe-reader
 cask install monotype-skyfonts
+cask install easysimbl
 
 cask install pl2303
 
