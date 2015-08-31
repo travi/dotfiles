@@ -2,6 +2,6 @@ vim/.vim/bundle
 **/.netrwhist
 .idea
 .apm
-thefuck/.thefuck/*.pyc
+thefuck/.thefuck/**/*.pyc
 atom/.atom/packages/*
 !atom/.atom/packages/parcel/
