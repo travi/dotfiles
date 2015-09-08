@@ -8,9 +8,9 @@ upgrade --all
 tap homebrew/versions
 tap homebrew/dupes
 tap josegonzalez/homebrew-php
-install php54
-install php54-xdebug
-install php54-ssh2
+install php55
+install php55-xdebug
+install php55-ssh2
 install composer
 install python
 
