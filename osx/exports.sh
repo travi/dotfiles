@@ -9,7 +9,6 @@ export M2_HOME
 export M2="${M2_HOME}/bin"
 
 PATH=/usr/local/bin:/usr/local/sbin:$(brew --prefix ruby)/bin:~/.local/bin:$PATH
-PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
 M2_HOME=$(brew --prefix maven)/libexec
 
 export NVM_DIR=~/.nvm
