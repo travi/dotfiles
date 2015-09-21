@@ -17,6 +17,8 @@ cask install adobe-reader
 cask install monotype-skyfonts
 cask install easysimbl
 
+cask install chefdk
+
 cask install pl2303
 
 cask cleanup
