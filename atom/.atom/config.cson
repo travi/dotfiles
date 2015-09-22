@@ -20,7 +20,8 @@
   "atom-beautify":
     _analyticsUserId: "b46fb249-4d6e-4986-98cc-44f290a836d6"
   "autocomplete-plus": {}
-  "tree-view": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
   "atom-pair": {}
   achievements:
     NoticeDelay: 10000
@@ -28,3 +29,5 @@
   "markdown-preview": {}
   autosave:
     enabled: true
+  "linter-puppet-lint":
+    oldVersion: false
