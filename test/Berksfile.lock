@@ -1,0 +1,21 @@
+DEPENDENCIES
+  dotfiles
+    path: .
+    metadata: true
+
+GRAPH
+  build-essential (2.2.3)
+  chef_handler (1.2.0)
+  dmg (2.2.2)
+  dotfiles (0.0.0)
+    git (~> 4.3)
+  git (4.3.4)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  windows (1.38.1)
+    chef_handler (>= 0.0.0)
+  yum (3.7.1)
+  yum-epel (0.6.3)
+    yum (~> 3.2)

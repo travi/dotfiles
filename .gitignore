@@ -5,3 +5,5 @@ vim/.vim/bundle
 thefuck/.thefuck/**/*.pyc
 atom/.atom/packages/*
 !atom/.atom/packages/parcel/
+.kitchen/
+.kitchen.local.yml
