@@ -5,9 +5,8 @@ sudo: true
 install:
   - sudo apt-get update -q
   - sudo apt-get install -q virtualbox --fix-missing
-  - sudo apt-get install vagrant
+  - sudo apt-get install vagrant shellcheck
   - bundle install --gemfile=test/Gemfile
-  - bash test/install.sh
 
 script:
   - sh test/verify.sh
