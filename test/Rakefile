@@ -1,0 +1,12 @@
+def run(command)
+    raise "Failed to execute '#{command}'" if !system(command)
+end
+
+task :default =>  [:gates]
+
+desc 'gates'
+task :gates do
+    Dir.chdir('test') do
+        run('kitchen test')
+    end
+end

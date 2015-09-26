@@ -11,3 +11,4 @@ install:
 
 script:
   - sh test/verify.sh
+  - rake --rakefile=test/Rakefile
