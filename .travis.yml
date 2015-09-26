@@ -10,6 +10,8 @@ install:
   - bundle install --gemfile=test/Gemfile
   - bash test/install.sh
 
+before_script: VBoxManage --version
+
 script:
   - sh test/verify.sh
   - rake --rakefile=test/Rakefile
