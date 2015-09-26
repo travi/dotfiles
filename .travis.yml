@@ -1,5 +1,11 @@
 language: bash
 
+sudo: true
+
+install:
+  - sudo apt-get update -q
+  - sudo apt-get install -q virtualbox --fix-missing
+
 before_script:
     - bash test/install.sh
 
