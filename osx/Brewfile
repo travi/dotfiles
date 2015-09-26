@@ -32,6 +32,7 @@ install mtr
 install minicom
 install openssl
 install ssh-copy-id
+install lastpass-cli --with-pinentry --with-doc
 install keybase
 install pkg-config
 install readline
