@@ -2,6 +2,8 @@ language: bash
 
 sudo: true
 
+before_install: rvm use system
+
 install:
   - sudo apt-get update -q
   - sudo apt-get install -q virtualbox --fix-missing
