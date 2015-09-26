@@ -7,6 +7,18 @@ task :default =>  [:gates]
 desc 'gates'
 task :gates do
     Dir.chdir('test') do
+        `kitchen test`
+    end
+end
+
+desc 'lint'
+task :lint do
+    run('sh test/verify.sh')
+end
+
+desc 'integration test'
+task :integration do
+    Dir.chdir('test') do
         run('kitchen test')
     end
 end
