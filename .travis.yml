@@ -1,6 +1,7 @@
 language: bash
 
 sudo: true
+cache: bundler
 
 install:
   # virtualbox
