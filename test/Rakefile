@@ -1,25 +1,21 @@
-def run(command)
-    raise "Failed to execute '#{command}'" if !system(command)
-end
-
 task :default =>  [:gates]
 
 desc 'gates'
 task :gates do
-    Dir.chdir('test') do
-        output = `kitchen test`
-        return $?.to_i
-    end
+    Rake::Task['lint'].invoke
+    Rake::Task['test:integration'].invoke
 end
 
 desc 'lint'
 task :lint do
-    run('sh test/verify.sh')
+    sh 'sh test/verify.sh'
 end
 
-desc 'integration test'
-task :integration do
-    Dir.chdir('test') do
-        run('kitchen test')
+namespace 'test' do
+    desc 'integration tests'
+    task :integration do
+        Dir.chdir('test') do
+            sh 'kitchen test'
+        end
     end
 end

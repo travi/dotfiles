@@ -24,5 +24,4 @@ install:
 before_script: VBoxManage --version
 
 script:
-  - sh test/verify.sh
   - rake --rakefile=test/Rakefile
