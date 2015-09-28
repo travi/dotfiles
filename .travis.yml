@@ -7,7 +7,8 @@ install:
   # virtualbox
   - sudo apt-get update -q
   - sudo apt-get install -q virtualbox --fix-missing
-  - sudo apt-get install linux-headers-generic virtualbox-ose-dkms
+  - sudo apt-get install linux-generic linux-image-generic linux-headers-generic linux-signed-generic
+  - sudo apt-get install virtualbox-ose-dkms
   - sudo dpkg-reconfigure virtualbox-dkms
   - sudo dpkg-reconfigure virtualbox
 
