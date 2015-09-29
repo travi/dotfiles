@@ -3,15 +3,21 @@
 shopt -s expand_aliases
 . ../bash/aliases.sh
 
-heading "Which setup step(s) would you like to perform?"
-echo -e "\t1: Environment Configuration"
-echo -e "\t2: Software Installation/Update"
-echo -e "\t3: Both"
+choice=$1
 
-echo -en "\nPlease enter your choice: "
-read choice
+if [[ -z $choice ]]; then
+    heading "Which setup step(s) would you like to perform?"
+    echo -e "\t1: Environment Configuration"
+    echo -e "\t2: Software Installation/Update"
+    echo -e "\t3: Both"
 
-if [[ ${choice} -eq 1 ]]; then
+    echo -en "\nPlease enter your choice: "
+    read choice
+fi
+
+if [[ ${choice} -eq 0 ]]; then
+    info "Aborting"
+elif [[ ${choice} -eq 1 ]]; then
     . ./environment.sh
 elif [[ ${choice} -eq 2 ]]; then
     . ./software.sh
