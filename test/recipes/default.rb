@@ -7,3 +7,8 @@ git "/home/vagrant/dotfiles" do
   reference "master"
   action :sync
 end
+
+bash "configure the environment" do
+    code ". ./init.sh 0"
+    cwd "/home/vagrant/dotfiles/setup"
+end
