@@ -18,6 +18,7 @@ cask install monotype-skyfonts
 cask install easysimbl
 
 cask install chefdk
+cask install dockertoolbox
 
 cask install pl2303
 
