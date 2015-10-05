@@ -25,4 +25,5 @@ install:
 # before_script: VBoxManage --version
 
 script:
-  - rake --rakefile=test/Rakefile lint
+  # - rake --rakefile=test/Rakefile lint
+  - bash test/verify.sh
