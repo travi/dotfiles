@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
 
 shellcheck bash/*.sh
 shellcheck osx/*.sh
