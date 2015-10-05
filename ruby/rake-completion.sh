@@ -10,6 +10,7 @@ _rakecomplete() {
     _get_comp_words_by_ref -n : cur
     rakefile=$(find . -maxdepth 1 -iname Rakefile)
     if [ "$rakefile" != "" ]; then
+        # shellcheck disable=SC2012
         recent=$(ls -t .rake_tasks~ "${rakefile}" ./**/*.rake 2> /dev/null | head -n 1)
         if [[ $recent != '.rake_tasks~' ]]; then
             rake --silent --prereqs | grep "rake" | cut -d " " -f 2 > .rake_tasks~
