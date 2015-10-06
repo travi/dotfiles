@@ -4,6 +4,8 @@ install brew-cask
 
 cask install virtualbox
 cask install vagrant
+cask install chefdk
+cask install dockertoolbox
 
 cask install caffeine
 cask install charles
@@ -13,12 +15,10 @@ cask install p4merge
 cask install java7
 cask install google-chrome
 cask install firefox
+cask install dropbox
 cask install adobe-reader
 cask install monotype-skyfonts
 cask install easysimbl
-
-cask install chefdk
-cask install dockertoolbox
 
 cask install pl2303
 
