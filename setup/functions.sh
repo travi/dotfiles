@@ -98,7 +98,7 @@ link_dotfiles_directory() {
 link_dotfiles() {
     local source;
 
-    find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*' -not -path '*.DS_Store' > tmp
+    find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*' -not -path '*/test/\.*' -not -path '*.DS_Store' > tmp
     while IFS= read -r source
     do
         link_dotfile "${source}"
