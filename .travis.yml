@@ -5,15 +5,11 @@ sudo: true
 cache: bundler
 
 install:
-  # vagrant
-  - sudo wget -nv https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
-  - sudo dpkg -i vagrant_1.7.2_x86_64.deb
-
   # shellcheck
   - sudo wget http://ftp.debian.org/debian/pool/main/s/shellcheck/shellcheck_0.3.7-1_amd64.deb
   - sudo dpkg -i shellcheck_0.3.7-1_amd64.deb
 
-  - bundle install --gemfile=test/Gemfile
+  - bundle install --gemfile=test/Gemfile --without vagrant
 
 script:
   - bash test/verify.sh
