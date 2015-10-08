@@ -3,6 +3,7 @@ services: docker
 
 sudo: true
 cache: bundler
+rvm: 2.2
 
 install:
   # shellcheck
