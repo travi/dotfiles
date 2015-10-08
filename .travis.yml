@@ -9,7 +9,7 @@ install:
   - sudo wget http://ftp.debian.org/debian/pool/main/s/shellcheck/shellcheck_0.3.7-1_amd64.deb
   - sudo dpkg -i shellcheck_0.3.7-1_amd64.deb
 
-  - bundle install --gemfile=test/Gemfile --without vagrant
+  - travis_wait bundle install --gemfile=test/Gemfile --without vagrant
 
 script:
   - bash test/verify.sh
