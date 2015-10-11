@@ -25,6 +25,7 @@ install node
 install nvm
 install heroku-toolbelt
 
+install coreutils
 install wget
 install jq
 install nmap
