@@ -13,6 +13,7 @@ fi
 
 heading 'Brew bundle'
 brew doctor
+brew prune
 brew tap homebrew/boneyard
 brew bundle-old ~/.dotfiles/osx/Brewfile
 if [ -e ~/.dotfiles.extra/osx/Brewfile ]; then
