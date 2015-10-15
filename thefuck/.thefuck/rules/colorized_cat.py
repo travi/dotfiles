@@ -1,4 +1,4 @@
-def match(command, settings):
+def match(command):
     return (command.script.startswith('ccat ')
                        and ('source-highlight: could not find a language definition for input file' in command.stderr))
 
