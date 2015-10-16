@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ~/.dotfiles/bash/colors.sh
+. $HOME/.dotfiles/bash/colors.sh
 . ~/.dotfiles/bash/completion.sh
 
 . ~/.dotfiles/bash/aliases.sh
