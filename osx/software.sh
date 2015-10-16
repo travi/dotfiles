@@ -12,7 +12,7 @@ if [[ ! "$(type -P brew)" ]]; then
 fi
 
 heading 'Brew bundle'
-bfrew update
+brew update
 brew prune
 brew doctor
 brew tap homebrew/boneyard
