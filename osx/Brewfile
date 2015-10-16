@@ -1,6 +1,3 @@
-#update homebrew
-update
-
 #upgrade already installed homebrew packages
 upgrade --all
 

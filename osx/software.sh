@@ -12,8 +12,9 @@ if [[ ! "$(type -P brew)" ]]; then
 fi
 
 heading 'Brew bundle'
-brew doctor
+bfrew update
 brew prune
+brew doctor
 brew tap homebrew/boneyard
 brew bundle-old ~/.dotfiles/osx/Brewfile
 if [ -e ~/.dotfiles.extra/osx/Brewfile ]; then
