@@ -33,7 +33,3 @@ if [[ ! -d ~/.nvm ]]; then
     mkdir ~/.nvm
     cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
 fi
-
-heading 'Ruby Gems'
-gem update
-gem cleanup

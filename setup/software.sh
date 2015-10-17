@@ -2,8 +2,18 @@
 
 . ../osx/software.sh
 
-heading "NPM Update"
-npm update -g
+if [ "$(which gem)" ]; then
+    heading 'Ruby Gems'
+    gem update
+    gem cleanup
+fi
 
-heading "Vundle Install"
-vim +PluginInstall! +qall
+if [ "$(which npm)" ]; then
+    heading "NPM Update"
+    npm update -g
+fi
+
+if [ "$(which vim)" ]; then
+    heading "Vundle Install"
+    vim +PluginInstall! +qall
+fi

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-. "$HOME/.dotfiles/osx/exports.sh"
-. "$HOME/.dotfiles/windows/exports.sh"
+. ~/.dotfiles/osx/exports.sh
+. ~/.dotfiles/windows/exports.sh
 
 # Make vim the default editor
 export EDITOR="vim";
