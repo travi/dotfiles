@@ -8,3 +8,7 @@ atom/.atom/packages/*
 .kitchen/
 .kitchen.local.yml
 .thefuck-cache.db
+vagrant/.vagrant.d/*
+!vagrant/.vagrant.d/Vagrantfile
+.bundle/
+vendor/
