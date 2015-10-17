@@ -1,5 +1,10 @@
 #!/bin/bash
 
+. ~/.dotfiles/setup/functions.sh
+
+set -euo pipefail
+IFS=$'\n\t'
+
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" == darwin* ]] || return 1
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ../osx/software.sh
+/bin/bash ../osx/software.sh
 
 if [ "$(which gem)" ]; then
     heading 'Ruby Gems'
