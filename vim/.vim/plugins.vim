@@ -21,6 +21,7 @@ Plugin 'markcornick/vim-vagrant'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mattn/emmet-vim'
 
