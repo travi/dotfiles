@@ -4,6 +4,7 @@ vim/.vim/bundle
 .apm
 thefuck/.thefuck/**/*.pyc
 atom/.atom/packages/*
+atom/.atom/local-history
 !atom/.atom/packages/parcel/
 .kitchen/
 .kitchen.local.yml
