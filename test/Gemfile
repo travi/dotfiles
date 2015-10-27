@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 group :integration do
   gem 'test-kitchen'
   gem 'berkshelf'
+  gem 'rake'
 end
 
 group :vagrant do
