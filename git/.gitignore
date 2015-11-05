@@ -1,4 +1,7 @@
 .idea/
+*.iml
+*/pyc
+*.orig
 .rake_tasks~
 null/
 .DS_Store
