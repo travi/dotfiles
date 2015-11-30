@@ -20,6 +20,8 @@ cask install adobe-reader
 cask install monotype-skyfonts
 cask install easysimbl
 
+cask install slack
+
 cask install pl2303
 
 cask cleanup
