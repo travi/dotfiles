@@ -5,6 +5,10 @@ function git-current-branch-sha() {
     'git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
 }
 
+function git-clone-cd() {
+    git clone $1 && cd "$(basename $1 .git)"
+}
+
 # GitHub URL for current repo.
 function github_url() {
     local user_repo
