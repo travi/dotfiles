@@ -18,12 +18,12 @@ function outstanding() {
             )"
             state=$state"${changes}"
 
-            out=$state"$(git out 2>/dev/null)"
+            out="$(git out 2>/dev/null)"
             if [ ! -z "$out" ]; then
                 state=$state"out "
             fi
 
-            in=$state"$(git in 2>/dev/null)"
+            in="$(git in 2>/dev/null)"
             if [ ! -z "$in" ]; then
                 state=$state"in "
             fi
