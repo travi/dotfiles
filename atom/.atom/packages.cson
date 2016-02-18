@@ -22,6 +22,7 @@
   'language-ini'
   'language-puppet'
   'language-sln'
+  'language-tmux'
   'language-viml'
   'linter'
   'linter-js-yaml'
