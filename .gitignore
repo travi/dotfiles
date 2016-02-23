@@ -9,6 +9,7 @@ atom/.atom/blob-store/
 !atom/.atom/packages/parcel/
 .kitchen/
 .kitchen.local.yml
+subversion/.subversion/auth
 .thefuck-cache.db
 vagrant/.vagrant.d/*
 !vagrant/.vagrant.d/Vagrantfile
