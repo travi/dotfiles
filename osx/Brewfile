@@ -37,6 +37,7 @@ install readline
 install ruby
 link --force ruby
 install rbenv
+install ruby-build
 install vim
 install maven
 install corkscrew
