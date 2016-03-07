@@ -15,6 +15,7 @@ cask install p4merge
 cask install google-chrome
 cask install firefox
 cask install dropbox
+cask install evernote
 cask install adobe-reader
 cask install monotype-skyfonts
 cask install easysimbl
