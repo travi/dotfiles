@@ -34,10 +34,6 @@ install lastpass-cli --with-pinentry --with-doc
 install keybase
 install pkg-config
 install readline
-install ruby
-link --force ruby
-install rbenv
-install ruby-build
 install vim
 install maven
 install corkscrew
@@ -45,6 +41,12 @@ install thefuck
 install dos2unix
 install shellcheck
 install docker
+
+install ruby
+link --force ruby
+install rbenv
+install ruby-build
+isntall rbenv-default-gems
 
 tap nviennot/tmate
 install tmate
