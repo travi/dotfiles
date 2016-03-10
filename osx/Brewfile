@@ -46,7 +46,7 @@ install ruby
 link --force ruby
 install rbenv
 install ruby-build
-isntall rbenv-default-gems
+install rbenv-default-gems
 
 tap nviennot/tmate
 install tmate
