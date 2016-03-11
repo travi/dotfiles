@@ -7,6 +7,8 @@ atom/.atom/packages/*
 atom/.atom/local-history
 atom/.atom/blob-store/
 !atom/.atom/packages/parcel/
+ruby/.rbenv/shims/
+ruby/.rbenv/versions/
 .kitchen/
 .kitchen.local.yml
 subversion/.subversion/auth
