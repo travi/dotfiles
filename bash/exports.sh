@@ -15,4 +15,4 @@ export LC_ALL="en_US.UTF-8";
 export MANPAGER="less";
 
 # binstubs for bundler
-export PATH=./bin:$PATH
+export RUBYGEMS_GEMDEPS=-
