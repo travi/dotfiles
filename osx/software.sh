@@ -8,6 +8,9 @@ IFS=$'\n\t'
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" == darwin* ]] || return 1
 
+# Ask for the administrator password upfront
+sudo -v
+
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
     heading "Installing Homebrew"

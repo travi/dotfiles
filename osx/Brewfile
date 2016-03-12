@@ -22,6 +22,8 @@ install node
 install nvm
 install heroku-toolbelt
 
+install bash
+install bash-completion
 install coreutils
 install wget
 install jq
@@ -52,7 +54,6 @@ tap nviennot/tmate
 install tmate
 install tmux
 
-install bash-completion
 install grc
 install source-highlight
 
