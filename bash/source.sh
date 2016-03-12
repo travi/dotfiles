@@ -13,5 +13,6 @@
 . ~/.dotfiles/bash/prompt.sh
 
 . ~/.dotfiles/osx/source.sh
+. ~/.dotfiles/windows/source.sh
 
 [ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
