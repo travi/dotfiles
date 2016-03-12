@@ -4,3 +4,4 @@
 [[ -n "$WINDIR" ]] || return 1
 
 export GREP_OPTIONS=""
+export MSYS="winsymlinks:nativestrict"

@@ -42,20 +42,7 @@ create_link() {
     local link_target=$1
     local link_name=$2
 
-    if windows; then
-        link_target=${link_target/\/c\//c:\\}
-        link_name=${link_name/\/c\//c:\\}
-
-        # Windows needs to be told if it's a directory or not. Infer that.
-        # Also: note that we convert `/` to `\`. In this case it's necessary.
-        if [[ -d ${link_target} ]]; then
-            cmd <<< "mklink /D \"${link_name//\//\\}\" \"${link_target//\//\\}\"" > /dev/null
-        else
-            cmd <<< "mklink \"${link_name//\//\\}\" \"${link_target//\//\\}\"" > /dev/null
-        fi
-    else
         ln -s "${link_target}" "${link_name}"
-    fi
 
     success "linked ${link_target} to ${link_name}"
 }
