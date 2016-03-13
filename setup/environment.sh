@@ -9,3 +9,4 @@ heading 'Extending Maven'
 link_maven_extensions
 
 . ../osx/environment.sh
+. ../windows/environment.sh
