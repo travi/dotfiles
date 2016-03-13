@@ -2,6 +2,8 @@
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
     export TERM=gnome-256color
+elif [[ $TERM = cygwin ]]; then
+    :
 elif infocmp xterm-256color >/dev/null 2>&1; then
     export TERM=xterm-256color
 fi
@@ -22,7 +24,7 @@ fi
 
 alias colortest='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
 
-if tput setaf 1 &> /dev/null; then
+if tput setaf 1 &> /dev/null && [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
     tput sgr0; # reset colors
     BOLD=$(tput bold);
     RESET=$(tput sgr0);
