@@ -5,10 +5,10 @@
 
 . ~/.dotfiles/bash/aliases.sh
 . ~/.dotfiles/bash/functions.sh
-. ~/.dotfiles/ruby/rbenv-init.sh
 . ~/.dotfiles/bash/exports.sh
 
 . ~/.dotfiles/git/functions.sh
+. ~/.dotfiles/ruby/rbenv-init.sh
 
 . ~/.dotfiles/bash/prompt.sh
 
