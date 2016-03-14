@@ -52,6 +52,7 @@
     co = checkout
     cb = checkout -b
     pop = stash pop
+    force = push --force-with-lease
 
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
     in = !git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}
