@@ -14,5 +14,8 @@ M2="${M2_HOME}/bin"
 
 export NVM_DIR=~/.nvm
 
+# binstubs for bundler
+export RUBYGEMS_GEMDEPS=-
+
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications";
