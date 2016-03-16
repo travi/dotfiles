@@ -5,9 +5,12 @@ sudo: true
 cache: bundler
 rvm: 2.2
 
+addons:
+  apt:
+    packages:
+    - shellcheck
+
 install:
-  - sudo apt-get -qq update
-  - sudo apt-get install shellcheck
   - travis_wait bundle install --gemfile=test/Gemfile --without vagrant
 
 script:
