@@ -1,6 +1,7 @@
 #!/bin/sh
 
 /bin/bash ../osx/software.sh
+/bin/bash ../windows/software.sh
 
 if which gem > /dev/null; then
     heading 'Ruby Gems'
