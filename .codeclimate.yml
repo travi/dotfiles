@@ -1,0 +1,14 @@
+---
+engines:
+  shellcheck:
+    enabled: true
+  markdownlint:
+    enabled: true
+  vint:
+    enabled: true
+ratings:
+  paths:
+  - "**.sh"
+  - "**.vim"
+exclude_paths:
+  - vim/.vim/colors/
