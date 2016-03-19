@@ -42,9 +42,11 @@ create_link() {
     local link_target=$1
     local link_name=$2
 
-        ln -s "${link_target}" "${link_name}"
-
-    success "linked ${link_target} to ${link_name}"
+    if ln -s "${link_target}" "${link_name}"; then
+        success "linked ${link_target} to ${link_name}"
+    else
+        fail "failed to link ${link_target} to ${link_name}"
+    fi
 }
 
 link_file() {
@@ -105,6 +107,8 @@ link_maven_extensions() {
 
     if [[ -z $M2_HOME ]]; then
         warn "M2_HOME environment variable not set"
+    elif [[ ! -d $M2_HOME ]]; then
+        warn "$M2_HOME does not exist"
     else
         find "${DOTFILES_LINK}/maven/extensions" -mindepth 1 -maxdepth 1 > tmp
         while IFS= read -r source
