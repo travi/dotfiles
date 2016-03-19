@@ -1,4 +1,3 @@
-language: ruby
 services: docker
 
 sudo: true
