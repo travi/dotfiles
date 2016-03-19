@@ -2,7 +2,9 @@ language: ruby
 services: docker
 
 sudo: true
-cache: bundler
+cache:
+    directories:
+        - $HOME/test/vendor/bundle
 rvm: 2.2
 
 install:
