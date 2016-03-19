@@ -4,7 +4,6 @@
 [[ "$OSTYPE" == darwin* ]] || return 1
 
 export PATH
-export PYTHONPATH
 export M2_HOME
 export M2
 
