@@ -2,6 +2,7 @@ My dotfiles
 ===========
 
 [![Build Status](http://img.shields.io/travis/travi/dotfiles.svg?style=flat)](https://travis-ci.org/travi/dotfiles)
+[![Code Climate](https://img.shields.io/codeclimate/github/travi/dotfiles.svg)](https://codeclimate.com/github/travi/dotfiles)
 
 My disaster recovery plan.
 
