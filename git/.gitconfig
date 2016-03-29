@@ -4,6 +4,9 @@
 [github]
     user = travi
 
+[init]
+    templatedir = ~/.git_template
+
 [diff]
     renames = copy
     tool = p4mergetool
