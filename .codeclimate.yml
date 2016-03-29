@@ -12,3 +12,4 @@ ratings:
   - "**.vim"
 exclude_paths:
   - vim/.vim/colors/
+  - docker/bash_completion.sh
