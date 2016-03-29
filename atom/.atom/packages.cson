@@ -26,6 +26,7 @@
   'language-viml'
   'linter'
   'linter-js-yaml'
+  'linter-markdownlint'
   'linter-puppet-lint'
   'linter-scss-lint'
   'linter-shellcheck'
