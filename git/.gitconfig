@@ -11,6 +11,9 @@
 [merge]
     tool = p4mergetool
 
+[rerere]
+    enabled = true
+
 [color]
     ui = true
 
