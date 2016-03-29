@@ -6,10 +6,18 @@ engines:
     enabled: true
   shellcheck:
     enabled: true
+  bundler-audit:
+    enabled: true
+  rubocop:
+    enabled: true
+  foodcritic:
+    enabled: true
 ratings:
   paths:
   - "**.sh"
   - "**.vim"
+  - test/Gemfile.lock
+  - "**.rb"
 exclude_paths:
   - vim/.vim/colors/
   - docker/bash_completion.sh
