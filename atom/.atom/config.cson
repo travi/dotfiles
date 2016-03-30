@@ -20,6 +20,8 @@
     userId: "78049fcb-fd79-53f5-3abf-40f1b3f1500b"
   "github-issues": {}
   linter: {}
+  "linter-markdownlint":
+    executablePath: "/Users/admin/.rbenv/versions/2.3.0/bin/mdl"
   "linter-puppet-lint":
     oldVersion: false
   "markdown-preview": {}
