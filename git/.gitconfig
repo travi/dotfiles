@@ -58,6 +58,7 @@
     co = checkout
     cb = checkout -b
     pop = stash pop
+    amend = commit -a --amend --no-edit
     force = push --force-with-lease
 
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
