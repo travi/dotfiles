@@ -90,6 +90,8 @@
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
 
+    aliases = config --get-regexp alias
+
 [include]
     path = ~/.gitconfig.extra
     path = ~/.gitconfig.os
