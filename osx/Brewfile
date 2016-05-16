@@ -48,6 +48,7 @@ install ruby
 link --force ruby
 install rbenv
 install ruby-build
+install rbenv-bundler
 install rbenv-default-gems
 
 tap nviennot/tmate
