@@ -47,6 +47,7 @@
     # Git 1.x default to work on legacy machines (pre-v1.8)
     # use `simple` in .gitconfig.extra on machines with newer git installed
     default = matching
+    followTags = true
 
 [branch]
     autorebase = always
