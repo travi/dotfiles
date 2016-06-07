@@ -22,6 +22,7 @@ cask install monotype-skyfonts
 cask install easysimbl
 
 cask install lastpass
+cask install gpgtools
 
 cask install slack
 
