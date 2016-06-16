@@ -2,6 +2,7 @@
 upgrade --all
 
 #install my standard packages
+tap homebrew/services
 tap homebrew/versions
 tap homebrew/dupes
 tap josegonzalez/homebrew-php
@@ -34,6 +35,7 @@ install openssl
 install ssh-copy-id
 install lastpass-cli --with-pinentry --with-doc
 install keybase
+install gpg-agent
 install pkg-config
 install readline
 install vim
