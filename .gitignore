@@ -17,3 +17,6 @@ vagrant/.vagrant.d/*
 !vagrant/.vagrant.d/Vagrantfile
 .bundle/
 vendor/
+gpg/.gnupg/*
+!gpg/.gnupg/gpg.conf
+!gpg/.gnupg/gpg-agent.conf
