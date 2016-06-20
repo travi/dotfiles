@@ -11,6 +11,7 @@
 [diff]
     renames = copy
     tool = p4mergetool
+    compactionHeuristic = true
 
 [merge]
     tool = p4mergetool
@@ -94,9 +95,9 @@
 
     aliases = config --get-regexp alias
 
+[rebase]
+    autosquash = true
+
 [include]
     path = ~/.gitconfig.extra
     path = ~/.gitconfig.os
-
-[rebase]
-    autosquash = true

@@ -13,3 +13,6 @@ export LC_ALL="en_US.UTF-8";
 # Don’t clear the screen after quitting a manual page
 #export MANPAGER="less -X";
 export MANPAGER="less";
+
+# Include ~/bin on the $PATH
+export PATH=~/bin:$PATH

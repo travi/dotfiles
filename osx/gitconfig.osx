@@ -12,3 +12,11 @@
     # Make `git rebase` safer on macOS
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
     trustctime = false
+
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+
+[interactive]
+    diffFilter = diff-highlight
