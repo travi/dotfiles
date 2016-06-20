@@ -5,7 +5,6 @@ install brew-cask
 cask install virtualbox
 cask install vagrant
 cask install chefdk
-cask install dockertoolbox
 
 cask install caffeine
 cask install charles

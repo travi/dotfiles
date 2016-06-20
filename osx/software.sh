@@ -6,7 +6,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # OSX-only stuff. Abort if not OSX.
-[[ "$OSTYPE" == darwin* ]] || return 1
+[[ "$OSTYPE" == darwin* ]] || exit 1
 
 # Ask for the administrator password upfront
 sudo -v
