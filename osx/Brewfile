@@ -46,8 +46,6 @@ install dos2unix
 install shellcheck
 install docker
 
-install ruby
-link --force ruby
 install rbenv
 install ruby-build
 install rbenv-bundler

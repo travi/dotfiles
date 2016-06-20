@@ -22,7 +22,7 @@ fi
 heading 'Brew bundle'
 brew update
 brew prune
-brew doctor
+brew doctor || exit 1
 brew tap homebrew/boneyard
 brew bundle-old ~/.dotfiles/osx/Brewfile
 if [ -e ~/.dotfiles.extra/osx/Brewfile ]; then
