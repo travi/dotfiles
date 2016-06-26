@@ -1,7 +1,7 @@
 #!/bin/sh
 
-/bin/bash ../osx/software.sh
-/bin/bash ../windows/software.sh
+/bin/bash ../osx/software.sh || return 1
+/bin/bash ../windows/software.sh || return 1
 
 if which gem > /dev/null 2>&1; then
     heading 'Ruby Gems'
