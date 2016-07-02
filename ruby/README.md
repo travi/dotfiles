@@ -18,6 +18,7 @@ versions
   switching versions
 
 #### plugins
+
 * [ruby-build](https://github.com/sstephenson/ruby-build)
 * [rbenv-default-gems](https://github.com/rbenv/rbenv-default-gems)
 * [rbenv-bundler](https://github.com/carsomyr/rbenv-bundler)
