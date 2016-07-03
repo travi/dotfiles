@@ -1,5 +1,8 @@
 # Bash Config
 
+References:
+* http://explainshell.com/
+
 ## Readline (`.inputrc`)
 
 References:
