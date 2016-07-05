@@ -10,5 +10,5 @@ port_process() {
 }
 
 http(){
-    curl http://httpcode.info/$1;
+    curl "http://httpcode.info/$1";
 }
