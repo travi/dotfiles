@@ -17,7 +17,7 @@ alias lla="ls -la"
 
 alias hosts='sudo $EDITOR /etc/hosts'
 
-alias reload='. ~/.bash_profile'
+alias reload='. ~/.bash_profile && bind -f ~/.inputrc'
 
 alias ccat="source-highlight --out-format=esc -o STDOUT -i"
 
