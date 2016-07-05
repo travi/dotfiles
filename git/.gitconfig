@@ -88,10 +88,17 @@
     dm = "!git branch --merged master | grep -v '\\master' | xargs -n 1 git branch -d"
 
     # Clean Slate
-    cs = "!git co master && git pull && git dm && git remote prune origin && git submodule update"
+    cs = "!git co master && git pull --rebase --prune && git dm && git remote prune origin && git submodule update --init --recursive"
+
+    # alternative to `git reset --hard` that maintains a (non-simple) way to recover the changes
+    # from http://haacked.com/archive/2014/07/28/github-flow-aliases/
+    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
+
+    # edit config
+    ec = config --global -e
 
     aliases = config --get-regexp alias
 
