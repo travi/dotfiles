@@ -15,6 +15,7 @@ cask install google-chrome
 cask install firefox
 cask install brave
 cask install dropbox
+cask install aerial
 cask install evernote
 cask install adobe-reader
 cask install monotype-skyfonts
