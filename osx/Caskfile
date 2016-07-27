@@ -11,6 +11,7 @@ cask install charles
 cask install vlc
 cask install hyperterm
 cask install atom
+cask install webstorm
 cask install p4merge
 cask install google-chrome
 cask install firefox
