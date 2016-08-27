@@ -7,6 +7,7 @@ fi
 
 # completion of docker commands
 if which docker > /dev/null 2>&1; then
+    #shellcheck disable=SC1090
     . ~/.dotfiles/docker/bash_completion.sh
 fi
 
@@ -17,7 +18,9 @@ fi
 
 #completion of rake commands
 if which rake > /dev/null 2>&1; then
+    #shellcheck disable=SC1090
     . ~/.dotfiles/ruby/rake-completion.sh
 fi
 
+#shellcheck disable=SC1090
 . ~/.dotfiles/osx/completion.sh

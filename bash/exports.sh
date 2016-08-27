@@ -1,6 +1,8 @@
 #!/bin/sh
 
+#shellcheck disable=SC1090
 . ~/.dotfiles/osx/exports.sh
+#shellcheck disable=SC1090
 . ~/.dotfiles/windows/exports.sh
 
 # Make vim the default editor
