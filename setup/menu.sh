@@ -12,7 +12,7 @@ if [[ -z $choice ]]; then
     echo -e "\t3: Both"
 
     echo -en "\nPlease enter your choice: "
-    read choice
+    read -r choice
 fi
 
 if [[ ${choice} -eq 0 ]]; then

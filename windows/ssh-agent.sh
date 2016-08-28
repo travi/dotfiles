@@ -26,11 +26,13 @@ agent_has_keys() {
 }
 
 agent_load_env() {
+    #shellcheck disable=SC1090
   . "$env" >/dev/null
 }
 
 agent_start() {
   (umask 077; ssh-agent >"$env")
+  #shellcheck disable=SC1090
   . "$env" >/dev/null
 }
 

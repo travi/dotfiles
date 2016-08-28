@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#shellcheck disable=SC1090
 . ~/.dotfiles/setup/functions.sh
 
 set -euo pipefail

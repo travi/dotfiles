@@ -6,7 +6,7 @@ IFS=$'\n\t'
 shellcheck bash/*.sh
 shellcheck osx/*.sh
 shellcheck ruby/*.sh
-shellcheck setup/*.sh
+shellcheck --exclude=SC1091 setup/*.sh
 shellcheck test/*.sh
 shellcheck tmux/*.sh
 shellcheck windows/*.sh
