@@ -38,9 +38,6 @@
     meta = yellow bold
     whitespace = red reverse
 
-[log]
-    showSignature = true
-
 [core]
     autocrlf = input
     longpaths = true
