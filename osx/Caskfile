@@ -1,6 +1,4 @@
-tap caskroom/cask
 tap caskroom/versions
-install brew-cask
 
 cask install virtualbox
 cask install vagrant
