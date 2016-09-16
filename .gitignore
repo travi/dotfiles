@@ -39,3 +39,5 @@ code/webstorm/preferences/options/options.xml
 code/webstorm/preferences/options/other.xml
 code/webstorm/preferences/options/recentProjectDirectories.xml
 code/webstorm/preferences/options/statistics.application.usages.xml
+code/webstorm/preferences/options/usageView.xml
+code/webstorm/preferences/options/window.manager.xml
