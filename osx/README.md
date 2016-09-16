@@ -5,6 +5,9 @@
 ### taps
 
 * [services](https://github.com/Homebrew/homebrew-services)
+    * `brew services list` provides a list of available servies and their status
+    * `brew services [start|stop] <service-name>`
+
 
 ### pinning a specific version
 
