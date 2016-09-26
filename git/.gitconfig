@@ -8,6 +8,9 @@
 [init]
     templatedir = ~/.git_template
 
+[commit]
+    gpgsign = true
+
 [diff]
     renames = copy
     tool = p4mergetool
