@@ -1,5 +1,12 @@
 services: docker
 
+addons:
+  apt:
+    sources:
+    - debian-sid    # Grab shellcheck from the Debian repo (o_O)
+    packages:
+    - shellcheck
+
 sudo: true
 cache:
     directories:
@@ -7,10 +14,6 @@ cache:
 rvm: 2.2
 
 install:
-  # shellcheck
-  - sudo wget http://ftp.debian.org/debian/pool/main/s/shellcheck/shellcheck_0.4.4-2_amd64.deb
-  - sudo dpkg -i shellcheck_0.4.4-2_amd64.deb
-
   - travis_wait bundle install --gemfile=test/Gemfile --without vagrant
 
 script:
