@@ -96,7 +96,7 @@
 
     # alternative to `git reset --hard` that maintains a (non-simple) way to recover the changes
     # from http://haacked.com/archive/2014/07/28/github-flow-aliases/
-    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+    wipe = !git add -A && git commit -qnm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
