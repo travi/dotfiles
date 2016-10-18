@@ -17,3 +17,6 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 10'"
 
 eval "$(thefuck --alias)"
+
+# Flush DNS
+fu-dns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;'
