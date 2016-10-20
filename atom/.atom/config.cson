@@ -8,6 +8,7 @@
   autosave:
     enabled: true
   core:
+    telemetryConsent: "no"
     themes: [
       "atom-dark-ui"
       "atom-dark-syntax"
@@ -25,6 +26,9 @@
   "markdown-preview": {}
   metrics:
     userId: "2c122769923ca0614e59cd53b5dad1d854603b1a"
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
   react: {}
   "svg-preview": {}
   "tree-view": {}
