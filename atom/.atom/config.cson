@@ -9,7 +9,6 @@
   autosave:
     enabled: true
   core:
-    telemetryConsent: "no"
     ignoredNames: [
       ".git"
       ".hg"
@@ -31,6 +30,7 @@
       ".unison*"
       "*~"
     ]
+    telemetryConsent: "no"
     themes: [
       "atom-dark-ui"
       "atom-dark-syntax"
