@@ -29,6 +29,7 @@ gpg/.gnupg/*
 !gpg/.gnupg/gpg-agent.conf
 
 code/webstorm/preferences/webstorm120.key
+code/webstorm/preferences/user.web.token
 code/webstorm/preferences/port*
 code/webstorm/preferences/tasks
 code/webstorm/preferences/options/dimensions.xml
