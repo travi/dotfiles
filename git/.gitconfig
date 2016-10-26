@@ -104,7 +104,7 @@
     # edit config
     ec = config --global -e
 
-    aliases = config --get-regexp alias
+    aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '
 
 [rebase]
     autosquash = true
