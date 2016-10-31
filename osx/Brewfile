@@ -44,6 +44,7 @@ install corkscrew
 install thefuck
 install dos2unix
 install shellcheck
+install mas
 install docker
 
 install rbenv
