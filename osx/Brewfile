@@ -1,9 +1,33 @@
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+
 brew 'gpg-agent'
 brew 'gnupg2'
 brew 'keybase'
 brew 'mas'
+brew 'git'
 brew 'tig'
+
+brew 'nvm'
+
+cask 'atom'
+cask 'webstorm'
+cask 'google-cloud-sdk'
+cask 'dash'
+cask 'p4merge'
+
+cask 'ccmenu'
+
+cask 'google-chrome'
+cask 'brave'
+cask 'firefox'
+cask 'adobe-reader'
+cask 'dropbox'
+
+cask 'aerial'
+
+cask 'slack'
+cask 'discord'
+
 mas 'LastPass', id: 926036361

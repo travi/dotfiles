@@ -188,7 +188,7 @@ defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool
 ###############################################################################
 
 # Make the diff-highlight script available for diffs, etc
-ln -sf "$(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight" ~/bin/diff-highlight
+ln -sf "$(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight" ~/bin/diff-highlight
 
 ###############################################################################
 # Terminal & iTerm 2                                                          #
