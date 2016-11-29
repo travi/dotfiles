@@ -2,6 +2,9 @@
 
 ## homebrew
 
+### find details on a package
+http://brewformulas.org
+
 ### taps
 
 * [services](https://github.com/Homebrew/homebrew-services)
