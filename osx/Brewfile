@@ -19,6 +19,7 @@ install libyaml
 install mercurial
 install git
 install tig
+install hub
 install node
 install nvm
 install heroku-toolbelt
