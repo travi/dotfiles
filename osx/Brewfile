@@ -1,0 +1,9 @@
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+brew 'gpg-agent'
+brew 'gnupg2'
+brew 'keybase'
+brew 'mas'
+brew 'tig'
+mas 'LastPass', id: 926036361
