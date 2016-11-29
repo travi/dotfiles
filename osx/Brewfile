@@ -37,6 +37,7 @@ brew 'mercurial'
 brew 'heroku-toolbelt'
 
 brew 'nvm'
+cask 'java'
 brew 'maven'
 brew 'rbenv'
 brew 'ruby-build'
