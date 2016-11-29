@@ -36,6 +36,7 @@ install openssl
 install ssh-copy-id
 install lastpass-cli --with-pinentry --with-doc
 install keybase
+install gpg
 install gpg-agent
 install pkg-config
 install readline
