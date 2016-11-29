@@ -1,29 +1,29 @@
 #!/bin/sh
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/bash/colors.sh
+. ~/.files/bash/colors.sh
 #shellcheck disable=SC1090
-. ~/.dotfiles/bash/completion.sh
+. ~/.files/bash/completion.sh
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/bash/aliases.sh
+. ~/.files/bash/aliases.sh
 #shellcheck disable=SC1090
-. ~/.dotfiles/bash/functions.sh
+. ~/.files/bash/functions.sh
 #shellcheck disable=SC1090
-. ~/.dotfiles/bash/exports.sh
+. ~/.files/bash/exports.sh
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/git/functions.sh
+. ~/.files/git/functions.sh
 #shellcheck disable=SC1090
-. ~/.dotfiles/ruby/rbenv-init.sh
+. ~/.files/ruby/rbenv-init.sh
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/bash/prompt.sh
+. ~/.files/bash/prompt.sh
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/osx/source.sh
+. ~/.files/osx/source.sh
 #shellcheck disable=SC1090
-. ~/.dotfiles/windows/source.sh
+. ~/.files/windows/source.sh
 
 #shellcheck disable=SC1090
 [ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh

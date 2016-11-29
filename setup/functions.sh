@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOTFILES_ROOT="$(pwd)/../"
-DOTFILES_LINK="$HOME/.dotfiles"
+DOTFILES_LINK="$HOME/.files"
 
 #shellcheck disable=SC1090
 . "$DOTFILES_LINK/bash/colors.sh"
@@ -88,7 +88,7 @@ link_dotfiles_directory() {
 link_dotfiles() {
     local source;
 
-    find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.dotfiles//\.*' -not -path '*/test/\.*' -not -path '*.DS_Store' > tmp
+    find "${DOTFILES_LINK}/" -mindepth 2 -maxdepth 2 -name '\.*' -not -path '*/.files//\.*' -not -path '*/test/\.*' -not -path '*.DS_Store' > tmp
     while IFS= read -r source
     do
         link_dotfile "${source}"
@@ -99,7 +99,7 @@ link_dotfiles() {
 link_gitconfig_for_os() {
     # OSX-only stuff. Abort if not OSX.
     [[ "$OSTYPE" == darwin* ]] || return 1
-    link_file ~/.dotfiles/osx/gitconfig.osx ~/.gitconfig.os
+    link_file ~/.files/osx/gitconfig.osx ~/.gitconfig.os
 }
 
 link_maven_extensions() {

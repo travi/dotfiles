@@ -4,4 +4,4 @@
 [[ -n "$WINDIR" ]] || return 1
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/windows/ssh-agent.sh
+. ~/.files/windows/ssh-agent.sh

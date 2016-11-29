@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/setup/functions.sh
+. ~/.files/setup/functions.sh
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -25,15 +25,15 @@ brew update
 brew prune
 brew doctor || exit 1
 brew tap homebrew/boneyard
-brew bundle-old ~/.dotfiles/osx/Brewfile
-if [ -e ~/.dotfiles.extra/osx/Brewfile ]; then
-    brew bundle-old ~/.dotfiles.extra/osx/Brewfile
+brew bundle-old ~/.files/osx/Brewfile
+if [ -e ~/.files.extra/osx/Brewfile ]; then
+    brew bundle-old ~/.files.extra/osx/Brewfile
 fi
 
 heading 'Brew Cask bundle'
-brew bundle-old ~/.dotfiles/osx/Caskfile
-if [ -e ~/.dotfiles.extra/osx/Caskfile ]; then
-    brew bundle-old ~/.dotfiles.extra/osx/Caskfile
+brew bundle-old ~/.files/osx/Caskfile
+if [ -e ~/.files.extra/osx/Caskfile ]; then
+    brew bundle-old ~/.files.extra/osx/Caskfile
 fi
 
 if [[ ! -d ~/.nvm ]]; then

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-. ~/.dotfiles/bash/colors.sh
-. ~/.dotfiles/bash/prompt.sh
+. ~/.files/bash/colors.sh
+. ~/.files/bash/prompt.sh

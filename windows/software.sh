@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #shellcheck disable=SC1090
-. ~/.dotfiles/setup/functions.sh
+. ~/.files/setup/functions.sh
 
 # Windows-only stuff. Abort if not Windows.
 [[ -n "$WINDIR" ]] || exit 1
@@ -10,6 +10,6 @@ heading 'Installing/Updating Chocolatey Packages'
 choco install ../windows/packages.config -y
 choco upgrade all -y
 
-if [ -e ~/.dotfiles.extra/windows/software.sh ]; then
-    /bin/bash ~/.dotfiles.extra/windows/software.sh
+if [ -e ~/.files.extra/windows/software.sh ]; then
+    /bin/bash ~/.files.extra/windows/software.sh
 fi

@@ -4,7 +4,7 @@
 [[ -n "$WINDIR" ]] || return 1
 
 heading 'Configuring ConEmu'
-link_file "$HOME/.dotfiles/windows/ConEmu.xml" "$HOME/AppData/Roaming/ConEmu.xml"
+link_file "$HOME/.files/windows/ConEmu.xml" "$HOME/AppData/Roaming/ConEmu.xml"
 
 heading 'Configuring Root CA Certificates'
 if [ -e "$HOME/certificates/ca-root/cacert.pem" ]; then

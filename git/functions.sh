@@ -45,4 +45,4 @@ function github_last_commit() {
 # open current branch + path in GitHub, in the browser.
 alias github_web='git web--browse $(github_url_branch)'
 
-. ~/.dotfiles/git/outstanding.sh
+. ~/.files/git/outstanding.sh
