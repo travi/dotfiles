@@ -1,0 +1,14 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Package Sync'
+      'submenu': [
+        { 'label': 'Create Package List', 'command': 'package-sync:create-package-list' }
+        { 'label': 'Open Package List', 'command': 'package-sync:open-package-list' }
+        { 'label': 'Sync Packages', 'command': 'package-sync:sync' }
+      ]
+    ]
+  }
+]
