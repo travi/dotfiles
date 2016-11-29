@@ -24,17 +24,12 @@ heading 'Brew bundle'
 brew update
 brew prune
 brew doctor || exit 1
-brew tap homebrew/boneyard
-brew bundle-old ~/.files/osx/Brewfile
+brew bundle --file=~/.files/osx/Brewfile
 if [ -e ~/.files.extra/osx/Brewfile ]; then
-    brew bundle-old ~/.files.extra/osx/Brewfile
+   brew bundle --file=~/.files.extra/osx/Brewfile
 fi
-
-heading 'Brew Cask bundle'
-brew bundle-old ~/.files/osx/Caskfile
-if [ -e ~/.files.extra/osx/Caskfile ]; then
-    brew bundle-old ~/.files.extra/osx/Caskfile
-fi
+brew cleanup
+brew cask cleanup
 
 if [[ ! -d ~/.nvm ]]; then
     heading "Finishing nvm configuration"
