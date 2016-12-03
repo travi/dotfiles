@@ -36,4 +36,5 @@ if [[ ! -d ~/.nvm ]]; then
 
     mkdir ~/.nvm
     cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
+    link_file "$(brew --prefix nvm)/nvm.sh" "$HOME/.nvm/nvm.sh}"
 fi
