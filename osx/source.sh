@@ -8,4 +8,4 @@ source "$(brew --prefix nvm)/nvm.sh"
 #shellcheck disable=SC1090
 source ~/.files/gpg/init.sh
 #shellcheck disable=SC1090
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
+[[ -s ~/.avn/bin/avn.sh ]] && source ~/.avn/bin/avn.sh
