@@ -1,5 +1,5 @@
-My dotfiles
-===========
+My .files
+=========
 
 [![Build Status](http://img.shields.io/travis/travi/dotfiles.svg?style=flat)](https://travis-ci.org/travi/dotfiles)
 [![Code Climate](https://img.shields.io/codeclimate/github/travi/dotfiles.svg)](https://codeclimate.com/github/travi/dotfiles)
@@ -26,6 +26,7 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
 ### System Bootstrapping
 
 `setup/init.sh` presents two options:
+
 * Environment configuration
 * Software Installation/Update
 
@@ -53,13 +54,12 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
 * Installs [Homebrew](http://brew.sh/)
 * Installs the applications defined in:
     * `~/.dotfiles/osx/Brewfile`
-    * `~/.dotfiles/osx/Caskfile`
     * `~/.dotfiles.extra/osx/Brewfile`
-    * `~/.dotfiles.extra/osx/Caskfile`
 
 ## Supported Environments
 The following environments are the ones that this configuration has been tested
 in by me, in order from most often to least often used.
+
 * Terminal.app on OSX (Yosemite is my primary)
 * GitBash on Windows
 * SSH sessions into Ubuntu
@@ -67,5 +67,6 @@ in by me, in order from most often to least often used.
 ## Influences
 
 Strongly influenced by:
+
 * https://github.com/mathiasbynens/dotfiles
 * https://github.com/cowboy/dotfiles
