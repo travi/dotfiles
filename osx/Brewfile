@@ -52,6 +52,7 @@ cask 'chefdk'
 
 brew 'vim'
 cask 'atom'
+cask 'macdown'
 cask 'webstorm'
 cask 'google-cloud-sdk'
 cask 'dash'
