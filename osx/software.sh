@@ -28,6 +28,7 @@ brew bundle --file=~/.files/osx/Brewfile
 if [ -e ~/.files.extra/osx/Brewfile ]; then
    brew bundle --file=~/.files.extra/osx/Brewfile
 fi
+brew upgrade
 brew cleanup
 brew cask cleanup
 
