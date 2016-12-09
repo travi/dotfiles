@@ -20,3 +20,5 @@ eval "$(thefuck --alias)"
 
 # Flush DNS
 alias fu-dns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;'
+
+alias git=hub
