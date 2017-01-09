@@ -59,6 +59,8 @@
 [alias]
     st = status
     rb = rebase
+    prom = pull --rebase origin master
+    mt = mergetool
     df = diff
     dc = diff --cached
     co = checkout
