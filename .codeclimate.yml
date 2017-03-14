@@ -8,7 +8,8 @@ engines:
     enabled: true
   bundler-audit:
     enabled: true
-    path: test/Gemfile.lock
+    config:
+      path: test/Gemfile.lock
   rubocop:
     enabled: true
   foodcritic:
