@@ -4,7 +4,7 @@ tap 'homebrew/core'
 
 brew 'gpg-agent'
 brew 'gnupg2'
-brew 'keybase'
+cask 'keybase'
 brew 'lastpass-cli', args: ['with-pinentry', 'with-doc']
 
 brew 'bash'
