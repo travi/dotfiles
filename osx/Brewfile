@@ -1,6 +1,7 @@
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+tap 'caskroom/drivers'
 
 brew 'gpg-agent'
 brew 'gnupg2'
