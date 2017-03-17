@@ -93,10 +93,14 @@
 
     # Remove branches that have already been merged with master
     # a.k.a. ‘delete merged’
-    dm = "!git branch --merged master | grep -v '\\master' | xargs -n 1 git branch -d"
+    dm = "!git branch -r --merged master | grep -v '\\master' | xargs -n 1 git branch -d"
+
+    # Remove branches that have missing ("gone") remote branches
+    # a.k.a. `delete missing remote`
+    dmr = "!git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep gone) | awk '{print $1}' | xargs -n 1 git branch -D"
 
     # Clean Slate
-    cs = "!git co master && git pull --rebase --prune && git dm && git remote prune origin && git submodule update --init --recursive"
+    cs = "!git co master && git pull --rebase --prune && git dm && git dmr && git remote prune origin && git submodule update --init --recursive"
 
     # alternative to `git reset --hard` that maintains a (non-simple) way to recover the changes
     # from http://haacked.com/archive/2014/07/28/github-flow-aliases/
