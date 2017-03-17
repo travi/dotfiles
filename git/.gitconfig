@@ -14,7 +14,7 @@
 [diff]
     renames = copy
     tool = p4mergetool
-    compactionHeuristic = true
+    indentHeuristic = true
 
 [merge]
     tool = p4mergetool
