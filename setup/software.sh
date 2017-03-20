@@ -3,6 +3,10 @@
 /bin/bash ../osx/software.sh || return 1
 /bin/bash ../windows/software.sh || return 1
 
+if -d ~/.rbenv > /dev/null 2>&1; then
+    rbenv install "$(cat ~/.rbenv/version)" --skip-existing
+fi
+
 if which gem > /dev/null 2>&1; then
     heading 'Ruby Gems'
     gem update
