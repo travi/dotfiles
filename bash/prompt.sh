@@ -64,6 +64,12 @@ function prompt_hg() {
   echo "$bracket_color[$prompt_color$output$bracket_color]${RESET}"
 }
 
+function prompt_virtualenv() {
+  if [[ "$VIRTUAL_ENV" ]]; then
+    echo "$bracket_color[$CYAN$(basename "$VIRTUAL_ENV")$bracket_color]${RESET}"
+  fi
+}
+
 # Exit code of previous command.
 function prompt_exitcode() {
   local exitcode_color="\[${RED}\]"
@@ -87,6 +93,7 @@ function prompt_command() {
   PS1="$PS1$(prompt_hg)"
   # path: [user@host:path]
   PS1="$PS1$bracket_color[$prompt_color\u${WHITE}@$prompt_color\h$colon_color:$prompt_color\w$bracket_color]${RESET}"
+  PS1="$PS1$(prompt_virtualenv)"
 
   PS1="$PS1\n"
   # date: [HH:MM:SS]
