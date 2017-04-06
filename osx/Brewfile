@@ -70,6 +70,7 @@ cask 'vlc'
 cask 'evernote'
 cask 'transmission'
 cask 'postman'
+cask 'fiddler'
 cask 'plex-media-player'
 
 cask 'aerial'
