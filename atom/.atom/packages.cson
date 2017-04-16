@@ -1,6 +1,7 @@
 packages: [
   "achievements"
   "atom-beautify"
+  "atom-mermaid"
   "atom-pair"
   "auto-update-packages"
   "autocomplete"
@@ -21,7 +22,7 @@ packages: [
   "language-gherkin"
   "language-gitignore"
   "language-ini"
-  "language-powershell"
+  "language-mermaid"
   "language-puppet"
   "language-sln"
   "language-tmux"
