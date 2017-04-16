@@ -2,3 +2,7 @@
 driver:
   name: docker
   username: vagrant
+
+provisioner:
+  name: chef_solo
+  require_chef_omnibus: 12.19.36
