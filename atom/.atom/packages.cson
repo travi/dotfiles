@@ -9,6 +9,7 @@ packages: [
   "composer"
   "editorconfig"
   "emmet"
+  "expand-region"
   "feedback"
   "file-icons"
   "github-issues"

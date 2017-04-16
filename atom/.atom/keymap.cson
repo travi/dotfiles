@@ -17,5 +17,35 @@
 #   'ctrl-p': 'core:move-down'
 #
 
-'atom-text-editor:not([mini])':
-  'cmd-y': 'editor:delete-line'
+'.platform-darwin':
+    'shift-cmd-n': 'fuzzy-finder:toggle-file-finder'
+    'cmd-1': 'tree-view:toggle'
+
+'.platform-darwin .tree-view':
+    'cmd-1': 'tree-view:toggle'
+
+'.editor':
+    'cmd-y': 'editor:delete-line'
+    'cmd-alt-l': 'atom-beautify:beautify-editor'
+
+'.workspace .editor':
+    'cmd-shift-down': 'editor:move-line-down'
+    'cmd-shift-up': 'editor:move-line-up'
+
+'body':
+    'cmd-f4': 'core:close'
+
+'.platform-darwin .editor':
+    'cmd-g': 'go-to-line:toggle'
+    'cmd-d': 'editor:duplicate-lines'
+
+'.platform-darwin atom-text-editor':
+    'f3': 'find-and-replace:find-next'
+    'shift-f3': 'find-and-replace:find-previous'
+
+'atom-text-editor':
+    'cmd-w': 'expand-region:expand'
+    'shift-cmd-w': 'expand-region:shrink'
+
+'atom-text-editor:not(.mini)':
+    'shift-f6': 'refactor:rename'
