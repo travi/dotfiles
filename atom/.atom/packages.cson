@@ -7,6 +7,7 @@ packages: [
   "autocomplete"
   "busy-signal"
   "caniuse"
+  "color-gutter"
   "composer"
   "editorconfig"
   "emmet"
