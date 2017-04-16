@@ -17,12 +17,31 @@
 #   'ctrl-p': 'core:move-down'
 #
 
+'atom-workspace':
+    'alt-f1': 'tree-view:reveal-active-file'
+
+'atom-workspace atom-text-editor:not([mini])':
+    'ctrl-shift-j': 'editor:join-lines'
+    'shift-enter': 'editor:newline-below'
+
 '.platform-darwin':
     'shift-cmd-n': 'fuzzy-finder:toggle-file-finder'
     'cmd-1': 'tree-view:toggle'
 
+'.platform-darwin atom-workspace':
+    'cmd-shift-a': 'command-palette:toggle'
+    'cmd-shift-f': 'project-find:show'
+    'cmd-shift-r': 'project-find:show'
+
+'.platform-darwin atom-workspace atom-text-editor:not([mini])':
+    'cmd-r': 'find-and-replace:show'
+
 '.platform-darwin .tree-view':
     'cmd-1': 'tree-view:toggle'
+    'cmd-n': 'tree-view:add-file'
+    'ctrl-n': 'tree-view:add-file'
+    'f6': 'tree-view:move'
+    'shift-f6': 'tree-view:move'
 
 '.editor':
     'cmd-y': 'editor:delete-line'
