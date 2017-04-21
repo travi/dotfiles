@@ -3,19 +3,17 @@ services: docker
 addons:
   apt:
     sources:
-    - debian-sid    # Grab shellcheck from the Debian repo (o_O)
+      - debian-sid    # Grab shellcheck from the Debian repo (o_O)
     packages:
-    - shellcheck
+      - shellcheck
 
 sudo: true
 cache:
-    directories:
-        - $HOME/test/vendor/bundle
+  directories:
+    - $HOME/test/vendor/bundle
 rvm: 2.2
 
 install:
-  - travis_wait bundle install --gemfile=test/Gemfile --without vagrant
+  - bundle install --gemfile=test/Gemfile --without vagrant
 
-script:
-  - bash test/verify.sh
-  - KITCHEN_LOCAL_YAML="./.kitchen.docker.yml" rake --rakefile=test/Rakefile test:integration
+script: KITCHEN_LOCAL_YAML="./.kitchen.docker.yml" rake --rakefile=test/Rakefile
