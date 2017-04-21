@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+group :lint do
+  gem 'mdl'
+end
+
 group :integration do
   gem 'test-kitchen'
   gem 'berkshelf'

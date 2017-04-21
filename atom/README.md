@@ -1,3 +1,5 @@
+# Atom
+
 ## Packages
 
 * [package-sync](https://atom.io/packages/package-sync)
@@ -7,10 +9,10 @@
 I primarily use JetBrains IDEs and have many of the keybindings in my muscle
 memory, so tuning Atom to match makes me more efficient.
 
-### A few references:
+### A few references
 
-* https://github.com/guylabs/intellij-idea-keymap/
-* https://github.com/manovotny/atom-intellij
+* <https://github.com/guylabs/intellij-idea-keymap/>
+* <https://github.com/manovotny/atom-intellij>
 
 ### JetBrains Reference Cards
 
