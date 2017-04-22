@@ -9,7 +9,7 @@ end
 desc 'lint'
 task :lint do
     desc 'lint'
-    sh 'sh test/verify.sh'
+    sh 'bash test/verify.sh'
     sh 'mdl --style ./test/markdownlint-style.rb *.md **/*.md'
 end
 
