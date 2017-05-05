@@ -19,7 +19,7 @@ from scratch as well as keep it up-to-date over time.
 xcode-select -–install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
->see: [Install Homebrew without XCODE](https://www.codeandpeace.com/install-homebrew-without-xcode/
+>see: [Install Homebrew without XCODE](https://www.codeandpeace.com/install-homebrew-without-xcode/)
 
 * `git` must be installed
 ```bash
