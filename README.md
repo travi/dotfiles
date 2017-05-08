@@ -27,7 +27,10 @@ xcode-select -–install
 * `git` must be installed
 
 ```bash
+# OSX
 brew install git
+# Ubuntu
+sudo apt-get install -y git
 ```
 
 * `bash` should be configured as the preferred shell
