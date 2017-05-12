@@ -1,6 +1,7 @@
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+tap 'caskroom/fonts'
 tap 'caskroom/drivers'
 
 brew 'gpg-agent'
@@ -59,6 +60,7 @@ cask 'webstorm'
 cask 'google-cloud-sdk'
 cask 'dash'
 brew 'shellcheck'
+cask 'font-source-code-pro'
 
 cask 'ccmenu'
 
