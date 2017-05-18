@@ -19,6 +19,7 @@ brew 'jq'
 brew 'thefuck'
 brew 'tmate'
 brew 'tmux'
+cask 'hyper'
 
 brew 'grc'
 brew 'source-highlight'
