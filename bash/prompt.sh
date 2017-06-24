@@ -18,6 +18,7 @@ function prompt_git() {
 
   status="$(git status 2>/dev/null)"
 
+  # shellcheck disable=SC2181
   [[ $? != 0 ]] && return;
 
   output="$(echo "$status" | awk '/Initial commit/ {print "(init)"}')"
@@ -45,6 +46,7 @@ function prompt_hg() {
 
   summary="$(hg summary 2>/dev/null)"
 
+  # shellcheck disable=SC2181
   [[ $? != 0 ]] && return;
 
   output="$(echo "$summary" | awk '/branch:/ {print $2}')"
