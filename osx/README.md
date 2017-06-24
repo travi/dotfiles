@@ -37,3 +37,7 @@ switch to another version
 ```sh
 $ brew switch <formula> <version #>
 ```
+
+## System Configuration
+
+* [Default Values Command Reference](https://github.com/kevinSuttle/macOS-Defaults/blob/master/REFERENCE.md)
