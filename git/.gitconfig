@@ -112,6 +112,9 @@
     # edit config
     ec = config --global -e
 
+    # what did i commit since yesterday
+    standup = log --since yesterday --author $(git config user.email) --pretty=short
+
     aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '
 
 [rebase]
