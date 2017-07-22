@@ -3,6 +3,7 @@
 */pyc
 *.orig
 .rake_tasks~
+/.bundle/
 null/
 .DS_Store
 *.log
