@@ -10,7 +10,7 @@ else
 fi
 
 # shellcheck disable=SC2139
-alias ls="ls ${colorflag} -F"
+alias ls="ls ${colorflag} -Fh"
 alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
