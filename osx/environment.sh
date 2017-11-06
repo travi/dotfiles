@@ -184,6 +184,13 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE
 
 ###############################################################################
+# iTunes                                                                      #
+###############################################################################
+
+# Stop Apple Photos from Auto Launching when a phone is plugged into USB
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
+
+###############################################################################
 # Git                                                                         #
 ###############################################################################
 
