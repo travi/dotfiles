@@ -9,6 +9,7 @@ brew 'gnupg2'
 cask 'keybase'
 brew 'lastpass-cli', args: ['with-pinentry', 'with-doc']
 mas 'LastPass', id: 926036361
+cask 'authy'
 cask 'private-internet-access'
 
 brew 'bash'
