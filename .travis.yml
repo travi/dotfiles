@@ -11,7 +11,6 @@ sudo: true
 cache:
   directories:
     - $HOME/test/vendor/bundle
-rvm: 2.2
 
 install:
   - bundle install --gemfile=test/Gemfile --without vagrant
