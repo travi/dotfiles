@@ -7,6 +7,7 @@
 * [Shell Scripts Matter](https://dev.to/thiht/shell-scripts-matter)
 * [Bash scripting tutorial: A coding style guideline](https://bluepenguinlist.com/2016/11/04/bash-scripting-tutorial/)
 * [Shell Startup Scripts](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
+* [Ten Things I Wish I’d Known About bash](https://zwischenzugs.com/2018/01/06/ten-things-i-wish-id-known-about-bash)
 
 ## Profile
 
