@@ -6,6 +6,7 @@
 * [Unofficial strict-mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
 * [Shell Scripts Matter](https://dev.to/thiht/shell-scripts-matter)
 * [Bash scripting tutorial: A coding style guideline](https://bluepenguinlist.com/2016/11/04/bash-scripting-tutorial/)
+* [Shell Startup Scripts](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
 
 ## Profile
 
