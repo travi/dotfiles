@@ -10,6 +10,8 @@ set ruler
 set visualbell
 set showcmd
 
+set t_BE=                       " Disable braketed paste mode
+
 set scrolloff=10                " Start scrolling this number of lines from top/bottom
 
 set smarttab                    " Make Tab work fine with spaces
