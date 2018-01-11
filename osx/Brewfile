@@ -6,6 +6,7 @@ tap 'caskroom/drivers'
 
 brew 'gpg-agent'
 brew 'gnupg2'
+brew 'pinentry-mac'
 cask 'keybase'
 brew 'lastpass-cli', args: ['with-pinentry', 'with-doc']
 mas 'LastPass', id: 926036361
