@@ -51,7 +51,7 @@ brew 'nvm'
 cask 'java'
 brew 'maven'
 brew 'rbenv'
-brew 'ruby-build'
+brew 'ruby-build', args: {'with-openssl-dir': '/usr/bin/openssl'}
 brew 'rbenv-bundler'
 brew 'rbenv-default-gems'
 brew 'python'
