@@ -28,6 +28,10 @@ gpg/.gnupg/*
 !gpg/.gnupg/gpg.conf
 !gpg/.gnupg/gpg-agent.conf
 
+nvm/.nvm/*
+!nvm/default-packages
+!nvm/alias/default
+
 code/webstorm/preferences/webstorm120.key
 code/webstorm/preferences/user.web.token
 code/webstorm/preferences/port*
