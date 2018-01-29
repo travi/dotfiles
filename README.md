@@ -35,16 +35,16 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
 
 #### Environment Configuration
 
-* Creates a symlink for `~/.dotfiles` in the home directory
-* Symlinks dotfiles from each folder under `~/.dotfiles` into the home directory
-* Symlinks dotfiles from each folder under `~/.dotfiles.extra` into the home directory
+* Creates a symlink for `~/.files` in the home directory
+* Symlinks dotfiles from each folder under `~/.files` into the home directory
+* Symlinks dotfiles from each folder under `~/.files.extra` into the home directory
 * Symlinks maven plugins into global plugins directory
 * Symlinked `.bash_profile` sources several files in order to:
   * Define environment variables
   * Define aliases
   * Enable my custom prompt
-  * Source additional files from `~/.dotfiles/osx/` and `~/.dotfiles/windows/`
-  * Source `~/.dotfiles.extra/bash/source.sh`
+  * Source additional files from `~/.files/osx/` and `~/.files/windows/`
+  * Source `~/.files.extra/bash/source.sh`
 
 ##### macOS
 
@@ -59,8 +59,8 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
 
 * Installs [Homebrew](http://brew.sh/)
 * Installs the applications defined in:
-  * `~/.dotfiles/osx/Brewfile`
-  * `~/.dotfiles.extra/osx/Brewfile`
+  * `~/.files/osx/Brewfile`
+  * `~/.files.extra/osx/Brewfile`
 
 ## Supported Environments
 
