@@ -97,13 +97,13 @@
 
     # Remove branches that have missing ("gone") remote branches
     # a.k.a. `delete missing remote`
-    dmr = "!git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep gone) | awk '{print $1}' | xargs -n 1 git branch -D"
+    dmr = "!git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
 
     # Ensure working directory is clean
     ecwd = "!f() { if [ -n \"$(git ls-files --other --exclude-standard --directory)\" ] || [ -n \"$(git diff --exit-code)\" ]; then echo \"--- Current branch is not clean ---\" \n exit 1; fi }; f"
 
     # Clean Slate
-    cs = "!git co master && git pull --rebase --prune && git dm && git remote prune origin && git submodule update --init --recursive && git ecwd && git push"
+    cs = "!git co master && git pull --rebase --prune && git dm && git remote prune origin && git dmr && git submodule update --init --recursive && git ecwd && git push"
 
     # alternative to `git reset --hard` that maintains a (non-simple) way to recover the changes
     # from http://haacked.com/archive/2014/07/28/github-flow-aliases/
