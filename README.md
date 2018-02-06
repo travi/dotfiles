@@ -67,9 +67,9 @@ git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source 
 The following environments are the ones that this configuration has been tested
 in by me, in order from most often to least often used.
 
-* Terminal.app on macOS (Sierra is my primary)
-* GitBash on Windows
+* Terminal.app on macOS (High Sierra is my primary)
 * SSH sessions into Ubuntu
+* GitBash on Windows
 
 ## Verification
 
