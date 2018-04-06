@@ -22,5 +22,11 @@ if which rake > /dev/null 2>&1; then
     . ~/.files/ruby/rake-completion.sh
 fi
 
+#completion of npm commands
+if which npm > /dev/null 2>&1; then
+    #shellcheck disable=SC1090
+    source <(npm completion)
+fi
+
 #shellcheck disable=SC1090
 . ~/.files/osx/completion.sh
