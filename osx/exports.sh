@@ -15,3 +15,6 @@ export NVM_DIR=~/.nvm
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications";
+
+ export FORCE_COLOR=1
+ export NPM_CONFIG_COLOR=always
