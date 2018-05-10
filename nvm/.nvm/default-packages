@@ -2,3 +2,5 @@ updtr
 commitizen
 @travi/cli
 npm-merge-driver
+fkill-cli
+bunyan
