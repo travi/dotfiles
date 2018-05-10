@@ -88,7 +88,7 @@ cask 'plex-media-player'
 cask 'aerial'
 cask 'caffeine'
 cask 'flux'
-cask 'wifi-password'
+brew 'wifi-password'
 
 cask 'slack'
 cask 'discord'
