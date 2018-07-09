@@ -7,7 +7,7 @@
 source ~/.files/gpg/init.sh
 
 # source "$(brew --prefix nvm)/nvm.sh"
-NVM_DIR="$(realpath $HOME/.nvm)"
+NVM_DIR="$(realpath "$HOME"/.nvm)"
 export NVM_DIR
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
