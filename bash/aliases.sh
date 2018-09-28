@@ -12,8 +12,8 @@ fi
 # shellcheck disable=SC2139
 alias ls="ls ${colorflag} -Fh"
 alias ll="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
+alias la="ls -A"
+alias lla="ls -lA"
 
 alias hosts='sudo $EDITOR /etc/hosts'
 
