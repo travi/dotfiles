@@ -94,6 +94,9 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool t
 ### Move content in the direction of finger movement when scrolling or navigating (natural)
 /usr/bin/defaults write -g 'com.apple.swipescrolldirection' -bool true
 
+# Enable dragging a window by clicking anywhere within it while holding ctrl-opt-cmd: https://twitter.com/nibroc/status/963088893758259200
+defaults write -g NSWindowShouldDragOnGesture YES
+
 ### Launchpad: no
 /usr/bin/defaults write com.apple.dock 'showLaunchpadGestureEnabled' -bool false
 
