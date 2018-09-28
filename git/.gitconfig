@@ -46,6 +46,7 @@
     longpaths = true
     whitespace=fix,tab-in-indent,trailing-space,cr-at-eol
     excludesfile = ~/.gitignore
+    trustctime = false
 
 [push]
     # Git 1.x default to work on legacy machines (pre-v1.8)
