@@ -14,7 +14,9 @@ M2="${M2_HOME}/bin"
 export NVM_DIR=~/.nvm
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
-export HOMEBREW_CASK_OPTS="--appdir=/Applications";
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --require-sha";
 
- export FORCE_COLOR=1
- export NPM_CONFIG_COLOR=always
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+
+export FORCE_COLOR=1
+export NPM_CONFIG_COLOR=always
