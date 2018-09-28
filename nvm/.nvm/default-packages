@@ -1,6 +1,8 @@
 updtr
 commitizen
 @travi/cli
+@gaincompliance/cli
 npm-merge-driver
 fkill-cli
+vtop
 bunyan
