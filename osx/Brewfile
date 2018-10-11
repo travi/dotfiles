@@ -44,7 +44,7 @@ brew 'm-cli'
 brew 'git'
 brew 'hub'
 brew 'tig'
-cask 'p4merge'
+cask 'p4v'
 brew 'mercurial'
 brew 'heroku-toolbelt'
 
