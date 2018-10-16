@@ -3,7 +3,7 @@
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" == darwin* ]] || return 1
 
-alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias afk="open -a ScreenSaverEngine"
 
 alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
