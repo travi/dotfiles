@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DOTFILES_ROOT="$(pwd)/../"
+DOTFILES_ROOT="$(pwd)/.."
 DOTFILES_LINK="$HOME/.files"
 
 #shellcheck disable=SC1090
-. "$DOTFILES_LINK/bash/colors.sh"
+. "$DOTFILES_ROOT/bash/colors.sh"
 
 heading() {
     printf "\n${YELLOW}%s${RESET}\n" "$1"
