@@ -19,11 +19,20 @@ if [[ "$OSTYPE" == darwin* ]]; then
         true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    if [ -d "$HOME/development/travi" ]; then
-        echo "Parent directory already exists to house the dotfiles repo"
+    if [ ! -p "$HOME/develpment/travi/dotfiles" ]; then
+        if [ -d "$HOME/development/travi" ]; then
+            echo "Parent directory already exists to house the dotfiles repo"
+        else
+            echo "Creating parent directory to house the dotfiles repo"
+            mkdir -p "$HOME/development/travi"
+        fi
+
+        cd "$HOME/development/travi"
+
+        echo "Cloning the dotfiles repo"
+        git clone https://github.com/travi/dotfiles.git
     else
-        echo "Creating parent directory to house the dotfiles repo"
-        mkdir -p "$HOME/development/travi"
+        echo "dotfiles repo already cloned"
     fi
 
 else
