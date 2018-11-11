@@ -35,6 +35,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
         echo "dotfiles repo already cloned"
     fi
 
+    cd "$HOME/development/travi/dotfiles/setup"
+    source init.sh
+
 else
     echo "Bootstrapping for this OS ($OSTYPE) has not been implemented yet"
 fi
