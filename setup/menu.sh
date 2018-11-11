@@ -3,7 +3,7 @@
 shopt -s expand_aliases
 . ../bash/aliases.sh
 
-choice=$1
+choice=${1:-}
 
 if [[ -z $choice ]]; then
     heading "Which setup step(s) would you like to perform?"
