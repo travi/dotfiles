@@ -9,10 +9,23 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
     echo "Bootstrapping MacOS..."
 
+    # Ask for the administrator password upfront
+    sudo -v
+
     if [ "$(which brew)" ]; then
         echo "Homebrew is already installed"
     else
         echo "Installing Homebrew"
         true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
+
+    if [ -d "$HOME/development/travi" ]; then
+        echo "Parent directory already exists to house the dotfiles repo"
+    else
+        echo "Creating parent directory to house the dotfiles repo"
+        mkdir -p "$HOME/development/travi"
+    fi
+
+else
+    echo "Bootstrapping for this OS ($OSTYPE) has not been implemented yet"
 fi
