@@ -36,6 +36,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
     fi
 
     cd "$HOME/development/travi/dotfiles/setup"
+
+    echo "Installing the dotfiles"
     source init.sh
 
 else
