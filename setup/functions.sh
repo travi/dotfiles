@@ -27,7 +27,7 @@ fail() {
     return 8
 }
 
-windows() { [[ -n "$WINDIR" ]]; }
+windows() { [[ -n "${WINDIR-}" ]]; }
 
 is_symbolic_link() {
     local path=$1

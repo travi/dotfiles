@@ -4,7 +4,7 @@
 . ~/.files/setup/functions.sh
 
 # Windows-only stuff. Abort if not Windows.
-[[ -n "$WINDIR" ]] || exit 1
+[[ -n "${WINDIR-}" ]] || exit 1
 
 heading 'Installing/Updating Chocolatey Packages'
 choco install ../windows/packages.config -y
