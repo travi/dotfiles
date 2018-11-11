@@ -21,7 +21,7 @@ from scratch as well as keep it up-to-date over time.
 ### Command
 
 ```sh
-git clone https://github.com/travi/dotfiles.git && cd dotfiles/setup/ && source init.sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/travi/dotfiles/master/setup/bootstrap.sh)"
 ```
 
 ## What does it do?
