@@ -4,6 +4,15 @@ tap 'homebrew/core'
 tap 'caskroom/fonts'
 tap 'caskroom/drivers'
 
+brew 'mas'
+brew 'm-cli'
+brew 'git'
+brew 'hub'
+brew 'tig'
+cask 'p4v'
+brew 'mercurial'
+brew 'heroku-toolbelt'
+
 brew 'gnupg'
 brew 'pinentry-mac'
 cask 'keybase'
@@ -11,6 +20,7 @@ brew 'lastpass-cli', args: ['with-pinentry', 'with-doc']
 mas 'LastPass', id: 926036361
 cask 'authy'
 cask 'private-internet-access'
+brew 'wifi-password'
 
 brew 'bash'
 brew 'bash-completion'
@@ -37,15 +47,6 @@ brew 'openssl'
 brew 'ssh-copy-id'
 brew 'corkscrew'
 cask 'pl2303'
-
-brew 'mas'
-brew 'm-cli'
-brew 'git'
-brew 'hub'
-brew 'tig'
-cask 'p4v'
-brew 'mercurial'
-brew 'heroku-toolbelt'
 
 brew 'nvm'
 cask 'java'
@@ -94,7 +95,7 @@ cask 'vectr'
 cask 'aerial'
 cask 'caffeine'
 cask 'flux'
-brew 'wifi-password'
+mas 'Magnet', id: 441258766
 
 cask 'slack'
 cask 'discord'
