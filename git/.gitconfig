@@ -48,6 +48,9 @@
     excludesfile = ~/.gitignore
     trustctime = false
 
+[fetch]
+    prune = true
+
 [push]
     # Git 1.x default to work on legacy machines (pre-v1.8)
     # use `simple` in .gitconfig.extra on machines with newer git installed
@@ -109,7 +112,7 @@
     delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 
     # Clean Slate
-    cs = "!git co master && git pull --rebase --prune && git dm && git remote prune origin && git dmr && git submodule update --init --recursive && git ecwd && git push"
+    cs = "!git co master && git pull --rebase && git dm && git remote prune origin && git dmr && git submodule update --init --recursive && git ecwd && git push"
 
     # alternative to `git reset --hard` that maintains a (non-simple) way to recover the changes
     # from http://haacked.com/archive/2014/07/28/github-flow-aliases/
