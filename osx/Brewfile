@@ -4,8 +4,7 @@ tap 'homebrew/core'
 tap 'caskroom/fonts'
 tap 'caskroom/drivers'
 
-brew 'gpg-agent'
-brew 'gnupg2'
+brew 'gnupg'
 brew 'pinentry-mac'
 cask 'keybase'
 brew 'lastpass-cli', args: ['with-pinentry', 'with-doc']
