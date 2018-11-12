@@ -15,6 +15,7 @@ _rakecomplete() {
         if [[ $recent != '.rake_tasks~' ]]; then
             rake --silent --prereqs | grep "rake" | cut -d " " -f 2 > .rake_tasks~
         fi
+        # shellcheck disable=SC2207
         COMPREPLY=($(compgen -W "$(cat .rake_tasks~)" -- "$cur"))
         # remove colon containing prefix from COMPREPLY items
         __ltrim_colon_completions "$cur"

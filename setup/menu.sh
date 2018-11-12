@@ -7,11 +7,11 @@ choice=${1:-}
 
 if [[ -z $choice ]]; then
     heading "Which setup step(s) would you like to perform?"
-    echo -e "\t1: Environment Configuration"
-    echo -e "\t2: Software Installation/Update"
-    echo -e "\t3: Both"
+    echo -e "\\t1: Environment Configuration"
+    echo -e "\\t2: Software Installation/Update"
+    echo -e "\\t3: Both"
 
-    echo -en "\nPlease enter your choice: "
+    echo -en "\\nPlease enter your choice: "
     read -r choice
 fi
 

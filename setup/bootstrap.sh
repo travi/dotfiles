@@ -12,7 +12,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
     # Ask for the administrator password upfront
     sudo -v
 
-    if [ "$(which brew)" ]; then
+    if [ "$(command -v brew)" ]; then
         echo "Homebrew is already installed"
     else
         echo "Installing Homebrew"
