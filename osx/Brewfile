@@ -68,6 +68,7 @@ cask 'webstorm'
 cask 'google-cloud-sdk'
 cask 'dash'
 brew 'shellcheck'
+brew 'pre-commit'
 cask 'font-source-code-pro'
 
 cask 'ccmenu'
