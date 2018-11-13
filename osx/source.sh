@@ -4,8 +4,6 @@
 # OSX-only stuff. Abort if not OSX.
 [[ "$OSTYPE" == darwin* ]] || return 1
 
-source ~/.files/gpg/init.sh
-
 # source "$(brew --prefix nvm)/nvm.sh"
 NVM_DIR="$(realpath "$HOME"/.nvm)"
 export NVM_DIR
