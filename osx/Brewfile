@@ -76,7 +76,7 @@ cask 'font-source-code-pro'
 cask 'ccmenu'
 
 cask 'google-chrome'
-cask 'brave'
+cask 'brave-browser'
 cask 'firefox'
 cask 'webpack-dashboard'
 cask 'adobe-reader'
