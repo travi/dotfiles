@@ -12,7 +12,7 @@ brew 'hub'
 brew 'tig'
 cask 'p4v'
 brew 'mercurial'
-brew 'heroku-toolbelt'
+brew 'heroku'
 
 brew 'gnupg'
 brew 'pinentry-mac'
