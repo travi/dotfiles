@@ -5,4 +5,7 @@
 if [ -e ~/.files.extra/bash/source.sh ]; then
     . ~/.files.extra/bash/source.sh
 fi
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+if [ -s "$HOME/.avn/bin/avn.sh" ]; then
+  . "$HOME/.avn/bin/avn.sh" # load avn
+fi
