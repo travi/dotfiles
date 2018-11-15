@@ -97,6 +97,9 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool t
 # Enable dragging a window by clicking anywhere within it while holding ctrl-opt-cmd: https://twitter.com/nibroc/status/963088893758259200
 defaults write -g NSWindowShouldDragOnGesture YES
 
+# Use all F1, F2, etc. keys as standard function keys
+defaults write -g com.apple.keyboard.fnState -bool true
+
 ### Launchpad: no
 /usr/bin/defaults write com.apple.dock 'showLaunchpadGestureEnabled' -bool false
 
