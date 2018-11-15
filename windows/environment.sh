@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Windows-only stuff. Abort if not Windows.
-[[ -n "$WINDIR" ]] || return 1
+[[ -n "$WINDIR" ]] || return 0
 
 heading 'Configuring ConEmu'
 link_file "$HOME/.files/windows/ConEmu.xml" "$HOME/AppData/Roaming/ConEmu.xml"

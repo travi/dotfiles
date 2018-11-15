@@ -3,7 +3,9 @@
 heading 'Link Dotfiles'
 link_dotfiles
 link_gitconfig_for_os
-reload
+
+#shellcheck disable=SC1090
+source "$HOME/.bash_profile" && bind -f "$HOME/.inputrc"
 
 if [ ! -d ~/bin ]; then
     heading 'Creating ~/bin'
