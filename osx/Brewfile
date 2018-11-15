@@ -97,6 +97,7 @@ cask 'aerial'
 cask 'caffeine'
 cask 'flux'
 mas 'Magnet', id: 441258766
+mas 'Clocker - Menubar World Clock', id: 1056643111
 
 cask 'slack'
 cask 'discord'
