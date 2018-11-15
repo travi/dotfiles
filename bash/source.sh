@@ -24,6 +24,3 @@
 . ~/.files/osx/source.sh
 #shellcheck disable=SC1090
 . ~/.files/windows/source.sh
-
-#shellcheck disable=SC1090
-[ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
