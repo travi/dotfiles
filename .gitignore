@@ -9,6 +9,7 @@ thefuck/.thefuck/**/*.pyc
 atom/.atom/packages/*
 atom/.atom/local-history
 atom/.atom/blob-store/
+atom/.atom/recovery/
 !atom/.atom/packages/package-sync/
 
 ruby/.rbenv/shims/
