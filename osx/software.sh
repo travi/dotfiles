@@ -12,14 +12,6 @@ IFS=$'\n\t'
 # Ask for the administrator password upfront
 sudo -v
 
-# Install Homebrew.
-if [[ ! "$(type -P brew)" ]]; then
-    heading "Installing Homebrew"
-
-    #Skip the "Press enter to continue…" prompt.
-    true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
 heading 'Brew bundle'
 brew update
 brew prune
