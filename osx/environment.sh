@@ -134,7 +134,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Select text in a Quick Look preview window
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
-
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
