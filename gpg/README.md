@@ -5,6 +5,15 @@
 * <https://github.com/pstadler/keybase-gpg-github>
 * <https://gist.github.com/sindresorhus/98add7be608fad6b5376a895e5a59972>
 
+### Setting an existing set of keys from Keybase as the default keypair for GPG
+
+* Open the Keybase desktop app
+* Log into the desktop app
+* Add as a new device
+* In the terminal:
+  * `$ keybase login`
+* Import the Keybase keypair into GPG: https://github.com/pstadler/keybase-gpg-github#import-key-to-gpg-on-another-host
+
 ## Adding an email to the key
 
 * [edit the key](https://www.katescomment.com/how-to-add-additional-email-addresses-to-your-gpg-identity/)
