@@ -4,6 +4,7 @@
 
 * [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
 * [Git Flight Rules](https://github.com/k88hudson/git-flight-rules)
+* [What makes a good commit message?](https://hackernoon.com/what-makes-a-good-commit-message-995d23687ad)
 
 ## Config
 
