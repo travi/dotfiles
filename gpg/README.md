@@ -12,7 +12,7 @@
 * Add as a new device
 * In the terminal:
   * `$ keybase login`
-* Import the Keybase keypair into GPG: https://github.com/pstadler/keybase-gpg-github#import-key-to-gpg-on-another-host
+* [Import the Keybase keypair into GPG](https://github.com/pstadler/keybase-gpg-github#import-key-to-gpg-on-another-host)
 
 ## Adding an email to the key
 
