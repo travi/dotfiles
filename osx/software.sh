@@ -14,7 +14,7 @@ sudo -v
 
 heading 'Brew bundle'
 brew update
-brew prune
+brew cleanup
 brew doctor || exit 1
 brew bundle --file=~/.files/osx/Brewfile
 if [ -e ~/.files.extra/osx/Brewfile ]; then
