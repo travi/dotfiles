@@ -41,3 +41,4 @@ $ brew switch <formula> <version #>
 ## System Configuration
 
 * [Default Values Command Reference](https://github.com/kevinSuttle/macOS-Defaults/blob/master/REFERENCE.md)
+* [defaults/PlistBuddy tips](https://github.com/mathiasbynens/dotfiles/issues/5#issuecomment-4117712)
