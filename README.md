@@ -88,6 +88,21 @@ If Vagrant isn't installed, or you want to only run the lint checks:
 rake --rakefile=test/Rakefile lint
 ```
 
+#### Automatically
+
+The [provided config file](./pre-commit-config.yaml) defines tasks for the
+[pre-commit tool](https://pre-commit.com/)
+
+##### as a `pre-commit` hook
+
+Run `pre-commit install` to install the tool into the git hooks for this
+project. Update to the latest version of the config by running
+`pre-commit autoupdate`.
+
+##### manually through the cli
+
+`pre-commit run --all-files`
+
 ### What's included
 
 * Lint
