@@ -75,7 +75,8 @@ in by me, in order from most often to least often used.
 
 ### Execute
 
-With [Vagrant]() available, you can run the full verification locally:
+With [Vagrant](https://www.vagrantup.com/) available, you can run the full
+verification locally:
 
 ```sh
 rake --rakefile=test/Rakefile
