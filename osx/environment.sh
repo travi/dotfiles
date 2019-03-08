@@ -92,7 +92,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeF
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 ### Move content in the direction of finger movement when scrolling or navigating (natural)
-/usr/bin/defaults write -g 'com.apple.swipescrolldirection' -bool true
+defaults write -g com.apple.swipescrolldirection -bool true
 
 # Enable dragging a window by clicking anywhere within it while holding ctrl-opt-cmd: https://twitter.com/nibroc/status/963088893758259200
 defaults write -g NSWindowShouldDragOnGesture YES
@@ -117,10 +117,18 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ### Modifier Keys… > Apple Internal Keyboard / Trackpad > Caps Lock ( ⇪) Key: No Action
-/usr/bin/defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-566-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
+defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-566-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
 
 ### Modifier Keys… > Apple Keyboard [External] > Caps Lock ( ⇪) Key: No Action
-/usr/bin/defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-544-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
+defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-544-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
+
+# Disable Mission Control Keyboard Shortcut
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "<dict><key>enabled</key><false/></dict>"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34 "<dict><key>enabled</key><false/></dict>"
+
+# Disable Application Windows Keyboard Shortcut
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 33 "<dict><key>enabled</key><false/></dict>"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 35 "<dict><key>enabled</key><false/></dict>"
 
 ###############################################################################
 # Finder                                                                      #
