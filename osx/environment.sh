@@ -122,11 +122,11 @@ defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-566-0' -
 ### Modifier Keys… > Apple Keyboard [External] > Caps Lock ( ⇪) Key: No Action
 defaults -currentHost write -g 'com.apple.keyboard.modifiermapping.1452-544-0' -array '<dict><key>HIDKeyboardModifierMappingDst</key><integer>-1</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>'
 
-# Disable Mission Control Keyboard Shortcut
+# Disable Mission Control Keyboard Shortcut since it conflicts with WebStorm (ctrl + up)
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "<dict><key>enabled</key><false/></dict>"
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34 "<dict><key>enabled</key><false/></dict>"
 
-# Disable Application Windows Keyboard Shortcut
+# Disable Application Windows Keyboard Shortcut since it conflicts with WebStorm (ctrl + down)
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 33 "<dict><key>enabled</key><false/></dict>"
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 35 "<dict><key>enabled</key><false/></dict>"
 
