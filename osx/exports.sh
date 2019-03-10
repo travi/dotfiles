@@ -14,7 +14,7 @@ M2="${M2_HOME}/bin"
 export NVM_DIR=~/.nvm
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --screen_saverdir=/Library/Screen Savers --require-sha";
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts --screen_saverdir=/Library/Screen\\ Savers --require-sha";
 
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 
