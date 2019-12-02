@@ -19,16 +19,16 @@ function outstanding() {
             state=$state"${changes}"
 
             out="$(git out 2>/dev/null)"
-            if [ ! -z "$out" ]; then
+            if [ -n "$out" ]; then
                 state=$state"out "
             fi
 
             in="$(git in 2>/dev/null)"
-            if [ ! -z "$in" ]; then
+            if [ -n "$in" ]; then
                 state=$state"in "
             fi
 
-            if [ ! -z "$state" ]; then
+            if [ -n "$state" ]; then
                 echo -ne \\r"${BLUE}$dir${RESET} "
                 echo "$state"
             fi
