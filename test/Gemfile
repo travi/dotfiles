@@ -7,7 +7,7 @@ end
 group :integration do
   gem 'test-kitchen'
   gem 'berkshelf'
-  gem 'rake'
+  gem 'rake', '>= 12.3.3'
 end
 
 group :vagrant do
