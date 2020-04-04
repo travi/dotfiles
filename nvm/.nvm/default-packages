@@ -2,7 +2,6 @@ updtr
 commitizen
 @form8ion/utils-cli
 @travi/cli
-@gaincompliance/cli
 npm-merge-driver
 fkill-cli
 vtop
