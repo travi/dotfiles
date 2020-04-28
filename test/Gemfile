@@ -6,7 +6,7 @@ end
 
 group :integration do
   gem 'test-kitchen'
-  gem 'berkshelf'
+  gem 'berkshelf', '>= 7.0.4'
   gem 'rake', '>= 12.3.3'
 end
 
