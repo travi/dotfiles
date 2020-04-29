@@ -1,7 +1,7 @@
 # My .files
 
-[![Build Status](http://img.shields.io/travis/travi/dotfiles.svg?style=flat)](https://travis-ci.org/travi/dotfiles)
-[![Code Climate](https://img.shields.io/codeclimate/github/travi/dotfiles.svg)](https://codeclimate.com/github/travi/dotfiles)
+[![Build Status](http://img.shields.io/travis/com/travi/dotfiles.svg?style=flat)](https://travis-ci.com/travi/dotfiles)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/travi/dotfiles.svg)](https://codeclimate.com/github/travi/dotfiles)
 
 My disaster recovery plan.
 
