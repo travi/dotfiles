@@ -1,8 +1,8 @@
-tap 'caskroom/cask-cask'
+tap 'homebrew/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
-tap 'caskroom/cask-fonts'
-tap 'caskroom/cask-drivers'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-drivers'
 tap 'heroku/brew'
 
 brew 'mas'
