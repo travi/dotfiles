@@ -65,6 +65,7 @@ cask 'virtualbox'
 
 brew 'vim'
 cask 'atom'
+cask 'visual-studio-code'
 cask 'macdown'
 cask 'webstorm'
 cask 'google-cloud-sdk'
