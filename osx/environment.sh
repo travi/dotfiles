@@ -29,9 +29,11 @@ fi;
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
+# Set appearance to dark
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
 # Set UI Chrome Appearance to Graphite
 /usr/bin/defaults write -g 'AppleAquaColorVariant' -int 6
-
 # Set highlight color to graphite
 defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
 
