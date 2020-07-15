@@ -67,7 +67,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/travi/dotfiles/master/setu
 The following environments are the ones that this configuration has been tested
 in by me, in order from most often to least often used.
 
-* Terminal.app on macOS (Mojave is my primary)
+* Terminal.app on macOS (Catalina is my primary)
 * SSH sessions into Ubuntu
 * GitBash on Windows
 
