@@ -75,6 +75,8 @@ brew 'pre-commit'
 cask 'font-source-code-pro'
 
 cask 'ccmenu'
+cask 'elgato-control-center'
+cask 'elgato-stream-deck'
 
 cask 'google-chrome'
 cask 'brave-browser'
