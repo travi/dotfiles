@@ -75,6 +75,8 @@
     df = diff
     dc = diff --cached
     co = checkout
+    # checkout default branch
+    cod = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
     cb = checkout -b
     pop = stash pop
     amend = commit -a --amend --no-edit
@@ -115,7 +117,7 @@
     delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 
     # Clean Slate
-    cs = "!git co master && git pull --rebase && git dm && git remote prune origin && git dmr && git submodule update --init --recursive && git ecwd && git push"
+    cs = "!git cod && git pull --rebase && git dm && git remote prune origin && git dmr && git submodule update --init --recursive && git ecwd && git push"
 
     # alternative to `git reset --hard` that maintains a (non-simple) way to recover the changes
     # from http://haacked.com/archive/2014/07/28/github-flow-aliases/
