@@ -76,7 +76,7 @@
     dc = diff --cached
     co = checkout
     # checkout default branch
-    cod = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    cod = !git remote set-head origin --auto && git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
     cb = checkout -b
     pop = stash pop
     amend = commit -a --amend --no-edit
