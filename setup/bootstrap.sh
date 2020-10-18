@@ -3,6 +3,31 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+clone() {
+    if [ ! -d "$HOME/development/travi/dotfiles" ]; then
+        if [ -d "$HOME/development/travi" ]; then
+            echo "Parent directory already exists to house the dotfiles repo"
+        else
+            echo "Creating parent directory to house the dotfiles repo"
+            mkdir -p "$HOME/development/travi"
+        fi
+
+        cd "$HOME/development/travi"
+
+        echo "Cloning the dotfiles repo"
+        git clone https://github.com/travi/dotfiles.git
+    else
+        echo "dotfiles repo already cloned"
+    fi
+}
+
+install() {
+    cd "$HOME/development/travi/dotfiles/setup"
+
+    echo "Installing the dotfiles"
+    source init.sh
+}
+
 echo "Bootstrapping machine using travi's dotfiles..."
 
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -21,26 +46,16 @@ if [[ "$OSTYPE" == darwin* ]]; then
         true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    if [ ! -d "$HOME/development/travi/dotfiles" ]; then
-        if [ -d "$HOME/development/travi" ]; then
-            echo "Parent directory already exists to house the dotfiles repo"
-        else
-            echo "Creating parent directory to house the dotfiles repo"
-            mkdir -p "$HOME/development/travi"
-        fi
+    clone
 
-        cd "$HOME/development/travi"
+    install
+elif [[ "$OSTYPE" == "linux-musleabihf" ]]; then
 
-        echo "Cloning the dotfiles repo"
-        git clone https://github.com/travi/dotfiles.git
-    else
-        echo "dotfiles repo already cloned"
-    fi
+    echo "Bootstrapping Raspberry Pi OS..."
 
-    cd "$HOME/development/travi/dotfiles/setup"
+    clone
 
-    echo "Installing the dotfiles"
-    source init.sh
+    install
 
 else
     echo "Bootstrapping for this OS ($OSTYPE) has not been implemented yet"
