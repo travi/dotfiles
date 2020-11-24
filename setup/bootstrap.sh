@@ -50,6 +50,14 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
     install
 
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+
+    echo "Bootstrapping GNU Linux..."
+
+    clone
+
+    install
+
 elif [[ "$OSTYPE" == "linux-musleabihf" ]]; then
 
     echo "Bootstrapping Raspberry Pi OS (musl)..."
