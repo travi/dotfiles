@@ -7,10 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Read .ruby-version
-        run: 'echo ::set-output name=RUBY_VERSION::$(cat .ruby-version)'
-        id: ruby-version
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ steps.ruby-version.outputs.RUBY_VERSION }}
-
+          bundler-cache: true
