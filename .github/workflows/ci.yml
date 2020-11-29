@@ -5,6 +5,8 @@ on: [push, pull_request]
 jobs:
   verify:
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEMFILE: test/Gemfile
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
