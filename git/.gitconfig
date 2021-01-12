@@ -101,7 +101,7 @@
 
     # Stage and print status
     # Defaults to stage all, but only if nothing else is staged
-    ad = "!f() { if [ ! -z \"$1\" ] || git diff --cached --quiet; then git add -A \"$@\" && git status; else echo \"Staging prevented\"; return 8; fi }; f"
+    ad = "!f() { if [ ! -z \"$1\" ] || git diff --cached --quiet; then git add -A \"${GIT_PREFIX}$@\" && git status; else echo \"Staging prevented\"; return 8; fi }; f"
 
     # Remove branches that have already been merged with master
     # a.k.a. ‘delete merged’
