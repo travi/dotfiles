@@ -134,6 +134,9 @@
 
     aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '
 
+    # Show the user email for the current repository.
+	whoami = config user.email
+
 [rebase]
     autosquash = true
 
