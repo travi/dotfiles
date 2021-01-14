@@ -3,6 +3,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-. ./functions.sh
+. ./setup/functions.sh
 
-. ./environment.sh
+. ./setup/environment.sh
