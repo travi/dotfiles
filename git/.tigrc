@@ -1,0 +1,3 @@
+set mailmap = true
+set main-view-date-display = relative-compact
+set main-view-id-display = yes
