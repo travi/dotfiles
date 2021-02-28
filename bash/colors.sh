@@ -69,11 +69,6 @@ export LESS=-R
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="${YELLOW}";
 
-if grep --color "a" <<< "a" &> /dev/null; then
-# Always enable colored `grep` output
-export GREP_OPTIONS="--color=auto";
-fi
-
 # aliases for GRC from homebrew
 if grc &>/dev/null && brew --version &>/dev/null; then
     #shellcheck disable=SC1091

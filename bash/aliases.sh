@@ -15,6 +15,10 @@ alias ll="ls -l"
 alias la="ls -A"
 alias lla="ls -lA"
 
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+
 alias hosts='sudo $EDITOR /etc/hosts'
 
 alias reload='exec -l $SHELL'
