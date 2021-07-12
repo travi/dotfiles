@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     berkshelf (7.0.10)
       chef (>= 13.6.52)
@@ -143,7 +143,7 @@ GEM
       wmi-lite (~> 1.0)
     plist (3.5.0)
     proxifier (1.0.3)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     rack (2.2.3)
     rake (13.0.1)
     retryable (3.0.5)
