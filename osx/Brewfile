@@ -106,4 +106,5 @@ mas 'Clocker - Menubar World Clock', id: 1056643111
 
 cask 'slack'
 cask 'discord'
+cask 'signal'
 cask 'gitter'
