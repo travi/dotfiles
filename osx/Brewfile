@@ -9,6 +9,7 @@ brew 'mas'
 brew 'm-cli'
 brew 'git'
 brew 'hub'
+brew 'gh'
 brew 'tig'
 cask 'p4v'
 brew 'mercurial'
@@ -93,6 +94,7 @@ brew 'httpie'
 cask 'plex-media-player'
 cask 'kap'
 cask 'yakyak'
+mas 'Spark - Email App by Readdle', id: 1176895641
 
 cask 'vectr'
 
@@ -104,4 +106,5 @@ mas 'Clocker - Menubar World Clock', id: 1056643111
 
 cask 'slack'
 cask 'discord'
+cask 'signal'
 cask 'gitter'

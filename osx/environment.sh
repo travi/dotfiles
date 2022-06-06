@@ -16,9 +16,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Change the default shell to bash v4
-if [ -e '/usr/local/bin/bash' ] && ! grep '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
+if [ -e "$(brew --prefix bash)/bin/bash" ] && ! grep "$(brew --prefix bash)/bin/bash" /etc/shells; then
+  echo "$(brew --prefix bash)/bin/bash" | sudo tee -a /etc/shells;
+  chsh -s "$(brew --prefix bash)/bin/bash";
   info 'Default shell changed to bash v4'
 fi;
 
