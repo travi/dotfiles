@@ -59,6 +59,7 @@
     # use `simple` in .gitconfig.extra on machines with newer git installed
     default = matching
     followTags = true
+    autoSetupRemote = true
 
 [branch]
     autorebase = always
