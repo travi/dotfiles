@@ -34,6 +34,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
     echo "Bootstrapping MacOS..."
 
+    clone
+
     # Ask for the administrator password upfront
     # sudo -v
 
@@ -45,8 +47,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
         #Skip the "Press enter to continue…" prompt.
         true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-
-    clone
 
     install
 
