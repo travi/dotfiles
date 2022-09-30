@@ -8,7 +8,13 @@
 ### Ensure that the `~/.gnupg` directory has the proper permissions
 
 ```sh
-$ chmod 700 ~/.gnupg
+chmod 700 ~/.gnupg
+```
+
+### Update agent after a config change
+
+```sh
+gpgconf --kill gpg-agent
 ```
 
 ### Setting an existing set of keys from Keybase as the default keypair for GPG
