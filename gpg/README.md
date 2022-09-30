@@ -5,6 +5,12 @@
 * <https://github.com/pstadler/keybase-gpg-github>
 * <https://gist.github.com/sindresorhus/98add7be608fad6b5376a895e5a59972>
 
+### Ensure that the `~/.gnupg` directory has the proper permissions
+
+```sh
+$ chmod 700 ~/.gnupg
+```
+
 ### Setting an existing set of keys from Keybase as the default keypair for GPG
 
 * Open the Keybase desktop app
