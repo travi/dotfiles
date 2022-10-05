@@ -72,5 +72,5 @@ export LESS_TERMCAP_md="${YELLOW}";
 # aliases for GRC from homebrew
 if grc &>/dev/null && brew --version &>/dev/null; then
     #shellcheck disable=SC1091
-    source "/usr/local/etc/grc.bashrc"
+    source "$(brew --prefix)/etc/grc.sh"
 fi

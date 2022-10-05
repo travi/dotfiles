@@ -17,5 +17,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts --scr
 
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 
+export GRC_ALIASES=true
+
 export FORCE_COLOR=1
 export NPM_CONFIG_COLOR=always
