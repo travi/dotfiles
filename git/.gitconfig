@@ -71,7 +71,7 @@
     rb = rebase
     rbi = rebase -i
     rbc = rebase --continue
-    prom = pull --rebase origin master
+    prom = "!git pull --rebase origin $(git default-branch)"
     mt = mergetool
     df = diff
     dc = diff --cached
@@ -104,9 +104,11 @@
     # Defaults to stage all, but only if nothing else is staged
     ad = "!f() { if [ ! -z \"$1\" ] || git diff --cached --quiet; then git add -A \"${GIT_PREFIX}$@\" && git status; else echo \"Staging prevented\"; return 8; fi }; f"
 
-    # Remove branches that have already been merged with master
+    default-branch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+    
+    # Remove branches that have already been merged with the default branch
     # a.k.a. ‘delete merged’
-    dm = "!git branch --merged master | grep -v '\\master' | xargs -n 1 git branch -d"
+    dm = "!git branch --merged $(git default-branch) | grep --invert-match $(git default-branch) | xargs --max-args=1 git branch --delete"
 
     # Remove branches that have missing ("gone") remote branches
     # a.k.a. `delete missing remote`
@@ -115,7 +117,7 @@
     # Ensure working directory is clean
     ecwd = "!f() { if [ -n \"$(git ls-files --other --exclude-standard --directory)\" ] || [ -n \"$(git diff --exit-code)\" ]; then echo \"--- Current branch is not clean ---\" \n exit 1; fi }; f"
 
-    delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
+    delete-merged-branches = "!f() { git checkout --quiet $(git-default-branch) && git branch --merged | grep --invert-match '\\*' | xargs --max-args 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 
     # Clean Slate
     cs = "!git cod && git pull --rebase && git dm && git remote prune origin && git dmr && git submodule update --init --recursive && git ecwd && git push"
