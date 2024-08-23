@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 group :lint do
-  gem 'mdl', '>= 0.7.0'
+  gem 'mdl', '>= 0.10.0'
 end
 
 group :integration do
