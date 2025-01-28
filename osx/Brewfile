@@ -59,6 +59,7 @@ brew 'rbenv-bundler'
 brew 'rbenv-default-gems'
 brew 'python'
 brew 'perl'
+brew 'tenv'
 
 cask 'chefdk'
 cask 'vagrant'
