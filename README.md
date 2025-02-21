@@ -15,8 +15,29 @@ from scratch as well as keep it up-to-date over time.
 
 ### Prerequisites
 
+* `brew`
+
+```bash
+xcode-select -–install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+>see: [Install Homebrew without XCODE](https://www.codeandpeace.com/install-homebrew-without-xcode/)
+
 * `git` must be installed
+
+```bash
+# OSX
+brew install git
+# Ubuntu
+sudo apt-get install -y git
+```
+
 * `bash` should be configured as the preferred shell
+
+```bash
+chsh -s /bin/bash
+```
 
 ### Command
 
