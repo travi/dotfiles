@@ -17,4 +17,4 @@ export LC_ALL="en_US.UTF-8";
 export MANPAGER="less";
 
 # Include ~/bin on the $PATH
-export PATH=~/bin:$PATH
+export PATH=~/bin:"$PATH"
