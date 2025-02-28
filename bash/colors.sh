@@ -10,6 +10,7 @@ fi
 
 export CLICOLOR=1
 
+# shellcheck disable=SC2154
 alias colortest='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
 
 if tput setaf 1 &> /dev/null && [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
