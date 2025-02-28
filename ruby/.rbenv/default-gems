@@ -1,7 +1,4 @@
 bundler
-travis
-github
-github-auth
 foreman
 puppet-lint
 atlassian-stash
