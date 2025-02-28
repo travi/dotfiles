@@ -17,25 +17,25 @@
 pin a formula to the current version
 
 ```sh
-$ brew pin <formula>
+brew pin <formula>
 ```
 
 list pinned formulae
 
 ```sh
-$ brew ls --pinned
+brew ls --pinned
 ```
 
 determine version that was pinned
 
 ```sh
-$ brew info <formula>
+brew info <formula>
 ```
 
 switch to another version
 
 ```sh
-$ brew switch <formula> <version #>
+brew switch <formula> <version #>
 ```
 
 ## System Configuration
