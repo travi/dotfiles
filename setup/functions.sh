@@ -3,7 +3,6 @@
 DOTFILES_ROOT="$(pwd)/.."
 DOTFILES_LINK="$HOME/.files"
 
-#shellcheck disable=SC1090
 . "$DOTFILES_ROOT/bash/colors.sh"
 
 heading() {

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#shellcheck disable=SC1090
 . ~/.files/setup/functions.sh
 
 # Windows-only stuff. Abort if not Windows.

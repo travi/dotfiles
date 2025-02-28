@@ -6,10 +6,8 @@
 # gpg-agent or set up the GPG_AGENT_INFO variable if it's already running.
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-    #shellcheck disable=SC1090
     source ~/.gnupg/.gpg-agent-info
     export GPG_AGENT_INFO
 else
-    #shellcheck disable=SC1090
     eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info)
 fi
