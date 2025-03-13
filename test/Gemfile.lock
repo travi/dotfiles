@@ -161,7 +161,7 @@ GEM
       tty-table (~> 0.10)
     ipaddress (0.8.3)
     jmespath (1.6.2)
-    json (2.10.1)
+    json (2.10.2)
     kitchen-docker (3.0.0)
       test-kitchen (>= 1.0.0)
     kitchen-vagrant (2.0.1)
