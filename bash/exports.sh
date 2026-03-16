@@ -16,3 +16,6 @@ export MANPAGER="less";
 
 # Include ~/bin on the $PATH
 export PATH=~/bin:"$PATH"
+
+# Exclude commands from the history that start with a space
+export HISTCONTROL=ignorespace
