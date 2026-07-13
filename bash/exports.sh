@@ -19,3 +19,8 @@ export PATH=~/bin:"$PATH"
 
 # Exclude commands from the history that start with a space
 export HISTCONTROL=ignorespace
+
+# Set up a pared-down environment for non-login, non-interactive shells (e.g.
+# GitHub Copilot CLI). Use an absolute path: bash does not reliably tilde-expand
+# the $BASH_ENV value.
+export BASH_ENV="$HOME/.files/bash/env.sh"
