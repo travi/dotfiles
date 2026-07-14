@@ -1,0 +1,6 @@
+[settings]
+lockfile = true
+
+[tools]
+hk = "1.50.0"
+pkl = "0.32.0"

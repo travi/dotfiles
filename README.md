@@ -90,18 +90,17 @@ rake --rakefile=test/Rakefile lint
 
 #### Automatically
 
-The [provided config file](./pre-commit-config.yaml) defines tasks for the
-[pre-commit tool](https://pre-commit.com/)
+The [provided config file](./hk.pkl) defines tasks for the
+[hk git hook manager](https://hk.jdx.dev/)
 
 ##### as a `pre-commit` hook
 
-Run `pre-commit install` to install the tool into the git hooks for this
-project. Update to the latest version of the config by running
-`pre-commit autoupdate`.
+Run `mise exec -- hk install --mise` to install the git hooks for this
+project.
 
 ##### manually through the cli
 
-`pre-commit run --all-files`
+`rake --rakefile=test/Rakefile lint`
 
 ### What's included
 
