@@ -3,4 +3,12 @@ lockfile = true
 
 [tools]
 hk = "1.50.0"
+markdownlint-cli2 = "0.23.0"
 pkl = "0.32.0"
+
+[tasks.lint-markdown]
+dir = "{{config_root}}"
+run = "git --no-pager -C '{{config_root}}' ls-files -- '*.md' ':(exclude)atom/.atom/packages/package-sync/**' | while IFS= read -r file; do markdownlint-cli2 \"$file\"; done"
+
+[tasks.verify]
+depends = ["lint-markdown"]

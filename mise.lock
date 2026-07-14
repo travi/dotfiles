@@ -28,6 +28,10 @@ url = "https://github.com/jdx/hk/releases/download/v1.50.0/hk-aarch64-apple-darw
 checksum = "sha256:19055e34af501a3cb7568b55f31ea4f0e38760d518b79e17d71fdd39ba0882eb"
 url = "https://github.com/jdx/hk/releases/download/v1.50.0/hk-x86_64-pc-windows-msvc.zip"
 
+[[tools.markdownlint-cli2]]
+version = "0.23.0"
+backend = "npm:markdownlint-cli2"
+
 [[tools.pkl]]
 version = "0.32.0"
 backend = "aqua:apple/pkl"
