@@ -4,7 +4,7 @@ hooks {
   ["pre-commit"] {
     steps {
       ["verify"] {
-        check = "rake --rakefile=test/Rakefile lint"
+        check = "mise run verify"
       }
     }
   }
