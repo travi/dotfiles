@@ -5,10 +5,16 @@ lockfile = true
 hk = "1.50.0"
 markdownlint-cli2 = "0.23.0"
 pkl = "0.32.0"
+shellcheck = "0.11.0"
 
 [tasks.lint-markdown]
 dir = "{{config_root}}"
 run = "git --no-pager -C '{{config_root}}' ls-files -- '*.md' ':(exclude)atom/.atom/packages/package-sync/**' | while IFS= read -r file; do markdownlint-cli2 \"$file\"; done"
 
+[tasks.lint-shell]
+dir = "{{config_root}}"
+run = "git --no-pager -C '{{config_root}}' ls-files -- 'bash/*.sh' 'osx/*.sh' 'ruby/*.sh' 'setup/*.sh' 'test/*.sh' 'tmux/*.sh' 'windows/*.sh' 'git/outstanding.sh' | while IFS= read -r file; do shellcheck \"$file\"; done"
+# run = "git --no-pager -C '{{config_root}}' ls-files -- '*.sh' ':(exclude)atom/.atom/packages/package-sync/**' | while IFS= read -r file; do shellcheck \"$file\"; done"
+
 [tasks.verify]
-depends = ["lint-markdown"]
+depends = ["lint-markdown", "lint-shell"]
