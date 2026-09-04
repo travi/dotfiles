@@ -22,6 +22,18 @@ if [ -e "$(brew --prefix bash)/bin/bash" ] && ! grep "$(brew --prefix bash)/bin/
   info 'Default shell changed to bash v4'
 fi;
 
+# Publish BASH_ENV into the GUI (launchd) session so desktop apps that spawn
+# non-login, non-interactive bash (GitHub Copilot, VS Code, JetBrains) source
+# bash/env.sh and can find brew/mise-managed tools. Processes launched from a
+# terminal already inherit BASH_ENV down the tree, since bash/exports.sh exports
+# it into the shell session; GUI apps have no such shell ancestor, so this seeds
+# the launchd session they inherit from instead.
+mkdir -p ~/Library/LaunchAgents
+link_file ~/.files/osx/travi.dotfiles.gui-env.plist ~/Library/LaunchAgents/travi.dotfiles.gui-env.plist
+launchctl load ~/Library/LaunchAgents/travi.dotfiles.gui-env.plist 2>/dev/null
+info 'BASH_ENV published to the GUI session'
+
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################

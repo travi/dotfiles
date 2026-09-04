@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>travi.dotfiles.gui-env</string>
+
+	<!-- GUI apps (Finder/Dock/Spotlight launched) inherit the launchd session
+	     environment rather than descending from a terminal shell session, so the
+	     BASH_ENV that bash/exports.sh exports for terminal-launched processes
+	     never reaches them. This agent publishes BASH_ENV into the launchd
+	     session at login so non-login, non-interactive bash spawned by desktop
+	     apps (e.g. GitHub Copilot, VS Code, JetBrains) sources bash/env.sh and
+	     can find tools like gpg, gh, mise, and node. -->
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/sh</string>
+		<string>-c</string>
+		<string>launchctl setenv BASH_ENV "$HOME/.files/bash/env.sh"</string>
+	</array>
+
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>
